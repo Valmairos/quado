@@ -1,0 +1,58 @@
+# cargo-deny (06 §10, 05 D12): licenze, crate vietati, avvisi di sicurezza, provenienza.
+# Uso: cargo deny check
+
+[graph]
+targets = ["x86_64-pc-windows-msvc"]
+
+[advisories]
+# Avvisi RustSec. Un avviso blocca finché non è risolto o motivato qui sotto.
+ignore = []
+
+[licenses]
+# Licenze permissive compatibili con la GPL-3.0-or-later di Quado.
+allow = [
+    "MIT",
+    "MIT-0",
+    "Apache-2.0",
+    "Apache-2.0 WITH LLVM-exception",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "ISC",
+    "Zlib",
+    "Unicode-3.0",
+    "BSL-1.0",
+    "CC0-1.0",
+    "OFL-1.1",
+    "Ubuntu-font-1.0",
+]
+confidence-threshold = 0.9
+
+# I crate di Quado sono GPL-3.0-or-later (`LICENSE`) e non sono pubblicati su crates.io: cargo-deny non li
+# controlla. Le licenze ammesse qui sopra sono tutte compatibili con la GPL-3.0 per le dipendenze.
+[licenses.private]
+ignore = true
+
+[bans]
+multiple-versions = "allow"
+wildcards = "deny"
+# Le dipendenze per percorso tra i crate del workspace non hanno versione.
+allow-wildcard-paths = true
+# Nessuna rete (03, privacy verificabile): vietati i client HTTP e WebSocket.
+deny = [
+    { name = "reqwest" },
+    { name = "ureq" },
+    { name = "hyper" },
+    { name = "curl" },
+    { name = "isahc" },
+    { name = "attohttpc" },
+    { name = "surf" },
+    { name = "minreq" },
+    { name = "ehttp" },
+    { name = "tungstenite" },
+    { name = "websocket" },
+]
+
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"
+allow-registry = ["https://github.com/rust-lang/crates.io-index"]

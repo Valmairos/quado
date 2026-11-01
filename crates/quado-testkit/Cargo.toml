@@ -1,0 +1,18 @@
+[package]
+name = "quado-testkit"
+description = "Solo test: oracolo indipendente e generatore degli alberi di prova (06 §1.1, §1.2)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+
+# Crea e modifica file nelle cartelle di prova: per questo vive fuori dal prodotto, usato solo da test e xtask.
+[lints.rust]
+unsafe_code = "allow"
+
+[lints.clippy]
+undocumented_unsafe_blocks = "deny"
+
+[dependencies]
+windows-sys = { workspace = true, features = ["Win32_UI_Shell"] }

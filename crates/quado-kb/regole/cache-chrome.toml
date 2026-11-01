@@ -1,0 +1,28 @@
+# Cache di Chrome (07 §7, proposto): la svuota Chrome.
+id = "cache-chrome"
+priorita = 3
+riconoscitore = "percorso"
+gestore = "programmi"
+gestito_da = "Chrome"
+stato = "lo-gestisce"
+# Fuori dalla card: il browser ricrea la cache e la tiene limitata; la procedura resta nell'ispettore.
+card = false
+rischi = 1
+azione = "procedura"
+stima = "non-stimabile-procedura"
+metodo = {}
+reversibilita = "cache"
+errore = "procedura-esterna"
+verifica = "dopo-procedura"
+verificata = "2026-10-13"
+fixture = "browser.albero"
+
+[dove]
+cartella = "local"
+percorsi = ["Google/Chrome/User Data/*/Cache", "Google/Chrome/User Data/*/Code Cache"]
+
+[[fonti]]
+url = "https://support.google.com/accounts/answer/32050?hl=en&co=GENIE.Platform%3DDesktop"
+titolo = "Clear cache & cookies"
+estratto = '''At the top right, select More Delete browsing data.'''
+ufficiale = true

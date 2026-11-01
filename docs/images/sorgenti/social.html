@@ -1,0 +1,41 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<!-- Anteprima social (variante A, scelta il 01/11/2026): 1280 x 640 (640 x 320 a 2x), tutto al centro perché GitHub e i social
+     ritagliano e rimpiccioliscono. Tessera, nome, descrizione e la barra pulita (4 gestori e libero), niente
+     altro. Numeri inventati, in GB: 583, 417, 38.6 e 206 usati, 618 liberi (unità da 2 TB, 1.81 TB come in
+     Esplora file). -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Quado: social preview</title>
+<script>document.documentElement.dataset.theme = location.hash.slice(1) || 'dark';</script>
+<style>
+/*@FONT*/
+/*@COMUNE*/
+.social{width:640px;height:320px;border-radius:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  background:radial-gradient(70% 90% at 50% 40%,#1C1C1E 0%,#0B0B0C 100%)}
+:root[data-theme="light"] .social{background:radial-gradient(70% 90% at 50% 40%,#FBFBFD 0%,#F5F5F7 100%)}
+.tes{width:80px;height:80px}
+.tes svg{display:block;width:80px;height:80px;filter:drop-shadow(0 8px 24px rgba(0,0,0,.549))}
+:root[data-theme="light"] .tes svg{filter:drop-shadow(0 1px 3px rgba(0,0,0,.055)) drop-shadow(0 8px 24px rgba(0,0,0,.141))}
+.name{margin-top:16px;font-size:48px;line-height:56px;font-weight:600;letter-spacing:-.03em;color:var(--text)}
+.lede{margin-top:4px;font-size:18px;line-height:24px;letter-spacing:-.008em;color:var(--text2)}
+.ubar{margin-top:32px;width:320px;height:10px;border-radius:5px}
+</style>
+<!--@MISURA-->
+</head>
+<body>
+<main class="tile social">
+  <div class="tes">{{TESSERA_GRANDE}}</div>
+  <div class="name">Quado</div>
+  <p class="lede">Disk space analyzer for Windows</p>
+  <div class="ubar" aria-hidden="true">
+    <span style="flex-grow:583;background:var(--d1)"></span>
+    <span style="flex-grow:417;background:var(--d2)"></span>
+    <span style="flex-grow:38.6;background:var(--d3)"></span>
+    <span style="flex-grow:206;background:var(--d4)"></span>
+    <span style="flex-grow:618;background:var(--track)"></span>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,28 @@
+# Cache di Edge (07 §7, proposto): la svuota Edge.
+id = "cache-edge"
+priorita = 3
+riconoscitore = "percorso"
+gestore = "programmi"
+gestito_da = "Edge"
+stato = "lo-gestisce"
+# Fuori dalla card: il browser ricrea la cache e la tiene limitata; la procedura resta nell'ispettore.
+card = false
+rischi = 1
+azione = "procedura"
+stima = "non-stimabile-procedura"
+metodo = {}
+reversibilita = "cache"
+errore = "procedura-esterna"
+verifica = "dopo-procedura"
+verificata = "2026-10-13"
+fixture = "browser.albero"
+
+[dove]
+cartella = "local"
+percorsi = ["Microsoft/Edge/User Data/*/Cache", "Microsoft/Edge/User Data/*/Code Cache"]
+
+[[fonti]]
+url = "https://support.microsoft.com/en-us/edge/view-and-delete-browser-history-in-microsoft-edge"
+titolo = "View and delete browser history in Microsoft Edge"
+estratto = '''Select Clear browsing data, then select Choose what to clear next to Clear browsing data now.'''
+ufficiale = true

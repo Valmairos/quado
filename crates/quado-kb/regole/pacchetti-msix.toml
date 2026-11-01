@@ -1,0 +1,26 @@
+# Dati dei pacchetti MSIX (05 D6): rimossi con la disinstallazione dell'app.
+id = "pacchetti-msix"
+priorita = 2
+riconoscitore = "msix"
+gestore = "programmi"
+stato = "decidi-tu"
+azione = "disinstallazione"
+stima = "non-stimabile-procedura"
+metodo = { uri = "ms-settings:appsfeatures" }
+reversibilita = "disinstallazione"
+errore = "procedura-esterna"
+verifica = "dopo-procedura"
+verificata = "2026-10-13"
+fixture = "profilo.albero"
+
+[[fonti]]
+url = "https://learn.microsoft.com/en-us/windows/apps/develop/data/store-and-retrieve-app-data"
+titolo = "Store and retrieve settings and other app data"
+estratto = '''The system removes the contents of these data stores completely and cleanly when your app is uninstalled.'''
+ufficiale = true
+
+[[fonti]]
+url = "https://learn.microsoft.com/en-us/windows/terminal/install"
+titolo = "Install and set up Windows Terminal"
+estratto = '''%LOCALAPPDATA%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json'''
+ufficiale = true

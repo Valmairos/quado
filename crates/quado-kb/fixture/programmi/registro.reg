@@ -1,0 +1,59 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Esempio]
+"DisplayName"="Esempio"
+"DisplayVersion"="3.2.1"
+"Publisher"="Esempio Software Srl"
+"InstallLocation"="C:\\Program Files\\Esempio"
+"DisplayIcon"="C:\\Program Files\\Esempio\\esempio.exe,0"
+"UninstallString"="\"C:\\Program Files\\Esempio\\uninstall.exe\" /S"
+"QuietUninstallString"="\"C:\\Program Files\\Esempio\\uninstall.exe\" /S /quiet"
+"EstimatedSize"=dword:00002800
+"InstallDate"="20250314"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\EsempioPlugin]
+"DisplayName"="Esempio Plugin"
+"Publisher"="Esempio Software Srl"
+"InstallLocation"="C:\\Program Files\\Esempio\\"
+"InstallDate"="20251399"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{11111111-2222-3333-4444-555555555555}]
+"DisplayName"="Esempio Componente"
+"Publisher"="Esempio Software Srl"
+"SystemComponent"=dword:00000001
+"InstallLocation"="C:\\Program Files\\Esempio\\Componente"
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Uninstall\UtenteApp]
+"DisplayName"="Utente App"
+"DisplayVersion"="1.0"
+"Publisher"="Utente Labs"
+"InstallLocation"="C:\\Users\\demo\\AppData\\Local\\Programs\\UtenteApp"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE}]
+"DisplayName"="Senza Prova"
+"Publisher"="Fantasma Software"
+"InstallLocation"=""
+"UninstallString"="MsiExec.exe /X{AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE}"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\VoceSbagliata]
+"DisplayName"="Voce Sbagliata"
+"InstallLocation"="C:\\Users\\demo\\AppData\\Local"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\AltroVolume]
+"DisplayName"="Altro Volume"
+"InstallLocation"="D:\\Giochi\\Altro"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Brave]
+"DisplayName"="Brave"
+"Publisher"="Brave Software Inc"
+"InstallLocation"="C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application"
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"Start_TrackProgs"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{CEBFF5CD-ACE2-4F4F-9178-9926F41749EA}\Count]
+"P:\\Cebtenz Svyrf\\Rfrzcvb\\rfrzcvb.rkr"=hex:00,00,00,00,05,00,00,00,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,00,00,00,00,00,00,ff,ff,ff,ff,00,b4,e7,13,ec,39,dd,01,00,00,00,00
+"P:\\Cebtenz Svyrf\\Rfrzcvb\\fgehzragb.rkr"=hex:00,00,00,00,01,00,00,00,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,00,00,00,00,00,00,ff,ff,ff,ff,00,68,32,1b,3f,5a,dc,01,00,00,00,00
+"{6Q809377-6NS0-444O-8957-N3773S02200R}\\Rfrzcvb\\Pbzcbaragr\\pbzc.rkr"=hex:00,00,00,00,02,00,00,00,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,00,00,00,00,00,00,ff,ff,ff,ff,00,22,3e,15,b3,52,dd,01,00,00,00,00
+"Zvpebfbsg.JvaqbjfGrezvany_8jrxlo3q8oojr!Ncc"=hex:00,00,00,00,09,00,00,00,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,00,00,00,00,00,00,ff,ff,ff,ff,00,22,3e,15,b3,52,dd,01,00,00,00,00
+"HRZR_PGYFRFFVBA"=hex:00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00

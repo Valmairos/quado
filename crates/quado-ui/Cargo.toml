@@ -1,0 +1,31 @@
+[package]
+name = "quado-ui"
+description = "Interfaccia di Quado: token, font, lingue, tabella a indice, mappa ad albero, schermate"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+build = "build.rs"
+
+[lints]
+workspace = true
+
+[dependencies]
+egui = { workspace = true }
+log = { workspace = true }
+fluent-bundle = { workspace = true }
+fluent-syntax = { workspace = true }
+unic-langid = { workspace = true }
+quado-model = { workspace = true }
+quado-scan-win = { workspace = true }
+quado-actions = { workspace = true }
+quado-kb = { workspace = true }
+# Mappa dei caratteri dei font di Windows, per scegliere i ripieghi che servono (`fonts::choose_fallbacks`).
+# La stessa versione e le stesse funzioni che usa egui (epaint): nessun codice nuovo nella build.
+skrifa = { version = "0.44", default-features = false, features = ["std", "autohint_shaping"] }
+
+[dev-dependencies]
+quado-testkit = { workspace = true }
+egui_kittest = { workspace = true, features = ["wgpu"] }
+image = { workspace = true }

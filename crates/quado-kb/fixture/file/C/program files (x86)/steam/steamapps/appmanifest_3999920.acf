@@ -1,0 +1,61 @@
+"AppState"
+{
+	"appid"		"3999920"
+	"universe"		"1"
+	"LauncherPath"		"C:\\Program Files (x86)\\Steam\\steam.exe"
+	"name"		"Dune Rally 2"
+	"StateFlags"		"4"
+	"installdir"		"Dune Rally"
+	"LastUpdated"		"1780000000"
+	"LastPlayed"		"1780000100"
+	"SizeOnDisk"		"47206115478"
+	"StagingSize"		"0"
+	"buildid"		"20000202"
+	"LastOwner"		"76561197960265728"
+	"DownloadType"		"2"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"7340032"
+	"BytesDownloaded"		"7340032"
+	"BytesToStage"		"52428800"
+	"BytesStaged"		"52428800"
+	"TargetBuildID"		"0"
+	"AutoUpdateBehavior"		"0"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+		"3999921"
+		{
+			"manifest"		"1000000000000000021"
+			"size"		"8"
+		}
+		"3999922"
+		{
+			"manifest"		"1000000000000000022"
+			"size"		"41388013604"
+		}
+		"3999923"
+		{
+			"manifest"		"1000000000000000023"
+			"size"		"5023417211"
+		}
+		"3999924"
+		{
+			"manifest"		"1000000000000000024"
+			"size"		"794684655"
+		}
+	}
+	"SharedDepots"
+	{
+		"228988"		"228980"
+		"228990"		"228980"
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+	"MountedConfig"
+	{
+		"language"		"english"
+	}
+}

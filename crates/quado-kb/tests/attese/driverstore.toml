@@ -1,0 +1,10 @@
+# 07 §7 (proposto): solo spiegazione finché la fonte di pnputil non è verificata.
+[[voci]]
+percorso = 'C:\Windows\System32\DriverStore\FileRepository'
+stato = "lo-gestisce-nessuna-procedura"
+azione = "nessuna"
+stima = "non-stimabile-noaction"
+privilegi = "nessuno"
+gestore = "windows"
+colore = "windows"
+elementi = 1

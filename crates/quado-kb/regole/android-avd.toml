@@ -1,0 +1,32 @@
+# Dispositivi virtuali Android (07 §7, proposto): Lo gestisce Android Studio, Device Manager.
+id = "android-avd"
+priorita = 2
+riconoscitore = "percorso"
+gestore = "programmi"
+gestito_da = "Android Studio"
+stato = "lo-gestisce"
+azione = "procedura"
+stima = "esatta"
+metodo = {}
+rischi = 1
+reversibilita = "procedura-app"
+errore = "procedura-esterna"
+verifica = "dopo-procedura"
+verificata = "2026-10-13"
+fixture = "sviluppo.albero"
+
+[dove]
+cartella = "profilo"
+percorsi = [".android/avd/*.avd"]
+
+[[fonti]]
+url = "https://developer.android.com/studio/run/managing-avds"
+titolo = "Create and manage virtual devices"
+estratto = '''To delete an AVD, click Menu and select Delete.'''
+ufficiale = true
+
+[[fonti]]
+url = "https://developer.android.com/tools/variables"
+titolo = "Environment variables"
+estratto = '''By default, the emulator stores configuration files under $HOME/.android/ and AVD data under $HOME/.android/avd/.'''
+ufficiale = true

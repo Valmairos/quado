@@ -1,0 +1,63 @@
+/* SPDX-License-Identifier: GPL-3.0-or-later
+   Grafiche del README: token della variante A, copiati da crates/quado-ui/src/tokens.rs.
+   Chi cambia un token lo cambia anche qui. I font arrivano da genera.py (@font-face con file://). */
+
+:root,[data-theme="light"]{
+  /* Chrome::LIGHT */
+  --bg:#F5F5F7;--sidebar:#EAEAED;--panel:#FFFFFF;--panel2:#FAFAFB;--raised:#FFFFFF;--field:#DEDEE3;
+  --hover:#EFEFF2;--separator:#E3E3E8;--border:#CDCDD3;--track:#E6E6EA;
+  --text:#1D1D1F;--text2:#545458;--text3:#5F5F64;--warn:#8A5A00;--ok:#24703A;
+  /* DataPalette::Default, chiaro: data, meta, tile, tile_text, hatch */
+  --d1:#4077B9;--d2:#B96A26;--d3:#2D6557;--d4:#858586;--meta:#2E2F2F;--hatch:#8E8E93;
+  --t1:#B5CCF0;--t2:#F4C9A3;--t3:#8CBEB9;--t4:#E2E3E5;--tt:#1D1D1F;
+  /* brand.rs: GRAPHITE su fondo chiaro */
+  --mark:#1D1D1F;
+  /* Palette::shadow: Card (1, 3, 14) e Dialog (18, 48, 48) in chiaro */
+  --sh-card:0 1px 3px rgba(0,0,0,.055);
+  --sh-dialog:0 18px 48px rgba(0,0,0,.188);
+  /* Barra del titolo di Windows 10 col tema chiaro: fondo bianco, testo grafite */
+  --tb:#FFFFFF;--tbText:#1D1D1F;
+}
+:root[data-theme="dark"],[data-theme="dark"]{
+  /* Chrome::DARK */
+  --bg:#1C1C1E;--sidebar:#232325;--panel:#262628;--panel2:#2A2A2D;--raised:#2C2C2E;--field:#313134;
+  --hover:#2F2F32;--separator:#343437;--border:#3E3E42;--track:#353538;
+  --text:#F5F5F7;--text2:#B4B4BA;--text3:#A3A3AA;--warn:#F2C25B;--ok:#7ED99A;
+  /* DataPalette::Default, scuro */
+  --d1:#6494D6;--d2:#E29260;--d3:#79C5BD;--d4:#7B7C7F;--meta:#E3E3E6;--hatch:#7A7A80;
+  --t1:#28436B;--t2:#694028;--t3:#2E625E;--t4:#3A3A3D;--tt:#F2F2F4;
+  /* brand.rs: LIGHT su fondo scuro */
+  --mark:#F5F5F7;
+  /* In scuro le card non hanno ombra; Dialog (18, 48, 160) */
+  --sh-card:none;
+  --sh-dialog:0 18px 48px rgba(0,0,0,.627);
+  --tb:#202020;--tbText:#FFFFFF;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:transparent}
+body{
+  font-family:"Q Inter",sans-serif;font-size:13px;font-weight:400;line-height:1.38;letter-spacing:-.003em;
+  color:var(--text);-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;
+}
+/* Cifre tabulari: i file -tnum di assets/fonts, come nell'app (fonts.rs). */
+.num{font-family:"Q Inter Tnum","Q Inter",sans-serif;white-space:nowrap}
+
+/* Scala tipografica (tokens.rs, Type) */
+.t-display{font-size:48px;font-weight:300;letter-spacing:-.024em;line-height:1.05}
+.t-large{font-size:28px;font-weight:600;letter-spacing:-.016em;line-height:1.15}
+.t-title{font-size:20px;font-weight:600;letter-spacing:-.012em;line-height:1.25}
+.t-headline{font-size:15px;font-weight:600;letter-spacing:-.006em;line-height:1.3}
+.t-body{font-size:13px;font-weight:400;letter-spacing:-.003em}
+.t-strong{font-size:13px;font-weight:500;letter-spacing:-.003em}
+.t-callout{font-size:12px;font-weight:400;letter-spacing:0;line-height:1.4}
+.t-caption{font-size:11px;font-weight:500;letter-spacing:.01em;line-height:1.3}
+.c2{color:var(--text2)}.c3{color:var(--text3)}
+
+/* Riquadro che contiene ogni grafica: fondo del tema, raggio dei dialoghi (radius::DIALOG = 16). */
+.tile{position:relative;width:880px;background:var(--bg);border-radius:16px;overflow:hidden}
+
+/* Barra del bilancio (variante A: alta 14, spazi di 2, raggio radius::BAR = 7) */
+.ubar{display:flex;gap:2px;height:14px;border-radius:7px;overflow:hidden}
+.ubar>span{flex-basis:0;min-width:2px;height:100%}
+

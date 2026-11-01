@@ -1,0 +1,33 @@
+# File temporanei di Windows (decisioni §3): solo Impostazioni › File temporanei, mai a mano.
+id = "file-temporanei"
+priorita = 1
+riconoscitore = "percorso"
+gestore = "windows"
+gestito_da = "Windows"
+stato = "lo-gestisce"
+azione = "procedura"
+stima = "non-stimabile-procedura"
+metodo = { uri = "ms-settings:storagesense" }
+alternative = [{ comando = "cleanmgr" }]
+rischi = 1
+reversibilita = "procedura-windows"
+errore = "procedura-esterna"
+verifica = "dopo-procedura"
+verificata = "2026-10-13"
+fixture = "radice.albero"
+
+[dove]
+cartella = "local"
+percorsi = ["Temp", "Microsoft/Windows/Explorer/thumbcache_*.db", "windows:Temp", "windows:SoftwareDistribution/Download"]
+
+[[fonti]]
+url = "https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/free-up-drive-space-in-windows"
+titolo = "Free up drive space in Windows"
+estratto = '''Review each of the categories, including Temporary files, Large or unused files, Files synced to the cloud, and Unused apps'''
+ufficiale = true
+
+[[fonti]]
+url = "https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/free-up-drive-space-in-windows"
+titolo = "Free up drive space in Windows"
+estratto = '''you can use the Disk Cleanup tool to delete temporary files and system files from your device.'''
+ufficiale = true

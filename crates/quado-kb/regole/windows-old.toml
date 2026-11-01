@@ -1,0 +1,34 @@
+# Installazione precedente di Windows (valutazione dei consigli, 01/11/2026): Lo gestisce Windows, che la
+# elimina da solo dopo 10 giorni; prima si toglie da Impostazioni › File temporanei. Dopo non si torna indietro.
+id = "windows-old"
+priorita = 1
+riconoscitore = "percorso"
+gestore = "windows"
+gestito_da = "Windows"
+stato = "lo-gestisce"
+azione = "procedura"
+protetto = true
+stima = "non-stimabile-procedura"
+metodo = { uri = "ms-settings:storagesense" }
+rischi = 1
+reversibilita = "windows-old"
+errore = "procedura-esterna"
+verifica = "dopo-procedura"
+verificata = "2026-11-01"
+fixture = "radice.albero"
+
+[dove]
+cartella = "radice"
+percorsi = ["Windows.old"]
+
+[[fonti]]
+url = "https://support.microsoft.com/en-us/windows/delete-your-previous-version-of-windows-f8b26680-e083-c710-b757-7567d69dbb74"
+titolo = "Delete your previous version of Windows"
+estratto = '''Ten days after you upgrade to Windows, your previous version of Windows is automatically deleted from your PC.'''
+ufficiale = true
+
+[[fonti]]
+url = "https://support.microsoft.com/en-us/windows/delete-your-previous-version-of-windows-f8b26680-e083-c710-b757-7567d69dbb74"
+titolo = "Delete your previous version of Windows"
+estratto = '''If you delete your previous version of Windows, this can't be undone'''
+ufficiale = true

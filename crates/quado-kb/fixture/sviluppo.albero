@@ -1,0 +1,96 @@
+# Fixture sintetica: forma di un PC Windows, con utente, progetti e dati inventati.
+d C:\Users
+d C:\Users\demo
+d C:\Users\demo\.android
+d C:\Users\demo\.android\avd
+d C:\Users\demo\.android\avd\Pixel_8_API_35.avd
+f 10765255664 10829012499 C:\Users\demo\.android\avd\Pixel_8_API_35.avd\(contenuto)
+f 128 125 C:\Users\demo\.android\avd\Pixel_8_API_35.ini
+d C:\Users\demo\.vscode
+d C:\Users\demo\.vscode\extensions
+d C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1
+f 8192 5280 C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\.vsixmanifest
+d C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\assets
+f 128200 84319 C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\assets\(contenuto)
+f 196608 195015 C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\changelog.md
+d C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\dist
+f 56266752 56212726 C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\dist\(contenuto)
+f 8192 8154 C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\LICENSE.txt
+d C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\node_modules
+f 20603992 20529143 C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\node_modules\(contenuto)
+f 237568 234649 C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\package.json
+f 69632 66079 C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\package.nls.cs.json
+f 69632 67278 C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\package.nls.de.json
+f 69632 67797 C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\package.nls.es.json
+f 73728 71159 C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\package.nls.fr.json
+f 69632 67051 C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\package.nls.it.json
+f 77824 74458 C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\package.nls.ja.json
+f 61440 60409 C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\package.nls.json
+f 69632 67252 C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\package.nls.ko.json
+f 69632 66969 C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\package.nls.pl.json
+f 69632 66047 C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\package.nls.pt-br.json
+f 77824 74012 C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\package.nls.qps-ploc.json
+f 98304 94578 C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\package.nls.ru.json
+f 69632 66074 C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\package.nls.tr.json
+f 57344 55633 C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\package.nls.zh-cn.json
+f 57344 56549 C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\package.nls.zh-tw.json
+f 12288 8941 C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\readme.md
+f 245760 243169 C:\Users\demo\.vscode\extensions\github.copilot-chat-0.48.1\telemetry.json
+d C:\Users\demo\AppData
+d C:\Users\demo\AppData\Local
+d C:\Users\demo\AppData\Local\npm-cache
+d C:\Users\demo\AppData\Local\npm-cache\_cacache
+f 7612990840 7574929297 C:\Users\demo\AppData\Local\npm-cache\_cacache\(contenuto)
+d C:\Users\demo\AppData\Local\npm-cache\_libvips
+f 7659520 7658567 C:\Users\demo\AppData\Local\npm-cache\_libvips\(contenuto)
+d C:\Users\demo\AppData\Local\npm-cache\_logs
+f 90112 23395 C:\Users\demo\AppData\Local\npm-cache\_logs\(contenuto)
+d C:\Users\demo\AppData\Local\npm-cache\_npx
+f 685432096 634751998 C:\Users\demo\AppData\Local\npm-cache\_npx\(contenuto)
+d C:\Users\demo\AppData\Local\npm-cache\_prebuilds
+f 2273280 2267253 C:\Users\demo\AppData\Local\npm-cache\_prebuilds\(contenuto)
+f 0 0 C:\Users\demo\AppData\Local\npm-cache\_update-notifier-last-checked
+d C:\Users\demo\AppData\Local\pnpm
+d C:\Users\demo\AppData\Local\pnpm\.tools
+d C:\Users\demo\AppData\Local\pnpm\.tools\pnpm
+f 19052872 17257852 C:\Users\demo\AppData\Local\pnpm\.tools\pnpm\(contenuto)
+d C:\Users\demo\AppData\Local\pnpm\store
+d C:\Users\demo\AppData\Local\pnpm\store\v10
+f 1051345608 954468759 C:\Users\demo\AppData\Local\pnpm\store\v10\(contenuto)
+d C:\Users\demo\AppData\Local\pnpm\store\v3
+f 1593927240 1541122947 C:\Users\demo\AppData\Local\pnpm\store\v3\(contenuto)
+d C:\Users\demo\Documents
+d C:\Users\demo\Documents\foto-vacanze
+d C:\Users\demo\Documents\foto-vacanze\album
+f 10535357840 10342870429 C:\Users\demo\Documents\foto-vacanze\album\(contenuto)
+d C:\Users\demo\Documents\foto-vacanze\node_modules
+f 136 131 C:\Users\demo\Documents\foto-vacanze\node_modules\(contenuto)
+d C:\Users\demo\Documents\progetto-rust
+d C:\Users\demo\Documents\progetto-rust\.git
+f 6547104 6007802 C:\Users\demo\Documents\progetto-rust\.git\(contenuto)
+f 110592 107650 C:\Users\demo\Documents\progetto-rust\Cargo.lock
+f 4096 1916 C:\Users\demo\Documents\progetto-rust\Cargo.toml
+f 8192 4581 C:\Users\demo\Documents\progetto-rust\README.md
+d C:\Users\demo\Documents\progetto-rust\src
+f 1351560 1060929 C:\Users\demo\Documents\progetto-rust\src\(contenuto)
+d C:\Users\demo\Documents\progetto-rust\target
+f 19290806048 19244687646 C:\Users\demo\Documents\progetto-rust\target\(contenuto)
+d C:\Users\demo\Documents\progetto-video
+d C:\Users\demo\Documents\progetto-video\node_modules
+f 149501424 146276780 C:\Users\demo\Documents\progetto-video\node_modules\(contenuto)
+f 24576 22406 C:\Users\demo\Documents\progetto-video\package-lock.json
+f 104 101 C:\Users\demo\Documents\progetto-video\package.json
+d C:\Users\demo\Documents\progetto-video\src
+d C:\Users\demo\Documents\progetto-web
+d C:\Users\demo\Documents\progetto-web\.git
+f 7223696 5197519 C:\Users\demo\Documents\progetto-web\.git\(contenuto)
+d C:\Users\demo\Documents\progetto-web\apps
+f 130588984 130110986 C:\Users\demo\Documents\progetto-web\apps\(contenuto)
+d C:\Users\demo\Documents\progetto-web\node_modules
+f 4610984 2613461 C:\Users\demo\Documents\progetto-web\node_modules\(contenuto)
+f 4096 878 C:\Users\demo\Documents\progetto-web\package.json
+d C:\Users\demo\Documents\progetto-web\packages
+f 1569112 1268564 C:\Users\demo\Documents\progetto-web\packages\(contenuto)
+f 159744 155960 C:\Users\demo\Documents\progetto-web\pnpm-lock.yaml
+f 40 40 C:\Users\demo\Documents\progetto-web\pnpm-workspace.yaml
+f 4096 1830 C:\Users\demo\Documents\progetto-web\README.md

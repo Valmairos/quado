@@ -1,0 +1,51 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<!-- Testata (variante B, scelta il 01/11/2026): come una pagina prodotto. Tessera, nome e descrizione al centro, poi la finestra vera
+     della Panoramica (schermata con i dati di prova, 1 px dell'app per 1 px dell'immagine) che esce dal bordo
+     inferiore. Il taglio cade a 496 px dall'inizio della schermata: sotto la card dell'uso dell'unità, prima
+     degli elenchi. Un solo contenitore: il fondo, con un gradiente radiale appena percettibile. Griglia di 8.
+     genera.py controlla che la parte visibile della schermata (da 88, 672 px) resti quella originale: se cambi
+     margini, posizione della finestra o altezza, cambia anche lì. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Quado: header</title>
+<script>document.documentElement.dataset.theme = location.hash.slice(1) || 'light';</script>
+<style>
+/*@FONT*/
+/*@COMUNE*/
+.hero{height:584px;padding:56px 44px 0;text-align:center;
+  background:radial-gradient(90% 70% at 50% 0%,#FBFBFD 0%,#F5F5F7 100%)}
+:root[data-theme="dark"] .hero{background:radial-gradient(90% 70% at 50% 0%,#1C1C1E 0%,#0B0B0C 100%)}
+.tes{width:80px;height:80px;margin:0 auto}
+.tes svg{display:block;width:80px;height:80px;filter:drop-shadow(0 1px 3px rgba(0,0,0,.055)) drop-shadow(0 8px 24px rgba(0,0,0,.141))}
+:root[data-theme="dark"] .tes svg{filter:drop-shadow(0 8px 24px rgba(0,0,0,.549))}
+.name{margin-top:24px;font-size:64px;line-height:72px;font-weight:600;letter-spacing:-.03em;color:var(--text)}
+.lede{margin-top:8px;font-size:20px;line-height:28px;letter-spacing:-.012em;color:var(--text2)}
+/* Finestra come in cornice.html: raggio 10 e bordo di 1 px dell'app, barra del titolo di 32, ombra Dialog. */
+.win{position:absolute;left:44px;top:320px;width:792px;border-radius:5px 5px 0 0;overflow:hidden;text-align:left;
+  background:var(--bg);box-shadow:0 0 0 .5px var(--border),0 9px 24px var(--win-shadow)}
+.win[data-theme="light"]{--win-shadow:rgba(0,0,0,.188)}
+.win[data-theme="dark"]{--win-shadow:rgba(0,0,0,.627)}
+.wtb{height:16px;display:flex;align-items:center;background:var(--tb);color:var(--tbText);font-size:6px;letter-spacing:0;line-height:1}
+.wtb .ico{width:8px;height:8px;margin:0 4px 0 6px;flex:none}
+.wtb .ico svg{display:block;width:8px;height:8px}
+.wtb .tt{flex:1}
+.wtb .wb{width:23px;height:16px;display:grid;place-items:center}
+.wtb .wb svg{width:5px;height:5px;stroke:currentColor;stroke-width:1;fill:none;display:block}
+.win img{display:block;width:{{IMG_W}}px;height:{{IMG_H}}px}
+</style>
+<!--@MISURA-->
+</head>
+<body>
+<main class="tile hero">
+  <div class="tes">{{TESSERA_GRANDE}}</div>
+  <div class="name">Quado</div>
+  <p class="lede">Disk space analyzer for Windows</p>
+  <div class="win" data-theme="{{WIN_THEME}}">
+    <div class="wtb"><span class="ico">{{TESSERA16}}</span><span class="tt">Quado</span><span class="wb">{{CAP_MIN}}</span><span class="wb">{{CAP_MAX}}</span><span class="wb">{{CAP_CLOSE}}</span></div>
+    <img src="{{IMG}}" alt="">
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,20 @@
+# Cartelle note dell'utente: tuoi file, nessuna proposta automatica.
+id = "cartelle-utente"
+priorita = 2
+riconoscitore = "cartelle-utente"
+gestore = "tu"
+stato = "decidi-tu"
+azione = "nessuna"
+contenitore = true
+stima = "nessuna"
+reversibilita = "nessuna-azione"
+errore = "nessuna-azione"
+verifica = "nessuna-azione"
+verificata = "2026-10-13"
+fixture = "profilo.albero"
+
+[[fonti]]
+url = "https://learn.microsoft.com/en-us/windows/win32/shell/knownfolderid"
+titolo = "KNOWNFOLDERID"
+estratto = '''The KNOWNFOLDERID constants represent GUIDs that identify standard folders registered with the system as Known Folders.'''
+ufficiale = true

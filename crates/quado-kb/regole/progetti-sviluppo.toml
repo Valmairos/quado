@@ -1,0 +1,46 @@
+# Dipendenze e output di build (decisioni §3): Decidi tu, solo con il lockfile del suo tipo accanto. Niente
+# `build`: con electron-builder contiene icone e script scritti a mano. Niente sotto AppData, le cartelle dei
+# programmi e le estensioni di VS Code: lì una node_modules fa parte di un programma.
+id = "progetti-sviluppo"
+priorita = 3
+riconoscitore = "lockfile"
+gestore = "tu"
+stato = "decidi-tu"
+azione = "cestino"
+stima = "esatta"
+metodo = {}
+alternative = [{ comando = "cargo clean" }]
+controlli = ["lockfile", "restart-manager", "riferimenti"]
+rischi = 2
+prova_prima_di_svuotare = true
+reversibilita = "cestino"
+errore = "per-elemento"
+verifica = "riscansione"
+verificata = "2026-10-13"
+fixture = "sviluppo.albero"
+
+[dove]
+coppie = [
+    { nome = "node_modules", lockfile = ["package-lock.json", "pnpm-lock.yaml", "yarn.lock", "bun.lockb"] },
+    { nome = ".next", lockfile = ["package-lock.json", "pnpm-lock.yaml", "yarn.lock", "bun.lockb"] },
+    { nome = "target", lockfile = ["Cargo.lock"] },
+]
+escludi = ["profilo:AppData", "local", "roaming", "programdata", "programmi", "programmi-x86", "windows", "profilo:.vscode"]
+
+[[fonti]]
+url = "https://docs.npmjs.com/cli/v12/configuring-npm/package-lock-json/"
+titolo = "package-lock.json"
+estratto = '''subsequent installs are able to generate identical trees, regardless of intermediate dependency updates.'''
+ufficiale = true
+
+[[fonti]]
+url = "https://doc.rust-lang.org/cargo/commands/cargo-clean.html"
+titolo = "cargo clean"
+estratto = '''With no options, cargo clean will delete the entire target directory.'''
+ufficiale = true
+
+[[fonti]]
+url = "https://nextjs.org/docs/app/api-reference/config/next-config-js/distDir"
+titolo = "distDir"
+estratto = '''Next.js takes ownership of distDir and will sometimes delete its contents.'''
+ufficiale = true

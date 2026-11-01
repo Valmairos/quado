@@ -1,0 +1,50 @@
+name: Bug report
+description: Something in Quado doesn't work as described.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before you paste text or a screenshot from Quado, remove what identifies you: write `C:\Users\<name>\...` instead of your real user folder, and hide file names you'd rather keep private.
+
+        For a security problem, don't use this form: follow the [security policy](https://github.com/Valmairos/quado/security/policy).
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      description: Run `winver` to see it.
+      placeholder: Windows 10 Pro 22H2, build 19045
+    validations:
+      required: true
+  - type: input
+    id: quado
+    attributes:
+      label: Quado version
+      description: Settings › About › Version. Say also whether you downloaded quado.exe or built it.
+      placeholder: 0.1.0, downloaded from Releases
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: Copy the exact text of any message. A code such as (Code 5) helps.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Optional. For example the drive, its file system and the view where it happens.
+      placeholder: |
+        1. Scan D: (exFAT)
+        2. Open Explore
+        3. ...
+    validations:
+      required: false

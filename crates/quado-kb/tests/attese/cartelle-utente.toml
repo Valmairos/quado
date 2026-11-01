@@ -1,0 +1,20 @@
+# Tuoi file: Decidi tu, nessuna proposta automatica.
+[[voci]]
+percorso = 'C:\Users\demo\Documents'
+stato = "decidi-tu"
+azione = "nessuna"
+stima = "non-stimabile-noaction"
+privilegi = "nessuno"
+gestore = "tu"
+colore = "tu"
+elementi = 1
+
+[[voci]]
+percorso = 'C:\Users\demo\Downloads'
+stato = "decidi-tu"
+azione = "nessuna"
+stima = "non-stimabile-noaction"
+privilegi = "nessuno"
+gestore = "tu"
+colore = "tu"
+elementi = 1

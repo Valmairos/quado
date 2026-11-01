@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<packet>
+    <file>
+        <item path="\\JYPacket" filetype="4" />
+    </file>
+    <cid cid="capcutpc_0" />
+    <appver value="9.4.0" />
+    <grayver value="" />
+    <verify enable="0" />
+    <full_appver value="9.4.0.4015" />
+    <malloc_scheme value="system" />
+    <release_type value="release" />
+</packet>

@@ -1,0 +1,36 @@
+# Versioni precedenti di CapCut (decisioni §3, 03 §6.1): Da verificare, eccezione a F-AC-4.
+id = "capcut-versioni"
+priorita = 1
+riconoscitore = "capcut-versioni"
+gestore = "programmi"
+stato = "da-verificare"
+azione = "cestino"
+protetto = true
+eccezione_protetti = true
+stima = "esatta"
+metodo = {}
+controlli = ["restart-manager", "riferimenti", "capacita-cestino"]
+ipotesi = 1
+rischi = 2
+prova_prima_di_svuotare = true
+spunta_prova = true
+reversibilita = "cestino"
+errore = "per-elemento"
+verifica = "riscansione"
+verificata = "2026-10-13"
+fixture = "capcut.albero"
+
+[dove]
+cartella = "local"
+percorsi = ["CapCut/Apps/<versione>"]
+
+[versioni]
+programma = "capcut"
+min = "5.3.0.1964"
+max = "9.4.0.4015"
+
+[[fonti]]
+url = "file:///%LOCALAPPDATA%/CapCut/Apps/ProductInfo.xml"
+titolo = "ProductInfo.xml (CapCut)"
+estratto = '''<full_appver value="9.4.0.4015" />'''
+ufficiale = false

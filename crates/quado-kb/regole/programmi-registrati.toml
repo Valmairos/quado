@@ -1,0 +1,22 @@
+# Programmi dalle voci di disinstallazione (F-AP-1, F-AP-2): prefisso più lungo, disinstallazione ufficiale (M4).
+id = "programmi-registrati"
+priorita = 2
+riconoscitore = "programmi-registrati"
+gestore = "programmi"
+stato = "decidi-tu"
+azione = "disinstallazione"
+contenitore = true
+protetto = true
+stima = "non-stimabile-procedura"
+metodo = { uri = "ms-settings:appsfeatures" }
+reversibilita = "disinstallazione"
+errore = "procedura-esterna"
+verifica = "dopo-procedura"
+verificata = "2026-10-13"
+fixture = "profilo.albero"
+
+[[fonti]]
+url = "https://learn.microsoft.com/en-us/windows/win32/msi/uninstall-registry-key"
+titolo = "Windows Installer Properties for the Uninstall Registry Key"
+estratto = '''The following installer properties give the values written under the registry key:'''
+ufficiale = true

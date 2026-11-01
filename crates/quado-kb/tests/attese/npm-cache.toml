@@ -1,0 +1,12 @@
+# 06 §2.1: Lo gestisce npm; npm cache verify, alternativa npm cache clean --force; stima non stimabile.
+[[voci]]
+percorso = 'C:\Users\demo\AppData\Local\npm-cache'
+stato = "lo-gestisce"
+azione = "comando"
+metodo = "npm cache verify"
+alternative = ["npm cache clean --force"]
+stima = "non-stimabile-externalprocedure"
+privilegi = "nessuno"
+gestore = "programmi"
+colore = "programmi"
+elementi = 1

@@ -1,0 +1,28 @@
+# Cache di Brave (07 §7, proposto): la svuota Brave.
+id = "cache-brave"
+priorita = 3
+riconoscitore = "percorso"
+gestore = "programmi"
+gestito_da = "Brave"
+stato = "lo-gestisce"
+# Fuori dalla card: il browser ricrea la cache e la tiene limitata; la procedura resta nell'ispettore.
+card = false
+rischi = 1
+azione = "procedura"
+stima = "non-stimabile-procedura"
+metodo = {}
+reversibilita = "cache"
+errore = "procedura-esterna"
+verifica = "dopo-procedura"
+verificata = "2026-10-13"
+fixture = "browser.albero"
+
+[dove]
+cartella = "local"
+percorsi = ["BraveSoftware/Brave-Browser/User Data/*/Cache", "BraveSoftware/Brave-Browser/User Data/*/Code Cache"]
+
+[[fonti]]
+url = "https://support.brave.app/hc/en-us/articles/360048833872-How-Do-I-Clear-Cookies-And-Site-Data-In-Brave"
+titolo = "How Do I Clear Cookies And Site Data In Brave?"
+estratto = '''A quicker way to get to this page would be to enter brave://settings/clearBrowserData into your address bar'''
+ufficiale = true

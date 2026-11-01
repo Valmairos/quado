@@ -1,0 +1,15 @@
+# Aggiornamenti delle dipendenze una volta a settimana: crate di Cargo e azioni dei workflow. Per le
+# azioni, fissate per SHA, Dependabot aggiorna anche il commento con la versione.
+version: 2
+updates:
+  - package-ecosystem: cargo
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 3
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 2

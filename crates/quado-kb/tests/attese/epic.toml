@@ -1,0 +1,12 @@
+# 07 §7: Decidi tu (programma grande); Unreal Engine, Quixel Bridge e il plugin Fab nella stessa cartella:
+# un solo elemento, contato una volta (F-AP-2).
+[[voci]]
+percorso = 'C:\Program Files\Epic Games\UE_5.5'
+stato = "decidi-tu"
+azione = "disinstallazione"
+metodo = ""
+stima = "esatta"
+privilegi = "nessuno"
+gestore = "programmi"
+colore = "programmi"
+elementi = 1

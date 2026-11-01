@@ -1,0 +1,27 @@
+# Cartella di Windows (F-AC-4): elemento protetto, nessuna procedura. Le regole dentro (WinSxS,
+# Installer, DriverStore, file temporanei) sono più specifiche e valgono per le loro cartelle.
+id = "cartella-windows"
+priorita = 2
+riconoscitore = "percorso"
+gestore = "windows"
+gestito_da = "Windows"
+stato = "lo-gestisce-nessuna-procedura"
+azione = "nessuna"
+contenitore = true
+protetto = true
+stima = "nessuna"
+reversibilita = "nessuna-azione"
+errore = "nessuna-azione"
+verifica = "nessuna-azione"
+verificata = "2026-10-13"
+fixture = "radice.albero"
+
+[dove]
+cartella = "windows"
+percorsi = ["."]
+
+[[fonti]]
+url = "https://learn.microsoft.com/en-us/windows/win32/wfp/windows-resource-protection-portal"
+titolo = "Windows Resource Protection"
+estratto = '''Windows Resource Protection (WRP) prevents the replacement of essential system files, folders, and registry keys that are installed as part of the operating system.'''
+ufficiale = true

@@ -1,0 +1,130 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Uninstall\CapCut]
+"UninstallString"="\"C:\\Users\\demo\\AppData\\Local\\CapCut\\Apps\\uninst.exe\""
+"DisplayName"="CapCut"
+"DisplayIcon"="C:\\Users\\demo\\AppData\\Local\\CapCut\\Apps\\uninst.exe"
+"URLInfoAbout"="www.capcut.com"
+"Publisher"="Bytedance Pte. Ltd."
+"DisplayVersion"="9.4.0.4015"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Steam]
+"DisplayName"="Steam"
+"DisplayVersion"="2.10.91.91"
+"Publisher"="Valve Corporation"
+"URLInfoAbout"="http://www.steampowered.com/"
+"HelpLink"="http://support.steampowered.com/"
+"DisplayIcon"="C:\\Program Files (x86)\\Steam\\uninstall.exe"
+"UninstallString"="C:\\Program Files (x86)\\Steam\\uninstall.exe"
+"NoModify"=dword:00000001
+"NoRepair"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 3999990]
+"DisplayIcon"="C:\\Program Files (x86)\\Steam\\steam\\games\\0123456789abcdef0123456789abcdef01234567.ico"
+"DisplayName"="Gioco di Prova"
+"HelpLink"="https://help.steampowered.com/"
+"InstallLocation"="C:\\Program Files (x86)\\Steam\\steamapps\\common\\Gioco di Prova"
+"Publisher"="Studio di Prova"
+"UninstallString"="\"C:\\Program Files (x86)\\Steam\\steam.exe\" steam://uninstall/3999990"
+"URLInfoAbout"="https://example.com"
+"NoRepair"=dword:00000001
+"NoModify"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.Driver]
+"SystemComponent"=dword:00000000
+"DisplayVersion"="617.42"
+"VersionMajor"=dword:00000269
+"VersionMinor"=dword:0000002a
+"Version"=dword:ff000000
+"InstallDate"="20261008"
+"DisplayName"="NVIDIA Graphics Driver 617.42"
+"Publisher"="NVIDIA Corporation"
+"HelpLink"=""
+"HelpTelephone"=""
+"InstallLocation"="C:\\Program Files\\NVIDIA Corporation\\Installer2\\Display.Driver.{044FAC3E-FE94-411E-BAFF-39A24BEF21E0}"
+"InstallSource"="C:\\Program Files\\NVIDIA Corporation\\Installer2\\Display.Driver.{044FAC3E-FE94-411E-BAFF-39A24BEF21E0}"
+"URLInfoAbout"=""
+"URLUpdateInfo"=""
+"Comments"=""
+"Readme"=""
+"Contact"="NVIDIA Corporation"
+"Language"=dword:00000800
+"NoRemove"=dword:00000000
+"NoModify"=dword:00000000
+"NoRepair"=dword:00000000
+"NVI2_Timestamp"=hex(b):00,b8,e6,94,1e,51,dd,01
+"NVI2_Setup"="C:\\Program Files\\NVIDIA Corporation\\Installer2\\installer.{F87E39C2-34CA-4D32-93D7-73D5FB54258E}\\setup.CFG"
+"NVI2_Package"="C:\\Program Files\\NVIDIA Corporation\\Installer2\\Display.Driver.{044FAC3E-FE94-411E-BAFF-39A24BEF21E0}\\DisplayDriver.nvi"
+"DisplayIcon"="C:\\Program Files\\NVIDIA Corporation\\Installer2\\InstallerCore\\NVI2.dll,0"
+"SettingsIdentifier"=""
+"ModifyPath"=""
+"UninstallString"="\"C:\\Windows\\SysWOW64\\RunDll32.EXE\" \"C:\\Program Files\\NVIDIA Corporation\\Installer2\\InstallerCore\\NVI2.DLL\",UninstallPackage Display.Driver"
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Uninstall\a1b2c3d4e5f60718293a4b5c6d7e8f90]
+"UninstallString"="\"wscript.exe\" \"C:\\Users\\demo\\AppData\\Local\\Autodesk\\webdeploy\\meta\\uninstall.wsf\" -a \"a1b2c3d4e5f60718293a4b5c6d7e8f90\" -p uninstall -s production"
+"DisplayName"="Autodesk Fusion"
+"DisplayIcon"="C:\\Users\\demo\\AppData\\Local\\Autodesk\\webdeploy\\production\\0123456789abcdef0123456789abcdef\\Fusion360.ico"
+"Version"="20260908091956"
+"DisplayVersion"="2705.1.15"
+"Publisher"="Autodesk, Inc."
+"ModifyPath"="\"C:\\Users\\demo\\AppData\\Local\\Autodesk\\webdeploy\\production\\fedcba9876543210fedcba9876543210fedcba98\\Fusion360.exe\" -serviceUtil"
+"NoModify"=dword:00000000
+"NoRepair"=dword:00000001
+"EstimatedSize"=dword:0059a794
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{23170F69-40C1-2702-2603-000001000000}]
+"AuthorizedCDFPrefix"=""
+"Comments"=""
+"Contact"=""
+"DisplayVersion"="26.03.00.0"
+"HelpLink"=hex(2):68,00,74,00,74,00,70,00,3a,00,2f,00,2f,00,77,00,77,00,77,00,2e,00,37,00,2d,00,7a,00,69,00,70,00,2e,00,6f,00,72,00,67,00,2f,00,73,00,75,00,70,00,70,00,6f,00,72,00,74,00,2e,00,68,00,74,00,6d,00,6c,00,00,00
+"HelpTelephone"=""
+"InstallDate"="20261003"
+"InstallLocation"=""
+"InstallSource"="C:\\Users\\demo\\AppData\\Local\\Temp\\tmp_7zip\\"
+"ModifyPath"=hex(2):4d,00,73,00,69,00,45,00,78,00,65,00,63,00,2e,00,65,00,78,00,65,00,20,00,2f,00,49,00,7b,00,32,00,33,00,31,00,37,00,30,00,46,00,36,00,39,00,2d,00,34,00,30,00,43,00,31,00,2d,00,32,00,37,00,30,00,32,00,2d,00,32,00,36,00,30,00,33,00,2d,00,30,00,30,00,30,00,30,00,30,00,31,00,30,00,30,00,30,00,30,00,30,00,30,00,7d,00,00,00
+"Publisher"="Igor Pavlov"
+"Readme"=""
+"Size"=""
+"EstimatedSize"=dword:0000173f
+"UninstallString"=hex(2):4d,00,73,00,69,00,45,00,78,00,65,00,63,00,2e,00,65,00,78,00,65,00,20,00,2f,00,49,00,7b,00,32,00,33,00,31,00,37,00,30,00,46,00,36,00,39,00,2d,00,34,00,30,00,43,00,31,00,2d,00,32,00,37,00,30,00,32,00,2d,00,32,00,36,00,30,00,33,00,2d,00,30,00,30,00,30,00,30,00,30,00,31,00,30,00,30,00,30,00,30,00,30,00,30,00,7d,00,00,00
+"URLInfoAbout"="http://www.7-zip.org/"
+"URLUpdateInfo"="http://www.7-zip.org/download.html"
+"VersionMajor"=dword:0000001a
+"VersionMinor"=dword:00000003
+"WindowsInstaller"=dword:00000001
+"Version"=dword:1a030000
+"Language"=dword:00000409
+"DisplayName"="7-Zip 26.03 (x64 edition)"
+
+[HKEY_CURRENT_USER\Software\Valve\Steam]
+"SteamPath"="c:/program files (x86)/steam"
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy]
+"01"=dword:00000001
+"2048"=dword:0000001e
+"04"=dword:00000001
+"08"=dword:00000001
+"256"=dword:0000001e
+"32"=dword:00000000
+"512"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\BitBucket\Volume\{00000000-0000-4000-8000-000000000c01}]
+"MaxCapacity"=dword:00005f3c
+"NukeOnDelete"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"Start_TrackProgs"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power]
+"HiberbootEnabled"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{CEBFF5CD-ACE2-4F4F-9178-9926F41749EA}\Count]
+"Zvpebfbsg.JvaqbjfSrrqonpxUho_8jrxlo3q8oojr!Ncc"=hex:00,00,00,00,01,00,00,00,\
+  01,00,00,00,60,ea,00,00,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,\
+  00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,ff,ff,\
+  ff,ff,00,00,81,92,b1,7a,dc,01,00,00,00,00
+"Zvpebfbsg.JvaqbjfZncf_8jrxlo3q8oojr!Ncc"=hex:00,00,00,00,01,00,00,00,01,00,\
+  00,00,60,ea,00,00,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,\
+  bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,00,00,80,bf,ff,ff,ff,ff,\
+  00,00,81,92,b1,7a,dc,01,00,00,00,00

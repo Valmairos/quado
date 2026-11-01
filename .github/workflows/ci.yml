@@ -1,0 +1,103 @@
+# Controlli dei push su main e di ogni pull request: test, clippy, cargo-deny, build `dist` e importazioni
+# dell'eseguibile. I test che richiedono il VHDX di prova o l'amministratore sono `#[ignore]` e qui
+# non partono.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: "0"
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  test:
+    name: Test e clippy
+    runs-on: windows-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # Installa la toolchain di rust-toolchain.toml, con clippy.
+      - name: Toolchain
+        run: |
+          rustup toolchain install
+          rustc --version
+
+      - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2.9.2
+        with:
+          key: test
+          save-if: ${{ github.ref == 'refs/heads/main' }}
+
+      - name: Test
+        run: cargo test --workspace --locked
+
+      - name: Clippy
+        run: cargo clippy --workspace --all-targets --locked -- -D warnings
+
+  deny:
+    name: cargo-deny
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Toolchain
+        run: rustup toolchain install
+
+      # Binario precompilato di cargo-deny, con il controllo del checksum fatto dall'azione.
+      - uses: taiki-e/install-action@8cca0918f8471c33515202b73f56ab27f2bed283 # v2.87.29
+        with:
+          tool: cargo-deny@0.20.2
+
+      # Licenze, crate vietati (client HTTP e WebSocket), avvisi RustSec, provenienza: deny.toml.
+      - name: cargo deny check
+        run: cargo deny check
+
+  dist:
+    name: Build dist e importazioni
+    runs-on: windows-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Toolchain
+        run: rustup toolchain install
+
+      - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2.9.2
+        with:
+          key: dist
+          save-if: ${{ github.ref == 'refs/heads/main' }}
+
+      # Stessi flag della release: remap dei percorsi di compilazione, più quelli di .cargo/config.toml
+      # (+crt-static), che RUSTFLAGS altrimenti sostituirebbe.
+      - name: Build dist
+        run: |
+          $flags = (cargo xtask rustflags-dist | Out-String).Trim()
+          if ($LASTEXITCODE -ne 0 -or -not $flags) { throw "cargo xtask rustflags-dist non ha dato i flag (con uno spazio in un percorso serve CARGO_ENCODED_RUSTFLAGS)" }
+          if ($flags -notmatch '\+crt-static') { throw "i flag di rustflags-dist non contengono +crt-static: $flags" }
+          $env:RUSTFLAGS = $flags
+          cargo build --profile dist -p quado --locked
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Importazioni dell'eseguibile
+        run: cargo xtask importazioni target\dist\quado.exe

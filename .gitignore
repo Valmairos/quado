@@ -1,0 +1,12 @@
+# Uscite di cargo
+/target/
+*.pdb
+*.log
+
+# File locali di editor, agenti e sistema
+/.claude/
+/.vscode/
+/.idea/
+*.swp
+Thumbs.db
+desktop.ini

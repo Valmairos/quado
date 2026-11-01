@@ -1,0 +1,8 @@
+# nome di famiglia|percorso di installazione|framework (fixture sintetica: pacchetti di Windows)
+1527c705-839a-4832-9118-54d4Bd6a0c89_cw5n1h2txyewy|C:\Windows\SystemApps\Microsoft.Windows.FilePicker_cw5n1h2txyewy|0
+Microsoft.WindowsCalculator_8wekyb3d8bbwe|C:\Program Files\WindowsApps\Microsoft.WindowsCalculator_11.2502.2.0_x64__8wekyb3d8bbwe|0
+Microsoft.WindowsNotepad_8wekyb3d8bbwe|C:\Program Files\WindowsApps\Microsoft.WindowsNotepad_11.2507.26.0_x64__8wekyb3d8bbwe|0
+Microsoft.Paint_8wekyb3d8bbwe|C:\Program Files\WindowsApps\Microsoft.Paint_11.2508.361.0_x64__8wekyb3d8bbwe|0
+Microsoft.ZuneMusic_8wekyb3d8bbwe|C:\Program Files\WindowsApps\Microsoft.ZuneMusic_11.2508.4.0_x64__8wekyb3d8bbwe|0
+Microsoft.WindowsTerminal_8wekyb3d8bbwe|C:\Program Files\WindowsApps\Microsoft.WindowsTerminal_1.23.0.0_x64__8wekyb3d8bbwe|0
+Microsoft.NET.Native.Framework.1.3_8wekyb3d8bbwe|C:\Program Files\WindowsApps\Microsoft.NET.Native.Framework.1.3_1.3.24211.0_x64__8wekyb3d8bbwe|1

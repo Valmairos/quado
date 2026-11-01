@@ -1,0 +1,14 @@
+# 06 §2.1: Decidi tu; powercfg /hibernate /type reduced e powercfg /h off affiancati; amministratore;
+# avviso se l'azione per batteria critica è l'ibernazione (controllo automatico).
+[[voci]]
+percorso = 'C:\hiberfil.sys'
+stato = "decidi-tu"
+azione = "comando"
+metodo = "powercfg /hibernate /type reduced"
+alternative = ["powercfg /h off"]
+controlli = ["controllo-batteria-critica:automatico"]
+stima = "non-stimabile-externalprocedure"
+privilegi = "amministratore"
+gestore = "windows"
+colore = "windows"
+elementi = 1

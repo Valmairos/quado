@@ -1,0 +1,21 @@
+# Cartelle $R senza $I (F-SY-2, 09 scelta 4): anomalia spiegata, nessun intervento, nessuna cifra recuperabile.
+id = "cestino-orfane"
+priorita = 1
+riconoscitore = "cestino-orfane"
+gestore = "windows"
+gestito_da = "Windows"
+stato = "lo-gestisce-nessuna-procedura"
+azione = "nessuna"
+stima = "nessuna"
+ipotesi = 1
+reversibilita = "nessuna-azione"
+errore = "nessuna-azione"
+verifica = "nessuna-azione"
+verificata = "2026-10-13"
+fixture = "radice.albero"
+
+[[fonti]]
+url = "docs/m1/cestino-verifiche.md"
+titolo = "cestino-verifiche.md (Quado, M1)"
+estratto = '''Tolto `$I80IA6M`: ora la cartella è orfana. Windows vede 0 elementi, 0 byte'''
+ufficiale = false

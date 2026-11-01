@@ -1,0 +1,38 @@
+# File di ibernazione (decisioni §3): Decidi tu, due comandi affiancati, entrambi da amministratore. Fuori dalla
+# card: è una scelta di configurazione, non una pulizia. I rischi della batteria li aggiunge il motore, solo se
+# il PC ha una batteria.
+id = "ibernazione"
+priorita = 1
+riconoscitore = "percorso"
+gestore = "windows"
+stato = "decidi-tu"
+card = false
+azione = "comando"
+protetto = true
+amministratore = true
+stima = "non-stimabile-procedura"
+metodo = { comando = "powercfg /hibernate /type reduced" }
+alternative = [{ comando = "powercfg /h off" }]
+controlli = ["batteria-critica"]
+rischi = 1
+reversibilita = "ibernazione"
+errore = "comando"
+verifica = "dopo-procedura"
+verificata = "2026-10-13"
+fixture = "radice.albero"
+
+[dove]
+cartella = "radice"
+percorsi = ["hiberfil.sys"]
+
+[[fonti]]
+url = "https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/powercfg-command-line-options"
+titolo = "Powercfg command-line options"
+estratto = '''Specifies the desired hiberfile type. A reduced hiberfile only supports hiberboot.'''
+ufficiale = true
+
+[[fonti]]
+url = "https://learn.microsoft.com/en-us/troubleshoot/windows-client/setup-upgrade-and-drivers/disable-and-re-enable-hibernation"
+titolo = "How to disable and re-enable hibernation"
+estratto = '''The Windows Kernel Power Manager reserves this file when you install Windows.'''
+ufficiale = true

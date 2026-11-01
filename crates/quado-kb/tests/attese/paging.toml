@@ -1,0 +1,20 @@
+# 07 §7 (proposto): Lo gestisce Windows, elemento protetto, solo spiegazione.
+[[voci]]
+percorso = 'C:\pagefile.sys'
+stato = "lo-gestisce-nessuna-procedura"
+azione = "nessuna"
+stima = "non-stimabile-noaction"
+privilegi = "nessuno"
+gestore = "windows"
+colore = "windows"
+elementi = 2
+
+[[voci]]
+percorso = 'C:\swapfile.sys'
+stato = "lo-gestisce-nessuna-procedura"
+azione = "nessuna"
+stima = "non-stimabile-noaction"
+privilegi = "nessuno"
+gestore = "windows"
+colore = "windows"
+elementi = 2

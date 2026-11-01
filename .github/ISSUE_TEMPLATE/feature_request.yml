@@ -1,0 +1,29 @@
+name: Suggestion or new rule
+description: A change to Quado, or a rule for a folder it doesn't recognize.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Leave out paths and file names that identify you: write `C:\Users\<name>\...` instead of your real user folder.
+  - type: textarea
+    id: situation
+    attributes:
+      label: What you were trying to do
+      description: For example, a large folder that Quado shows as "Not classified", or a step that took too many clicks.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would help
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source, for a new rule
+      description: Optional. A page from the program's maker or from Microsoft that explains what the folder is and whether it can be removed.
+      placeholder: https://
+    validations:
+      required: false

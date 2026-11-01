@@ -1,0 +1,10 @@
+# Solo spiegazione dal 01/11/2026: Windows riduce l'archivio da solo; nessun comando, nessuna procedura.
+[[voci]]
+percorso = 'C:\Windows\WinSxS'
+stato = "lo-gestisce-nessuna-procedura"
+azione = "nessuna"
+stima = "non-stimabile-noaction"
+privilegi = "nessuno"
+gestore = "windows"
+colore = "windows"
+elementi = 1

@@ -1,0 +1,25 @@
+# 06 §2.1: Da verificare, spostamento nel Cestino con l'eccezione a F-AC-4, Restart Manager e riferimenti;
+# le ultime due versioni restano fuori (9 cartelle su 11). Controllo delle versioni tenute in tests/capcut.rs.
+[[voci]]
+percorso = 'C:\Users\demo\AppData\Local\CapCut\Apps\6.4.1.2547'
+stato = "da-verificare"
+azione = "cestino"
+metodo = ""
+controlli = ["controllo-restart-manager:automatico", "controllo-riferimenti:automatico", "controllo-capacita-cestino:automatico"]
+stima = "esatta"
+privilegi = "nessuno"
+gestore = "programmi"
+colore = "programmi"
+elementi = 9
+
+[[voci]]
+percorso = 'C:\Users\demo\AppData\Local\CapCut\Apps\9.2.1.3944'
+stato = "da-verificare"
+azione = "cestino"
+metodo = ""
+controlli = ["controllo-restart-manager:automatico", "controllo-riferimenti:automatico", "controllo-capacita-cestino:automatico"]
+stima = "esatta"
+privilegi = "nessuno"
+gestore = "programmi"
+colore = "programmi"
+elementi = 9

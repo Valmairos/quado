@@ -1,0 +1,27 @@
+# Store di pnpm (decisioni §3): pnpm store prune; stima non stimabile senza contare i link.
+id = "pnpm-store"
+priorita = 1
+riconoscitore = "pnpm-store"
+gestore = "programmi"
+gestito_da = "pnpm"
+stato = "lo-gestisce"
+azione = "comando"
+stima = "non-stimabile-link"
+metodo = { comando = "pnpm store prune" }
+reversibilita = "cache"
+errore = "comando"
+verifica = "dopo-procedura"
+verificata = "2026-10-13"
+fixture = "sviluppo.albero"
+
+[[fonti]]
+url = "https://pnpm.io/cli/store"
+titolo = "pnpm store"
+estratto = '''Running pnpm store prune is not harmful and has no side effects on your projects.'''
+ufficiale = true
+
+[[fonti]]
+url = "https://pnpm.io/settings/store"
+titolo = "Store & Lockfile Settings"
+estratto = '''On Windows: ~/AppData/Local/pnpm/store'''
+ufficiale = true
