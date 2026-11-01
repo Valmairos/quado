@@ -1,0 +1,23 @@
+# 06 §2.1 (programma grande): Decidi tu, disinstallazione dall'interfaccia ufficiale. InstallLocation di
+# HKLM: da fonte. Indizio dall'eseguibile di HKLM presente nella cartella: dedotto alta.
+[[voci]]
+percorso = 'C:\Program Files (x86)\Steam'
+stato = "decidi-tu"
+azione = "disinstallazione"
+metodo = "ms-settings:appsfeatures"
+stima = "non-stimabile-externalprocedure"
+privilegi = "nessuno"
+gestore = "programmi"
+colore = "programmi"
+elementi = 1
+
+[[voci]]
+percorso = 'C:\Program Files\NVIDIA Corporation\Installer2\Display.Driver.{044FAC3E-FE94-411E-BAFF-39A24BEF21E0}'
+stato = "decidi-tu"
+azione = "disinstallazione"
+metodo = "ms-settings:appsfeatures"
+stima = "non-stimabile-externalprocedure"
+privilegi = "nessuno"
+gestore = "programmi"
+colore = "programmi"
+elementi = 1

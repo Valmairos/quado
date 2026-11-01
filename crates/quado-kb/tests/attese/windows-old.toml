@@ -1,0 +1,11 @@
+# Lo gestisce Windows: Impostazioni › File temporanei (valutazione dei consigli, 01/11/2026).
+[[voci]]
+percorso = 'C:\Windows.old'
+stato = "lo-gestisce"
+azione = "procedura"
+metodo = "ms-settings:storagesense"
+stima = "non-stimabile-externalprocedure"
+privilegi = "nessuno"
+gestore = "windows"
+colore = "windows"
+elementi = 1

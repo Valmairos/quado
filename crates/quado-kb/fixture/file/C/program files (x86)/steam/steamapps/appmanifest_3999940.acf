@@ -1,0 +1,55 @@
+"AppState"
+{
+	"appid"		"3999940"
+	"universe"		"1"
+	"LauncherPath"		"C:\\Program Files (x86)\\Steam\\steam.exe"
+	"name"		"Brinewood"
+	"StateFlags"		"4"
+	"installdir"		"Brinewood"
+	"LastUpdated"		"1785000000"
+	"LastPlayed"		"1785000100"
+	"SizeOnDisk"		"28993402877"
+	"StagingSize"		"0"
+	"buildid"		"20000303"
+	"LastOwner"		"76561197960265728"
+	"DownloadType"		"1"
+	"UpdateResult"		"0"
+	"BytesToDownload"		"6291456"
+	"BytesDownloaded"		"6291456"
+	"BytesToStage"		"318767104"
+	"BytesStaged"		"318767104"
+	"TargetBuildID"		"20000303"
+	"AutoUpdateBehavior"		"0"
+	"AllowOtherDownloadsWhileRunning"		"0"
+	"ScheduledAutoUpdate"		"0"
+	"InstalledDepots"
+	{
+		"3999941"
+		{
+			"manifest"		"1000000000000000041"
+			"size"		"301989888"
+		}
+		"3999942"
+		{
+			"manifest"		"1000000000000000042"
+			"size"		"524288000"
+		}
+		"3999943"
+		{
+			"manifest"		"1000000000000000043"
+			"size"		"28167124989"
+		}
+	}
+	"SharedDepots"
+	{
+		"228989"		"228980"
+	}
+	"UserConfig"
+	{
+		"language"		"english"
+	}
+	"MountedConfig"
+	{
+		"language"		"english"
+	}
+}

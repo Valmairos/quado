@@ -1,0 +1,136 @@
+# Release su un tag v*: build `dist` con il remap dei percorsi, controllo delle importazioni, licenze
+# dei crate di terzi, zip, SHA-256 e release in bozza con le note di .github/RELEASE_NOTES_TEMPLATE.md.
+# La release resta in bozza: la pubblica a mano chi mantiene il progetto, dopo aver completato le note.
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: "0"
+
+jobs:
+  build:
+    name: Build e pacchetto
+    runs-on: windows-latest
+    timeout-minutes: 120
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Toolchain
+        run: |
+          rustup toolchain install
+          rustc --version
+
+      # Niente cache: l'eseguibile pubblicato si compila da zero.
+      - name: Versione e tag
+        run: |
+          $meta = cargo metadata --no-deps --format-version 1 --locked | ConvertFrom-Json
+          $versione = ($meta.packages | Where-Object name -eq 'quado').version
+          if ("v$versione" -ne $env:GITHUB_REF_NAME) { throw "il tag $env:GITHUB_REF_NAME non corrisponde alla versione $versione di Cargo.toml" }
+          "VERSIONE=$versione" >> $env:GITHUB_ENV
+
+      # RUSTFLAGS sostituisce i rustflags di .cargo/config.toml: rustflags-dist li ripete (+crt-static)
+      # e aggiunge il remap, così nell'eseguibile non restano i percorsi del runner. Se un percorso ha
+      # uno spazio, rustflags-dist si ferma: servirebbe CARGO_ENCODED_RUSTFLAGS.
+      - name: Build dist
+        run: |
+          $flags = (cargo xtask rustflags-dist | Out-String).Trim()
+          if ($LASTEXITCODE -ne 0 -or -not $flags) { throw "cargo xtask rustflags-dist non ha dato i flag (con uno spazio in un percorso serve CARGO_ENCODED_RUSTFLAGS)" }
+          if ($flags -notmatch '\+crt-static') { throw "i flag di rustflags-dist non contengono +crt-static: $flags" }
+          $env:RUSTFLAGS = $flags
+          cargo build --profile dist -p quado --locked
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Nessun percorso del runner nell'eseguibile
+        run: |
+          $testo = [Text.Encoding]::ASCII.GetString([IO.File]::ReadAllBytes('target\dist\quado.exe'))
+          foreach ($p in @($env:USERPROFILE, $env:GITHUB_WORKSPACE, $env:CARGO_HOME) | Where-Object { $_ }) {
+            if ($testo.IndexOf($p, [StringComparison]::OrdinalIgnoreCase) -ge 0) { throw "quado.exe contiene il percorso $p" }
+          }
+
+      - name: Importazioni dell'eseguibile
+        run: cargo xtask importazioni target\dist\quado.exe
+
+      # Le licenze MIT, Apache e simili dei crate compilati in quado.exe vanno distribuite con l'eseguibile.
+      - uses: taiki-e/install-action@8cca0918f8471c33515202b73f56ab27f2bed283 # v2.87.29
+        with:
+          tool: cargo-about@0.9.2
+
+      - name: Licenze dei crate di terzi
+        run: |
+          cargo about generate --locked --fail -c .github/release/about.toml -m crates/quado/Cargo.toml -o THIRD-PARTY-LICENSES.html .github/release/about.hbs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Pacchetto, SHA-256 e note
+        run: |
+          $nome = "quado-$env:VERSIONE-windows-x64"
+          $cartella = "pacchetto\$nome"
+          New-Item -ItemType Directory -Force -Path "$cartella\licenses", uscita | Out-Null
+          Copy-Item target\dist\quado.exe $cartella
+          Copy-Item LICENSE "$cartella\LICENSE.txt"
+          Copy-Item THIRD-PARTY-LICENSES.html $cartella
+          Copy-Item assets\fonts\Inter-LICENSE.txt "$cartella\licenses\Inter-OFL.txt"
+          Copy-Item assets\fonts\OFL.txt "$cartella\licenses\IBM-Plex-OFL.txt"
+          $leggimi = (Get-Content .github\release\README.txt -Raw).Replace('{VERSION}', $env:VERSIONE).Replace('{REPOSITORY}', $env:GITHUB_REPOSITORY)
+          [IO.File]::WriteAllText("$PWD\$cartella\README.txt", $leggimi.Replace("`r`n", "`n").Replace("`n", "`r`n"))
+          Compress-Archive -Path $cartella -DestinationPath "uscita\$nome.zip"
+          Copy-Item target\dist\quado.exe uscita
+          Copy-Item THIRD-PARTY-LICENSES.html uscita
+
+          $righe = foreach ($f in "$nome.zip", 'quado.exe', 'THIRD-PARTY-LICENSES.html') {
+            '{0}  {1}' -f (Get-FileHash "uscita\$f" -Algorithm SHA256).Hash.ToLowerInvariant(), $f
+          }
+          [IO.File]::WriteAllText("$PWD\uscita\SHA256SUMS.txt", ($righe -join "`n") + "`n")
+
+          $modello = Get-Content .github\RELEASE_NOTES_TEMPLATE.md -Raw
+          $blocco = [regex]::Match($modello, '(?s)````markdown\r?\n(.*?)\r?\n````')
+          if (-not $blocco.Success) { throw "modello delle note non trovato" }
+          $hash = (Get-FileHash target\dist\quado.exe -Algorithm SHA256).Hash
+          $note = $blocco.Groups[1].Value.Replace('<version>', $env:VERSIONE).Replace('<hash of quado.exe>', $hash).Replace('<commit>', $env:GITHUB_SHA)
+          [IO.File]::WriteAllText("$PWD\note.md", $note + "`n")
+          Get-Content uscita\SHA256SUMS.txt
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: release
+          path: |
+            uscita/
+            note.md
+          if-no-files-found: error
+          retention-days: 7
+
+  publish:
+    name: Release in bozza
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: release
+
+      - name: Crea la release in bozza
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            --repo "$GITHUB_REPOSITORY" \
+            --verify-tag \
+            --draft \
+            --title "Quado ${GITHUB_REF_NAME#v}" \
+            --notes-file note.md \
+            uscita/*.zip uscita/quado.exe uscita/THIRD-PARTY-LICENSES.html uscita/SHA256SUMS.txt

@@ -1,0 +1,61 @@
+# Fixture sintetica della vista Programmi (F-AP), con le voci di programmi/registro.reg.
+# Formato di fixture/*.albero più due righe con la data di ultima modifica (FILETIME):
+# "D <mtime> <percorso>" per le cartelle, "F <allocata> <logica> <mtime> <percorso>" per i file.
+d C:\
+d C:\Program Files
+d C:\Program Files\Esempio
+f 409600 400000 C:\Program Files\Esempio\esempio.exe
+f 12288 9000 C:\Program Files\Esempio\strumento.exe
+f 8192 8000 C:\Program Files\Esempio\uninstall.exe
+d C:\Program Files\Esempio\Componente
+f 1048576 1000000 C:\Program Files\Esempio\Componente\comp.exe
+d C:\Program Files\Esempio\resources
+f 4096 3000 C:\Program Files\Esempio\resources\package-lock.json
+f 524288 500000 C:\Program Files\Esempio\resources\app.asar
+d C:\Program Files\Esempio\resources\node_modules
+f 2097152 2000000 C:\Program Files\Esempio\resources\node_modules\x.js
+d C:\Program Files\Senza Prova
+f 5242880 5000000 C:\Program Files\Senza Prova\app.exe
+d C:\Program Files\BraveSoftware
+d C:\Program Files\BraveSoftware\Brave-Browser
+d C:\Program Files\BraveSoftware\Brave-Browser\Application
+f 3145728 3000000 C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe
+n C:\Program Files\WindowsApps
+d C:\Users
+d C:\Users\demo
+d C:\Users\demo\AppData
+d C:\Users\demo\AppData\Local
+d C:\Users\demo\AppData\Local\Programs
+d C:\Users\demo\AppData\Local\Programs\UtenteApp
+f 65536 60000 C:\Users\demo\AppData\Local\Programs\UtenteApp\utente.exe
+d C:\Users\demo\AppData\Local\BraveSoftware
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default
+f 16384 12000 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Preferences
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Cache
+f 104857600 100000000 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Cache\data_1
+d C:\Users\demo\AppData\Local\Temp
+f 4096 100 C:\Users\demo\AppData\Local\Temp\x.tmp
+D 133497936000000000 C:\Users\demo\AppData\Local\Orfana
+F 8192 8000 133957584000000000 C:\Users\demo\AppData\Local\Orfana\vecchio.dat
+D 133223076000000000 C:\Users\demo\AppData\Local\Orfana\sotto
+F 4096 4000 133143516000000000 C:\Users\demo\AppData\Local\Orfana\sotto\piu-vecchio.dat
+d C:\Users\demo\AppData\Local\Vuota
+D 134152200000000000 C:\Users\demo\AppData\Local\Esempio Software Srl
+d C:\Users\demo\AppData\Local\Fantasma
+d C:\Users\demo\AppData\Local\Utente
+d C:\Users\demo\AppData\Local\Microsoft.WindowsTerminal
+d C:\Users\demo\AppData\Local\Packages
+d C:\Users\demo\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe
+f 20480 16000 C:\Users\demo\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\settings.json
+d C:\Users\demo\AppData\LocalLow
+D 133223076000000000 C:\Users\demo\AppData\LocalLow\Studio Abbandonato
+d C:\Users\demo\AppData\Roaming
+D 134152200000000000 C:\Users\demo\AppData\Roaming\Orfana Roaming
+F 1024 900 133497936000000000 C:\Users\demo\AppData\Roaming\Orfana Roaming\config.ini
+d C:\Users\demo\AppData\Roaming\Esempio
+d C:\ProgramData
+d C:\ProgramData\Esempio Software Srl
+D 133143516000000000 C:\ProgramData\Residuo Di Sistema
+n C:\ProgramData\Negata

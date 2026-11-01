@@ -1,0 +1,24 @@
+# Archivio dei driver (07 §7, proposto): solo spiegazione, nessuna procedura.
+id = "driverstore"
+priorita = 2
+riconoscitore = "percorso"
+gestore = "windows"
+gestito_da = "Windows"
+stato = "lo-gestisce-nessuna-procedura"
+azione = "nessuna"
+stima = "nessuna"
+reversibilita = "nessuna-azione"
+errore = "nessuna-azione"
+verifica = "nessuna-azione"
+verificata = "2026-10-13"
+fixture = "radice.albero"
+
+[dove]
+cartella = "windows"
+percorsi = ["System32/DriverStore/FileRepository"]
+
+[[fonti]]
+url = "https://learn.microsoft.com/en-us/windows-hardware/drivers/install/driver-store"
+titolo = "Driver store"
+estratto = '''Once files are staged to the Driver Store, they shouldn't be removed or modified in any way.'''
+ufficiale = true

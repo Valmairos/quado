@@ -1,0 +1,31 @@
+[package]
+name = "quado-scan-win"
+description = "Scansione di Windows per Quado: volumi, enumerazione delle cartelle, correzioni, metadati"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+
+# Unico crate con le API di lettura del file system (05 D10): qui `unsafe` è ammesso,
+# ogni blocco ha il suo invariante scritto (clippy::undocumented_unsafe_blocks).
+[lints.rust]
+unsafe_code = "allow"
+unsafe_op_in_unsafe_fn = "deny"
+
+[lints.clippy]
+undocumented_unsafe_blocks = "deny"
+dbg_macro = "warn"
+
+[dependencies]
+quado-model = { workspace = true }
+rayon = { workspace = true }
+# Funzioni dell'helper (M6): pipe, registro (ProfileList), processi (genitore), WMI (copie shadow); proiezione in
+# memoria dei font di Windows (`system::map_font`); DPI della finestra per le sue icone (`window`).
+windows-sys = { workspace = true, features = ["Win32_System_Pipes", "Win32_System_Registry", "Win32_System_Diagnostics_ToolHelp", "Win32_UI_Shell", "Win32_System_Com", "Win32_System_Environment", "Win32_System_Services", "Win32_System_Memory", "Win32_UI_HiDpi"] }
+windows = { workspace = true, features = ["Win32_System_Wmi", "Win32_System_Variant", "Win32_System_Ole", "Win32_Security"] }
+
+
+[dev-dependencies]
+quado-testkit = { workspace = true }
+proptest = { version = "1", default-features = false, features = ["std"] }

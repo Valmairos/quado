@@ -1,0 +1,20 @@
+# 06 §2.1: Decidi tu, gestore "tu", nessuna proposta automatica.
+[[voci]]
+percorso = 'C:\Users\demo\AppData\Local\CapCut\User Data\Projects'
+stato = "decidi-tu"
+azione = "nessuna"
+stima = "non-stimabile-noaction"
+privilegi = "nessuno"
+gestore = "tu"
+colore = "tu"
+elementi = 2
+
+[[voci]]
+percorso = 'C:\Users\demo\AppData\Local\CapCut\Videos'
+stato = "decidi-tu"
+azione = "nessuna"
+stima = "non-stimabile-noaction"
+privilegi = "nessuno"
+gestore = "tu"
+colore = "tu"
+elementi = 2

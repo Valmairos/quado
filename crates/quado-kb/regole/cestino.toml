@@ -1,0 +1,34 @@
+# Cestino dell'utente (decisioni §4, F-SY-2): misurato in due modi, procedure di Windows.
+id = "cestino"
+priorita = 1
+riconoscitore = "cestino"
+gestore = "windows"
+gestito_da = "Windows"
+stato = "lo-gestisce"
+azione = "procedura"
+stima = "non-stimabile-procedura"
+metodo = { uri = "shell:RecycleBinFolder" }
+alternative = [{}]
+reversibilita = "svuotamento"
+errore = "procedura-esterna"
+verifica = "dopo-procedura"
+verificata = "2026-10-13"
+fixture = "radice.albero"
+
+[[fonti]]
+url = "https://support.microsoft.com/en-us/office/recover-a-deleted-file-7090ddca-d8fb-4d95-bbf9-9acfbee585b7"
+titolo = "Recover a deleted file"
+estratto = '''Select one or more files or folders and choose Restore the selected items.'''
+ufficiale = true
+
+[[fonti]]
+url = "https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/free-up-drive-space-in-windows"
+titolo = "Free up drive space in Windows"
+estratto = '''If you delete any files, remember to empty the Recycle Bin to completely remove them from your device and free up space.'''
+ufficiale = true
+
+[[fonti]]
+url = "https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/manage-drive-space-with-storage-sense"
+titolo = "Manage drive space with Storage Sense"
+estratto = '''Content from the Recycle Bin will be deleted by default after some time'''
+ufficiale = true

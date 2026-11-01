@@ -1,0 +1,20 @@
+# 03 §6.2: solo nome, affidabilità bassa: grigio "ipotesi", Non sappiamo, nessuna proposta.
+[[voci]]
+percorso = 'C:\Users\demo\AppData\Local\NVIDIA'
+stato = "non-sappiamo"
+azione = "nessuna"
+stima = "non-stimabile-noaction"
+privilegi = "nessuno"
+gestore = "programmi"
+colore = "grigio"
+elementi = 1
+
+[[voci]]
+percorso = 'C:\ProgramData\Autodesk'
+stato = "non-sappiamo"
+azione = "nessuna"
+stima = "non-stimabile-noaction"
+privilegi = "nessuno"
+gestore = "programmi"
+colore = "grigio"
+elementi = 1

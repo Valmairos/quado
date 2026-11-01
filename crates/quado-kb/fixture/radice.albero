@@ -1,0 +1,262 @@
+# Fixture sintetica: forma di un PC Windows, con utente, progetti e dati inventati.
+d C:\
+d C:\$Recycle.Bin
+f 9677595752 9677235103 C:\$Recycle.Bin\(contenuto)
+d C:\$Recycle.Bin\S-1-5-21-1000-1000-1000-1001
+f 128 122 C:\$Recycle.Bin\S-1-5-21-1000-1000-1000-1001\$IBXH4KK.mp4
+f 120 116 C:\$Recycle.Bin\S-1-5-21-1000-1000-1000-1001\$IQ27Q75.bat
+d C:\$Recycle.Bin\S-1-5-21-1000-1000-1000-1001\$R5USEBX
+f 453016 262434 C:\$Recycle.Bin\S-1-5-21-1000-1000-1000-1001\$R5USEBX\(contenuto)
+d C:\$Recycle.Bin\S-1-5-21-1000-1000-1000-1001\$R6E4YUQ.69037-OFME
+f 9663676416 9663541103 C:\$Recycle.Bin\S-1-5-21-1000-1000-1000-1001\$R6E4YUQ.69037-OFME\(contenuto)
+f 1318912 1318890 C:\$Recycle.Bin\S-1-5-21-1000-1000-1000-1001\$RBXH4KK.mp4
+d C:\$Recycle.Bin\S-1-5-21-1000-1000-1000-1001\$RFRFE8J
+f 11081136 10886749 C:\$Recycle.Bin\S-1-5-21-1000-1000-1000-1001\$RFRFE8J\(contenuto)
+d C:\$Recycle.Bin\S-1-5-21-1000-1000-1000-1001\$RYFSZ9N
+f 136 129 C:\$Recycle.Bin\S-1-5-21-1000-1000-1000-1001\desktop.ini
+d C:\$WinREAgent
+d C:\Documents and Settings
+f 8192 8192 C:\DumpStack.log
+f 8192 8192 C:\DumpStack.log.tmp
+f 6871011328 6871011328 C:\hiberfil.sys
+d C:\inetpub
+d C:\Intel
+f 4294967296 4294967296 C:\pagefile.sys
+d C:\PerfLogs
+d C:\Program Files
+d C:\Program Files (x86)
+f 141309771776 141198224381 C:\Program Files (x86)\(contenuto)
+f 52617195520 52201877143 C:\Program Files\(contenuto)
+d C:\ProgramData
+f 8214663168 8199412506 C:\ProgramData\(contenuto)
+d C:\Recovery
+f 16777216 16777216 C:\swapfile.sys
+n C:\System Volume Information
+d C:\Users
+f 168311754752 166984207731 C:\Users\(contenuto)
+d C:\Users\demo
+d C:\Users\demo\AppData
+d C:\Users\demo\AppData\Local
+d C:\Users\demo\AppData\Local\Microsoft
+d C:\Users\demo\AppData\Local\Microsoft\Windows
+d C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer
+f 409600 409600 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\ExplorerStartupLog.etl
+f 16384 16384 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\ExplorerStartupLog_RunOnce.etl
+f 24 24 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\iconcache_1280.db
+f 2097152 2097152 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\iconcache_16.db
+f 24 24 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\iconcache_1920.db
+f 7340032 7340032 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\iconcache_256.db
+f 24 24 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\iconcache_2560.db
+f 3145728 3145728 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\iconcache_32.db
+f 2097152 2097152 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\iconcache_48.db
+f 24 24 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\iconcache_768.db
+f 24 24 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\iconcache_96.db
+f 24 24 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\iconcache_custom_stream.db
+f 24 24 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\iconcache_exif.db
+f 118784 116496 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\iconcache_idx.db
+f 24 24 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\iconcache_sr.db
+f 24 24 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\iconcache_wide.db
+f 24 24 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\iconcache_wide_alternate.db
+d C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\NotifyIcon
+f 32505856 32505856 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\thumbcache_1280.db
+f 1048576 1048576 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\thumbcache_16.db
+f 24 24 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\thumbcache_1920.db
+f 1048576 1048576 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\thumbcache_256.db
+f 2097152 2097152 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\thumbcache_2560.db
+f 1048576 1048576 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\thumbcache_32.db
+f 1048576 1048576 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\thumbcache_48.db
+f 5242880 5242880 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\thumbcache_768.db
+f 17825792 17825792 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\thumbcache_96.db
+f 24 24 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\thumbcache_custom_stream.db
+f 24 24 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\thumbcache_exif.db
+f 118784 116496 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\thumbcache_idx.db
+f 24 24 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\thumbcache_sr.db
+f 24 24 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\thumbcache_wide.db
+f 24 24 C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\thumbcache_wide_alternate.db
+d C:\Users\demo\AppData\Local\Temp
+f 1148301312 1209778451 C:\Users\demo\AppData\Local\Temp\(contenuto)
+d C:\Windows.old
+f 21474836480 21401346048 C:\Windows.old\(contenuto)
+d C:\Windows
+f 24117510144 23964118652 C:\Windows\(contenuto)
+d C:\Windows\addins
+f 4096 802 C:\Windows\addins\(contenuto)
+d C:\Windows\appcompat
+f 15364800 15323365 C:\Windows\appcompat\(contenuto)
+d C:\Windows\apppatch
+f 9912320 9893844 C:\Windows\apppatch\(contenuto)
+d C:\Windows\AppReadiness
+d C:\Windows\assembly
+f 4483100064 4478853849 C:\Windows\assembly\(contenuto)
+d C:\Windows\bcastdvr
+f 790528 785153 C:\Windows\bcastdvr\(contenuto)
+f 94208 93696 C:\Windows\bfsvc.exe
+d C:\Windows\Boot
+f 70623336 70100740 C:\Windows\Boot\(contenuto)
+f 69632 67584 C:\Windows\bootstat.dat
+d C:\Windows\Branding
+f 2453504 2450480 C:\Windows\Branding\(contenuto)
+d C:\Windows\CbsTemp
+d C:\Windows\Containers
+f 369700864 369699576 C:\Windows\Containers\(contenuto)
+f 32768 29857 C:\Windows\Core.xml
+d C:\Windows\Cursors
+f 12150088 11501377 C:\Windows\Cursors\(contenuto)
+d C:\Windows\debug
+f 28590248 28580463 C:\Windows\debug\(contenuto)
+d C:\Windows\diagnostics
+f 5190504 4285795 C:\Windows\diagnostics\(contenuto)
+d C:\Windows\DiagTrack
+f 1732640 1705253 C:\Windows\DiagTrack\(contenuto)
+d C:\Windows\DigitalLocker
+f 12288 10737 C:\Windows\DirectX.log
+d C:\Windows\Downloaded Program Files
+f 72 65 C:\Windows\Downloaded Program Files\(contenuto)
+f 8192 4660 C:\Windows\DPINST.LOG
+f 4096 3243 C:\Windows\DtcInstall.log
+d C:\Windows\ELAMBKUP
+f 77824 74968 C:\Windows\ELAMBKUP\(contenuto)
+d C:\Windows\en-US
+f 114688 99840 C:\Windows\en-US\(contenuto)
+f 6090752 6089584 C:\Windows\explorer.exe
+d C:\Windows\Fonts
+f 438046792 436813130 C:\Windows\Fonts\(contenuto)
+d C:\Windows\GameBarPresenceWriter
+d C:\Windows\Globalization
+f 78287272 78208826 C:\Windows\Globalization\(contenuto)
+d C:\Windows\Help
+f 1323008 1300831 C:\Windows\Help\(contenuto)
+f 1069056 1065984 C:\Windows\HelpPane.exe
+f 20480 18432 C:\Windows\hh.exe
+d C:\Windows\IdentityCRL
+f 40960 30327 C:\Windows\IdentityCRL\(contenuto)
+d C:\Windows\IME
+f 28856320 28821958 C:\Windows\IME\(contenuto)
+d C:\Windows\ImmersiveControlPanel
+f 8980984 8636674 C:\Windows\ImmersiveControlPanel\(contenuto)
+d C:\Windows\InboxApps
+f 1572864 1563268 C:\Windows\InboxApps\(contenuto)
+d C:\Windows\INF
+f 90289736 103697101 C:\Windows\INF\(contenuto)
+d C:\Windows\InputMethod
+f 38240544 38208282 C:\Windows\InputMethod\(contenuto)
+d C:\Windows\Installer
+f 4071886848 4071497604 C:\Windows\Installer\(contenuto)
+d C:\Windows\L2Schemas
+f 143360 109650 C:\Windows\L2Schemas\(contenuto)
+d C:\Windows\LanguageOverlayCache
+d C:\Windows\LastGood
+d C:\Windows\LastGood.Tmp
+f 388026368 387927927 C:\Windows\LastGood.Tmp\(contenuto)
+f 332566528 332473475 C:\Windows\LastGood\(contenuto)
+n C:\Windows\LiveKernelReports
+d C:\Windows\Logs
+f 43601920 62484129 C:\Windows\Logs\(contenuto)
+f 4096 1376 C:\Windows\lsasetup.log
+d C:\Windows\Media
+f 20217856 20063519 C:\Windows\Media\(contenuto)
+f 45056 43131 C:\Windows\mib.bin
+d C:\Windows\Microsoft.NET
+f 414003080 410228260 C:\Windows\Microsoft.NET\(contenuto)
+d C:\Windows\Migration
+f 4096 3515 C:\Windows\Migration\(contenuto)
+n C:\Windows\Minidump
+n C:\Windows\ModemLogs
+f 200704 200704 C:\Windows\notepad.exe
+f 4096 1951 C:\Windows\NvContainerRecovery.bat
+d C:\Windows\OCR
+f 450560 448602 C:\Windows\OCR\(contenuto)
+d C:\Windows\Offline Web Pages
+f 72 65 C:\Windows\Offline Web Pages\(contenuto)
+d C:\Windows\Panther
+f 4272688 4245911 C:\Windows\Panther\(contenuto)
+d C:\Windows\Performance
+f 577536 565840 C:\Windows\Performance\(contenuto)
+f 905216 903568 C:\Windows\PFRO.log
+d C:\Windows\PLA
+f 1246216 1121835 C:\Windows\PLA\(contenuto)
+d C:\Windows\PolicyDefinitions
+f 2932736 2774729 C:\Windows\PolicyDefinitions\(contenuto)
+n C:\Windows\Prefetch
+d C:\Windows\PrintDialog
+f 1929544 1904807 C:\Windows\PrintDialog\(contenuto)
+d C:\Windows\Provisioning
+f 6303744 6248681 C:\Windows\Provisioning\(contenuto)
+f 372736 370176 C:\Windows\regedit.exe
+d C:\Windows\Registration
+f 24576 22588 C:\Windows\Registration\(contenuto)
+d C:\Windows\rescache
+f 12075008 11727152 C:\Windows\rescache\(contenuto)
+d C:\Windows\Resources
+f 3309568 3277407 C:\Windows\Resources\(contenuto)
+d C:\Windows\SchCache
+d C:\Windows\schemas
+f 233472 126782 C:\Windows\schemas\(contenuto)
+d C:\Windows\security
+f 5333224 5330244 C:\Windows\security\(contenuto)
+d C:\Windows\ServiceProfiles
+n C:\Windows\ServiceState
+d C:\Windows\servicing
+f 1458998840 1315753501 C:\Windows\servicing\(contenuto)
+d C:\Windows\Setup
+f 48 42 C:\Windows\Setup\(contenuto)
+f 1163264 1160458 C:\Windows\setupact.log
+f 0 0 C:\Windows\setuperr.log
+d C:\Windows\ShellComponents
+f 5529600 5526016 C:\Windows\ShellComponents\(contenuto)
+d C:\Windows\ShellExperiences
+f 19091456 19074048 C:\Windows\ShellExperiences\(contenuto)
+d C:\Windows\SKB
+f 5087232 5068944 C:\Windows\SKB\(contenuto)
+d C:\Windows\SoftwareDistribution
+f 52555776 52513808 C:\Windows\SoftwareDistribution\(contenuto)
+d C:\Windows\SoftwareDistribution\DataStore
+f 50880512 50880512 C:\Windows\SoftwareDistribution\DataStore\(contenuto)
+d C:\Windows\SoftwareDistribution\Download
+f 667648 633488 C:\Windows\SoftwareDistribution\Download\(contenuto)
+d C:\Windows\SoftwareDistribution\PostRebootEventCache.V2
+f 802816 802778 C:\Windows\SoftwareDistribution\ReportingEvents.log
+d C:\Windows\SoftwareDistribution\SLS
+f 204800 197030 C:\Windows\SoftwareDistribution\SLS\(contenuto)
+d C:\Windows\Speech
+f 107897576 107844594 C:\Windows\Speech\(contenuto)
+d C:\Windows\Speech_OneCore
+f 68604184 68488400 C:\Windows\Speech_OneCore\(contenuto)
+f 167936 164352 C:\Windows\splwow64.exe
+d C:\Windows\System
+f 224 219 C:\Windows\system.ini
+d C:\Windows\System32
+f 9865479976 9925237037 C:\Windows\System32\(contenuto)
+d C:\Windows\System32\DriverStore
+d C:\Windows\System32\DriverStore\FileRepository
+f 6248907056 6235371200 C:\Windows\System32\DriverStore\FileRepository\(contenuto)
+f 36864 31039 C:\Windows\System\(contenuto)
+d C:\Windows\SystemApps
+f 195432792 190156452 C:\Windows\SystemApps\(contenuto)
+d C:\Windows\SystemResources
+f 169417472 168159827 C:\Windows\SystemResources\(contenuto)
+n C:\Windows\SystemTemp
+d C:\Windows\SysWOW64
+f 1254178080 1246553409 C:\Windows\SysWOW64\(contenuto)
+d C:\Windows\TAPI
+d C:\Windows\Tasks
+f 8 6 C:\Windows\Tasks\(contenuto)
+n C:\Windows\Temp
+d C:\Windows\tracing
+d C:\Windows\twain_32
+f 77824 76800 C:\Windows\twain_32.dll
+f 8192 7680 C:\Windows\twain_32\(contenuto)
+d C:\Windows\Vss
+f 16384 12420 C:\Windows\Vss\(contenuto)
+d C:\Windows\WaaS
+f 49152 33256 C:\Windows\WaaS\(contenuto)
+d C:\Windows\Web
+f 16646320 16591930 C:\Windows\Web\(contenuto)
+f 96 92 C:\Windows\win.ini
+f 4096 670 C:\Windows\WindowsShell.Manifest
+f 280 276 C:\Windows\WindowsUpdate.log
+f 12288 11776 C:\Windows\winhlp32.exe
+d C:\Windows\WinSxS
+f 3643977952 3540815163 C:\Windows\WinSxS\(contenuto)
+f 319488 316640 C:\Windows\WMSysPr9.prx
+f 12288 11264 C:\Windows\write.exe

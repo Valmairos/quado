@@ -1,0 +1,40 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<!-- Schermata vera dentro una finestra di Windows. La schermata è alta 1 px dell'app per 1 px dell'immagine:
+     a 2x tutto ciò che sta nella finestra misura metà, così la barra del titolo (32 px in Windows) è 16.
+     La finestra ha il tema della schermata, il fondo quello di GitHub (#light o #dark).
+     Il margine lo calcola genera.py dalla larghezza della schermata; genera.py controlla anche che
+     i pixel della schermata restino quelli originali: se cambi l'altezza della barra (16), cambiala anche lì. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Quado: screenshot</title>
+<script>document.documentElement.dataset.theme = location.hash.slice(1) || 'light';</script>
+<style>
+/*@FONT*/
+/*@COMUNE*/
+.shot{padding:{{PAD}}px}
+/* Finestra: raggio di 10 px e bordo di 1 px nell'immagine a 2x, ombra Dialog. */
+.win{border-radius:5px;overflow:hidden;background:var(--bg);box-shadow:0 0 0 .5px var(--border),0 9px 24px var(--win-shadow)}
+.win[data-theme="light"]{--win-shadow:rgba(0,0,0,.188)}
+.win[data-theme="dark"]{--win-shadow:rgba(0,0,0,.627)}
+:root[data-theme="light"] .win[data-theme="dark"]{--win-shadow:rgba(0,0,0,.28)}
+.wtb{height:16px;display:flex;align-items:center;background:var(--tb);color:var(--tbText);font-size:6px;letter-spacing:0;line-height:1}
+.wtb .ico{width:8px;height:8px;margin:0 4px 0 6px;flex:none}
+.wtb .ico svg{display:block;width:8px;height:8px}
+.wtb .tt{flex:1}
+.wtb .wb{width:23px;height:16px;display:grid;place-items:center}
+.wtb .wb svg{width:5px;height:5px;stroke:currentColor;stroke-width:1;fill:none;display:block}
+.win img{display:block;width:{{IMG_W}}px;height:{{IMG_H}}px}
+</style>
+<!--@MISURA-->
+</head>
+<body>
+<main class="tile shot">
+  <div class="win" data-theme="{{WIN_THEME}}">
+    <div class="wtb"><span class="ico">{{TESSERA16}}</span><span class="tt">Quado</span><span class="wb">{{CAP_MIN}}</span><span class="wb">{{CAP_MAX}}</span><span class="wb">{{CAP_CLOSE}}</span></div>
+    <img src="{{IMG}}" alt="">
+  </div>
+</main>
+</body>
+</html>

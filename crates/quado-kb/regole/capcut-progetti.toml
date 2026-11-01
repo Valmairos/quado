@@ -1,0 +1,23 @@
+# Progetti e video di CapCut: tuoi file, mai proposti (06 §2.1, 04 §6.8).
+id = "capcut-progetti"
+priorita = 1
+riconoscitore = "percorso"
+gestore = "tu"
+stato = "decidi-tu"
+azione = "nessuna"
+stima = "nessuna"
+reversibilita = "nessuna-azione"
+errore = "nessuna-azione"
+verifica = "nessuna-azione"
+verificata = "2026-10-13"
+fixture = "capcut.albero"
+
+[dove]
+cartella = "local"
+percorsi = ["CapCut/User Data/Projects", "CapCut/Videos"]
+
+[[fonti]]
+url = "file:///%LOCALAPPDATA%/CapCut/User%20Data/Config/globalSetting"
+titolo = "globalSetting (CapCut)"
+estratto = '''currentCustomDraftPath=C:\\Users\\demo\\AppData\\Local\\CapCut\\User Data\\Projects\\com.lveditor.draft'''
+ufficiale = false

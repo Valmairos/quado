@@ -1,0 +1,29 @@
+# cargo-about (release.yml): licenze dei crate di terzi compilati in quado.exe, per THIRD-PARTY-LICENSES.html.
+# Uso: cargo about generate --locked --fail -c .github/release/about.toml -m crates/quado/Cargo.toml
+#      -o THIRD-PARTY-LICENSES.html .github/release/about.hbs
+
+# Le licenze ammesse sono quelle di deny.toml, in ordine di preferenza: per un crate con "MIT OR Apache-2.0"
+# il file riporta la MIT. Manca "Apache-2.0 WITH LLVM-exception": i crate che la usano offrono anche MIT.
+accepted = [
+    "MIT",
+    "MIT-0",
+    "Apache-2.0",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "ISC",
+    "Zlib",
+    "Unicode-3.0",
+    "BSL-1.0",
+    "CC0-1.0",
+    "OFL-1.1",
+    "Ubuntu-font-1.0",
+]
+
+# Solo i crate compilati per l'eseguibile Windows. Le dipendenze di sviluppo non entrano in quado.exe;
+# quelle di build restano, perché alcune generano codice che vi entra.
+targets = ["x86_64-pc-windows-msvc"]
+ignore-dev-dependencies = true
+ignore-build-dependencies = false
+
+# I crate di Quado (GPL-3.0-or-later, `publish = false`) non sono di terzi: la loro licenza è LICENSE.
+private = { ignore = true }

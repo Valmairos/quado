@@ -1,0 +1,17 @@
+[package]
+name = "quado-model"
+description = "Modello in memoria di Quado: albero della scansione, hard link, aggregati, bilancio del volume"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+rayon = { workspace = true }
+
+[dev-dependencies]
+proptest = { version = "1", default-features = false, features = ["std"] }

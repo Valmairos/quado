@@ -1,0 +1,25 @@
+# File di paging e swap (07 §7, proposto): elemento protetto, solo spiegazione.
+id = "paging"
+priorita = 2
+riconoscitore = "percorso"
+gestore = "windows"
+gestito_da = "Windows"
+stato = "lo-gestisce-nessuna-procedura"
+azione = "nessuna"
+protetto = true
+stima = "nessuna"
+reversibilita = "nessuna-azione"
+errore = "nessuna-azione"
+verifica = "nessuna-azione"
+verificata = "2026-10-13"
+fixture = "radice.albero"
+
+[dove]
+cartella = "radice"
+percorsi = ["pagefile.sys", "swapfile.sys"]
+
+[[fonti]]
+url = "https://learn.microsoft.com/en-us/troubleshoot/windows-client/performance/introduction-to-the-page-file"
+titolo = "Introduction to the page file"
+estratto = '''System-managed page files automatically grow up to three times the physical memory or 4 GB'''
+ufficiale = true

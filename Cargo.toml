@@ -1,0 +1,82 @@
+[workspace]
+resolver = "3"
+members = ["crates/*", "xtask"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.99"
+publish = false
+license = "GPL-3.0-or-later"
+
+[workspace.dependencies]
+quado-ui = { path = "crates/quado-ui" }
+quado-model = { path = "crates/quado-model" }
+quado-scan-win = { path = "crates/quado-scan-win" }
+quado-testkit = { path = "crates/quado-testkit" }
+quado-kb = { path = "crates/quado-kb" }
+rayon = "1.12"
+windows = { version = "0.62", features = [
+    "Win32_Foundation",
+    "Win32_Graphics_Dxgi",
+    "Win32_Graphics_Dxgi_Common",
+    "Win32_Graphics_Gdi",
+    "Win32_System_Com",
+    "Win32_UI_Shell",
+    "Win32_UI_Shell_Common",
+    "Win32_Storage_FileSystem",
+    "Win32_System_RestartManager",
+    "Win32_UI_WindowsAndMessaging",
+] }
+fluent-bundle = "0.16"
+fluent-syntax = "0.12"
+unic-langid = "0.9"
+quado-actions = { path = "crates/quado-actions" }
+windows-core = "0.62"
+windows-sys = { version = "0.61", features = [
+    "Wdk_Storage_FileSystem",
+    "Wdk_System_Threading",
+    "Win32_Storage_CloudFilters",
+    "Win32_System_CorrelationVector",
+    "Win32_Foundation",
+    "Win32_Globalization",
+    "Win32_Security",
+    "Win32_Security_Authorization",
+    "Win32_Security_Cryptography",
+    "Win32_System_Time",
+    "Win32_UI_WindowsAndMessaging",
+    "Win32_Storage_FileSystem",
+    "Win32_System_IO",
+    "Win32_System_Ioctl",
+    "Win32_System_LibraryLoader",
+    "Win32_System_ProcessStatus",
+    "Win32_System_SystemInformation",
+    "Win32_System_SystemServices",
+    "Win32_System_Threading",
+] }
+egui = "0.36"
+eframe = { version = "0.36", default-features = false }
+egui_kittest = "0.36"
+image = { version = "0.25", default-features = false, features = ["png"] }
+log = "0.4"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+dbg_macro = "warn"
+
+# Dipendenze ottimizzate anche in debug: egui e wgpu non ottimizzati falsano i tempi di frame.
+[profile.dev.package."*"]
+opt-level = 2
+
+[profile.release]
+debug = "line-tables-only"
+
+# Eseguibile installato (`cargo xtask installa`, `target\dist\quado.exe`): LTO "fat" con una sola unità di
+# codegen, scelto con le misure dell'avvio di ottobre 2026. Il profilo release resta quello di sviluppo e delle misure:
+# dopo una modifica in quado-ui ricompila in 52 s, questo in 7 min 21 s.
+[profile.dist]
+inherits = "release"
+lto = "fat"
+codegen-units = 1

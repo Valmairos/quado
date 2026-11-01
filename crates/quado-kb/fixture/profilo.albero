@@ -1,0 +1,553 @@
+# Fixture sintetica: forma di un PC Windows, con utente, progetti e dati inventati.
+d C:\
+d C:\Program Files
+d C:\Program Files (x86)
+d C:\Program Files (x86)\BraveSoftware
+f 48193536 48048336 C:\Program Files (x86)\BraveSoftware\(contenuto)
+d C:\Program Files (x86)\Common Files
+f 870007096 864740848 C:\Program Files (x86)\Common Files\(contenuto)
+d C:\Program Files (x86)\dotnet
+f 551614816 545999848 C:\Program Files (x86)\dotnet\(contenuto)
+d C:\Program Files (x86)\Epic Games
+f 1853201624 1839915300 C:\Program Files (x86)\Epic Games\(contenuto)
+d C:\Program Files (x86)\Google
+f 569250160 569218995 C:\Program Files (x86)\Google\(contenuto)
+d C:\Program Files (x86)\Internet Explorer
+f 2048456 2023759 C:\Program Files (x86)\Internet Explorer\(contenuto)
+d C:\Program Files (x86)\Microsoft
+d C:\Program Files (x86)\Microsoft.NET
+f 8097792 8089679 C:\Program Files (x86)\Microsoft.NET\(contenuto)
+f 954808352 953385371 C:\Program Files (x86)\Microsoft\(contenuto)
+d C:\Program Files (x86)\MSBuild
+f 1593344 1496957 C:\Program Files (x86)\MSBuild\(contenuto)
+d C:\Program Files (x86)\NVIDIA Corporation
+f 220086272 219947551 C:\Program Files (x86)\NVIDIA Corporation\(contenuto)
+d C:\Program Files (x86)\Reference Assemblies
+f 398137736 395193383 C:\Program Files (x86)\Reference Assemblies\(contenuto)
+d C:\Program Files (x86)\Steam
+f 224915772240 224789164265 C:\Program Files (x86)\Steam\(contenuto)
+f 72 71 C:\Program Files (x86)\Steam\.cef-dev-tools-size.vdf
+f 0 0 C:\Program Files (x86)\Steam\.crash
+f 9637888 9637528 C:\Program Files (x86)\Steam\aom.dll
+d C:\Program Files (x86)\Steam\appcache
+f 96663232 77100569 C:\Program Files (x86)\Steam\appcache\(contenuto)
+d C:\Program Files (x86)\Steam\bin
+f 414004200 413750253 C:\Program Files (x86)\Steam\bin\(contenuto)
+d C:\Program Files (x86)\Steam\clientui
+f 34275376 34261598 C:\Program Files (x86)\Steam\clientui\(contenuto)
+d C:\Program Files (x86)\Steam\config
+f 144568 128983 C:\Program Files (x86)\Steam\config\(contenuto)
+d C:\Program Files (x86)\Steam\controller_base
+f 18189824 9871632 C:\Program Files (x86)\Steam\controller_base\(contenuto)
+f 413696 409752 C:\Program Files (x86)\Steam\crashhandler.dll
+f 499712 496792 C:\Program Files (x86)\Steam\crashhandler64.dll
+f 499712 496792 C:\Program Files (x86)\Steam\crashhandler64.dll.old
+f 126976 124440 C:\Program Files (x86)\Steam\CSERHelper.dll
+f 3231744 3231696 C:\Program Files (x86)\Steam\d3dcompiler_46.dll
+f 3874816 3873264 C:\Program Files (x86)\Steam\d3dcompiler_46_64.dll
+f 2899968 2896688 C:\Program Files (x86)\Steam\dav1d.dll
+d C:\Program Files (x86)\Steam\depotcache
+f 31278728 30634162 C:\Program Files (x86)\Steam\depotcache\(contenuto)
+d C:\Program Files (x86)\Steam\dumps
+f 35115064 35080388 C:\Program Files (x86)\Steam\dumps\(contenuto)
+f 4096 983 C:\Program Files (x86)\Steam\fossilize_engine_filters.json
+d C:\Program Files (x86)\Steam\friends
+f 3178768 2914861 C:\Program Files (x86)\Steam\friends\(contenuto)
+f 1347584 1347224 C:\Program Files (x86)\Steam\GameOverlayRenderer.dll
+f 1576960 1576600 C:\Program Files (x86)\Steam\GameOverlayRenderer64.dll
+f 417792 417432 C:\Program Files (x86)\Steam\gameoverlayui64.exe
+f 2580480 2579656 C:\Program Files (x86)\Steam\GfnRuntimeSdk.dll
+d C:\Program Files (x86)\Steam\graphics
+f 10055608 8977619 C:\Program Files (x86)\Steam\graphics\(contenuto)
+f 7528448 7525016 C:\Program Files (x86)\Steam\libavcodec-62.dll
+f 1081344 1077912 C:\Program Files (x86)\Steam\libavfilter-11.dll
+f 2326528 2323096 C:\Program Files (x86)\Steam\libavformat-62.dll
+f 905216 903832 C:\Program Files (x86)\Steam\libavif-16.dll
+f 2375680 2371736 C:\Program Files (x86)\Steam\libavutil-60.dll
+f 2293760 2291712 C:\Program Files (x86)\Steam\libpyrowave-shared-0.dll
+f 827392 824984 C:\Program Files (x86)\Steam\libswresample-6.dll
+f 2314240 2310296 C:\Program Files (x86)\Steam\libswscale-9.dll
+f 331776 328344 C:\Program Files (x86)\Steam\libusb-1.0.dll
+f 946176 946024 C:\Program Files (x86)\Steam\libx264-142.dll
+f 946176 945840 C:\Program Files (x86)\Steam\libx264-142.dll.crypt
+f 32 32 C:\Program Files (x86)\Steam\libx264-142.dll.md5
+d C:\Program Files (x86)\Steam\logs
+f 79773696 79599809 C:\Program Files (x86)\Steam\logs\(contenuto)
+f 839680 836760 C:\Program Files (x86)\Steam\openvr_api.dll
+d C:\Program Files (x86)\Steam\package
+f 254345216 254299863 C:\Program Files (x86)\Steam\package\(contenuto)
+d C:\Program Files (x86)\Steam\public
+f 14447240 14089649 C:\Program Files (x86)\Steam\public\(contenuto)
+d C:\Program Files (x86)\Steam\resource
+f 9151104 8569403 C:\Program Files (x86)\Steam\resource\(contenuto)
+f 3084288 3082904 C:\Program Files (x86)\Steam\SDL3.dll
+f 950272 948888 C:\Program Files (x86)\Steam\SDL3_image.dll
+f 3469312 3468952 C:\Program Files (x86)\Steam\SDL3_ttf.dll
+d C:\Program Files (x86)\Steam\steam
+f 548864 545944 C:\Program Files (x86)\Steam\Steam.dll
+f 5779456 5775512 C:\Program Files (x86)\Steam\steam.exe
+f 5775360 5774488 C:\Program Files (x86)\Steam\steam.exe.old
+f 4096 4067 C:\Program Files (x86)\Steam\steam.signatures
+f 2883584 2882984 C:\Program Files (x86)\Steam\Steam2.dll
+f 18905488 18223163 C:\Program Files (x86)\Steam\steam\(contenuto)
+d C:\Program Files (x86)\Steam\steamapps
+f 223438088912 223350186621 C:\Program Files (x86)\Steam\steamapps\(contenuto)
+f 21381120 21377688 C:\Program Files (x86)\Steam\steamclient.dll
+f 26329088 26328216 C:\Program Files (x86)\Steam\steamclient64.dll
+f 708608 707224 C:\Program Files (x86)\Steam\steamerrorreporter.exe
+f 798720 794776 C:\Program Files (x86)\Steam\steamerrorreporter64.exe
+f 4096 694 C:\Program Files (x86)\Steam\SteamFossilizeVulkanLayer.json
+f 4096 696 C:\Program Files (x86)\Steam\SteamFossilizeVulkanLayer64.json
+f 274432 271512 C:\Program Files (x86)\Steam\SteamOverlayVulkanLayer.dll
+f 4096 482 C:\Program Files (x86)\Steam\SteamOverlayVulkanLayer.json
+f 319488 318104 C:\Program Files (x86)\Steam\SteamOverlayVulkanLayer64.dll
+f 4096 484 C:\Program Files (x86)\Steam\SteamOverlayVulkanLayer64.json
+f 1421312 1418392 C:\Program Files (x86)\Steam\steamsysinfo.exe
+d C:\Program Files (x86)\Steam\steamui
+f 18964480 18962584 C:\Program Files (x86)\Steam\SteamUI.dll
+f 107471808 105810568 C:\Program Files (x86)\Steam\steamui\(contenuto)
+f 4771840 4769640 C:\Program Files (x86)\Steam\steamwebrtc.dll
+f 13037568 13035368 C:\Program Files (x86)\Steam\steamwebrtc64.dll
+f 11206656 11202712 C:\Program Files (x86)\Steam\streaming_client.exe
+d C:\Program Files (x86)\Steam\tenfoot
+f 7716864 6775908 C:\Program Files (x86)\Steam\tenfoot\(contenuto)
+f 8888320 8886326 C:\Program Files (x86)\Steam\ThirdPartyLegalNotices-Chromium.html
+f 384 382 C:\Program Files (x86)\Steam\ThirdPartyLegalNotices.css
+f 32768 30208 C:\Program Files (x86)\Steam\ThirdPartyLegalNotices.doc
+f 151552 148835 C:\Program Files (x86)\Steam\ThirdPartyLegalNotices.html
+f 356352 355992 C:\Program Files (x86)\Steam\tier0_s.dll
+f 901120 900760 C:\Program Files (x86)\Steam\tier0_s64.dll
+f 159744 159480 C:\Program Files (x86)\Steam\uninstall.exe
+f 4096 1186 C:\Program Files (x86)\Steam\update_hosts_cached.vdf
+d C:\Program Files (x86)\Steam\userdata
+f 148741928 144802634 C:\Program Files (x86)\Steam\userdata\(contenuto)
+f 4255744 4252824 C:\Program Files (x86)\Steam\video.dll
+f 5341184 5337752 C:\Program Files (x86)\Steam\video64.dll
+f 548864 545944 C:\Program Files (x86)\Steam\VkLayer_steam_fossilize.dll
+f 643072 640152 C:\Program Files (x86)\Steam\VkLayer_steam_fossilize64.dll
+f 610304 607896 C:\Program Files (x86)\Steam\vstdlib_s.dll
+f 491520 487576 C:\Program Files (x86)\Steam\vstdlib_s64.dll
+f 286720 284456 C:\Program Files (x86)\Steam\WriteMiniDump.exe
+d C:\Program Files (x86)\Windows Defender
+f 1826816 1811896 C:\Program Files (x86)\Windows Defender\(contenuto)
+d C:\Program Files (x86)\Windows Mail
+f 634880 626176 C:\Program Files (x86)\Windows Mail\(contenuto)
+d C:\Program Files (x86)\Windows Media Player
+f 3272704 3227546 C:\Program Files (x86)\Windows Media Player\(contenuto)
+d C:\Program Files (x86)\Windows Multimedia Platform
+f 45056 41432 C:\Program Files (x86)\Windows Multimedia Platform\(contenuto)
+d C:\Program Files (x86)\Windows NT
+f 5959680 5940568 C:\Program Files (x86)\Windows NT\(contenuto)
+d C:\Program Files (x86)\Windows Photo Viewer
+f 5271552 5255104 C:\Program Files (x86)\Windows Photo Viewer\(contenuto)
+d C:\Program Files (x86)\Windows Portable Devices
+f 45056 41416 C:\Program Files (x86)\Windows Portable Devices\(contenuto)
+d C:\Program Files (x86)\Windows Sidebar
+d C:\Program Files (x86)\WindowsPowerShell
+f 2566968 2238804 C:\Program Files (x86)\WindowsPowerShell\(contenuto)
+d C:\Program Files\7-Zip
+f 6119792 5900528 C:\Program Files\7-Zip\(contenuto)
+d C:\Program Files\BraveSoftware
+f 1076015512 1129796174 C:\Program Files\BraveSoftware\(contenuto)
+d C:\Program Files\Common Files
+f 3407751432 3392114573 C:\Program Files\Common Files\(contenuto)
+d C:\Program Files\dotnet
+f 1097571240 1083744072 C:\Program Files\dotnet\(contenuto)
+d C:\Program Files\Epic Games
+f 39927751488 39546721992 C:\Program Files\Epic Games\(contenuto)
+d C:\Program Files\Git
+f 383450152 371328889 C:\Program Files\Git\(contenuto)
+d C:\Program Files\Google
+f 602852440 635146978 C:\Program Files\Google\(contenuto)
+d C:\Program Files\Internet Explorer
+f 2732488 2709282 C:\Program Files\Internet Explorer\(contenuto)
+d C:\Program Files\Microsoft
+d C:\Program Files\Microsoft Update Health Tools
+f 1953792 1943392 C:\Program Files\Microsoft Update Health Tools\(contenuto)
+f 660699248 659528865 C:\Program Files\Microsoft\(contenuto)
+d C:\Program Files\ModifiableWindowsApps
+d C:\Program Files\MSBuild
+f 36864 25757 C:\Program Files\MSBuild\(contenuto)
+d C:\Program Files\nodejs
+f 102111552 97526096 C:\Program Files\nodejs\(contenuto)
+d C:\Program Files\NVIDIA Corporation
+f 1017472256 1014124388 C:\Program Files\NVIDIA Corporation\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2
+d C:\Program Files\NVIDIA Corporation\Installer2\CoreTemp.{EE69F0F6-CC72-4117-90E4-31FD4A776988}
+f 18427904 18413936 C:\Program Files\NVIDIA Corporation\Installer2\CoreTemp.{EE69F0F6-CC72-4117-90E4-31FD4A776988}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\Display.Driver.{044FAC3E-FE94-411E-BAFF-39A24BEF21E0}
+f 4009984 4004592 C:\Program Files\NVIDIA Corporation\Installer2\Display.Driver.{044FAC3E-FE94-411E-BAFF-39A24BEF21E0}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\Display.Driver.{473AC5BE-EED7-4AF5-A5BE-6548CF931DBC}
+f 2367488 2362285 C:\Program Files\NVIDIA Corporation\Installer2\Display.Driver.{473AC5BE-EED7-4AF5-A5BE-6548CF931DBC}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\Display.Driver.{55942AF2-3216-4FBA-9541-971AE8DBC5EF}
+f 3948544 3945339 C:\Program Files\NVIDIA Corporation\Installer2\Display.Driver.{55942AF2-3216-4FBA-9541-971AE8DBC5EF}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\Display.Driver.{C1B30D6A-B897-4374-8103-EE3B5C7C656D}
+f 2195456 2188688 C:\Program Files\NVIDIA Corporation\Installer2\Display.Driver.{C1B30D6A-B897-4374-8103-EE3B5C7C656D}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\Display.Driver.{E6F394A1-49C3-49F7-91A4-24E3039C798B}
+f 2125824 2120591 C:\Program Files\NVIDIA Corporation\Installer2\Display.Driver.{E6F394A1-49C3-49F7-91A4-24E3039C798B}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\Display.NvApp.MessageBus.{C49F022A-8809-49C4-A754-F3E1FBAC541E}
+f 53248 49139 C:\Program Files\NVIDIA Corporation\Installer2\Display.NvApp.MessageBus.{C49F022A-8809-49C4-A754-F3E1FBAC541E}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\Display.NvApp.NvBackend.{82CEF6B9-5C25-4C5E-841E-509D311BB011}
+f 32768 30046 C:\Program Files\NVIDIA Corporation\Installer2\Display.NvApp.NvBackend.{82CEF6B9-5C25-4C5E-841E-509D311BB011}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\Display.NvApp.NvCPL.{4B9A0983-D2EE-4F53-A282-FE7A7B8D5C2A}
+f 20480 19661 C:\Program Files\NVIDIA Corporation\Installer2\Display.NvApp.NvCPL.{4B9A0983-D2EE-4F53-A282-FE7A7B8D5C2A}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\Display.NvApp.{D3E662DD-A91B-46D4-9406-8D42C7C48CDA}
+f 1855488 1847680 C:\Program Files\NVIDIA Corporation\Installer2\Display.NvApp.{D3E662DD-A91B-46D4-9406-8D42C7C48CDA}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\Display.PhysX.{87E1B16B-44E3-4A04-90ED-C5BD3C4BABC7}
+f 211169280 211036450 C:\Program Files\NVIDIA Corporation\Installer2\Display.PhysX.{87E1B16B-44E3-4A04-90ED-C5BD3C4BABC7}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\Display.PhysX.{8E41C3FD-BD67-40E3-BD98-FD00564DD0A8}
+f 3952640 3941440 C:\Program Files\NVIDIA Corporation\Installer2\Display.PhysX.{8E41C3FD-BD67-40E3-BD98-FD00564DD0A8}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\FrameViewSdk.{50FB0C8E-138A-4695-88AB-10F60DF39BD4}
+f 1765376 1758827 C:\Program Files\NVIDIA Corporation\Installer2\FrameViewSdk.{50FB0C8E-138A-4695-88AB-10F60DF39BD4}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\HDAudio.Driver.{0692C4FA-7B93-4095-969D-BA75F6A92571}
+f 1310720 1301196 C:\Program Files\NVIDIA Corporation\Installer2\HDAudio.Driver.{0692C4FA-7B93-4095-969D-BA75F6A92571}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\HDAudio.Driver.{55A6ECA5-51AD-4A0A-A3EA-4BBE6173F63D}
+f 1282048 1269616 C:\Program Files\NVIDIA Corporation\Installer2\HDAudio.Driver.{55A6ECA5-51AD-4A0A-A3EA-4BBE6173F63D}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\HDAudio.Driver.{82C9CBBF-15EA-482A-A075-7D2E93729AAB}
+f 1638400 1616224 C:\Program Files\NVIDIA Corporation\Installer2\HDAudio.Driver.{82C9CBBF-15EA-482A-A075-7D2E93729AAB}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\HDAudio.Driver.{B4E724CC-B329-43ED-B2E5-178A07E2400B}
+f 1331200 1319764 C:\Program Files\NVIDIA Corporation\Installer2\HDAudio.Driver.{B4E724CC-B329-43ED-B2E5-178A07E2400B}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\installer.{042883E1-5150-46A9-90AF-D8ED97218291}
+f 16166584 15911444 C:\Program Files\NVIDIA Corporation\Installer2\installer.{042883E1-5150-46A9-90AF-D8ED97218291}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\installer.{12293758-39A8-45A7-B705-35AD5E48C33B}
+f 2773176 2504467 C:\Program Files\NVIDIA Corporation\Installer2\installer.{12293758-39A8-45A7-B705-35AD5E48C33B}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\installer.{4C46FC06-A0FD-4711-969D-B5EFE8E080F3}
+f 10599976 10291804 C:\Program Files\NVIDIA Corporation\Installer2\installer.{4C46FC06-A0FD-4711-969D-B5EFE8E080F3}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\installer.{C720E26A-96AE-4F13-888C-4ABF32793839}
+f 2773176 2505445 C:\Program Files\NVIDIA Corporation\Installer2\installer.{C720E26A-96AE-4F13-888C-4ABF32793839}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\installer.{CE1C4A0F-C086-4DD3-8DA1-6D9B48EA87EC}
+f 10632744 10322012 C:\Program Files\NVIDIA Corporation\Installer2\installer.{CE1C4A0F-C086-4DD3-8DA1-6D9B48EA87EC}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\installer.{E634AC1C-D77E-4551-9BFF-BCCA27D118FD}
+f 10599976 10291804 C:\Program Files\NVIDIA Corporation\Installer2\installer.{E634AC1C-D77E-4551-9BFF-BCCA27D118FD}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\installer.{F87E39C2-34CA-4D32-93D7-73D5FB54258E}
+f 10599976 10291804 C:\Program Files\NVIDIA Corporation\Installer2\installer.{F87E39C2-34CA-4D32-93D7-73D5FB54258E}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\InstallerCore
+f 18427904 18413936 C:\Program Files\NVIDIA Corporation\Installer2\InstallerCore\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\NvContainer.AIUser.{6CBA619B-D018-4152-93B5-96FD091F4DAC}
+f 20480 16769 C:\Program Files\NVIDIA Corporation\Installer2\NvContainer.AIUser.{6CBA619B-D018-4152-93B5-96FD091F4DAC}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\NvContainer.LocalSystem.{96BC2BB6-7DB1-472D-9EF8-4A874A5691C0}
+f 28672 25187 C:\Program Files\NVIDIA Corporation\Installer2\NvContainer.LocalSystem.{96BC2BB6-7DB1-472D-9EF8-4A874A5691C0}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\NvContainer.Session.{C81A6FC7-D7A8-4F89-AA7D-BA7B72843667}
+f 24576 19967 C:\Program Files\NVIDIA Corporation\Installer2\NvContainer.Session.{C81A6FC7-D7A8-4F89-AA7D-BA7B72843667}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\NvContainer.User.{3A5E310C-3DDD-414E-A5C4-6BAFE3058699}
+f 20480 17808 C:\Program Files\NVIDIA Corporation\Installer2\NvContainer.User.{3A5E310C-3DDD-414E-A5C4-6BAFE3058699}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\NvContainer.{3692EA44-FD3A-49A1-8F92-E184CEA096A7}
+f 24576 18967 C:\Program Files\NVIDIA Corporation\Installer2\NvContainer.{3692EA44-FD3A-49A1-8F92-E184CEA096A7}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\NvDLISR.{B4DF3980-850A-4D8D-9AF7-8F7D0E72019D}
+f 28672 28290 C:\Program Files\NVIDIA Corporation\Installer2\NvDLISR.{B4DF3980-850A-4D8D-9AF7-8F7D0E72019D}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\NVPCF.{6B4A610F-3E92-4A1F-B5A8-A08991F234DB}
+f 335872 326512 C:\Program Files\NVIDIA Corporation\Installer2\NVPCF.{6B4A610F-3E92-4A1F-B5A8-A08991F234DB}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\NVPCF.{B4A5CB4F-519A-496B-A1F2-D2A7E1EE3979}
+f 319488 310081 C:\Program Files\NVIDIA Corporation\Installer2\NVPCF.{B4A5CB4F-519A-496B-A1F2-D2A7E1EE3979}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\NVPCF.{D0A12479-5322-4A9C-A60C-AD723A1B9567}
+f 339968 331378 C:\Program Files\NVIDIA Corporation\Installer2\NVPCF.{D0A12479-5322-4A9C-A60C-AD723A1B9567}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\NVPCF.{E49F0080-714D-49E7-8622-16EDAF7E7669}
+f 262144 253942 C:\Program Files\NVIDIA Corporation\Installer2\NVPCF.{E49F0080-714D-49E7-8622-16EDAF7E7669}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\NvPlugin.Watchdog.{16E52515-F0AB-4769-BC91-66C88011F315}
+f 16384 13330 C:\Program Files\NVIDIA Corporation\Installer2\NvPlugin.Watchdog.{16E52515-F0AB-4769-BC91-66C88011F315}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\NvTelemetry.{BBBEB75E-B6CD-4F53-A586-2ABCDCA20187}
+f 24576 20299 C:\Program Files\NVIDIA Corporation\Installer2\NvTelemetry.{BBBEB75E-B6CD-4F53-A586-2ABCDCA20187}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\ShadowPlay.{440FF947-1128-42CE-919E-0F29CCB46E3D}
+f 1236992 1229013 C:\Program Files\NVIDIA Corporation\Installer2\ShadowPlay.{440FF947-1128-42CE-919E-0F29CCB46E3D}\(contenuto)
+d C:\Program Files\NVIDIA Corporation\Installer2\VirtualAudio.Driver.{D0C8C66F-1482-409D-954F-63934CD427C8}
+f 790528 771168 C:\Program Files\NVIDIA Corporation\Installer2\VirtualAudio.Driver.{D0C8C66F-1482-409D-954F-63934CD427C8}\(contenuto)
+d C:\Program Files\Reference Assemblies
+f 34668544 34657961 C:\Program Files\Reference Assemblies\(contenuto)
+d C:\Program Files\RUXIM
+f 2330624 2315510 C:\Program Files\RUXIM\(contenuto)
+d C:\Program Files\Uninstall Information
+d C:\Program Files\VideoLAN
+f 190790936 189642746 C:\Program Files\VideoLAN\(contenuto)
+d C:\Program Files\Windows Defender
+f 13861232 13769432 C:\Program Files\Windows Defender\(contenuto)
+d C:\Program Files\Windows Mail
+f 647168 641024 C:\Program Files\Windows Mail\(contenuto)
+d C:\Program Files\Windows Media Player
+f 4587520 4516798 C:\Program Files\Windows Media Player\(contenuto)
+d C:\Program Files\Windows Multimedia Platform
+f 53248 49616 C:\Program Files\Windows Multimedia Platform\(contenuto)
+d C:\Program Files\Windows NT
+f 6156288 6140248 C:\Program Files\Windows NT\(contenuto)
+d C:\Program Files\Windows Photo Viewer
+f 6164480 6156744 C:\Program Files\Windows Photo Viewer\(contenuto)
+d C:\Program Files\Windows Portable Devices
+f 53248 49624 C:\Program Files\Windows Portable Devices\(contenuto)
+d C:\Program Files\Windows Security
+f 114968 114333 C:\Program Files\Windows Security\(contenuto)
+d C:\Program Files\Windows Sidebar
+n C:\Program Files\WindowsApps
+d C:\Program Files\WindowsPowerShell
+f 2870248 2531020 C:\Program Files\WindowsPowerShell\(contenuto)
+d C:\ProgramData
+d C:\ProgramData\Application Data
+d C:\ProgramData\Autodesk
+f 398504 396479 C:\ProgramData\Autodesk\(contenuto)
+d C:\ProgramData\Desktop
+d C:\ProgramData\Documents
+d C:\ProgramData\Epic
+f 310397984 308936646 C:\ProgramData\Epic\(contenuto)
+d C:\ProgramData\Microsoft
+f 3990764136 3985775064 C:\ProgramData\Microsoft\(contenuto)
+d C:\ProgramData\NVIDIA
+d C:\ProgramData\NVIDIA Corporation
+f 4063439144 4062067040 C:\ProgramData\NVIDIA Corporation\(contenuto)
+f 1419913032 1419526223 C:\ProgramData\NVIDIA\(contenuto)
+d C:\ProgramData\Package Cache
+f 935490240 935119463 C:\ProgramData\Package Cache\(contenuto)
+n C:\ProgramData\Packages
+d C:\ProgramData\regid.1991-06.com.microsoft
+f 8192 1974 C:\ProgramData\regid.1991-06.com.microsoft\(contenuto)
+d C:\ProgramData\SoftwareDistribution
+d C:\ProgramData\Start Menu
+d C:\ProgramData\Templates
+d C:\ProgramData\USOPrivate
+f 8474624 8470907 C:\ProgramData\USOPrivate\(contenuto)
+d C:\ProgramData\USOShared
+f 16863232 16863232 C:\ProgramData\USOShared\(contenuto)
+d C:\Users
+d C:\Users\demo
+d C:\Users\demo\.android
+f 10771429192 10835111079 C:\Users\demo\.android\(contenuto)
+d C:\Users\demo\.cargo
+f 803011464 750155747 C:\Users\demo\.cargo\(contenuto)
+d C:\Users\demo\.rustup
+f 3031637304 2789358410 C:\Users\demo\.rustup\(contenuto)
+d C:\Users\demo\.vscode
+f 1961503752 1946193231 C:\Users\demo\.vscode\(contenuto)
+d C:\Users\demo\3D Objects
+f 304 298 C:\Users\demo\3D Objects\(contenuto)
+d C:\Users\demo\AppData
+d C:\Users\demo\AppData\Local
+d C:\Users\demo\AppData\Local\AppDismessa
+f 18257240 17092977 C:\Users\demo\AppData\Local\AppDismessa\(contenuto)
+d C:\Users\demo\AppData\Local\Application Data
+d C:\Users\demo\AppData\Local\Autodesk
+f 6318610464 6168175057 C:\Users\demo\AppData\Local\Autodesk\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware
+f 5738757296 5671345335 C:\Users\demo\AppData\Local\BraveSoftware\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut
+f 67786080840 67330827366 C:\Users\demo\AppData\Local\CapCut\(contenuto)
+d C:\Users\demo\AppData\Local\Comms
+f 18374664 18374660 C:\Users\demo\AppData\Local\Comms\(contenuto)
+d C:\Users\demo\AppData\Local\ConnectedDevicesPlatform
+f 8478832 8424095 C:\Users\demo\AppData\Local\ConnectedDevicesPlatform\(contenuto)
+d C:\Users\demo\AppData\Local\CrashDumps
+f 459636736 459619166 C:\Users\demo\AppData\Local\CrashDumps\(contenuto)
+d C:\Users\demo\AppData\Local\D3DSCache
+f 2736304 2776968 C:\Users\demo\AppData\Local\D3DSCache\(contenuto)
+d C:\Users\demo\AppData\Local\EpicGamesLauncher
+f 53716384 53343739 C:\Users\demo\AppData\Local\EpicGamesLauncher\(contenuto)
+d C:\Users\demo\AppData\Local\Google
+f 519610760 508302789 C:\Users\demo\AppData\Local\Google\(contenuto)
+d C:\Users\demo\AppData\Local\History
+f 143360 143017 C:\Users\demo\AppData\Local\IconCache.db
+d C:\Users\demo\AppData\Local\IsolatedStorage
+d C:\Users\demo\AppData\Local\Microsoft
+f 684065128 679346389 C:\Users\demo\AppData\Local\Microsoft\(contenuto)
+d C:\Users\demo\AppData\Local\npm-cache
+f 8308445848 8219630510 C:\Users\demo\AppData\Local\npm-cache\(contenuto)
+d C:\Users\demo\AppData\Local\NVIDIA
+d C:\Users\demo\AppData\Local\NVIDIA Corporation
+f 322638504 319687850 C:\Users\demo\AppData\Local\NVIDIA Corporation\(contenuto)
+f 5977084416 5977078657 C:\Users\demo\AppData\Local\NVIDIA\(contenuto)
+d C:\Users\demo\AppData\Local\Package Cache
+f 27734016 27729716 C:\Users\demo\AppData\Local\Package Cache\(contenuto)
+d C:\Users\demo\AppData\Local\Packages
+f 1112204496 1099583651 C:\Users\demo\AppData\Local\Packages\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\1527c705-839a-4832-9118-54d4Bd6a0c89_cw5n1h2txyewy
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\1527c705-839a-4832-9118-54d4Bd6a0c89_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\ActiveSync
+d C:\Users\demo\AppData\Local\Packages\c5e2524a-ea46-4f67-841f-6a9465d9d515_cw5n1h2txyewy
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\c5e2524a-ea46-4f67-841f-6a9465d9d515_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\E2A4F912-2574-4A75-9BB0-0D023378592B_cw5n1h2txyewy
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\E2A4F912-2574-4A75-9BB0-0D023378592B_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\F46D4000-FD22-4DB4-AC8E-4E1DDDE828FE_cw5n1h2txyewy
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\F46D4000-FD22-4DB4-AC8E-4E1DDDE828FE_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.AccountsControl_cw5n1h2txyewy
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.AccountsControl_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.AsyncTextService_8wekyb3d8bbwe
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.AsyncTextService_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.BingSearch_8wekyb3d8bbwe
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.BingSearch_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.BioEnrollment_cw5n1h2txyewy
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.BioEnrollment_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.CredDialogHost_cw5n1h2txyewy
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.CredDialogHost_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe
+f 542088 513039 C:\Users\demo\AppData\Local\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.ECApp_8wekyb3d8bbwe
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.ECApp_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.GetHelp_8wekyb3d8bbwe
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.GetHelp_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.HEIFImageExtension_8wekyb3d8bbwe
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.HEIFImageExtension_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.LockApp_cw5n1h2txyewy
+f 32768 32768 C:\Users\demo\AppData\Local\Packages\Microsoft.LockApp_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.MicrosoftEdgeDevToolsClient_8wekyb3d8bbwe
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.MicrosoftEdgeDevToolsClient_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.NET.Native.Framework.1.3_8wekyb3d8bbwe
+d C:\Users\demo\AppData\Local\Packages\Microsoft.NET.Native.Framework.1.7_8wekyb3d8bbwe
+d C:\Users\demo\AppData\Local\Packages\Microsoft.NET.Native.Framework.2.2_8wekyb3d8bbwe
+d C:\Users\demo\AppData\Local\Packages\Microsoft.NET.Native.Runtime.1.4_8wekyb3d8bbwe
+d C:\Users\demo\AppData\Local\Packages\Microsoft.NET.Native.Runtime.1.7_8wekyb3d8bbwe
+d C:\Users\demo\AppData\Local\Packages\Microsoft.NET.Native.Runtime.2.2_8wekyb3d8bbwe
+d C:\Users\demo\AppData\Local\Packages\Microsoft.Paint_8wekyb3d8bbwe
+f 8192 8192 C:\Users\demo\AppData\Local\Packages\Microsoft.Paint_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.ScreenSketch_8wekyb3d8bbwe
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.ScreenSketch_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.Services.Store.Engagement_8wekyb3d8bbwe
+d C:\Users\demo\AppData\Local\Packages\Microsoft.StorePurchaseApp_8wekyb3d8bbwe
+f 94208 92256 C:\Users\demo\AppData\Local\Packages\Microsoft.StorePurchaseApp_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.UI.Xaml.2.3_8wekyb3d8bbwe
+d C:\Users\demo\AppData\Local\Packages\Microsoft.UI.Xaml.2.4_8wekyb3d8bbwe
+d C:\Users\demo\AppData\Local\Packages\Microsoft.UI.Xaml.2.7_8wekyb3d8bbwe
+d C:\Users\demo\AppData\Local\Packages\Microsoft.UI.Xaml.2.8_8wekyb3d8bbwe
+d C:\Users\demo\AppData\Local\Packages\Microsoft.VCLibs.140.00.UWPDesktop_8wekyb3d8bbwe
+d C:\Users\demo\AppData\Local\Packages\Microsoft.VCLibs.140.00_8wekyb3d8bbwe
+d C:\Users\demo\AppData\Local\Packages\Microsoft.VP9VideoExtensions_8wekyb3d8bbwe
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.VP9VideoExtensions_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.WebMediaExtensions_8wekyb3d8bbwe
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.WebMediaExtensions_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.WebpImageExtension_8wekyb3d8bbwe
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.WebpImageExtension_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.Win32WebViewHost_cw5n1h2txyewy
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.Win32WebViewHost_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.Apprep.ChxApp_cw5n1h2txyewy
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.Apprep.ChxApp_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.CallingShellApp_cw5n1h2txyewy
+f 8192 8192 C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.CallingShellApp_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.CapturePicker_cw5n1h2txyewy
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.CapturePicker_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.CloudExperienceHost_cw5n1h2txyewy
+f 1788352 1771834 C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.CloudExperienceHost_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy
+f 706376 596617 C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.DevHome_8wekyb3d8bbwe
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.DevHome_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.NarratorQuickStart_8wekyb3d8bbwe
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.NarratorQuickStart_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.OOBENetworkCaptivePortal_cw5n1h2txyewy
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.OOBENetworkCaptivePortal_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.OOBENetworkConnectionFlow_cw5n1h2txyewy
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.OOBENetworkConnectionFlow_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.ParentalControls_cw5n1h2txyewy
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.ParentalControls_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.PeopleExperienceHost_cw5n1h2txyewy
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.PeopleExperienceHost_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.PinningConfirmationDialog_cw5n1h2txyewy
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.PinningConfirmationDialog_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.Search_cw5n1h2txyewy
+f 56368000 56075625 C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.Search_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.SecHealthUI_cw5n1h2txyewy
+f 40960 40960 C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.SecHealthUI_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.ShellExperienceHost_cw5n1h2txyewy
+f 174536 167828 C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.ShellExperienceHost_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy
+f 1212416 1201248 C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.XGpuEjectDialog_cw5n1h2txyewy
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.Windows.XGpuEjectDialog_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.WindowsAlarms_8wekyb3d8bbwe
+f 35576 35550 C:\Users\demo\AppData\Local\Packages\Microsoft.WindowsAlarms_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.WindowsAppRuntime.1.4_8wekyb3d8bbwe
+d C:\Users\demo\AppData\Local\Packages\Microsoft.WindowsAppRuntime.1.5_8wekyb3d8bbwe
+d C:\Users\demo\AppData\Local\Packages\Microsoft.WindowsAppRuntime.1.7_8wekyb3d8bbwe
+d C:\Users\demo\AppData\Local\Packages\Microsoft.WindowsAppRuntime.1.8_8wekyb3d8bbwe
+d C:\Users\demo\AppData\Local\Packages\Microsoft.WindowsCalculator_8wekyb3d8bbwe
+f 897192 883052 C:\Users\demo\AppData\Local\Packages\Microsoft.WindowsCalculator_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.WindowsCamera_8wekyb3d8bbwe
+f 24576 24576 C:\Users\demo\AppData\Local\Packages\Microsoft.WindowsCamera_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.WindowsNotepad_8wekyb3d8bbwe
+f 57344 57344 C:\Users\demo\AppData\Local\Packages\Microsoft.WindowsNotepad_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.WindowsSoundRecorder_8wekyb3d8bbwe
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.WindowsSoundRecorder_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.WindowsStore_8wekyb3d8bbwe
+f 620632 578134 C:\Users\demo\AppData\Local\Packages\Microsoft.WindowsStore_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe
+f 1038392424 1026816062 C:\Users\demo\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.Winget.Source_8wekyb3d8bbwe
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.Winget.Source_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.Xbox.TCUI_8wekyb3d8bbwe
+f 18176 18157 C:\Users\demo\AppData\Local\Packages\Microsoft.Xbox.TCUI_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.XboxGameCallableUI_cw5n1h2txyewy
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.XboxGameCallableUI_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.XboxIdentityProvider_8wekyb3d8bbwe
+f 32768 28244 C:\Users\demo\AppData\Local\Packages\Microsoft.XboxIdentityProvider_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.XboxSpeechToTextOverlay_8wekyb3d8bbwe
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.XboxSpeechToTextOverlay_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Microsoft.ZuneMusic_8wekyb3d8bbwe
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Microsoft.ZuneMusic_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\MicrosoftWindows.Client.CBS_cw5n1h2txyewy
+f 73192 72357 C:\Users\demo\AppData\Local\Packages\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\MicrosoftWindows.UndockedDevKit_cw5n1h2txyewy
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\MicrosoftWindows.UndockedDevKit_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\NcsiUwpApp_8wekyb3d8bbwe
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\NcsiUwpApp_8wekyb3d8bbwe\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\NVIDIACorp.NVIDIAControlPanel_56jybvy8sckqj
+f 57344 57344 C:\Users\demo\AppData\Local\Packages\NVIDIACorp.NVIDIAControlPanel_56jybvy8sckqj\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Windows.CBSPreview_cw5n1h2txyewy
+f 16384 16384 C:\Users\demo\AppData\Local\Packages\Windows.CBSPreview_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\windows.immersivecontrolpanel_cw5n1h2txyewy
+f 8192 8192 C:\Users\demo\AppData\Local\Packages\windows.immersivecontrolpanel_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\Windows.PrintDialog_cw5n1h2txyewy
+f 8192 8192 C:\Users\demo\AppData\Local\Packages\Windows.PrintDialog_cw5n1h2txyewy\(contenuto)
+d C:\Users\demo\AppData\Local\Packages\windows_ie_ac_001
+d C:\Users\demo\AppData\Local\PlaceholderTileLogoFolder
+d C:\Users\demo\AppData\Local\pnpm
+f 2664325720 2512849558 C:\Users\demo\AppData\Local\pnpm\(contenuto)
+d C:\Users\demo\AppData\Local\Programs
+f 4814367416 4781091231 C:\Users\demo\AppData\Local\Programs\(contenuto)
+d C:\Users\demo\AppData\Local\Publishers
+f 45664 43107 C:\Users\demo\AppData\Local\Publishers\(contenuto)
+d C:\Users\demo\AppData\Local\Steam
+f 757885488 749221215 C:\Users\demo\AppData\Local\Steam\(contenuto)
+d C:\Users\demo\AppData\Local\Temp
+f 2064723216 2242980938 C:\Users\demo\AppData\Local\Temp\(contenuto)
+d C:\Users\demo\AppData\Local\Temporary Internet Files
+d C:\Users\demo\AppData\Local\ToastNotificationManagerCompat
+d C:\Users\demo\AppData\Local\UnrealEngine
+f 444908088 444786093 C:\Users\demo\AppData\Local\UnrealEngine\(contenuto)
+d C:\Users\demo\AppData\Local\VecchioStrumento
+f 770566944 769781405 C:\Users\demo\AppData\Local\VecchioStrumento\(contenuto)
+d C:\Users\demo\AppData\Local\VirtualStore
+f 258048 258048 C:\Users\demo\AppData\Local\VirtualStore\(contenuto)
+d C:\Users\demo\Application Data
+d C:\Users\demo\Contacts
+f 416 412 C:\Users\demo\Contacts\(contenuto)
+d C:\Users\demo\Cookies
+d C:\Users\demo\Desktop
+f 424449424 423911835 C:\Users\demo\Desktop\(contenuto)
+d C:\Users\demo\Documents
+f 65904171024 65063892814 C:\Users\demo\Documents\(contenuto)
+d C:\Users\demo\Downloads
+f 110298789952 110085402485 C:\Users\demo\Downloads\(contenuto)
+d C:\Users\demo\Favorites
+f 696 690 C:\Users\demo\Favorites\(contenuto)
+d C:\Users\demo\Links
+f 5096 1933 C:\Users\demo\Links\(contenuto)
+d C:\Users\demo\Local Settings
+d C:\Users\demo\Music
+f 504 504 C:\Users\demo\Music\(contenuto)
+d C:\Users\demo\My Documents
+d C:\Users\demo\NetHood
+f 5505024 5505024 C:\Users\demo\NTUSER.DAT
+f 1486848 1486848 C:\Users\demo\ntuser.dat.LOG1
+f 1179648 1179648 C:\Users\demo\ntuser.dat.LOG2
+f 65536 65536 C:\Users\demo\NTUSER.DAT{53b39e88-18c4-11ea-a811-000d3aa4692b}.TM.blf
+f 524288 524288 C:\Users\demo\NTUSER.DAT{53b39e88-18c4-11ea-a811-000d3aa4692b}.TMContainer00000000000000000001.regtrans-ms
+f 524288 524288 C:\Users\demo\NTUSER.DAT{53b39e88-18c4-11ea-a811-000d3aa4692b}.TMContainer00000000000000000002.regtrans-ms
+f 24 20 C:\Users\demo\ntuser.ini
+d C:\Users\demo\Pictures
+f 888 884 C:\Users\demo\Pictures\(contenuto)
+d C:\Users\demo\PrintHood
+d C:\Users\demo\Recent
+d C:\Users\demo\Saved Games
+f 14198096 13693009 C:\Users\demo\Saved Games\(contenuto)
+d C:\Users\demo\Searches
+f 5120 1872 C:\Users\demo\Searches\(contenuto)
+d C:\Users\demo\SendTo
+d C:\Users\demo\Start Menu
+d C:\Users\demo\Templates
+d C:\Users\demo\Videos
+f 1076226584 1075712139 C:\Users\demo\Videos\(contenuto)

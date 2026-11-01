@@ -1,0 +1,24 @@
+# 07 §7, decisioni §4: Lo gestisce Windows, "Apri il Cestino" e "Svuota il Cestino" con il dialogo di Windows.
+[[voci]]
+percorso = 'C:\$Recycle.Bin\S-1-5-21-1000-1000-1000-1001'
+stato = "lo-gestisce"
+azione = "procedura"
+metodo = "shell:RecycleBinFolder"
+alternative = [""]
+stima = "non-stimabile-externalprocedure"
+privilegi = "nessuno"
+gestore = "windows"
+colore = "windows"
+elementi = 1
+
+[[voci]]
+percorso = 'C:\$Recycle.Bin\S-1-5-21-1000-1000-1000-1001\$RBXH4KK.mp4'
+stato = "lo-gestisce"
+azione = "procedura"
+metodo = "shell:RecycleBinFolder"
+alternative = [""]
+stima = "non-stimabile-externalprocedure"
+privilegi = "nessuno"
+gestore = "windows"
+colore = "windows"
+elementi = 1

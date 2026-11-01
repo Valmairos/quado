@@ -1,0 +1,1295 @@
+# Fixture sintetica: forma di un PC Windows, con utente, progetti e dati inventati.
+d C:\
+d C:\Users
+d C:\Users\demo
+d C:\Users\demo\AppData
+d C:\Users\demo\AppData\Local
+d C:\Users\demo\AppData\Local\BraveSoftware
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\adcocjohghhfpidemphmcmlmhnfgikei
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\adcocjohghhfpidemphmcmlmhnfgikei\1.0.485
+f 275032 271641 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\adcocjohghhfpidemphmcmlmhnfgikei\1.0.485\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\afalakplffnnnlkncjhbmahjfjhmlkal
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\afalakplffnnnlkncjhbmahjfjhmlkal\1.0.1541
+f 66448 52179 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\afalakplffnnnlkncjhbmahjfjhmlkal\1.0.1541\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\afalakplffnnnlkncjhbmahjfjhmlkal\1.0.1542
+f 66448 52179 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\afalakplffnnnlkncjhbmahjfjhmlkal\1.0.1542\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\AmountExtractionHeuristicRegexes
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\AmountExtractionHeuristicRegexes\3
+f 4720 2379 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\AmountExtractionHeuristicRegexes\3\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\aoojcmojmmcbpfgoecoadbdpnagfchel
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\aoojcmojmmcbpfgoecoadbdpnagfchel\1.0.25
+f 19669528 19576360 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\aoojcmojmmcbpfgoecoadbdpnagfchel\1.0.25\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\bfpgedeaaibpoidldhjcknekahbikncb
+n C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\bfpgedeaaibpoidldhjcknekahbikncb\1.0.12117
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\bfpgedeaaibpoidldhjcknekahbikncb\1.0.16887
+f 57936 51969 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\bfpgedeaaibpoidldhjcknekahbikncb\1.0.16887\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\BrowserMetrics
+f 4194304 4194304 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\BrowserMetrics-spare.pma
+f 4194304 4194304 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\BrowserMetrics\BrowserMetrics-6ACD474E-1100.pma
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\cdbbhgbmjhfnhnmgeddbliobbofkgdhe
+n C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\cdbbhgbmjhfnhnmgeddbliobbofkgdhe\1.0.13441
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\cdbbhgbmjhfnhnmgeddbliobbofkgdhe\1.0.20132
+f 1618504 1613898 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\cdbbhgbmjhfnhnmgeddbliobbofkgdhe\1.0.20132\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\cemdlagocoimleflkfkjoihojfainiho
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\cemdlagocoimleflkfkjoihojfainiho\1.0.182
+f 4600 2920 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\cemdlagocoimleflkfkjoihojfainiho\1.0.182\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\cemdlagocoimleflkfkjoihojfainiho\1.0.183
+f 4600 2920 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\cemdlagocoimleflkfkjoihojfainiho\1.0.183\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\CertificateRevocation
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\CertificateRevocation\10831
+f 1331296 1322171 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\CertificateRevocation\10831\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\CertificateRevocation\10832
+f 1331296 1322511 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\CertificateRevocation\10832\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\CertificateRevocation\10833
+f 1302624 1294892 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\CertificateRevocation\10833\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\component_crx_cache
+f 94208 90805 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\component_crx_cache\21c2e02e1cc384f6a26321e5ed4d7e2fb48653631a7f94e5fe398a3c6b12b2b2
+f 12288 11361 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\component_crx_cache\261bea60d22ebca3a95ce335c03ec751a0b58b2b7bdbd6ea51dfa54381b07775
+f 4096 4010 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\component_crx_cache\2ba4512806ea8eaa1a1363942a23e30b9c942665549c61f90e089ec4ce1aefa4
+f 1617920 1615151 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\component_crx_cache\3260ffed6c9ce6165dd68894d04e595deabcb0d1ca6fd71f7d9f06d2c5cb21ae
+f 495616 494596 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\component_crx_cache\3379af72a39fbaf406bc67b97f92ee79df302fe6583f1e5e67dca9fc2b8e6b60
+f 184320 182599 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\component_crx_cache\3b1293b1cd2b0b9ebc8c64bf5c6a0407ffad78a0364bbac71c5fe7d3e1bd7657
+f 278528 278435 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\component_crx_cache\3febc617953b91891e2212b8252e7be381b2066dc6e24b42faa4940482edda61
+f 8192 5013 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\component_crx_cache\43d9ddf1ca471a23398c60daa29403ffeda9a45c4129161ccddf2e88a19d23cd
+f 16384 12491 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\component_crx_cache\7b05c14dba04ed522210b733f004cb0e74d7679a653b19bd029f9bc0e6b19903
+f 19574784 19574434 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\component_crx_cache\7df1aaeccb0c7bef43249ccfc991ca260b9cce63b30500ec922d9fe7ad5022ce
+f 53248 50063 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\component_crx_cache\8079ee13f17028be6fbc6a8b26a15a7b03c7e645831b5b4dccd9c022a9ee858b
+f 4096 3941 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\component_crx_cache\925faa0d68a91520e4762217f7addb7746c23f33ba83abd1739b5ec1c84dd520
+f 311296 310975 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\component_crx_cache\9fe65a456f176036f3079d57e59f04d7661ac006b3f9d796b20cc4a7426cad41
+f 16384 12551 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\component_crx_cache\a3b02ecabbf81879259cf85a5dd9c0eee534fde3f54a9524bc7745da6a793940
+f 1298432 1296753 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\component_crx_cache\ab95e39b9d2235338278151cb630c69e3de7b08afe3b79676cd68032f58f1ec0
+f 7925760 7924329 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\component_crx_cache\b7ec18c6727aae147cb846a4be35d927ea5b3560833245332779a49e1d3e2464
+f 49152 45179 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\component_crx_cache\b9b8100ac11fee77fb723002f8e753d37b1f5ffda79398def7e2645be32b5478
+f 121884672 121881556 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\component_crx_cache\c43018816570dc3335159c404355c0d72dd9b1ddd65abd1453222b47daea613b
+f 503808 501619 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\component_crx_cache\d83d77b93d4181e73ba8722ffa66fb093cd68b52c5b6ff4074928901e36a3ee3
+f 24576 20769 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\component_crx_cache\e8148221755099ad3f7a68938a054268360e171f2e4f00cac2d603779c35762e
+f 4096 3382 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\component_crx_cache\e81dd86614b7ebf8b42f1fba63fbc4ccc10f3b53e728642f9782098016872db4
+f 438272 437351 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\component_crx_cache\f1b02742fbcbd7f0b5be8a96058f17067ada885b04325b60fa225d4508d679e3
+f 4096 2484 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\component_crx_cache\metadata.json
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\cpoalefficncklhjfpglfiplenlpccdb
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\cpoalefficncklhjfpglfiplenlpccdb\1.0.41
+f 18940536 18939050 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\cpoalefficncklhjfpglfiplenlpccdb\1.0.41\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\cpoalefficncklhjfpglfiplenlpccdb\1.0.42
+f 18944632 18942178 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\cpoalefficncklhjfpglfiplenlpccdb\1.0.42\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Crashpad
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Crashpad\attachments
+f 4096 3642 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Crashpad\metadata
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Crashpad\reports
+f 40947712 40873424 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Crashpad\reports\(contenuto)
+f 40 40 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Crashpad\settings.dat
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Crowd Deny
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Crowd Deny\2026.10.12.62
+f 311408 308682 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Crowd Deny\2026.10.12.62\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Crowd Deny\2026.10.8.62
+f 340080 334461 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Crowd Deny\2026.10.8.62\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default
+f 77824 77824 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Account Web Data
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Account Web Data-journal
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\AdBlock Custom Resources
+f 432 423 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\AdBlock Custom Resources\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\adblock_cache
+f 11014144 11007218 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\adblock_cache\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\ads_service
+f 294992 294990 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\ads_service\(contenuto)
+f 53248 53248 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Affiliation Database
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Affiliation Database-journal
+f 102400 102400 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\AIChat
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\AIChat-journal
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\AutofillStrikeDatabase
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\blob_storage
+f 8 6 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\BookmarkMergedSurfaceOrdering
+f 8192 7141 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Bookmarks
+f 8192 7141 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Bookmarks.bak
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\BraveWallet
+f 448 439 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\BraveWallet\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\BudgetDatabase
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Cache
+f 480911360 479211866 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Cache\(contenuto)
+f 163840 163840 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\CdmStorage.db
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\CdmStorage.db-journal
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\chrome_cart_db
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\ClientCertificates
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Code Cache
+f 785114336 775429139 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Code Cache\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\commerce_subscription_db
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\DawnGraphiteCache
+f 561152 557424 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\DawnGraphiteCache\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\DawnWebGPUCache
+f 6000640 5984213 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\DawnWebGPUCache\(contenuto)
+f 32768 32768 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\declarative_performance_observer.db
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\declarative_performance_observer.db-journal
+f 106496 106496 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\DIPS
+f 32768 32768 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\DIPS-shm
+f 32 32 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\DIPS-wal
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\discount_infos_db
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\discounts_db
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\DNR Extension Rules
+f 6545408 6537104 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\DNR Extension Rules\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Download Service
+f 160 153 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\DownloadMetadata
+f 360 360 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\engine_allowlist.bf
+f 20480 20480 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Extension Cookies
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Extension Cookies-journal
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Extension Rules
+f 4864 3926 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Extension Rules\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Extension Scripts
+f 266656 264475 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Extension Scripts\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Extension State
+f 1184112 1174822 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Extension State\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Extensions
+f 111177832 109641952 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Extensions\(contenuto)
+f 52363264 52363264 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Favicons
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Favicons-journal
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Feature Engagement Tracker
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\File System
+f 1192232 1181114 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\File System\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\GCM Store
+f 424 415 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\GCM Store\(contenuto)
+f 172032 169658 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Google Profile.ico
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\GPUCache
+f 6070272 6042624 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\GPUCache\(contenuto)
+f 16384 16384 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\heavy_ad_intervention_opt_out.db
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\heavy_ad_intervention_opt_out.db-journal
+f 141328384 141328384 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\History
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\History-journal
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\IndexedDB
+f 555375512 551560793 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\IndexedDB\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\JumpListIconsMostVisited
+f 143360 140670 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\JumpListIconsMostVisited\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\JumpListIconsRecentClosed
+f 57344 56268 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\JumpListIconsRecentClosed\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Local Extension Settings
+f 56858176 56819448 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Local Extension Settings\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Local Storage
+f 30843264 30806009 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Local Storage\(contenuto)
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\LOCK
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\LOG
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\LOG.old
+f 40960 40960 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Login Data
+f 40960 40960 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Login Data For Account
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Login Data For Account-journal
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Login Data-journal
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Managed Extension Settings
+f 41968 36067 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Managed Extension Settings\(contenuto)
+f 32768 32768 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\MediaDeviceSalts
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\MediaDeviceSalts-journal
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\MV2Backup
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Network
+f 1114112 1114112 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Network Action Predictor
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Network Action Predictor-journal
+f 4583432 4575602 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Network\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\parcel_tracking_db
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\PersistentOriginTrials
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Platform Notifications
+f 432 419 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Platform Notifications\(contenuto)
+f 704512 700427 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Preferences
+f 40 33 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\PreferredApps
+f 245760 244811 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Rewards.log
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Safe Browsing Network
+f 20480 20480 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Safe Browsing Network\(contenuto)
+f 40960 37436 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Secure Preferences
+f 20480 20480 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\ServerCertificate
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\ServerCertificate-journal
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Service Worker
+f 2828742120 2781194632 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Service Worker\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Session Storage
+f 1110736 1103069 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Session Storage\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Sessions
+f 1433600 1423339 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Sessions\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Shared Dictionary
+f 44744200 43183266 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Shared Dictionary\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\shared_proto_db
+f 97453416 97369026 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\shared_proto_db\(contenuto)
+f 262144 262144 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Shortcuts
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Shortcuts-journal
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Site Characteristics Database
+f 1876408 1874587 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Site Characteristics Database\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Sync App Settings
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Sync Data
+f 381344 380631 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Sync Data\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Sync Extension Settings
+f 30984 30381 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Sync Extension Settings\(contenuto)
+f 20480 20480 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Top Sites
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Top Sites-journal
+f 88 84 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\trusted_vault.pb
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\VideoDecodeStats
+f 524288 524192 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Visited Links
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Web Applications
+f 1196080 1106494 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Web Applications\(contenuto)
+f 622592 622592 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Web Data
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Web Data-journal
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\WebrtcVideoStats
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\WebStorage
+f 1192912 1178717 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\WebStorage\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\dkpggglmbjhgjhachikgmohmecomjndo
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\dkpggglmbjhgjhachikgmohmecomjndo\1.0.0
+f 4768 1540 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\dkpggglmbjhgjhachikgmohmecomjndo\1.0.0\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\eingdhelnaolbpcdkgddekhifcjfkalf
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\eingdhelnaolbpcdkgddekhifcjfkalf\1.0.2
+f 135712 103106 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\eingdhelnaolbpcdkgddekhifcjfkalf\1.0.2\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\extensions_crx_cache
+f 1851392 1848477 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\extensions_crx_cache\5587fe2b6a9946101ca0dde7c6efe76a755c5ee5b6d6e63dfc48c7f736cdb4ff
+f 4587520 4585845 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\extensions_crx_cache\97853441192252b382b2cbdb2fc3381df130ab582f614b4c2c364f25c716b00c
+f 24051712 24051044 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\extensions_crx_cache\9964f660a11023cb19a730b7f908353ec1dae77a027c8192315d0a7f3d8ef921
+f 352 348 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\extensions_crx_cache\metadata.json
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\FileTypePolicies
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\FileTypePolicies\145.0.7584.0
+f 12376 9562 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\FileTypePolicies\145.0.7584.0\(contenuto)
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\First Run
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\gccbbckogglekeggclmmekihdgdpdgoe
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\gccbbckogglekeggclmmekihdgdpdgoe\1.0.1999
+f 1139304 1125553 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\gccbbckogglekeggclmmekihdgdpdgoe\1.0.1999\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\gjkhegliajlngffafldbadcnpfegmkmb
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\gjkhegliajlngffafldbadcnpfegmkmb\1.0.54
+f 17288 16042 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\gjkhegliajlngffafldbadcnpfegmkmb\1.0.54\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\gkboaolpopklhgplhaaiboijnklogmbc
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\gkboaolpopklhgplhaaiboijnklogmbc\1.0.97
+f 119352 110885 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\gkboaolpopklhgplhaaiboijnklogmbc\1.0.97\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GPUPersistentCache
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GPUPersistentCache\DawnGraphiteCache
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GraphiteDawnCache
+f 8192 8192 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GraphiteDawnCache\data_0
+f 270336 270336 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GraphiteDawnCache\data_1
+f 8192 8192 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GraphiteDawnCache\data_2
+f 8192 8192 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GraphiteDawnCache\data_3
+f 266240 262512 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GraphiteDawnCache\index
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache
+f 45056 45056 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\data_0
+f 532480 532480 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\data_1
+f 1056768 1056768 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\data_2
+f 8396800 8396800 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\data_3
+f 24576 24388 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_00098f
+f 20480 19332 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_00099d
+f 28672 26828 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009a0
+f 28672 26524 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009a1
+f 20480 17428 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009a3
+f 20480 16640 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009a6
+f 20480 19188 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009ae
+f 20480 20060 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009b1
+f 20480 19504 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009b5
+f 20480 19368 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009b7
+f 20480 20456 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009ba
+f 24576 21204 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009bc
+f 24576 21228 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009c1
+f 24576 21660 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009c2
+f 24576 21464 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009c3
+f 20480 16716 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009c4
+f 20480 17200 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009c8
+f 24576 21040 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009cd
+f 24576 20584 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009d2
+f 20480 17252 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009d3
+f 20480 19256 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009d4
+f 24576 22488 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009d5
+f 24576 21788 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009d6
+f 20480 17660 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009d9
+f 24576 20996 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009dc
+f 24576 21148 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009dd
+f 24576 21140 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009de
+f 24576 21140 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009df
+f 20480 19744 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009e0
+f 24576 21148 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009e1
+f 20480 18100 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009e2
+f 20480 17556 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009e3
+f 20480 19292 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009e4
+f 20480 18932 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009e5
+f 20480 19304 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009e6
+f 20480 18948 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009e7
+f 24576 20524 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009e8
+f 20480 19700 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009e9
+f 24576 20920 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009ea
+f 20480 18864 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009eb
+f 20480 18508 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009ec
+f 24576 24220 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009ed
+f 20480 20140 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009ee
+f 24576 21360 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009ef
+f 20480 20124 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009f0
+f 24576 21348 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009f1
+f 20480 17556 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009f2
+f 20480 18724 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009f3
+f 20480 18724 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009f4
+f 20480 18804 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009f5
+f 20480 18784 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009f6
+f 20480 18476 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009f7
+f 20480 19904 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009f8
+f 20480 18732 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009f9
+f 20480 19604 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009fa
+f 24576 20484 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009fb
+f 24576 20888 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009fc
+f 20480 18404 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009fd
+f 24576 21136 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009fe
+f 24576 21136 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_0009ff
+f 24576 20732 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a00
+f 20480 19576 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a01
+f 20480 17300 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a02
+f 24576 21628 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a03
+f 28672 24964 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a04
+f 20480 19132 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a05
+f 20480 18004 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a06
+f 24576 23124 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a07
+f 28672 28164 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a08
+f 20480 20188 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a09
+f 20480 19404 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a0a
+f 20480 18872 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a0b
+f 20480 18516 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a0c
+f 20480 19812 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a0d
+f 20480 20068 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a0e
+f 20480 20244 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a0f
+f 24576 21152 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a10
+f 24576 20988 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a11
+f 24576 20692 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a12
+f 24576 20844 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a13
+f 24576 20692 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a14
+f 20480 17360 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a15
+f 20480 19176 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a16
+f 24576 21772 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a17
+f 20480 19308 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a18
+f 20480 18732 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a19
+f 20480 19808 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a1a
+f 24576 21428 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a1b
+f 20480 19608 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a1c
+f 24576 21276 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a1d
+f 24576 22728 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a1e
+f 24576 22552 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a1f
+f 20480 20188 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a20
+f 24576 23012 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a21
+f 24576 23768 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a22
+f 20480 20476 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a23
+f 28672 25964 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a24
+f 20480 19508 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a25
+f 20480 20060 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a26
+f 28672 26632 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a27
+f 20480 18484 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a28
+f 24576 22252 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a29
+f 24576 22252 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a2a
+f 28672 26828 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a2b
+f 20480 19588 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a2c
+f 24576 23360 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a2d
+f 32768 30080 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a2e
+f 32768 30080 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a2f
+f 20480 19956 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a30
+f 28672 27676 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a31
+f 24576 21140 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a32
+f 24576 20944 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a33
+f 20480 16960 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a34
+f 20480 16532 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a35
+f 24576 21140 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a36
+f 20480 19836 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a37
+f 20480 18668 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a38
+f 20480 17708 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a39
+f 24576 21084 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a3a
+f 24576 20836 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a3b
+f 20480 19840 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a3c
+f 20480 17704 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a3d
+f 20480 18608 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a3e
+f 24576 23752 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a3f
+f 24576 20940 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a40
+f 20480 18644 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a41
+f 24576 21696 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a42
+f 24576 21064 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a43
+f 24576 20956 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a44
+f 24576 20792 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a45
+f 20480 20196 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a46
+f 28672 25596 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a47
+f 20480 19232 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a48
+f 24576 22596 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a49
+f 28672 25824 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a4a
+f 20480 16596 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a4b
+f 20480 18084 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\f_000a4c
+f 266240 262512 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\GrShaderCache\index
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile
+f 77824 77824 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Account Web Data
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Account Web Data-journal
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\AutofillStrikeDatabase
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\blob_storage
+f 8 6 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\BookmarkMergedSurfaceOrdering
+f 4096 1026 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Bookmarks
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Cache
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\chrome_cart_db
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Code Cache
+f 144 144 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Code Cache\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\commerce_subscription_db
+f 48 46 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Custom Dictionary.txt
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\discount_infos_db
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\discounts_db
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Extension Rules
+f 448 433 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Extension Rules\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Extension Scripts
+f 456 437 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Extension Scripts\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Extension State
+f 560 547 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Extension State\(contenuto)
+f 20480 20480 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Favicons
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Favicons-journal
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Feature Engagement Tracker
+f 16384 16384 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\heavy_ad_intervention_opt_out.db
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\heavy_ad_intervention_opt_out.db-journal
+f 163840 163840 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\History
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\History-journal
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Local Storage
+f 456 437 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Local Storage\(contenuto)
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\LOCK
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\LOG
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Network
+f 53248 53248 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Network Action Predictor
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Network Action Predictor-journal
+f 37040 37033 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Network\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\parcel_tracking_db
+f 4096 3394 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Preferences
+f 40 33 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\PreferredApps
+f 168 164 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\README
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Safe Browsing Network
+f 20480 20480 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Safe Browsing Network\(contenuto)
+f 12288 12256 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Secure Preferences
+f 20480 20480 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\ServerCertificate
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\ServerCertificate-journal
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Shared Dictionary
+f 45128 45128 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Shared Dictionary\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\shared_proto_db
+f 5480 5308 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\shared_proto_db\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Site Characteristics Database
+f 416 404 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Site Characteristics Database\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Sync Data
+f 496 479 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Sync Data\(contenuto)
+f 147456 147456 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Web Data
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Guest Profile\Web Data-journal
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\heplpbhjcbmiibdlchlanmdenffpiibo
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\heplpbhjcbmiibdlchlanmdenffpiibo\1.0.11
+f 8816 5555 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\heplpbhjcbmiibdlchlanmdenffpiibo\1.0.11\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\hyphen-data
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\hyphen-data\120.0.6050.0
+f 1839024 1769968 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\hyphen-data\120.0.6050.0\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\iblokdlgekdjophgeonmanpnjihcjkjj
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\iblokdlgekdjophgeonmanpnjihcjkjj\1.0.109
+f 70616 70488 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\iblokdlgekdjophgeonmanpnjihcjkjj\1.0.109\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\iodkpdagapdfkphljnddpjlldadblomo
+n C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\iodkpdagapdfkphljnddpjlldadblomo\1.0.11382
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\iodkpdagapdfkphljnddpjlldadblomo\1.0.22933
+f 5292624 5287646 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\iodkpdagapdfkphljnddpjlldadblomo\1.0.22933\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\jmfhneobcdckobmonkfjkbknnjjnegoh
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\jmfhneobcdckobmonkfjkbknnjjnegoh\1.0.0
+f 5032 1807 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\jmfhneobcdckobmonkfjkbknnjjnegoh\1.0.0\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\kihnoaefogbkmblfimmibknnmkllbhlf
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\kihnoaefogbkmblfimmibknnmkllbhlf\1.0.8511
+f 1696336 1691070 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\kihnoaefogbkmblfimmibknnmkllbhlf\1.0.8511\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\kiofdgfkdiedmmaepkhahkbodobjgdnb
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\kiofdgfkdiedmmaepkhahkbodobjgdnb\1.0.2520
+f 1311360 1284488 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\kiofdgfkdiedmmaepkhahkbodobjgdnb\1.0.2520\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\kiofdgfkdiedmmaepkhahkbodobjgdnb\1.0.2521
+f 979584 967412 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\kiofdgfkdiedmmaepkhahkbodobjgdnb\1.0.2521\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\kiofdgfkdiedmmaepkhahkbodobjgdnb\1.0.2522
+f 4760 1760 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\kiofdgfkdiedmmaepkhahkbodobjgdnb\1.0.2522\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\kiofdgfkdiedmmaepkhahkbodobjgdnb\1.0.2523
+f 791168 777168 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\kiofdgfkdiedmmaepkhahkbodobjgdnb\1.0.2523\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\kiofdgfkdiedmmaepkhahkbodobjgdnb\1.0.2524
+f 1057408 1040122 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\kiofdgfkdiedmmaepkhahkbodobjgdnb\1.0.2524\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\kiofdgfkdiedmmaepkhahkbodobjgdnb\1.0.2525
+f 1311360 1284513 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\kiofdgfkdiedmmaepkhahkbodobjgdnb\1.0.2525\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\kiofdgfkdiedmmaepkhahkbodobjgdnb\1.0.2526
+f 1323648 1296315 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\kiofdgfkdiedmmaepkhahkbodobjgdnb\1.0.2526\(contenuto)
+f 136 132 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Last Browser
+f 16 11 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Last Version
+f 65536 62799 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Local State
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Local Traces
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\lockfile
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\MEIPreload
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\MEIPreload\1.1.0.3
+f 16592 10187 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\MEIPreload\1.1.0.3\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\mfddibmblmbccpadfndgakiopmmhebop
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\mfddibmblmbccpadfndgakiopmmhebop\1.0.155
+f 1028656 1022829 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\mfddibmblmbccpadfndgakiopmmhebop\1.0.155\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\nlpaeekllejnmhoonlpcefpfnpbajbpe
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\nlpaeekllejnmhoonlpcefpfnpbajbpe\1.0.586
+f 8704 5064 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\nlpaeekllejnmhoonlpcefpfnpbajbpe\1.0.586\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\nlpaeekllejnmhoonlpcefpfnpbajbpe\1.0.587
+f 8704 5064 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\nlpaeekllejnmhoonlpcefpfnpbajbpe\1.0.587\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\OnDeviceHeadSuggestModel
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\OnDeviceHeadSuggestModel\20251015.822788937.14
+f 7925872 7922010 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\OnDeviceHeadSuggestModel\20251015.822788937.14\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\P3AConfig
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\P3AConfig\1.0.3
+f 872 863 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\P3AConfig\1.0.3\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\PKIMetadata
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\PKIMetadata\1803
+f 446544 434134 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\PKIMetadata\1803\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Safe Browsing
+f 112 106 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Safe Browsing\ChromeExtMalware.store
+f 1921024 1917568 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Safe Browsing\ChromeExtMalware.store.32_13436383671165932
+f 1921024 1917568 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Safe Browsing\ChromeExtMalware.store.32_13436392675629206
+f 112 106 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Safe Browsing\UrlBilling.store
+f 53248 49724 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Safe Browsing\UrlBilling.store.4_13436394462896659
+f 53248 49724 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Safe Browsing\UrlBilling.store.4_13436396243150970
+f 112 105 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Safe Browsing\UrlCsdDownloadAllowlist.store
+f 40960 37344 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Safe Browsing\UrlCsdDownloadAllowlist.store.32_13433254305323078
+f 40960 37344 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Safe Browsing\UrlCsdDownloadAllowlist.store.32_13436392675623006
+f 112 106 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Safe Browsing\UrlMalBin.store
+f 45056 41000 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Safe Browsing\UrlMalBin.store.4_13436394462899414
+f 45056 40996 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Safe Browsing\UrlMalBin.store.4_13436396243156010
+f 112 106 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Safe Browsing\UrlMalware.store
+f 299008 298848 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Safe Browsing\UrlMalware.store.4_13436394462905312
+f 299008 298956 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Safe Browsing\UrlMalware.store.4_13436396243166892
+f 112 107 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Safe Browsing\UrlSoceng.store
+f 16732160 16731352 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Safe Browsing\UrlSoceng.store.4_13436394462909494
+f 16732160 16732052 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Safe Browsing\UrlSoceng.store.4_13436396243177439
+f 112 106 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Safe Browsing\UrlUws.store
+f 110592 107532 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Safe Browsing\UrlUws.store.4_13436394462901817
+f 110592 107504 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Safe Browsing\UrlUws.store.4_13436396243160049
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\SafetyTips
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\SafetyTips\3092
+f 184392 180303 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\SafetyTips\3092\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\screen_ai
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\screen_ai\153.3
+f 122026280 121857627 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\screen_ai\153.3\(contenuto)
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\segmentation_platform
+f 49152 49152 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\segmentation_platform\ukm_db
+f 0 0 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\segmentation_platform\ukm_db-wal
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\ShaderCache
+f 45056 45056 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\ShaderCache\data_0
+f 270336 270336 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\ShaderCache\data_1
+f 1056768 1056768 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\ShaderCache\data_2
+f 8192 8192 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\ShaderCache\data_3
+f 266240 262512 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\ShaderCache\index
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\SSLErrorAssistant
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\SSLErrorAssistant\7
+f 8344 4723 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\SSLErrorAssistant\7\(contenuto)
+f 88 86 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Variations
+f 8192 7176 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\VariationsSafeSeedV2
+f 176 170 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\VariationsSeedV2
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\Webstore Downloads
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\ZxcvbnData
+d C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\ZxcvbnData\3
+f 1699984 1681855 C:\Users\demo\AppData\Local\BraveSoftware\Brave-Browser\User Data\ZxcvbnData\3\(contenuto)
+d C:\Users\demo\AppData\Local\Google
+d C:\Users\demo\AppData\Local\Google\Chrome
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\ActorSafetyLists
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\ActorSafetyLists\8.6294.2057
+f 741464 737552 C:\Users\demo\AppData\Local\Google\Chrome\User Data\ActorSafetyLists\8.6294.2057\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\AmountExtractionHeuristicRegexes
+n C:\Users\demo\AppData\Local\Google\Chrome\User Data\AmountExtractionHeuristicRegexes\3
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\AmountExtractionHeuristicRegexes\4
+f 8288 2497 C:\Users\demo\AppData\Local\Google\Chrome\User Data\AmountExtractionHeuristicRegexes\4\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\AutofillStates
+n C:\Users\demo\AppData\Local\Google\Chrome\User Data\AutofillStates\2024.7.12.235938
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\BrowserMetrics
+f 4194304 4194304 C:\Users\demo\AppData\Local\Google\Chrome\User Data\BrowserMetrics\BrowserMetrics-6AAAF1BC-5860.pma
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\CaptchaProviders
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\CaptchaProviders\8.5419.4434
+f 4608 2283 C:\Users\demo\AppData\Local\Google\Chrome\User Data\CaptchaProviders\8.5419.4434\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\CertificateRevocation
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\CertificateRevocation\10469
+f 1056864 1048009 C:\Users\demo\AppData\Local\Google\Chrome\User Data\CertificateRevocation\10469\(contenuto)
+n C:\Users\demo\AppData\Local\Google\Chrome\User Data\CertificateRevocation\9657
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\component_crx_cache
+f 7933952 7932363 C:\Users\demo\AppData\Local\Google\Chrome\User Data\component_crx_cache\23759e3f6d0119a00038b963cec9fb7abafd7b65a35a7e83c7697511db59e6e7
+f 12288 11361 C:\Users\demo\AppData\Local\Google\Chrome\User Data\component_crx_cache\261bea60d22ebca3a95ce335c03ec751a0b58b2b7bdbd6ea51dfa54381b07775
+f 4096 3145 C:\Users\demo\AppData\Local\Google\Chrome\User Data\component_crx_cache\2638e3c2d1fa1d417bfdc31dd21bc938f106d3b436a6488b41b014ca9e2b7541
+f 184320 182498 C:\Users\demo\AppData\Local\Google\Chrome\User Data\component_crx_cache\28220021657e0efee09be4578f0f12ef0860488d7b2b9abb826e576448189bc5
+f 23027712 23024981 C:\Users\demo\AppData\Local\Google\Chrome\User Data\component_crx_cache\2e66b5257bd1ca50f2b6502406115dcca4b5cccad74e978fcf4247d96bfd5dda
+f 499712 497710 C:\Users\demo\AppData\Local\Google\Chrome\User Data\component_crx_cache\368d56941fb3d5ef234354008c6fa9477fd4745dd207b66d8f42e241edccbf3c
+f 8192 5407 C:\Users\demo\AppData\Local\Google\Chrome\User Data\component_crx_cache\3eb16d6c28b502ac4cfee8f4a148df05f4d93229fa36a71db8b08d06329ff18a
+f 880640 878447 C:\Users\demo\AppData\Local\Google\Chrome\User Data\component_crx_cache\545666a4efd056351597bb386aea1368105ededc976ed5650d8682daab9f37ff
+f 1052672 1049871 C:\Users\demo\AppData\Local\Google\Chrome\User Data\component_crx_cache\64035305e5688b4fad451d8b16d878ebccad8d87b62df2d75c766270e9064ad1
+f 16384 12491 C:\Users\demo\AppData\Local\Google\Chrome\User Data\component_crx_cache\7b05c14dba04ed522210b733f004cb0e74d7679a653b19bd029f9bc0e6b19903
+f 393216 392565 C:\Users\demo\AppData\Local\Google\Chrome\User Data\component_crx_cache\997725e77291803f76d82c727bb903b40dfb705828eb33f492a8d8e4c563d30b
+f 217088 215943 C:\Users\demo\AppData\Local\Google\Chrome\User Data\component_crx_cache\9a7387a838316acc98870f65de004424854001ff304467ccafb7fc054cd442a5
+f 192512 188589 C:\Users\demo\AppData\Local\Google\Chrome\User Data\component_crx_cache\9bec6c2c0185d3305ac8495047a1aa01e725d58f8f18d219742a2988f07cd93a
+f 8192 4817 C:\Users\demo\AppData\Local\Google\Chrome\User Data\component_crx_cache\abd93867c038d4d17c101ace2226d7e21303d984d7097271392bae6be478495b
+f 8192 4596 C:\Users\demo\AppData\Local\Google\Chrome\User Data\component_crx_cache\ae216724654f3e52d3c502328caf83f773e66cc5818c38850165864005a35169
+f 1118208 1114805 C:\Users\demo\AppData\Local\Google\Chrome\User Data\component_crx_cache\c52c62a7c50daf7d3f73ec16977cd4b0ea401710807d5dbe3850941dd1b73a70
+f 741376 739846 C:\Users\demo\AppData\Local\Google\Chrome\User Data\component_crx_cache\f8929f38e4311c5717f1a0d4a0bc4fb0277329557a1a5aecb93317808669ba4f
+f 16384 14634 C:\Users\demo\AppData\Local\Google\Chrome\User Data\component_crx_cache\fd8fd38c229ab33755ff429ccc9919eba21b566551cbfb17d8e11e35e941ee0e
+f 4096 2036 C:\Users\demo\AppData\Local\Google\Chrome\User Data\component_crx_cache\metadata.json
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\CookieReadinessList
+n C:\Users\demo\AppData\Local\Google\Chrome\User Data\CookieReadinessList\2024.11.26.0
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Crashpad
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Crashpad\attachments
+f 0 0 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Crashpad\metadata
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Crashpad\reports
+f 40 40 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Crashpad\settings.dat
+f 1048576 1048576 C:\Users\demo\AppData\Local\Google\Chrome\User Data\CrashpadMetrics-active.pma
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Crowd Deny
+n C:\Users\demo\AppData\Local\Google\Chrome\User Data\Crowd Deny\2025.3.26.1143
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Crowd Deny\2026.4.16.60
+f 217200 213650 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Crowd Deny\2026.4.16.60\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default
+f 77824 77824 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Account Web Data
+f 0 0 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Account Web Data-journal
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Accounts
+f 53248 53248 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Affiliation Database
+f 0 0 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Affiliation Database-journal
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\AutofillAiModelCache
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\AutofillStrikeDatabase
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\blob_storage
+f 8 6 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\BookmarkMergedSurfaceOrdering
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\BudgetDatabase
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Cache
+f 184979488 181181712 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Cache\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\chrome_cart_db
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\ClientCertificates
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Code Cache
+f 68409792 65210846 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Code Cache\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Collaboration
+f 20480 20480 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Collaboration\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\commerce_subscription_db
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\DataSharing
+f 20480 20480 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\DataSharing\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\DawnGraphiteCache
+f 561152 557424 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\DawnGraphiteCache\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\DawnWebGPUCache
+f 561152 557424 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\DawnWebGPUCache\(contenuto)
+f 32768 32768 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\declarative_performance_observer.db
+f 0 0 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\declarative_performance_observer.db-journal
+f 36864 36864 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\DIPS
+f 32768 32768 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\DIPS-shm
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\discount_infos_db
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\discounts_db
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Download Service
+f 360 360 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\engine_allowlist.bf
+f 20480 20480 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Extension Cookies
+f 0 0 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Extension Cookies-journal
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Extension Rules
+f 1160 1153 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Extension Rules\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Extension Scripts
+f 1176 1161 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Extension Scripts\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Extension State
+f 942784 941985 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Extension State\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Extensions
+f 67969952 64723810 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Extensions\(contenuto)
+f 126976 126976 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Favicons
+f 0 0 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Favicons-journal
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Feature Engagement Tracker
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\GCM Store
+f 9616 7489 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\GCM Store\(contenuto)
+f 200704 196979 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Google Profile.ico
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\GPUCache
+f 1646592 1642864 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\GPUCache\(contenuto)
+f 16384 16384 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\heavy_ad_intervention_opt_out.db
+f 0 0 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\heavy_ad_intervention_opt_out.db-journal
+f 458752 458752 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\History
+f 0 0 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\History-journal
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\IndexedDB
+f 148264 143345 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\IndexedDB\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\JumpListIconsMostVisited
+f 57344 56268 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\JumpListIconsMostVisited\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\JumpListIconsRecentClosed
+f 86016 84402 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\JumpListIconsRecentClosed\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Local Extension Settings
+f 2029736 2028059 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Local Extension Settings\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Local Storage
+f 148144 135437 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Local Storage\(contenuto)
+f 0 0 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\LOCK
+f 0 0 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\LOG
+f 0 0 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\LOG.old
+f 40960 40960 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Login Data
+f 40960 40960 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Login Data For Account
+f 0 0 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Login Data For Account-journal
+f 0 0 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Login Data-journal
+f 24576 24576 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\MediaDeviceSalts
+f 0 0 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\MediaDeviceSalts-journal
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Network
+f 77824 77824 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Network Action Predictor
+f 0 0 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Network Action Predictor-journal
+f 200712 200038 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Network\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\optimization_guide_hint_cache_store
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\parcel_tracking_db
+f 72 66 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\passkey_enclave_state
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\PersistentOriginTrials
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Platform Notifications
+f 736 725 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Platform Notifications\(contenuto)
+f 49152 46362 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Preferences
+f 40 33 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\PreferredApps
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Safe Browsing Network
+f 20480 20480 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Safe Browsing Network\(contenuto)
+f 40960 36917 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Secure Preferences
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Segmentation Platform
+f 20480 20480 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\ServerCertificate
+f 0 0 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\ServerCertificate-journal
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Service Worker
+f 1611616 1565900 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Service Worker\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Session Storage
+f 4440 1364 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Session Storage\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Sessions
+f 307200 300629 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Sessions\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Shared Dictionary
+f 237664 234099 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Shared Dictionary\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\shared_proto_db
+f 361984 353349 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\shared_proto_db\(contenuto)
+f 20480 20480 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Shortcuts
+f 0 0 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Shortcuts-journal
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Site Characteristics Database
+f 4864 3045 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Site Characteristics Database\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Storage
+f 1205792 1198307 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Storage\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Sync App Settings
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Sync Data
+f 29392 25655 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Sync Data\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Sync Extension Settings
+f 20480 20480 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Top Sites
+f 0 0 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Top Sites-journal
+f 88 84 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\trusted_vault.pb
+f 131072 131072 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Visited Links
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Web Applications
+f 299008 195516 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Web Applications\(contenuto)
+f 196608 196608 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Web Data
+f 0 0 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\Web Data-journal
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\WebStorage
+f 40960 40960 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Default\WebStorage\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\extensions_crx_cache
+f 6795264 6795055 C:\Users\demo\AppData\Local\Google\Chrome\User Data\extensions_crx_cache\34a61ff7c3b6f5be576aee3379e27579c9c9361a3ae81478425f4946d8d7edc3
+f 163840 161196 C:\Users\demo\AppData\Local\Google\Chrome\User Data\extensions_crx_cache\e03138d37406c2bedec93e5a7c44a457a6b19cf4fee5dfe5a46450fcea1bf85e
+f 240 236 C:\Users\demo\AppData\Local\Google\Chrome\User Data\extensions_crx_cache\metadata.json
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\FileTypePolicies
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\FileTypePolicies\145.0.7584.0
+f 12376 9562 C:\Users\demo\AppData\Local\Google\Chrome\User Data\FileTypePolicies\145.0.7584.0\(contenuto)
+n C:\Users\demo\AppData\Local\Google\Chrome\User Data\FileTypePolicies\67
+f 0 0 C:\Users\demo\AppData\Local\Google\Chrome\User Data\First Run
+f 69632 69632 C:\Users\demo\AppData\Local\Google\Chrome\User Data\first_party_sets.db
+f 0 0 C:\Users\demo\AppData\Local\Google\Chrome\User Data\first_party_sets.db-journal
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\FirstPartySetsPreloaded
+n C:\Users\demo\AppData\Local\Google\Chrome\User Data\FirstPartySetsPreloaded\2025.2.25.0
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\FirstPartySetsPreloaded\2025.7.24.0
+f 20568 13874 C:\Users\demo\AppData\Local\Google\Chrome\User Data\FirstPartySetsPreloaded\2025.7.24.0\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\GPUPersistentCache
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\GPUPersistentCache\DawnGraphiteCache
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\GraphiteDawnCache
+f 8192 8192 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GraphiteDawnCache\data_0
+f 270336 270336 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GraphiteDawnCache\data_1
+f 8192 8192 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GraphiteDawnCache\data_2
+f 8192 8192 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GraphiteDawnCache\data_3
+f 266240 262512 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GraphiteDawnCache\index
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache
+f 45056 45056 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\data_0
+f 532480 532480 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\data_1
+f 8192 8192 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\data_2
+f 12591104 12591104 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\data_3
+f 20480 16452 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00001d
+f 20480 18068 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00001e
+f 20480 18756 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00001f
+f 20480 18884 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000020
+f 20480 19224 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000021
+f 20480 18188 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000022
+f 20480 16572 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000023
+f 20480 16540 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000024
+f 20480 17660 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000025
+f 20480 20096 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000026
+f 20480 20100 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000027
+f 20480 18096 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000028
+f 20480 19572 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000029
+f 20480 16944 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00002a
+f 32768 29848 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00002b
+f 20480 16764 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00002c
+f 24576 20540 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00002d
+f 20480 16472 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00002e
+f 20480 18008 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00002f
+f 20480 17488 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000030
+f 20480 18864 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000031
+f 20480 17804 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000032
+f 20480 17332 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000033
+f 20480 16572 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000034
+f 20480 20316 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000035
+f 24576 20996 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000036
+f 20480 18088 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000037
+f 20480 16700 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000038
+f 20480 19984 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000039
+f 20480 16536 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00003a
+f 20480 17592 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00003b
+f 24576 21720 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00003c
+f 24576 22492 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00003d
+f 20480 16460 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00003e
+f 20480 16944 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00003f
+f 32768 29848 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000040
+f 20480 19752 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000041
+f 20480 18648 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000042
+f 20480 17676 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000043
+f 20480 18472 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000044
+f 24576 21108 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000045
+f 20480 17896 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000046
+f 20480 17524 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000047
+f 20480 16536 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000048
+f 24576 21108 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000049
+f 24576 21304 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00004a
+f 20480 17720 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00004b
+f 20480 19460 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00004c
+f 20480 16596 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00004d
+f 20480 18640 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00004e
+f 20480 17304 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00004f
+f 20480 17632 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000050
+f 20480 17324 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000051
+f 20480 17524 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000052
+f 20480 18516 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000053
+f 20480 19372 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000054
+f 20480 16568 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000055
+f 20480 20384 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000056
+f 20480 17992 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000057
+f 20480 19176 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000058
+f 20480 16852 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000059
+f 32768 30008 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00005a
+f 20480 18484 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00005b
+f 20480 17792 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00005c
+f 28672 25552 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00005d
+f 20480 19188 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00005e
+f 20480 19232 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00005f
+f 20480 19176 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000060
+f 20480 20456 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000061
+f 20480 18084 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000062
+f 20480 17484 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000063
+f 32768 28844 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000064
+f 20480 19524 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000065
+f 24576 22552 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000066
+f 20480 19424 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000067
+f 24576 22596 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000068
+f 24576 20908 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_000069
+f 28672 25596 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00006a
+f 28672 25824 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\f_00006b
+f 266240 262512 C:\Users\demo\AppData\Local\Google\Chrome\User Data\GrShaderCache\index
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\hyphen-data
+n C:\Users\demo\AppData\Local\Google\Chrome\User Data\hyphen-data\120.0.6050.0
+f 112 106 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Last Browser
+f 16 13 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Last Version
+f 16384 14879 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Local State
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Local Traces
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\MediaFoundationWidevineCdm
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\MediaFoundationWidevineCdm\x64
+f 2883808 2879717 C:\Users\demo\AppData\Local\Google\Chrome\User Data\MediaFoundationWidevineCdm\x64\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\MEIPreload
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\MEIPreload\1.1.0.3
+f 16592 10187 C:\Users\demo\AppData\Local\Google\Chrome\User Data\MEIPreload\1.1.0.3\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\OnDeviceHeadSuggestModel
+n C:\Users\demo\AppData\Local\Google\Chrome\User Data\OnDeviceHeadSuggestModel\20250315.740124527.14
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\OnDeviceHeadSuggestModel\20251024.824731831.14
+f 7934064 7930045 C:\Users\demo\AppData\Local\Google\Chrome\User Data\OnDeviceHeadSuggestModel\20251024.824731831.14\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\OpenCookieDatabase
+n C:\Users\demo\AppData\Local\Google\Chrome\User Data\OpenCookieDatabase\2024.10.17.0
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\optimization_guide_model_store
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\optimization_guide_model_store\13
+f 1220624 1219258 C:\Users\demo\AppData\Local\Google\Chrome\User Data\optimization_guide_model_store\13\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\optimization_guide_model_store\15
+f 3211544 3205586 C:\Users\demo\AppData\Local\Google\Chrome\User Data\optimization_guide_model_store\15\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\optimization_guide_model_store\2
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\optimization_guide_model_store\20
+f 32936 31684 C:\Users\demo\AppData\Local\Google\Chrome\User Data\optimization_guide_model_store\20\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\optimization_guide_model_store\24
+f 4616368 4611336 C:\Users\demo\AppData\Local\Google\Chrome\User Data\optimization_guide_model_store\24\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\optimization_guide_model_store\25
+f 3637400 3633492 C:\Users\demo\AppData\Local\Google\Chrome\User Data\optimization_guide_model_store\25\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\optimization_guide_model_store\26
+f 8608 7528 C:\Users\demo\AppData\Local\Google\Chrome\User Data\optimization_guide_model_store\26\(contenuto)
+f 393232 392060 C:\Users\demo\AppData\Local\Google\Chrome\User Data\optimization_guide_model_store\2\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\optimization_guide_model_store\36
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\optimization_guide_model_store\43
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\optimization_guide_model_store\45
+f 143360 138840 C:\Users\demo\AppData\Local\Google\Chrome\User Data\optimization_guide_model_store\45\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\optimization_guide_model_store\9
+f 32936 31684 C:\Users\demo\AppData\Local\Google\Chrome\User Data\optimization_guide_model_store\9\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\OptimizationGuideModelsManifest
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\OptimizationGuideModelsManifest\1.20260810.11
+f 160344 128896 C:\Users\demo\AppData\Local\Google\Chrome\User Data\OptimizationGuideModelsManifest\1.20260810.11\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\OptimizationHints
+n C:\Users\demo\AppData\Local\Google\Chrome\User Data\OptimizationHints\494
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\OptimizationHints\657
+f 499824 495039 C:\Users\demo\AppData\Local\Google\Chrome\User Data\OptimizationHints\657\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\OriginTrials
+n C:\Users\demo\AppData\Local\Google\Chrome\User Data\OriginTrials\1.0.0.17
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\PKIMetadata
+n C:\Users\demo\AppData\Local\Google\Chrome\User Data\PKIMetadata\1264
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\PKIMetadata\1639
+f 397392 389541 C:\Users\demo\AppData\Local\Google\Chrome\User Data\PKIMetadata\1639\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\PlatformExperienceHelper
+f 0 0 C:\Users\demo\AppData\Local\Google\Chrome\User Data\PlatformExperienceHelper\LoadFeatures
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\PrivacySandboxAttestationsPreloaded
+n C:\Users\demo\AppData\Local\Google\Chrome\User Data\PrivacySandboxAttestationsPreloaded\2025.3.12.0
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\RecoveryImproved
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing
+f 112 106 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\ChromeExtMalware.store
+f 1904640 1901248 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\ChromeExtMalware.store.32_13420889352071161
+f 1904640 1902720 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\ChromeExtMalware.store.32_13423147834138182
+f 112 106 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlBilling.store
+f 53248 50072 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlBilling.store.4_13420889352093070
+f 53248 50036 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlBilling.store.4_13423147834151690
+f 136 133 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlCsdAllowlist.store
+f 4096 832 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlCsdAllowlist.store.32_13420889352096437
+f 4096 832 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlCsdAllowlist.store.32_13423147834157790
+f 4096 4020 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlCsdAllowlist.store.4_13420889352096234
+f 4096 4020 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlCsdAllowlist.store.4_13423147834157456
+f 112 105 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlCsdDownloadAllowlist.store
+f 40960 37312 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlCsdDownloadAllowlist.store.32_13387745564629611
+f 40960 37344 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlCsdDownloadAllowlist.store.32_13417550832593602
+f 112 106 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlHighConfidenceAllowlist.store
+f 319488 316352 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlHighConfidenceAllowlist.store.32_13420889352045280
+f 311296 307520 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlHighConfidenceAllowlist.store.32_13423147834106798
+f 112 106 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlMalBin.store
+f 40960 39992 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlMalBin.store.4_13420889352067999
+f 40960 38416 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlMalBin.store.4_13423147834134526
+f 112 106 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlMalware.store
+f 45056 44372 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlMalware.store.4_13420889352052268
+f 40960 39688 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlMalware.store.4_13423147834113450
+f 112 107 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlSoceng.store
+f 20267008 20264348 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlSoceng.store.4_13420889351458093
+f 20279296 20277732 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlSoceng.store.4_13423147833592720
+f 112 106 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlSubresourceFilter.store
+f 241664 241144 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlSubresourceFilter.store.4_13420889352099774
+f 245760 243988 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlSubresourceFilter.store.4_13423147834162450
+f 112 106 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlSuspiciousSite.store
+f 24576 22768 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlSuspiciousSite.store.4_13420889352064468
+f 24576 24024 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlSuspiciousSite.store.4_13423147834130948
+f 112 106 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlUws.store
+f 131072 129008 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlUws.store.4_13420889352058893
+f 131072 127296 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Safe Browsing\UrlUws.store.4_13423147834123946
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\SafetyTips
+n C:\Users\demo\AppData\Local\Google\Chrome\User Data\SafetyTips\3066
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\SafetyTips\3091
+f 192584 186292 C:\Users\demo\AppData\Local\Google\Chrome\User Data\SafetyTips\3091\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\segmentation_platform
+f 94208 94208 C:\Users\demo\AppData\Local\Google\Chrome\User Data\segmentation_platform\ukm_db
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\ShaderCache
+f 45056 45056 C:\Users\demo\AppData\Local\Google\Chrome\User Data\ShaderCache\data_0
+f 270336 270336 C:\Users\demo\AppData\Local\Google\Chrome\User Data\ShaderCache\data_1
+f 1056768 1056768 C:\Users\demo\AppData\Local\Google\Chrome\User Data\ShaderCache\data_2
+f 8192 8192 C:\Users\demo\AppData\Local\Google\Chrome\User Data\ShaderCache\data_3
+f 266240 262512 C:\Users\demo\AppData\Local\Google\Chrome\User Data\ShaderCache\index
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\SSLErrorAssistant
+n C:\Users\demo\AppData\Local\Google\Chrome\User Data\SSLErrorAssistant\7
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Subresource Filter
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Subresource Filter\Indexed Rules
+f 249856 246304 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Subresource Filter\Indexed Rules\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Subresource Filter\Unindexed Rules
+f 188536 180612 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Subresource Filter\Unindexed Rules\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\ThirdPartyModuleList64
+n C:\Users\demo\AppData\Local\Google\Chrome\User Data\ThirdPartyModuleList64\2018.8.8.0
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\TpcdMetadata
+n C:\Users\demo\AppData\Local\Google\Chrome\User Data\TpcdMetadata\2025.3.28.1
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\TrustTokenKeyCommitments
+n C:\Users\demo\AppData\Local\Google\Chrome\User Data\TrustTokenKeyCommitments\2025.1.17.1
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\TrustTokenKeyCommitments\2026.3.23.1
+f 20560 12257 C:\Users\demo\AppData\Local\Google\Chrome\User Data\TrustTokenKeyCommitments\2026.3.23.1\(contenuto)
+f 88 85 C:\Users\demo\AppData\Local\Google\Chrome\User Data\Variations
+f 49152 46854 C:\Users\demo\AppData\Local\Google\Chrome\User Data\VariationsSafeSeedV2
+f 49152 46756 C:\Users\demo\AppData\Local\Google\Chrome\User Data\VariationsSeedV2
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\WasmTtsEngine
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\WasmTtsEngine\20260415.1
+f 23036112 23021866 C:\Users\demo\AppData\Local\Google\Chrome\User Data\WasmTtsEngine\20260415.1\(contenuto)
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\Webstore Downloads
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\WidevineCdm
+d C:\Users\demo\AppData\Local\Google\Chrome\User Data\ZxcvbnData
+n C:\Users\demo\AppData\Local\Google\Chrome\User Data\ZxcvbnData\3
+d C:\Users\demo\AppData\Local\Microsoft
+d C:\Users\demo\AppData\Local\Microsoft\Edge
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Ad Blocking
+f 110592 107893 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Ad Blocking\blocklist
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Autofill
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\AutoLaunchProtocolsComponent
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\AutoLaunchProtocolsComponent\1.0.0.8
+f 4304 3364 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\AutoLaunchProtocolsComponent\1.0.0.8\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\BrowserMetrics
+f 4194304 4194304 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\BrowserMetrics-spare.pma
+f 4194304 4194304 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\BrowserMetrics\BrowserMetrics-676491EE-1F10.pma
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\CertificateRevocation
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\CertificateRevocation\6498.2024.12.2
+f 24768 22692 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\CertificateRevocation\6498.2024.12.2\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\component_crx_cache
+f 229376 226746 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\component_crx_cache\alpjnmnfbgfkmmpcfpejmmoebdndedno_1.98D784E8E77112DF1B4E935BA63D9D887E1D1663AFE53D5FB947F7345801092A
+f 4456448 4452671 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\component_crx_cache\cllppcmmlnkggcmljjfigkcigaajjmid_1.8E581B3F71995389577F0EBCC0381227AFB1D6C67CD4DF2B2BE89434954527C6
+f 8192 4814 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\component_crx_cache\ebkkldgijmkljgglkajkjgedfnigiakk_1.1B2BA8FC90BA68CD057B9CAAFFC218EAD59A23E37F79192ED37D0C3A7A8BAB03
+f 4096 1874 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\component_crx_cache\eeobbhfgfagbclfofmgbdfoicabjdbkn_1.8BFD50D350D47445B57BB1D61BBDE41CEDA7AC43DC81FCE95BF1AC646D97D2A0
+f 8192 7740 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\component_crx_cache\fgbafbciocncjfbbonhocjaohoknlaco_1.2EE0FD95211580C591EEB5DF8280DB42AA00166AB03A919A3748BD857A42EA75
+f 978944 975576 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\component_crx_cache\fppmbhmldokgmleojlplaaodlkibgikh_1.A81D1959892AE4180554347DF1B97834ABBA2E1A5E6B9AEBA000ECEA26EABECC
+f 245760 243937 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\component_crx_cache\gllimckfbolmioaaihpppacjccghejen_1.4466E240C25BBDD6278A46E9966A4C3C4D5DD64DAB897879FB479F158FAFAEC6
+f 4096 2240 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\component_crx_cache\hjaimielcgmceiphgjjfddlgjklfpdei_1.A00289AF85D31D698A0F6753B6CE67DBAB4BDFF639BDE5FC588A5D5D8A3885D5
+f 180224 176970 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\component_crx_cache\jcmcegpcehdchljeldgmmfbgcpnmgedo_1.425BD8715E7BB82F00BAA6CDF8A1E09112D3C83177ECFBC612ECA474516BC534
+f 4096 3047 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\component_crx_cache\kmkacjgmmfchkbeglfbjjeidfckbnkca_1.4A84F2BDD63DABE6ABDE22B9047A6942EEB7BDF93D8435CC4B188DBE72D9E30D
+f 1097728 1093663 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\component_crx_cache\kpfehajjjbbcifeehjgfgnabifknmdad_1.00AF3F07B5ABB71F6D30337E1EEF62FA280F06EF19485C0CF6B72171F92CCC0A
+f 20480 16886 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\component_crx_cache\lfmeghnikdkbonehgjihjebgioakijgn_1.8D0A42A37A981A46B00865EF11F43AB0AC84B248E015FB228D88A7D7B511AEBA
+f 86016 83199 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\component_crx_cache\lkkdlcloifjinapabfonaibjijloebfb_1.CB0C8B4D212BCD4A741F0625FAC3968E0559EDFD37DD0760C5270662868F373A
+f 3129344 3126998 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\component_crx_cache\llmidpclgepbgbgoecnhcmgfhmfplfao_1.6975806A535B13127A1ED15B1B83F0EAE36D2BBEBA7135ED70F11173300955D0
+f 69632 67802 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\component_crx_cache\mpicjakjneaggahlnmbojhjpnileolnb_1.585DE38D235AE02DB9B82F20B88251C2B1DD4CD3B0037A7709640F0C3D20BA9C
+f 1675264 1674005 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\component_crx_cache\ndikpojcjlepofdkaaldkinkjbeeebkl_1.69D0D51AD8D1AABAAE811B5BC6F72729BEEBE8AB40C8E6080C8255453F913377
+f 24576 22812 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\component_crx_cache\oankkpibpaokgecfckkdkgaoafllipag_1.1AB07E887ACCA305058EEAB9053C96DC531C2C5C067AB4F30AFA2B31F1EDD966
+f 8192 8058 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\component_crx_cache\omnckhpgfmaoelhddliebabpgblmmnjp_1.DD91C7C496E4D9E8DF5BEAA3D33D45F9EF196B4F888D0FAC50EAF08CAD6B29D7
+f 49152 46123 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\component_crx_cache\pbdgbpmpeenomngainidcjmopnklimmf_1.B27BEC7581505715364F132DE1998818C82462DBF55A1F55F9B15E29E988D791
+f 8192 6252 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\component_crx_cache\pdfjdcjjjegpclfiilihfkmdfndkneei_1.A3A37C49F6DEFB87760822D31C3F90D9D77D2E9C84D372A45E4E88878CC046DA
+f 266240 266068 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\component_crx_cache\pghocgajpebopihickglahgebcmkcekh_1.8DAA3547317E62E7E02DA356F9540C329689C49350ACF8A30088320C805E74ED
+f 77824 77817 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\component_crx_cache\plbmmhnabegcabfbcejohgjpkamkddhn_1.B01B7D02D9C4E009321F93E5093C953406DB95F4BF3954CBE4101AB978D15C89
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Crashpad
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Crashpad\attachments
+f 216 212 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Crashpad\metadata
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Crashpad\reports
+f 12861440 12855291 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Crashpad\reports\(contenuto)
+f 280 280 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Crashpad\settings.dat
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Crashpad\temp
+f 8 1 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Crashpad\temp\(contenuto)
+f 24 20 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Crashpad\throttle_store.dat
+f 4096 1382 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Crashpad\watson_metadata
+f 16384 16384 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\CrashpadMetrics-active.pma
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default
+f 20480 19253 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\arbitration_service_config.json
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Asset Store
+f 533328 526274 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Asset Store\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\AutofillStrikeDatabase
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\blob_storage
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\BudgetDatabase
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Cache
+f 29745152 29321734 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Cache\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\ClientCertificates
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Code Cache
+f 4739000 4518870 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Code Cache\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Collections
+f 73728 73728 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Collections\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\commerce_subscription_db
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\data_reduction_proxy_leveldb
+f 272 266 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\data_reduction_proxy_leveldb\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\DawnGraphiteCache
+f 561152 557424 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\DawnGraphiteCache\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\DawnWebGPUCache
+f 561152 557424 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\DawnWebGPUCache\(contenuto)
+f 16384 12445 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\default_cloud_config.json
+f 36864 36864 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\DIPS
+f 0 0 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\DIPS-journal
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\discounts_db
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Download Service
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\DualEngine
+f 16 4 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\DualEngine\(contenuto)
+f 73728 71361 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Edge Profile.ico
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\EdgeCoupons
+f 872 846 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\EdgeCoupons\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\EdgeEDrop
+f 32768 32768 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\EdgeEDrop\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\EdgeHubAppUsage
+f 32768 32768 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\EdgeHubAppUsage\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\EdgePushStorageWithConnectTokenAndKey
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\EdgePushStorageWithWinRt
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\EdgeWallet
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\EntityExtraction
+f 717528 712019 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\EntityExtraction\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Extension Rules
+f 760 750 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Extension Rules\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Extension Scripts
+f 776 758 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Extension Scripts\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Extension State
+f 840 815 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Extension State\(contenuto)
+f 4096 4096 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\ExtensionActivityComp
+f 0 0 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\ExtensionActivityComp-journal
+f 32768 32768 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\ExtensionActivityEdge
+f 0 0 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\ExtensionActivityEdge-journal
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Extensions
+f 631616 404324 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Extensions\(contenuto)
+f 32768 32768 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Favicons
+f 0 0 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Favicons-journal
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Feature Engagement Tracker
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\GPUCache
+f 1646592 1642864 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\GPUCache\(contenuto)
+f 16384 16384 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\heavy_ad_intervention_opt_out.db
+f 0 0 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\heavy_ad_intervention_opt_out.db-journal
+f 196608 196608 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\History
+f 12288 8720 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\History-journal
+f 28672 28672 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\HubApps Icons
+f 0 0 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\HubApps Icons-journal
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\IndexedDB
+f 95032 93182 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\IndexedDB\(contenuto)
+f 229376 229376 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\load_statistics.db
+f 32768 32768 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\load_statistics.db-shm
+f 1118208 1116552 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\load_statistics.db-wal
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Local Extension Settings
+f 432 420 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Local Extension Settings\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Local Storage
+f 13024 12889 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Local Storage\(contenuto)
+f 0 0 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\LOCK
+f 0 0 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\LOG
+f 0 0 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\LOG.old
+f 53248 51200 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Login Data
+f 0 0 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Login Data-journal
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Network
+f 53248 53248 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Network Action Predictor
+f 0 0 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Network Action Predictor-journal
+f 123104 119470 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Network\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Nurturing
+f 20480 20480 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Nurturing\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\optimization_guide_hint_cache_store
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\optimization_guide_model_and_features_store
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\parcel_tracking_db
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\PersistentOriginTrials
+f 20480 20395 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Preferences
+f 40 33 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\PreferredApps
+f 184 182 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\README
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Safe Browsing Network
+f 20480 20480 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Safe Browsing Network\(contenuto)
+f 36864 35215 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Secure Preferences
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Segmentation Platform
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Service Worker
+f 22939088 22608555 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Service Worker\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Session Storage
+f 33488 31175 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Session Storage\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Sessions
+f 151552 140162 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Sessions\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Shared Dictionary
+f 45128 45128 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Shared Dictionary\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\shared_proto_db
+f 21952 15632 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\shared_proto_db\(contenuto)
+f 4096 4096 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\SharedStorage
+f 0 0 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\SharedStorage-wal
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Site Characteristics Database
+f 1376 1364 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Site Characteristics Database\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Storage
+f 1224 1196 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Storage\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Sync Data
+f 8960 8668 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Sync Data\(contenuto)
+f 20480 20480 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Top Sites
+f 0 0 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Top Sites-journal
+f 64 58 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\trusted_vault.pb
+f 1110016 1106722 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\uu_host_config
+f 131072 131072 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Visited Links
+f 28672 28672 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Vpn Tokens
+f 0 0 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Vpn Tokens-journal
+f 229376 229376 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Web Data
+f 8192 4624 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\Web Data-journal
+f 16384 14336 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\WebAssistDatabase
+f 0 0 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\WebAssistDatabase-journal
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\WebStorage
+f 40960 40960 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Default\WebStorage\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Domain Actions
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Domain Actions\3.0.0.8
+f 594160 591654 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Domain Actions\3.0.0.8\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\EADPData Component
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\EADPData Component\4.0.3.7
+f 114816 114706 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\EADPData Component\4.0.3.7\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Edge Data Protection Lists
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Edge Data Protection Lists\2.0.0.0
+f 8424 6781 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Edge Data Protection Lists\2.0.0.0\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Edge Designer
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Edge Designer\1.0.0.20
+f 12480 11749 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Edge Designer\1.0.0.20\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Edge Notifications
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Edge Notifications\0.0.0.46
+f 352568 352176 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Edge Notifications\0.0.0.46\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Edge Shopping
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Edge Shopping\2.0.8019.0
+f 13295840 13278987 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Edge Shopping\2.0.8019.0\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Edge Travel
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Edge Travel\1.0.0.2
+f 32976 18915 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Edge Travel\1.0.0.2\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Edge Wallet
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Edge Wallet\128.18240.18232.1
+f 14878984 14565435 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Edge Wallet\128.18240.18232.1\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Edge Wallet\128.18247.18240.4
+f 14895368 14581188 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Edge Wallet\128.18247.18240.4\(contenuto)
+f 8 3 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\edge_shutdown_ms.txt
+f 0 0 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\First Run
+f 69632 69632 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\first_party_sets.db
+f 0 0 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\first_party_sets.db-journal
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\FirstPartySetsPreloaded
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\FirstPartySetsPreloaded\2024.8.10.0
+f 20640 13321 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\FirstPartySetsPreloaded\2024.8.10.0\(contenuto)
+f 4096 4096 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Functional Data
+f 49152 45352 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Functional Data-wal
+f 4096 4096 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Functional SAN Data
+f 49152 45352 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Functional SAN Data-wal
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GraphiteDawnCache
+f 8192 8192 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GraphiteDawnCache\data_0
+f 270336 270336 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GraphiteDawnCache\data_1
+f 8192 8192 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GraphiteDawnCache\data_2
+f 8192 8192 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GraphiteDawnCache\data_3
+f 266240 262512 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GraphiteDawnCache\index
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache
+f 45056 45056 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\data_0
+f 270336 270336 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\data_1
+f 8192 8192 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\data_2
+f 4202496 4202496 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\data_3
+f 20480 16684 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_000001
+f 20480 19040 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_000002
+f 20480 18980 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_000003
+f 20480 19744 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_000004
+f 20480 18816 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_000005
+f 20480 18188 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_000006
+f 20480 17816 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_000007
+f 20480 16564 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_000008
+f 20480 18052 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_000009
+f 20480 16876 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_00000a
+f 20480 18744 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_00000b
+f 20480 18112 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_00000c
+f 20480 18236 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_00000d
+f 20480 19384 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_00000e
+f 20480 16692 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_00000f
+f 20480 18248 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_000010
+f 20480 19040 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_000011
+f 20480 18972 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_000012
+f 20480 18132 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_000013
+f 20480 17564 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_000014
+f 20480 19808 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_000015
+f 20480 19316 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_000016
+f 20480 18884 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_000017
+f 20480 18036 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_000018
+f 20480 18420 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_000019
+f 20480 17568 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_00001a
+f 20480 18980 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_00001b
+f 20480 17196 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\f_00001c
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\GPUCache
+f 5750784 5622404 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\GPUCache\(contenuto)
+f 266240 262512 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\GrShaderCache\index
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\hyphen-data
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\hyphen-data\120.0.6050.0
+f 1839024 1769968 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\hyphen-data\120.0.6050.0\(contenuto)
+f 120 120 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Last Browser
+f 16 13 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Last Version
+f 57344 55164 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Local State
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Nurturing
+f 20480 20480 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Nurturing\campaign_history
+f 0 0 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Nurturing\campaign_history-journal
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\OriginTrials
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\OriginTrials\0.0.1.7
+f 120 109 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\OriginTrials\0.0.1.7\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\PKIMetadata
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\PKIMetadata\14.0.0.1
+f 323760 319023 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\PKIMetadata\14.0.0.1\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\PKIMetadata\14.0.0.2
+f 323760 319023 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\PKIMetadata\14.0.0.2\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\RecoveryImproved
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Safe Browsing
+f 96 93 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Safe Browsing\ChromeExtMalware.store
+f 2039808 2036416 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Safe Browsing\ChromeExtMalware.store.32_13378917237963054
+f 2039808 2036608 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Safe Browsing\ChromeExtMalware.store.32_13379118093380357
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\SafetyTips
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\SafetyTips\3056
+f 176272 172385 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\SafetyTips\3056\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\ShaderCache
+f 8192 8192 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\ShaderCache\data_0
+f 270336 270336 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\ShaderCache\data_1
+f 8192 8192 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\ShaderCache\data_2
+f 8192 8192 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\ShaderCache\data_3
+f 266240 262512 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\ShaderCache\index
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\SmartScreen
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\SmartScreen\local
+f 4992 3466 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\SmartScreen\local\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\SmartScreen\remote
+f 594144 590284 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\SmartScreen\remote\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\SmartScreen\RemoteData
+f 594128 591623 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\SmartScreen\RemoteData\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Speech Recognition
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Speech Recognition\1.15.0.1
+f 2695320 2692566 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Speech Recognition\1.15.0.1\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Subresource Filter
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Subresource Filter\Indexed Rules
+f 3014656 3008013 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Subresource Filter\Indexed Rules\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Subresource Filter\Unindexed Rules
+f 6099136 6077756 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Subresource Filter\Unindexed Rules\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Trust Protection Lists
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\TrustTokenKeyCommitments
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\TrustTokenKeyCommitments\2024.12.14.1
+f 16536 9930 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\TrustTokenKeyCommitments\2024.12.14.1\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Typosquatting
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Typosquatting\2024.12.18.3
+f 643264 641140 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Typosquatting\2024.12.18.3\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Typosquatting\2024.12.19.4
+f 643264 641200 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Typosquatting\2024.12.19.4\(contenuto)
+f 88 86 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Variations
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Web Notifications Deny List
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Web Notifications Deny List\2.0.0.19
+f 20744 15240 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Web Notifications Deny List\2.0.0.19\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Well Known Domains
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Well Known Domains\1.1.0.0
+f 573656 569607 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\Well Known Domains\1.1.0.0\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\WidevineCdm
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\WorkspacesNavigationComponent
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\WorkspacesNavigationComponent\1.0.0.5
+f 4328 3268 C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\WorkspacesNavigationComponent\1.0.0.5\(contenuto)
+d C:\Users\demo\AppData\Local\Microsoft\Edge\User Data\ZxcvbnData

@@ -1,0 +1,26 @@
+# Giochi di Steam (06 §2.1): Decidi tu, disinstallazione da Steam.
+id = "steam"
+priorita = 2
+riconoscitore = "steam"
+gestore = "programmi"
+stato = "decidi-tu"
+azione = "disinstallazione"
+stima = "esatta"
+metodo = {}
+reversibilita = "disinstallazione"
+errore = "procedura-esterna"
+verifica = "dopo-procedura"
+verificata = "2026-10-13"
+fixture = "giochi.albero"
+
+[[fonti]]
+url = "https://developer.valvesoftware.com/wiki/Steam_browser_protocol"
+titolo = "Steam browser protocol"
+estratto = '''steam://uninstall/<id> Deletes the specified apps' cache files.'''
+ufficiale = false
+
+[[fonti]]
+url = "https://help.steampowered.com/en/faqs/view/3C73-90F9-F600-0266"
+titolo = "Uninstall Steam"
+estratto = '''This process will remove Steam and any installed game content from your machine.'''
+ufficiale = true

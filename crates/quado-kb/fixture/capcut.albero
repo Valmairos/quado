@@ -1,0 +1,84 @@
+# Fixture sintetica: forma di un PC Windows, con utente, progetti e dati inventati.
+d C:\
+d C:\Users
+d C:\Users\demo
+d C:\Users\demo\AppData
+d C:\Users\demo\AppData\Local
+d C:\Users\demo\AppData\Local\CapCut
+d C:\Users\demo\AppData\Local\CapCut\Apps
+d C:\Users\demo\AppData\Local\CapCut\Apps\2026021817305512_1
+f 1101004800 1096340212 C:\Users\demo\AppData\Local\CapCut\Apps\2026021817305512_1\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\Apps\6.4.1.2547
+f 1192036352 1187402311 C:\Users\demo\AppData\Local\CapCut\Apps\6.4.1.2547\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\Apps\7.0.0.2833
+f 1209778176 1204955872 C:\Users\demo\AppData\Local\CapCut\Apps\7.0.0.2833\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\Apps\7.5.0.3062
+f 1236402176 1231617045 C:\Users\demo\AppData\Local\CapCut\Apps\7.5.0.3062\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\Apps\8.1.0.3402
+f 1267179520 1262380519 C:\Users\demo\AppData\Local\CapCut\Apps\8.1.0.3402\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\Apps\8.4.1.3561
+f 1253957632 1249118203 C:\Users\demo\AppData\Local\CapCut\Apps\8.4.1.3561\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\Apps\8.7.2.3701
+f 1281806336 1276904660 C:\Users\demo\AppData\Local\CapCut\Apps\8.7.2.3701\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\Apps\9.0.1.3866
+f 1293189120 1288251937 C:\Users\demo\AppData\Local\CapCut\Apps\9.0.1.3866\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\Apps\9.1.2.3897
+f 1306759168 1301773480 C:\Users\demo\AppData\Local\CapCut\Apps\9.1.2.3897\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\Apps\9.2.1.3944
+f 1302007808 1297045118 C:\Users\demo\AppData\Local\CapCut\Apps\9.2.1.3944\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\Apps\9.3.0.3970
+f 1320259584 1315220764 C:\Users\demo\AppData\Local\CapCut\Apps\9.3.0.3970\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\Apps\9.4.0.4015
+f 1314897920 1309877245 C:\Users\demo\AppData\Local\CapCut\Apps\9.4.0.4015\(contenuto)
+f 4861952 4859720 C:\Users\demo\AppData\Local\CapCut\Apps\CapCut.exe
+f 40 35 C:\Users\demo\AppData\Local\CapCut\Apps\Configure.ini
+f 368 368 C:\Users\demo\AppData\Local\CapCut\Apps\ProductInfo.xml
+f 3964928 3963104 C:\Users\demo\AppData\Local\CapCut\Apps\uninst.exe
+d C:\Users\demo\AppData\Local\CapCut\bach_private_cache
+d C:\Users\demo\AppData\Local\CapCut\User Data
+d C:\Users\demo\AppData\Local\CapCut\User Data\2
+d C:\Users\demo\AppData\Local\CapCut\User Data\bach_private_cache
+d C:\Users\demo\AppData\Local\CapCut\User Data\ByteBench
+f 318844928 318772115 C:\Users\demo\AppData\Local\CapCut\User Data\ByteBench\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\User Data\Cache
+f 4412334080 4293018871 C:\Users\demo\AppData\Local\CapCut\User Data\Cache\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\User Data\CEF
+f 287449088 285116540 C:\Users\demo\AppData\Local\CapCut\User Data\CEF\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\User Data\Cloud files
+d C:\Users\demo\AppData\Local\CapCut\User Data\ComponentStore
+d C:\Users\demo\AppData\Local\CapCut\User Data\Config
+f 2117632 2071407 C:\Users\demo\AppData\Local\CapCut\User Data\Config\(contenuto)
+f 266240 263118 C:\Users\demo\AppData\Local\CapCut\User Data\Configconfig_0_32_215_2211_199.ini
+d C:\Users\demo\AppData\Local\CapCut\User Data\Crash
+f 57384 24591 C:\Users\demo\AppData\Local\CapCut\User Data\Crash\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\User Data\Download
+f 28672 26423 C:\Users\demo\AppData\Local\CapCut\User Data\Download\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\User Data\EMaterial
+d C:\Users\demo\AppData\Local\CapCut\User Data\Feedback
+d C:\Users\demo\AppData\Local\CapCut\User Data\Log
+f 7340032 7301442 C:\Users\demo\AppData\Local\CapCut\User Data\Log\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\User Data\LVOPTmp
+d C:\Users\demo\AppData\Local\CapCut\User Data\Lynx
+f 4096 3241 C:\Users\demo\AppData\Local\CapCut\User Data\Lynx\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\User Data\Migration
+d C:\Users\demo\AppData\Local\CapCut\User Data\MMKV
+f 12582912 12582912 C:\Users\demo\AppData\Local\CapCut\User Data\MMKV\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\User Data\mssdk
+f 77824 77678 C:\Users\demo\AppData\Local\CapCut\User Data\mssdk\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\User Data\ParfaitServer
+f 212992 205784 C:\Users\demo\AppData\Local\CapCut\User Data\ParfaitServer\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\User Data\Presets
+f 2756608 2731903 C:\Users\demo\AppData\Local\CapCut\User Data\Presets\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\User Data\Projects
+f 3651133440 3646027118 C:\Users\demo\AppData\Local\CapCut\User Data\Projects\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\User Data\Resources
+f 41074688 39017552 C:\Users\demo\AppData\Local\CapCut\User Data\Resources\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\User Data\SettingsSDK
+d C:\Users\demo\AppData\Local\CapCut\User Data\Tracking
+f 4194304 4194304 C:\Users\demo\AppData\Local\CapCut\User Data\Tracking\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\User Data\TTNet
+f 45104 37804 C:\Users\demo\AppData\Local\CapCut\User Data\TTNet\(contenuto)
+d C:\Users\demo\AppData\Local\CapCut\User Data\VELog
+d C:\Users\demo\AppData\Local\CapCut\User Data\VideoRecord
+d C:\Users\demo\AppData\Local\CapCut\Videos
+f 214437888 214436571 C:\Users\demo\AppData\Local\CapCut\Videos\video-vacanze.mp4

@@ -1,0 +1,11 @@
+# Dati delle app MSIX: Decidi tu, disinstallazione dell'app (Windows toglie i dati).
+[[voci]]
+percorso = 'C:\Users\demo\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe'
+stato = "decidi-tu"
+azione = "disinstallazione"
+metodo = "ms-settings:appsfeatures"
+stima = "non-stimabile-externalprocedure"
+privilegi = "nessuno"
+gestore = "programmi"
+colore = "programmi"
+elementi = 1

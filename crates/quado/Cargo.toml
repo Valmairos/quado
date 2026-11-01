@@ -1,0 +1,34 @@
+[package]
+name = "quado"
+description = "Quado: eseguibile (interfaccia da M2, helper da M6)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+build = "build.rs"
+
+[lints]
+workspace = true
+
+[features]
+# Opzioni di misura e di prova da riga di comando (`--misura-*`, `--banco`, `--immagini`, `--sessione-prova`,
+# `--diagnostica-moduli`...): scrivono fuori da %APPDATA%\Quado o servono solo a chi sviluppa. Spente per
+# default, quindi assenti dall'eseguibile distribuito (profilo dist, `cargo xtask installa`, release);
+# `cargo xtask` le accende quando misura o prova.
+misure = []
+
+[dependencies]
+quado-scan-win = { workspace = true }
+quado-ui = { workspace = true }
+# Sessione di prova (`session.rs`): tipi del modello e dei lettori della lente.
+quado-model = { workspace = true }
+quado-kb = { workspace = true }
+egui = { workspace = true }
+# wgpu disegna (DX12, con WARP come adattatore software); glow è il ripiego se wgpu non parte.
+# Niente "links" (apre URL) né "persistence": le impostazioni le scrive Quado in %APPDATA%\Quado.
+eframe = { workspace = true, features = ["default_fonts", "wgpu", "glow", "accesskit"] }
+log = { workspace = true }
+image = { workspace = true }
+# Handle della finestra (HWND) per i dialoghi di Windows degli interventi: la stessa versione di eframe.
+raw-window-handle = "0.6"

@@ -1,0 +1,36 @@
+# 06 §2.1: Lo gestisce Windows, Impostazioni › File temporanei, mai a mano.
+[[voci]]
+percorso = 'C:\Users\demo\AppData\Local\Temp'
+stato = "lo-gestisce"
+azione = "procedura"
+metodo = "ms-settings:storagesense"
+alternative = ["cleanmgr"]
+stima = "non-stimabile-externalprocedure"
+privilegi = "nessuno"
+gestore = "windows"
+colore = "windows"
+elementi = 18
+
+[[voci]]
+percorso = 'C:\Windows\SoftwareDistribution\Download'
+stato = "lo-gestisce"
+azione = "procedura"
+metodo = "ms-settings:storagesense"
+alternative = ["cleanmgr"]
+stima = "non-stimabile-externalprocedure"
+privilegi = "nessuno"
+gestore = "windows"
+colore = "windows"
+elementi = 18
+
+[[voci]]
+percorso = 'C:\Users\demo\AppData\Local\Microsoft\Windows\Explorer\thumbcache_256.db'
+stato = "lo-gestisce"
+azione = "procedura"
+metodo = "ms-settings:storagesense"
+alternative = ["cleanmgr"]
+stima = "non-stimabile-externalprocedure"
+privilegi = "nessuno"
+gestore = "windows"
+colore = "windows"
+elementi = 18

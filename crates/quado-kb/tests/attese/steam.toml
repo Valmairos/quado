@@ -1,0 +1,22 @@
+# 07 §7: Decidi tu (programma grande), steam://uninstall/<appid>.
+[[voci]]
+percorso = 'C:\Program Files (x86)\Steam\steamapps\common\hollow peaks'
+stato = "decidi-tu"
+azione = "disinstallazione"
+metodo = "steam://uninstall/3999910"
+stima = "esatta"
+privilegi = "nessuno"
+gestore = "programmi"
+colore = "programmi"
+elementi = 1
+
+[[voci]]
+percorso = 'C:\Program Files (x86)\Steam\steamapps\common\Dune Rally'
+stato = "decidi-tu"
+azione = "disinstallazione"
+metodo = "steam://uninstall/3999920"
+stima = "esatta"
+privilegi = "nessuno"
+gestore = "programmi"
+colore = "programmi"
+elementi = 1

@@ -1,0 +1,20 @@
+# Installazioni di Epic (06 §2.1, F-AP-2): Decidi tu, libreria del launcher; nessun dato d'uso.
+id = "epic"
+priorita = 2
+riconoscitore = "epic"
+gestore = "programmi"
+stato = "decidi-tu"
+azione = "disinstallazione"
+stima = "esatta"
+metodo = {}
+reversibilita = "disinstallazione"
+errore = "procedura-esterna"
+verifica = "dopo-procedura"
+verificata = "2026-10-13"
+fixture = "giochi.albero"
+
+[[fonti]]
+url = "https://www.epicgames.com/help/epic-games-store-c-32735058/launcher-support-c-36403860/how-do-i-uninstall-a-game-in-the-epic-games-launcher-a12795838"
+titolo = "How do I uninstall a game in the Epic Games Launcher?"
+estratto = '''Click Uninstall'''
+ufficiale = true

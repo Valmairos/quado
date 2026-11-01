@@ -1,0 +1,32 @@
+# Cache di npm (decisioni §3): npm cache verify; clean --force come alternativa, con le conseguenze.
+id = "npm-cache"
+priorita = 1
+riconoscitore = "npm-cache"
+gestore = "programmi"
+gestito_da = "npm"
+stato = "lo-gestisce"
+azione = "comando"
+stima = "non-stimabile-procedura"
+metodo = { comando = "npm cache verify" }
+alternative = [{ comando = "npm cache clean --force" }]
+rischi = 1
+reversibilita = "cache"
+errore = "comando"
+verifica = "dopo-procedura"
+verificata = "2026-10-13"
+fixture = "sviluppo.albero"
+
+[dove]
+marcatori = ["_cacache"]
+
+[[fonti]]
+url = "https://docs.npmjs.com/cli/v12/commands/npm-cache/"
+titolo = "npm-cache"
+estratto = '''Verify the contents of the cache folder, garbage collecting any unneeded data, and verifying the integrity of the cache index and all cached data.'''
+ufficiale = true
+
+[[fonti]]
+url = "https://docs.npmjs.com/cli/v12/commands/npm-cache/"
+titolo = "npm-cache"
+estratto = '''Default: Windows: %LocalAppData%\npm-cache, Posix: ~/.npm'''
+ufficiale = true

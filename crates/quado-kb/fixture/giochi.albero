@@ -1,0 +1,22 @@
+# Fixture sintetica: forma di un PC Windows, con utente, progetti e dati inventati.
+d C:\
+d C:\Program Files
+d C:\Program Files (x86)
+d C:\Program Files (x86)\Steam
+d C:\Program Files (x86)\Steam\steamapps
+d C:\Program Files (x86)\Steam\steamapps\common
+d C:\Program Files (x86)\Steam\steamapps\common\Brinewood
+f 29020454912 29013877245 C:\Program Files (x86)\Steam\steamapps\common\Brinewood\(contenuto)
+d C:\Program Files (x86)\Steam\steamapps\common\Dune Rally
+f 47213998080 47206115478 C:\Program Files (x86)\Steam\steamapps\common\Dune Rally\(contenuto)
+d C:\Program Files (x86)\Steam\steamapps\common\Gioco di Prova
+f 512331776 498207113 C:\Program Files (x86)\Steam\steamapps\common\Gioco di Prova\(contenuto)
+d C:\Program Files (x86)\Steam\steamapps\common\hollow peaks
+f 62431204352 62418337902 C:\Program Files (x86)\Steam\steamapps\common\hollow peaks\(contenuto)
+d C:\Program Files (x86)\Steam\steamapps\common\Steam Controller Configs
+f 41192 24017 C:\Program Files (x86)\Steam\steamapps\common\Steam Controller Configs\(contenuto)
+d C:\Program Files (x86)\Steam\steamapps\common\Steamworks Shared
+f 177422848 177083846 C:\Program Files (x86)\Steam\steamapps\common\Steamworks Shared\(contenuto)
+d C:\Program Files\Epic Games
+d C:\Program Files\Epic Games\UE_5.5
+f 31284116992 30977310544 C:\Program Files\Epic Games\UE_5.5\(contenuto)

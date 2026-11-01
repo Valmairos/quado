@@ -1,0 +1,29 @@
+[package]
+name = "quado-actions"
+description = "Interventi di Quado: unico crate con API di scrittura e di avvio di procedure (05 D7, D10)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+
+[lints.rust]
+unsafe_code = "allow"
+unsafe_op_in_unsafe_fn = "deny"
+
+[lints.clippy]
+undocumented_unsafe_blocks = "deny"
+
+[dependencies]
+quado-model = { workspace = true }
+quado-scan-win = { workspace = true }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+windows = { workspace = true }
+windows-core = { workspace = true }
+windows-sys = { workspace = true, features = ["Win32_System_Diagnostics_ToolHelp", "Win32_UI_Shell", "Win32_System_Registry"] }
+
+[dev-dependencies]
+quado-testkit = { workspace = true }
+quado-kb = { workspace = true }
+proptest = { version = "1", default-features = false, features = ["std"] }

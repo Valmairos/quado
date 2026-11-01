@@ -1,0 +1,31 @@
+[package]
+name = "quado-kb"
+description = "Base delle regole di Quado: regole TOML, motore di classificazione, estrattori in sola lettura (05 D6, D10)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+build = "build.rs"
+
+# `unsafe` solo nel modulo degli estrattori Windows (`win`), con l'invariante scritto (05 D10).
+[lints.rust]
+unsafe_code = "deny"
+unsafe_op_in_unsafe_fn = "deny"
+
+[lints.clippy]
+undocumented_unsafe_blocks = "deny"
+dbg_macro = "warn"
+
+[dependencies]
+quado-model = { workspace = true }
+# Riconoscitore dei progetti di sviluppo su tutti i nodi in parallelo (`engine::lockfile`).
+rayon = { workspace = true }
+serde = { version = "1", features = ["derive"] }
+toml = "1.1"
+serde_json = "1"
+windows-sys = { workspace = true, features = ["Win32_System_Registry", "Win32_System_Power", "Win32_UI_Shell", "Win32_System_Com", "Win32_System_ApplicationInstallationAndServicing"] }
+windows = { workspace = true, features = ["Management_Deployment", "ApplicationModel", "Foundation_Collections", "Win32_System_WinRT", "Win32_System_TaskScheduler", "Win32_System_Variant", "Win32_System_Ole"] }
+
+[dev-dependencies]
+proptest = { version = "1", default-features = false, features = ["std"] }
