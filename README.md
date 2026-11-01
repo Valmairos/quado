@@ -4,14 +4,19 @@
   <img src="docs/images/hero-light.png" width="880" alt="Quado, disk space analyzer for Windows. Below the name, the top of the Overview window with test data: how the space on the drive is used, split by who manages it.">
 </picture>
 
-[![License: GPL-3.0-or-later](https://img.shields.io/badge/license-GPL--3.0--or--later-blue.svg)](LICENSE)
-[![CI](https://github.com/Valmairos/quado/actions/workflows/ci.yml/badge.svg)](https://github.com/Valmairos/quado/actions/workflows/ci.yml)
+<p align="center">
+  <a href="https://github.com/Valmairos/quado/actions/workflows/ci.yml"><img alt="CI status" src="https://img.shields.io/github/actions/workflow/status/Valmairos/quado/ci.yml?branch=main&label=CI&style=flat-square&labelColor=1D1D1F"></a>
+  <a href="#requirements"><img alt="Platform: Windows x64" src="https://img.shields.io/badge/platform-Windows%20x64-3A3A3C?style=flat-square&labelColor=1D1D1F"></a>
+  <a href="LICENSE"><img alt="License: GPL-3.0-or-later" src="https://img.shields.io/badge/license-GPL--3.0--or--later-3A3A3C?style=flat-square&labelColor=1D1D1F"></a>
+</p>
 
-[Italiano](README.it.md)
+<p align="center"><b>English</b> · <a href="README.it.md">Italiano</a></p>
 
-Quado is a disk space analyzer for Windows. It shows which folders use the most space on a drive and, where it can, what those folders are.
+<p align="center">Quado is a disk space analyzer for Windows. It shows which folders use the most space on a drive and, where it can, what those folders are.</p>
 
-[Features](#features) · [Requirements](#requirements) · [Download](#download) · [Privacy](#privacy) · [Build from source](#build-from-source) · [Contributing](#contributing)
+<p align="center">
+  <a href="#features">Features</a> · <a href="#requirements">Requirements</a> · <a href="#download">Download</a> · <a href="#privacy">Privacy</a> · <a href="#build-from-source">Build from source</a> · <a href="#contributing">Contributing</a>
+</p>
 
 ## Features
 

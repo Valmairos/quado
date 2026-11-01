@@ -4,14 +4,19 @@
   <img src="docs/images/hero-light.png" width="880" alt="Quado, analizzatore dello spazio su disco per Windows. Sotto il nome, la parte alta della finestra Panoramica con dati di prova: come è usato lo spazio dell'unità, diviso per chi lo gestisce.">
 </picture>
 
-[![Licenza: GPL-3.0-or-later](https://img.shields.io/badge/licenza-GPL--3.0--or--later-blue.svg)](LICENSE)
-[![CI](https://github.com/Valmairos/quado/actions/workflows/ci.yml/badge.svg)](https://github.com/Valmairos/quado/actions/workflows/ci.yml)
+<p align="center">
+  <a href="https://github.com/Valmairos/quado/actions/workflows/ci.yml"><img alt="Stato della CI" src="https://img.shields.io/github/actions/workflow/status/Valmairos/quado/ci.yml?branch=main&label=CI&style=flat-square&labelColor=1D1D1F"></a>
+  <a href="#requisiti"><img alt="Piattaforma: Windows x64" src="https://img.shields.io/badge/piattaforma-Windows%20x64-3A3A3C?style=flat-square&labelColor=1D1D1F"></a>
+  <a href="LICENSE"><img alt="Licenza: GPL-3.0-or-later" src="https://img.shields.io/badge/licenza-GPL--3.0--or--later-3A3A3C?style=flat-square&labelColor=1D1D1F"></a>
+</p>
 
-[English](README.md)
+<p align="center"><a href="README.md">English</a> · <b>Italiano</b></p>
 
-Quado è un analizzatore dello spazio su disco per Windows. Mostra quali cartelle occupano più spazio in un'unità e, quando può, che cosa sono.
+<p align="center">Quado è un analizzatore dello spazio su disco per Windows. Mostra quali cartelle occupano più spazio in un'unità e, quando può, che cosa sono.</p>
 
-[Funzionalità](#funzionalità) · [Requisiti](#requisiti) · [Scaricare Quado](#scaricare-quado) · [Privacy](#privacy) · [Compilare dal sorgente](#compilare-dal-sorgente) · [Contribuire](#contribuire)
+<p align="center">
+  <a href="#funzionalità">Funzionalità</a> · <a href="#requisiti">Requisiti</a> · <a href="#scaricare-quado">Scaricare Quado</a> · <a href="#privacy">Privacy</a> · <a href="#compilare-dal-sorgente">Compilare dal sorgente</a> · <a href="#contribuire">Contribuire</a>
+</p>
 
 ## Funzionalità
 
