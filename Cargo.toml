@@ -32,7 +32,7 @@ fluent-bundle = "0.16"
 fluent-syntax = "0.12"
 unic-langid = "0.9"
 quado-actions = { path = "crates/quado-actions" }
-windows-core = "0.62"
+windows-core = "0.100"
 windows-sys = { version = "0.61", features = [
     "Wdk_Storage_FileSystem",
     "Wdk_System_Threading",
