@@ -18,6 +18,18 @@ use quado_testkit::helper as content;
 use quado_testkit::oracle::{self, Oracle};
 use quado_testkit::trees::{self, TestDir};
 
+
+/// Vero se le prove girano come amministratore, come sui runner Windows di GitHub Actions: lì le cartelle
+/// negate si aprono e il privilegio di backup è assegnato, quindi le prove del comportamento senza
+/// elevazione non hanno senso e si saltano dicendolo.
+fn elevated_runner(test: &str) -> bool {
+    let elevated = quado_scan_win::process::elevated().unwrap_or(false);
+    if elevated {
+        eprintln!("{test}: saltata, il processo delle prove gira come amministratore");
+    }
+    elevated
+}
+
 /// `WBEM_E_ACCESS_DENIED`.
 const WBEM_E_ACCESS_DENIED: u32 = 0x8004_1003;
 /// `WBEM_E_INITIALIZATION_FAILURE`: il provider delle copie shadow non parte per un utente che non è
@@ -87,6 +99,9 @@ fn folder_and_totals_match_the_oracle() {
 
 #[test]
 fn totals_count_hard_links_once_and_the_denied_subfolder() {
+    if elevated_runner("totals_count_hard_links_once_and_the_denied_subfolder") {
+        return;
+    }
     let mut d = TestDir::new("helper-totali");
     let root = d.path.clone();
     let a = root.join("a.bin");
@@ -117,6 +132,9 @@ fn totals_count_hard_links_once_and_the_denied_subfolder() {
 
 #[test]
 fn root_that_cannot_be_opened_is_a_root_error() {
+    if elevated_runner("root_that_cannot_be_opened_is_a_root_error") {
+        return;
+    }
     let mut d = TestDir::new("helper-radice");
     let denied = d.path.join("chiusa");
     trees::write_file(&denied.join("f.bin"), 10, 1);
@@ -129,6 +147,9 @@ fn root_that_cannot_be_opened_is_a_root_error() {
 /// Senza elevazione il token filtrato non ha `SeBackupPrivilege`: `ERROR_NOT_ALL_ASSIGNED`.
 #[test]
 fn backup_privilege_is_not_assigned_without_elevation() {
+    if elevated_runner("backup_privilege_is_not_assigned_without_elevation") {
+        return;
+    }
     assert_eq!(Live.enable_backup_privilege(), Err(1300));
 }
 
@@ -160,6 +181,9 @@ fn profile_of_reads_profile_list() {
 /// Copie shadow senza elevazione: nessun panico; l'esito si documenta (`collect.rs`).
 #[test]
 fn shadow_storage_without_elevation() {
+    if elevated_runner("shadow_storage_without_elevation") {
+        return;
+    }
     let mut volumes = vec![r"C:\".to_owned()];
     if let Some((_, r)) = trees::mounted_vhdx().into_iter().find(|(n, _)| n == "ntfs") {
         volumes.push(r.to_string_lossy().into_owned());

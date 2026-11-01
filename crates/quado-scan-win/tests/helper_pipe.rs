@@ -22,6 +22,18 @@ use std::thread;
 use std::time::{Duration, Instant};
 
 use quado_model::{Flags, NodeData, Tree};
+
+
+/// Vero se le prove girano come amministratore, come sui runner Windows di GitHub Actions: lì le cartelle
+/// negate si aprono e il privilegio di backup è assegnato, quindi le prove del comportamento senza
+/// elevazione non hanno senso e si saltano dicendolo.
+fn elevated_runner(test: &str) -> bool {
+    let elevated = quado_scan_win::process::elevated().unwrap_or(false);
+    if elevated {
+        eprintln!("{test}: saltata, il processo delle prove gira come amministratore");
+    }
+    elevated
+}
 use quado_scan_win::helper::pipe::{self, Client, PipeError, Server};
 use quado_scan_win::helper::proto::{
     MAX_REPLY_BYTES, MAX_REQUEST_BYTES, PathIssue, ProtoError, Reply, Request, Scope, ShadowStorage, Totals, classify, decode_reply,
@@ -761,6 +773,9 @@ fn parent_and_location_checks() {
 
 #[test]
 fn a_junction_does_not_turn_another_profile_into_a_tree() {
+    if elevated_runner("a_junction_does_not_turn_another_profile_into_a_tree") {
+        return;
+    }
     // Junction nella cartella temporanea (dentro il profilo dell'utente) verso `C:\Users\Public`: il
     // percorso chiesto sembra del profilo proprio, quello finale è di un altro profilo. Solo attributi
     // letti fuori dalla cartella di prova.
