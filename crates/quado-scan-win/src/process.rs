@@ -134,10 +134,10 @@ pub fn ms_since_start() -> f64 {
 
 #[cfg(test)]
 mod tests {
-    /// Le prove girano senza elevazione (come `backup_privilege_is_not_assigned_without_elevation` in
-    /// `tests/helper_collect.rs`): Windows risponde, e la risposta è no.
+    /// Windows risponde alla domanda senza errori. La risposta dipende da dove girano le prove: no su un PC
+    /// di sviluppo, sì sui runner Windows di GitHub Actions, che girano come amministratore.
     #[test]
-    fn the_test_process_is_not_elevated() {
-        assert_eq!(super::elevated(), Ok(false));
+    fn windows_answers_whether_the_process_is_elevated() {
+        assert!(super::elevated().is_ok(), "{:?}", super::elevated());
     }
 }
