@@ -24,7 +24,7 @@ A wrong size, estimate or explanation is an ordinary bug for a public issue, unl
 
 ## Known limitation
 
-`%LOCALAPPDATA%\Programs\Quado` is writable by the current account, so a program running under that account could replace `quado.exe`, and the prompt for an unsigned program would look the same. This is risk RS11 in `docs/08-analisi-dei-rischi.md`.
+`%LOCALAPPDATA%\Programs\Quado` is writable by the current account, so a program running under that account could replace `quado.exe`. The prompt for an unsigned program would then look the same.
 
 ## Response
 

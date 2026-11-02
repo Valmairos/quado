@@ -7,7 +7,7 @@ Fonti, in ordine di peso:
 2. Microsoft, Writing style per le app Windows (learn.microsoft.com/windows/apps/design/style/writing-style): chiarezza, brevità, azioni esplicite, errori che aiutano a risolvere.
 3. UX Writing Skill (github.com/content-designer/ux-writing-skill): regole per componente e coerenza del linguaggio in tutta l'app.
 
-Restano valide le regole di prodotto già decise: i cinque stati con le stesse parole ovunque, le parole vietate di 04, nessuna causa scritta come certa se non è misurata, nessun trattino lungo o medio.
+Restano valide le regole di prodotto già decise: i cinque stati con le stesse parole ovunque, le parole vietate (§3), nessuna causa scritta come certa se non è misurata, nessun trattino lungo o medio.
 
 ## 1. Voce
 
@@ -15,7 +15,7 @@ Quado parla come un tecnico che spiega a una persona non esperta cosa ha misurat
 
 | Sì | No |
 |---|---|
-| Fatti misurati, con il numero e da dove viene | Aggettivi di valore: sicuro, veloce, semplice, potente, intelligente |
+| Fatti misurati, con il numero e da dove viene | Aggettivi di valore: "sicuro", "veloce", "semplice", "potente", "intelligente" |
 | Una azione chiara per ogni problema | Spiegazioni lunghe al posto dell'azione |
 | La conseguenza vera di un'azione, prima di farla | Rassicurazioni che il codice non garantisce |
 | Il dubbio detto una volta, dove serve | Avvertenze ripetute in ogni frase |
@@ -23,7 +23,7 @@ Quado parla come un tecnico che spiega a una persona non esperta cosa ha misurat
 Persona:
 - italiano: si dà del tu; inglese: you;
 - l'app non dice "noi" e non dice "io". Quando serve distinguere chi fa cosa (Quado, Windows, un altro programma) si nomina l'attore: "Quado non legge il contenuto dei file", "Windows chiede conferma". Altrimenti la frase ha come soggetto l'oggetto di cui parla: "La cartella non si apre";
-- eccezione decisa in 04: lo stato "Non sappiamo" / "We don't know".
+- eccezione: lo stato "Non sappiamo" / "We don't know".
 
 ## 2. Forma
 
@@ -55,6 +55,8 @@ Il segnale è il gruppo di pattern, ma nell'interfaccia ciascuno basta a riscriv
 | Precisione finta | percentuali o tempi non misurati | Solo numeri misurati, con la fonte |
 | Nominalizzazioni in fila | "verifica della presenza di riferimenti nella configurazione" | Verbo: "controlla se la configurazione nomina la cartella" |
 | Simmetria evasiva | "Che tu sia esperto o no…" | Togliere |
+
+Parole da non usare mai: "sicuro da eliminare", "sicuro da disinstallare", "puoi ripristinare tutto", "inutilizzato", "mai usato", "non usato da N giorni", "spazio sprecato", "spazzatura", "ottimizza", "pulizia intelligente". In inglese: "safe to delete", "restore everything", "unused", "never used", "wasted space", "junk", "optimize", "smart clean". Niente numeri in rosso per mettere fretta. "Residuo" si scrive solo come possibilità ("potrebbe essere un residuo"). I test dei cataloghi controllano queste parole nei valori, anche nelle forme flesse.
 
 Prova dell'enfasi: si riscrive la frase senza ritmo e senza parole d'effetto. Se non resta un'affermazione concreta, la frase si taglia o si riscrive con il fatto.
 
@@ -117,9 +119,9 @@ Termini fissi. Chi cambia un termine lo cambia qui e in tutto il catalogo nello 
 | Procedura di un altro programma o di Windows | procedura, «Ho eseguito la procedura», «Nessuna procedura: non toccare» | steps, "I've completed the steps", "No steps to follow: don't touch" | "Apri la procedura" / "Open the steps" |
 | Comando ufficiale da copiare | comando | command | Quado lo mostra e lo copia, non lo esegue |
 | Chi gestisce lo spazio | Programmi e dati delle app, Tuoi file, Windows, Non classificato | Programs and app data, Your files, Windows, Not classified | |
-| I cinque stati | Gestibile, Da verificare, Decidi tu, Lo gestisce {X}, Non sappiamo | Manageable, To verify, You decide, Managed by {X}, We don't know | Decisi in 04; uguali in card, ispettore, conferma e risultato |
+| I cinque stati | Gestibile, Da verificare, Decidi tu, Lo gestisce {X}, Non sappiamo | Manageable, To verify, You decide, Managed by {X}, We don't know | Uguali in card, ispettore, conferma e risultato |
 | Riconoscimento di un elemento | regola | rule | |
-| Da dove viene un fatto | fonte | source | "da fonte", "dedotto", "dedotto alta" restano come in 04 |
+| Da dove viene un fatto | fonte | source | La provenienza di un fatto si indica con "da fonte", "dedotto" o "dedotto alta" |
 | Lettura con i privilegi | come amministratore; Quado non è avviato come amministratore (forma negativa); si legge (si misura) solo come amministratore | as administrator; Quado isn't running as administrator; readable (measurable) only as administrator | La forma negativa parla di Quado, non della persona: con UAC anche un amministratore avvia i programmi senza elevazione. Mai "senza i privilegi di amministratore", "helper", "elevato", "token", "senza amministratore" nell'interfaccia |
 | File aperti da altri programmi | in uso, il controllo dei file in uso | in use | Mai "Restart Manager" né "file aperti" |
 | File con più nomi | file con più nomi (hard link) | files with more than one name (hard links) | Il termine tecnico tra parentesi alla prima occorrenza della schermata |
