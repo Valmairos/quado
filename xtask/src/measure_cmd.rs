@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! `cargo xtask prestazioni [radice] [--runs N]` e `cargo xtask riferimento [radice]` (06 §9, 05 D10).
+//! `cargo xtask prestazioni [radice] [--runs N]` e `cargo xtask riferimento [radice]`.
 //!
 //! Ogni esecuzione è un processo a sé (`xtask scan-riga`), così il picco di memoria è quello di una
 //! scansione sola. Il protocollo annota CPU, RAM, versione di Windows, stato di Defender, versione
@@ -44,7 +44,7 @@ fn powershell(cmd: &str) -> String {
         .unwrap_or_default()
 }
 
-/// Condizioni della misura (06 §9).
+/// Condizioni della misura.
 pub fn environment() -> Vec<(&'static str, String)> {
     let git = Command::new("git").args(["rev-parse", "--short", "HEAD"]).output().map(|o| String::from_utf8_lossy(&o.stdout).trim().to_owned()).unwrap_or_default();
     vec![
@@ -136,7 +136,7 @@ pub fn reference(args: &[String]) -> Result<(), String> {
     row("Logico totale", t.logical(Tree::ROOT), "");
     println!("| File | {} | | |", r.stats.files);
     println!("| Cartelle | {} | | |", r.stats.dirs);
-    println!("| Cartelle negate | {} | | elencate con il motivo (F-SC-6) |", r.stats.denied);
+    println!("| Cartelle negate | {} | | elencate con il motivo |", r.stats.denied);
     println!("| Junction, symlink e montaggi non seguiti | {} | | |", r.stats.not_followed);
     println!("| File con allocata corretta (WOF, sparse) | {} | | |", r.stats.alloc_fixed);
     println!("| Segnaposto cloud | {} | | {} cartelle non elencate |", r.stats.cloud_files, r.stats.cloud_dirs_not_listed);
@@ -153,14 +153,14 @@ pub fn reference(args: &[String]) -> Result<(), String> {
     Ok(())
 }
 
-/// `cargo xtask freddo-c`: prima scansione di C: dopo un riavvio (07 §3 riga 8, 06 §9).
+/// `cargo xtask freddo-c`: prima scansione di C: dopo un riavvio.
 /// Da lanciare subito dopo l'accesso; aggiunge una riga a `target/misure/freddo-C.tsv`.
 pub fn cold_c() -> Result<(), String> {
     let uptime_min: f64 = powershell("[math]::Round(((Get-Date) - (Get-CimInstance Win32_OperatingSystem).LastBootUpTime).TotalMinutes, 1)")
         .replace(',', ".")
         .parse()
         .unwrap_or(-1.0);
-    // Prima il primo frame interattivo di Quado (06 §9, criterio 5 di M2): l'eseguibile si apre,
+    // Prima il primo frame interattivo di Quado: l'eseguibile si apre,
     // scrive il tempo dalla creazione del processo e si chiude da solo. Poi la scansione a freddo.
     let app = std::path::Path::new("target/release/quado.exe");
     if app.exists() {

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Letture del contenuto su richiesta (05 D6, F-DL-4): identità di un file (dimensione, date, ID) senza
-//! leggerne il contenuto, e SHA-256 del contenuto. Mai durante la scansione, mai sui segnaposto cloud;
-//! nessun handle in scrittura (06 §11). La lettura aggiorna la data di ultimo accesso (06 §3.6).
+//! Letture del contenuto su richiesta: identità di un file (dimensione, date, ID) senza leggerne il
+//! contenuto, e SHA-256 del contenuto. Mai durante la scansione, mai sui segnaposto cloud; nessun handle in
+//! scrittura. La lettura aggiorna la data di ultimo accesso.
 //!
 //! Ogni lettura apre il file due volte. Prima con i soli attributi (`FILE_READ_ATTRIBUTES`, come la
 //! scansione): identità, tipo, segnaposto cloud. Solo se il file si può leggere lo si riapre con
@@ -35,7 +35,7 @@ use crate::win;
 /// Byte letti per blocco dall'hash: tra un blocco e l'altro si controlla l'annullamento.
 pub const BLOCK: usize = 1 << 20;
 
-/// Accessi richiesti da questo modulo, per il test che verifica l'assenza di scrittura (06 §11).
+/// Accessi richiesti da questo modulo, per il test che verifica l'assenza di scrittura.
 pub const ACCESS: [u32; 2] = [FILE_READ_ATTRIBUTES | SYNCHRONIZE, GENERIC_READ];
 
 const _: () = assert!(ACCESS[0] & win::WRITE_BITS == 0 && ACCESS[1] & win::WRITE_BITS == 0);
@@ -74,12 +74,12 @@ pub struct FileIdentity {
     pub attributes: u32,
 }
 
-/// Perché una lettura non è riuscita. Codici, non frasi (05 D13).
+/// Perché una lettura non è riuscita. Codici, non frasi.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum ContentError {
     /// Errore di Windows (per esempio 2 file non trovato, 5 accesso negato, 32 file in uso).
     Io(u32),
-    /// Segnaposto cloud: il contenuto non si legge (05 D6).
+    /// Segnaposto cloud: il contenuto non si legge, perché leggerlo lo scaricherebbe.
     CloudPlaceholder,
     /// Annullata da chi ha chiesto la lettura.
     Cancelled,
@@ -372,7 +372,7 @@ pub fn sha256_bytes(data: &[u8]) -> Result<[u8; 32], u32> {
     h.finish()
 }
 
-/// SHA-256 del contenuto di `path` (F-DL-4), a blocchi di al più [`BLOCK`] byte.
+/// SHA-256 del contenuto di `path`, a blocchi di al più [`BLOCK`] byte.
 ///
 /// Prima legge l'identità con i soli attributi e rifiuta cartelle, collegamenti e segnaposto cloud; poi
 /// legge con `GENERIC_READ` e `FILE_FLAG_SEQUENTIAL_SCAN`, condivisione lettura, scrittura ed
@@ -381,7 +381,7 @@ pub fn sha256_bytes(data: &[u8]) -> Result<[u8; 32], u32> {
 /// di modifica cambiano tra il controllo e la fine della lettura: `Changed`.
 ///
 /// Restituisce l'identità letta prima della lettura (con la data di ultimo accesso precedente) e l'hash.
-/// La lettura aggiorna la data di ultimo accesso del file (06 §3.6).
+/// La lettura aggiorna la data di ultimo accesso del file.
 pub fn sha256(path: &str, cancel: &AtomicBool, progress: &AtomicU64) -> Result<(FileIdentity, [u8; 32]), ContentError> {
     if cancel.load(Relaxed) {
         return Err(ContentError::Cancelled);

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Cartelle sincronizzate dichiarate dalla configurazione dei programmi (R10, parere sulle avvertenze del
-//! 01/11/2026), lette in sola lettura e senza rete. Le usa la conferma dello spostamento nel Cestino
-//! (`quado_actions::sync`) quando la cartella non è registrata in Windows.
+//! Cartelle sincronizzate dichiarate dalla configurazione dei programmi, lette in sola lettura e senza
+//! rete. Le usa la conferma dello spostamento nel Cestino (`quado_actions::sync`) quando la cartella non
+//! è registrata in Windows.
 //!
 //! - Dropbox: `info.json` in `%LOCALAPPDATA%\Dropbox` o `%APPDATA%\Dropbox`, un oggetto per conto
 //!   (`personal`, `business`) con il campo `path` (Dropbox, "How to programmatically find the Dropbox folder

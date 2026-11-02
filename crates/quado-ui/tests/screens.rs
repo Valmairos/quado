@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Schermate di M2 disegnate fuori schermo con `egui_kittest` (06 §7, 07 §1.3 criterio 3).
+//! Schermate disegnate fuori schermo con `egui_kittest`.
 //!
 //! - `pseudo_language_covers_every_text`: con la pseudo-lingua ogni testo dell'interfaccia è
 //!   pseudo-localizzato (nessuna stringa scritta nel codice) e nessun testo tradotto è tagliato.
@@ -37,13 +37,13 @@ enum Shot {
     Search,
     BigFiles,
     Settings,
-    /// Esplora su `CapCut\Apps` con una versione precedente selezionata: record Da verificare (M3).
+    /// Esplora su `CapCut\Apps` con una versione precedente selezionata: record Da verificare.
     Versions,
     System,
     Rules,
-    /// Lente Download su `Downloads` (M4).
+    /// Lente Download su `Downloads`.
     Download,
-    /// Vista Programmi (M4).
+    /// Vista Programmi.
     Programs,
     /// Panoramica con il testo al 150% (Impostazioni › Dimensione del testo).
     OverviewText150,
@@ -499,7 +499,7 @@ fn data_strings(app: &App) -> HashSet<String> {
                 set.extend(st.uri.iter().cloned());
             }
         }
-        // Programmi (M4): nomi, editori, versioni e cartelle dichiarate dalle fonti, URI e comandi dei metodi.
+        // Programmi: nomi, editori, versioni e cartelle dichiarate dalle fonti, URI e comandi dei metodi.
         for x in &d.programs.items {
             set.insert(x.name.clone());
             set.extend(x.publisher.iter().cloned());

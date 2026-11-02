@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Tabella attesa per regola (06 §2.1, V5): sulla fixture reale della regola il record prodotto
+//! Tabella attesa per regola: sulla fixture reale della regola il record prodotto
 //! coincide campo per campo con `tests/attese/<id>.toml`: stato, azione, metodo e alternative,
 //! controlli, stato della stima, privilegi, gestore, colore e numero di elementi.
 

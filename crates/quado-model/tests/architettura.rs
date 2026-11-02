@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Test d'architettura (06 §7, 05 D13): il core non produce frasi. Gli errori e gli stati di
+//! Test d'architettura: il core non produce frasi. Gli errori e gli stati di
 //! `quado-model`, `quado-scan-win` e `quado-actions` sono codici e valori; i testi li
 //! scrive solo l'interfaccia, dai file di lingua.
 

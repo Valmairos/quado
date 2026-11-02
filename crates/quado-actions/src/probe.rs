@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Letture che servono a simulazione, esecuzione e misure (05 D7): attributi senza aprire il contenuto,
+//! Letture che servono a simulazione, esecuzione e misure: attributi senza aprire il contenuto,
 //! Restart Manager, riferimenti, Cestino del volume, Sensore memoria, cartelle di sincronizzazione,
 //! spazio libero. Tutte in sola lettura.
 //!
 //! Le letture passano da [`Probe`], così la logica di simulazione, conferma ed esecuzione si prova con
-//! dati simulati (`fake`) e la difesa vera si prova su VHDX con [`crate::win_probe::WinProbe`] (06,
-//! principi). Registro, collegamenti e attività pianificate li legge `quado-kb`: l'interfaccia li passa
-//! a `WinProbe` con [`SystemConfig`] (05 D10: `quado-actions` non dipende da `quado-kb`).
+//! dati simulati (`fake`) e la difesa vera si prova su VHDX con [`crate::win_probe::WinProbe`].
+//! Registro, collegamenti e attività pianificate li legge `quado-kb`: l'interfaccia li passa a `WinProbe`
+//! con [`SystemConfig`], perché `quado-actions` non dipende da `quado-kb`.
 
 use quado_model::intervention::{BinCount, ReferenceReport};
 
@@ -14,7 +14,7 @@ use crate::restart::{ProcessUse, RmError};
 
 /// Attributi di un file o di una cartella, letti con `FILE_READ_ATTRIBUTES`,
 /// `FILE_FLAG_OPEN_REPARSE_POINT` e `FILE_FLAG_OPEN_NO_RECALL`: il contenuto non si apre, i segnaposto
-/// non si scaricano, la data di ultimo accesso non cambia (03 §6.3).
+/// non si scaricano, la data di ultimo accesso non cambia.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Hash)]
 pub struct Attrs {
     /// Dimensione logica (`FileStandardInfo.EndOfFile`).
@@ -37,7 +37,7 @@ pub struct Attrs {
     pub link: bool,
     /// Segnaposto cloud (offline, richiamo all'apertura o all'accesso ai dati, tag cloud).
     pub placeholder: bool,
-    /// Dati residenti nella MFT: nella stima valgono 0, la MFT non si restringe (03 §6.3). Windows
+    /// Dati residenti nella MFT: nella stima valgono 0, la MFT non si restringe. Windows
     /// riporta comunque un'allocata piccola (16 byte per un file da 10).
     pub resident: bool,
 }
@@ -47,9 +47,9 @@ pub struct Attrs {
 pub struct VolumeBin {
     /// Radice del volume (`C:\`), come la restituisce `GetVolumePathNameW`.
     pub root: String,
-    /// Il volume ha un Cestino: disco fisso locale. Unità rimovibili e di rete no (F-AC-1).
+    /// Il volume ha un Cestino: disco fisso locale. Unità rimovibili e di rete no.
     pub has_bin: bool,
-    /// `NukeOnDelete` = 1: Windows elimina senza passare dal Cestino (F-AC-1, F-AC-7).
+    /// `NukeOnDelete` = 1: Windows elimina senza passare dal Cestino.
     pub nuke_on_delete: bool,
     /// `MaxCapacity` del volume in byte (chiave `BitBucket`); `None` se non registrata.
     pub capacity: Option<u64>,
@@ -86,7 +86,7 @@ pub fn entries_one_by_one<P: Probe + ?Sized>(probe: &P, dir: &str, step: &dyn Fn
 }
 
 /// Le letture di simulazione, esecuzione e misure. Ogni metodo restituisce codici di errore di Windows,
-/// mai frasi (05 D13). Le implementazioni non scrivono niente.
+/// mai frasi. Le implementazioni non scrivono niente.
 pub trait Probe: Send + Sync {
     /// Attributi di `path` (file o cartella), senza seguire i collegamenti.
     fn attributes(&self, path: &str) -> Result<Attrs, u32>;
@@ -105,23 +105,23 @@ pub trait Probe: Send + Sync {
     fn threads(&self) -> usize {
         1
     }
-    /// Processi che usano almeno uno dei file, secondo Restart Manager (F-AC-8).
+    /// Processi che usano almeno uno dei file, secondo Restart Manager.
     fn processes_using(&self, paths: &[String]) -> Result<Vec<ProcessUse>, RmError>;
-    /// Riferimenti a uno dei percorsi o a qualcosa al loro interno (F-AC-9).
+    /// Riferimenti a uno dei percorsi o a qualcosa al loro interno.
     fn references(&self, paths: &[String]) -> ReferenceReport;
-    /// Il Cestino del volume che contiene `path` (F-AC-1, F-AC-7).
+    /// Il Cestino del volume che contiene `path`.
     fn volume_bin(&self, path: &str) -> Result<VolumeBin, u32>;
     /// Giorni dopo cui Sensore memoria svuota il Cestino; `None` se Sensore memoria è spento o non
-    /// svuota il Cestino (F-AC-7).
+    /// svuota il Cestino.
     fn storage_sense_days(&self) -> Result<Option<u32>, u32>;
-    /// Provider della cartella di sincronizzazione registrata che contiene `path`, se c'è (F-AC-2).
+    /// Provider della cartella di sincronizzazione registrata che contiene `path`, se c'è.
     fn sync_root(&self, path: &str) -> Option<String>;
     /// Cartella sincronizzata che Windows non conosce (Dropbox, Google Drive, Syncthing, Resilio Sync), da
     /// chiedere solo se [`Probe::sync_root`] non ne trova una: `crate::sync`. Nessuna per default.
     fn sync_marker(&self, _path: &str) -> Option<crate::sync::SyncFolder> {
         None
     }
-    /// Byte liberi del volume che contiene `path` (`GetDiskFreeSpaceExW`, F-VE-1).
+    /// Byte liberi del volume che contiene `path` (`GetDiskFreeSpaceExW`).
     fn free_space(&self, path: &str) -> Result<u64, u32>;
     /// Ora corrente (`FILETIME`): le misure e il registro la usano, i test la fissano.
     fn now(&self) -> i64;

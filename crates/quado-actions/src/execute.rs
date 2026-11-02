@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Esecuzione di un piano confermato (03 F-AC-3, F-AC-5, F-AC-8; 05 D7 e "Aggiornamento dopo M1"):
+//! Esecuzione di un piano confermato:
 //! un elemento alla volta, ricontrollato subito prima (ID, dimensione, data di modifica; per le cartelle
 //! anche Restart Manager), un'operazione di Windows per elemento, verifica che sia arrivato nel Cestino,
 //! arresto del piano al primo elemento sparito senza arrivare nel Cestino.
 //!
 //! Al mover arrivano solo i percorsi degli elementi del piano, uno per chiamata e nell'ordine del piano.
 //! Se Windows non sposta un elemento, una nuova lettura degli attributi dice dove sta:
-//! - `MoveResult::Failed`: ancora al suo posto → fallito, gli altri proseguono (06 §5.4, file aperto
-//!   dopo il controllo); sparito → non nel Cestino, il piano si ferma.
+//! - `MoveResult::Failed`: ancora al suo posto → fallito, gli altri proseguono (per esempio un file
+//!   aperto dopo il controllo); sparito → non nel Cestino, il piano si ferma.
 //! - `MoveResult::NotRecycled`: Windows ha finito senza un elemento nel Cestino (per esempio l'utente ha
 //!   detto sì a "eliminare per sempre?"). Il piano si ferma sempre: sparito → non nel Cestino; ancora al
 //!   suo posto → fallito, ma lo stato è inatteso.
@@ -55,7 +55,7 @@ pub struct ItemResult {
     pub outcome: ItemOutcome,
 }
 
-/// Riepilogo dell'esecuzione (F-AC-3): riusciti, saltati e falliti con il motivo.
+/// Riepilogo dell'esecuzione: riusciti, saltati e falliti con il motivo.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct Riepilogo {
     /// Radice del volume.
@@ -80,9 +80,9 @@ enum Recheck {
     Cancelled,
 }
 
-/// Ricontrollo subito prima dello spostamento (RS6): identità, dimensione e data come in simulazione;
-/// per le cartelle una nuova visita (numero di file e logica totale) e Restart Manager con lo stesso
-/// campione.
+/// Ricontrollo subito prima dello spostamento, perché il disco può cambiare dopo la simulazione: identità,
+/// dimensione e data come in simulazione; per le cartelle una nuova visita (numero di file e logica totale)
+/// e Restart Manager con lo stesso campione.
 fn recheck(item: &PlanItem, probe: &dyn Probe, progress: &ExecProgress) -> Recheck {
     let a = match probe.attributes(&item.path) {
         Ok(a) => a,

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! Spostamento nel Cestino con `ShellMover` e Cestino del volume con `WinProbe`, sul VHDX di prova NTFS
-//! (`R:`) con il Cestino ridotto a 64 MiB (06 §5.3, 03 F-AC-1, F-AC-5, F-AC-7, F-AC-8).
+//! (`R:`) con il Cestino ridotto a 64 MiB.
 //!
 //! Solo su `R:\interventi-prove-b`: nessun test sposta niente fuori da lì. Il Cestino di `R:` si svuota
 //! all'inizio e alla fine con `quado_testkit::bin::empty_test_volume`, che rifiuta ogni altro volume;
@@ -420,14 +420,15 @@ fn folder_with_long_paths_inside() {
 }
 
 /// Elemento più grande del Cestino, spostato da solo: senza "Sì a tutto" e con `FOF_WANTNUKEWARNING`
-/// Windows chiede prima di eliminarlo per sempre. La prova chiude la finestra (cioè "No"). M1 ha visto
-/// che `PreDeleteItem` non riporta sempre l'eliminazione definitiva: qui si vede quale difesa agisce.
+/// Windows chiede prima di eliminarlo per sempre. La prova chiude la finestra (cioè "No"). Le prove in
+/// `docs/m1/` hanno visto che `PreDeleteItem` non riporta sempre l'eliminazione definitiva: qui si vede
+/// quale difesa agisce.
 #[test]
 #[ignore = "richiede i VHDX di prova"]
 fn oversized_item_asks_and_no_keeps_it() {
     let area = Area::new();
     let f = area.dir.join("troppo-grande.bin");
-    // 100 MiB logici in un Cestino da 64 MiB: Windows conta la dimensione logica (M1); file sparse, quasi
+    // 100 MiB logici in un Cestino da 64 MiB: Windows conta la dimensione logica; file sparse, quasi
     // niente scritto sul disco.
     trees::sparse_file(&f, 100 << 20);
     let before = area.probe.attributes(&s(&f)).unwrap();
@@ -464,7 +465,7 @@ fn oversized_item_after_yes_is_reported_honestly() {
     }
 }
 
-/// "Svuota il Cestino" del prodotto (`procedures::empty_recycle_bin`, F-AC-1): Windows mostra il suo
+/// "Svuota il Cestino" del prodotto (`procedures::empty_recycle_bin`): Windows mostra il suo
 /// dialogo di conferma (nessun `SHERB_NOCONFIRMATION`); la prova risponde "No" e il Cestino di R: resta
 /// com'era.
 #[test]

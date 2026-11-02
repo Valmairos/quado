@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Oracolo indipendente (06 §1.1): un secondo percorso di misura, usato solo nei test.
+//! Oracolo indipendente: un secondo percorso di misura, usato solo nei test.
 //!
 //! Elenca le cartelle con `FindFirstFileW` (attraverso `std::fs::read_dir`), non con
 //! `FileIdExtdDirectoryInfo`, e apre ogni file con soli attributi per leggere `FileStandardInfo`

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Viste di M2 sui dati di una scansione vera, contro l'oracolo e contro query di riferimento
-//! scritte a parte (06 §7): File grandi (F-EX-5) e filtri della ricerca (F-EX-4).
+//! Viste dell'esplorazione sui dati di una scansione vera, contro l'oracolo e contro query di riferimento
+//! scritte a parte: File grandi e filtri della ricerca.
 
 use std::collections::{BTreeSet, HashMap};
 use std::os::windows::ffi::OsStrExt;

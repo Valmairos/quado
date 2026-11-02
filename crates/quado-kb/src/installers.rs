@@ -1,15 +1,16 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Installatori nella lente Download (03 F-DL-2, 05 D6): nome e versione dalla risorsa di versione PE o
-//! dalla tabella Property degli MSI, letti su richiesta; corrispondenza con i programmi installati.
-//! ProductCode uguale alla chiave di disinstallazione vale "da fonte"; nome e versione di un exe
-//! valgono "dedotto", con l'affidabilità di 03 §6.2.
+//! Installatori nella lente Download: nome e versione dalla risorsa di versione PE o dalla tabella
+//! Property degli MSI, letti su richiesta; corrispondenza con i programmi installati. ProductCode uguale
+//! alla chiave di disinstallazione vale "da fonte"; nome e versione di un exe valgono "dedotto", con
+//! l'affidabilità del criterio che li produce (vedi `match_installer`).
 //!
 //! Qui sta la parte pura: tipo dall'estensione, controllo della struttura di una risorsa di versione,
 //! corrispondenza, fatti per il record e cache delle letture. Le letture su Windows sono in
 //! `installers_win`. Nessuna somiglianza parziale: un nome o è uguale dopo la normalizzazione
 //! descritta in `normalize_name`, o non corrisponde.
 //!
-//! I tipi marcati "interfaccia M4" sono condivisi tra i crate: non si cambiano senza accordo.
+//! I tipi marcati "condiviso tra i crate" li usano anche l'interfaccia e l'eseguibile: cambiarli vuol
+//! dire cambiare anche loro.
 
 use std::collections::{HashMap, HashSet};
 
@@ -17,7 +18,7 @@ use quado_model::record::{Criterion, Fact, Hive, Provenance, Source, Value};
 
 use crate::extract::{self, ExtractError, FormatIssue, Uninstall, UninstallEntry};
 
-/// Interfaccia M4.
+/// Tipo di installatore. Condiviso tra i crate.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum InstallerKind {
     /// Eseguibile PE (`.exe`), risorsa di versione.
@@ -36,7 +37,7 @@ impl InstallerKind {
     }
 }
 
-/// Dati di un installatore letti su richiesta. Interfaccia M4. I testi sono dati dell'installatore,
+/// Dati di un installatore letti su richiesta. Condiviso tra i crate. I testi sono dati dell'installatore,
 /// mai frasi di Quado.
 #[derive(Clone, Debug, Default, PartialEq, Eq, Hash)]
 pub struct InstallerInfo {
@@ -55,7 +56,7 @@ pub struct InstallerInfo {
     pub file_version: Option<String>,
 }
 
-/// Corrispondenza con i programmi installati (F-DL-2). Interfaccia M4. `entry` è l'indice in
+/// Corrispondenza con i programmi installati. Condiviso tra i crate. `entry` è l'indice in
 /// `Uninstall::entries`; la provenienza è `FromSource` per il ProductCode, `Deduced` per nome e versione.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum MatchOutcome {
@@ -565,12 +566,12 @@ fn best<'a>(cands: impl Iterator<Item = (usize, &'a UninstallEntry)>, version: O
         .map(|(i, same, _)| (i, same))
 }
 
-/// Corrispondenza con i programmi installati (F-DL-2).
+/// Corrispondenza con i programmi installati.
 /// - `ProductCode` valido (`is_product_code`) uguale al nome di una chiave di disinstallazione, senza
 ///   distinzione di maiuscole: provenienza `FromSource`.
 /// - Altrimenti (exe, o MSI senza voce con il suo codice): nome del prodotto uguale al `DisplayName` dopo
 ///   `normalize_name`. Con la stessa versione la provenienza è `Deduced(OneSource)`, affidabilità media
-///   (03 §6.2: nome e versione uguali); con una versione diversa o non confrontabile è
+///   (nome e versione uguali); con una versione diversa o non confrontabile è
 ///   `Deduced(NameOnly)`, affidabilità bassa, perché coincide solo il nome.
 /// - Versioni con `same_version`. Una versione mancante da una delle due parti dà `OtherVersion`: non si
 ///   può dire che sia la stessa (il fatto lo dice con la sua chiave, vedi `match_fact`).
@@ -596,7 +597,7 @@ pub fn match_installer(info: &InstallerInfo, programs: &Uninstall) -> MatchOutco
 }
 
 // ---------------------------------------------------------------------------------------------
-// Fatti per il record (03 §6.1): chiavi dei testi in `regole/<lingua>.ftl`, sezione "M4: installatori"
+// Fatti per il record: chiavi dei testi in `regole/<lingua>.ftl`, sezione "Installatori"
 
 /// Nome e versione del prodotto (`$a`, `$b`).
 pub const FACT_PRODUCT: &str = "fatto-installatore-prodotto";
@@ -733,9 +734,9 @@ pub fn match_fact(outcome: &MatchOutcome, info: &InstallerInfo, programs: &Unins
 }
 
 // ---------------------------------------------------------------------------------------------
-// Cache delle letture (05 D6, D8): in memoria, per la sessione
+// Cache delle letture: in memoria, per la sessione
 
-/// Chiave di contenuto di un file (05 D6): percorso, dimensione, data di modifica (`FILETIME`), ID file.
+/// Chiave di contenuto di un file: percorso, dimensione, data di modifica (`FILETIME`), ID file.
 /// Se uno dei tre valori cambia, il file si rilegge.
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub struct ContentKey {
@@ -763,8 +764,8 @@ fn settled(r: &Result<InstallerInfo, ExtractError>) -> bool {
     matches!(r, Ok(_) | Err(ExtractError::Format(_)))
 }
 
-/// Cache dei dati degli installatori (F-DL-2): una voce per percorso, valida finché dimensione, data di
-/// modifica e ID file restano uguali. Resta in memoria (05 D8).
+/// Cache dei dati degli installatori: una voce per percorso, valida finché dimensione, data di modifica
+/// e ID file restano uguali. Resta in memoria: niente si salva su disco.
 #[derive(Clone, Debug, Default)]
 pub struct InstallerCache {
     entries: HashMap<String, (ContentKey, Result<InstallerInfo, ExtractError>)>,

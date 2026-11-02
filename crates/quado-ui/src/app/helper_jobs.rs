@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! "Ripeti come amministratore" (05 D3, 03 F-SC-3, F-OV-3): l'helper elevato dietro un insieme
-//! iniettabile ([`Elevator`]), la richiesta costruita dalle cartelle negate ([`build_request`]) e il
-//! lavoro in background ([`HelperState`]): attesa della conferma di Windows, lettura, esito.
+//! "Ripeti come amministratore": l'helper elevato dietro un insieme iniettabile ([`Elevator`]), la richiesta
+//! costruita dalle cartelle negate ([`build_request`]) e il lavoro in background ([`HelperState`]): attesa
+//! della conferma di Windows, lettura, esito.
 //!
 //! Le risposte si raccolgono durante il lavoro e si applicano al modello tutte insieme all'arrivo di
 //! `Done`, sul thread dell'interfaccia (`data::apply_helper`): sottoalberi innestati, totali dei profili e
@@ -43,8 +43,9 @@ pub enum HelperFailure {
     Pipe(PipeError),
     /// L'helper è uscito con questo codice prima di `Done` (vedi `helper::serve::exit`).
     Exited(u32),
-    /// `quado.exe` sta in Download o in una cartella temporanea, da cui l'helper non parte (05 D3, RS11):
-    /// controllo fatto prima della richiesta di Windows, che così non compare.
+    /// `quado.exe` sta in Download o in una cartella temporanea, da cui l'helper non parte: una DLL esca messa
+    /// accanto all'eseguibile verrebbe caricata da amministratore. Controllo fatto prima della richiesta di
+    /// Windows, che così non compare.
     Location,
 }
 

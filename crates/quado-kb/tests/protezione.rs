@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Elementi protetti (03 F-AC-4, 05 D7 controllo 1, 06 §5.2): radici dalle prove di prova
+//! Elementi protetti: radici dalle prove di prova
 //! (`tests/common`, fixture sintetiche con la forma di un PC vero) e dalla vista Programmi costruita sulle
 //! stesse fixture, più voci di disinstallazione aggiunte per i casi limite.
 

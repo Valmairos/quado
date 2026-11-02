@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! 06 §3.6: effetto delle letture sulla data di ultimo accesso, sul VHDX NTFS di prova montato come `R:`
+//! Effetto delle letture sulla data di ultimo accesso, sul VHDX NTFS di prova montato come `R:`
 //! (etichetta `RilievoNTFS`, creato da `cargo xtask vhdx crea`). Senza quel volume il test lo dice e
 //! termina. Usa solo `R:\m4-ultimo-accesso`, cancellata alla fine anche se il test fallisce.
 //!

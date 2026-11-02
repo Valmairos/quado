@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Test sulla base delle regole (06 §2.2, RS10): ogni regola ha almeno una fonte con URL ed estratto,
+//! Test sulla base delle regole: ogni regola ha almeno una fonte con URL ed estratto,
 //! una fixture, una data di verifica, una tabella attesa e i testi in italiano e in inglese.
 
 use std::collections::BTreeSet;
@@ -74,7 +74,7 @@ fn rule_files_reject_missing_sources_and_bad_exceptions() {
     // Estratto vuoto.
     let empty = good.replacen("estratto = '''Deleting", "estratto = ''' '''\nx = '''Deleting", 1);
     assert!(Rule::parse("winsxs.toml", &empty).is_err());
-    // Eccezione a F-AC-4 senza stato Da verificare.
+    // Eccezione degli elementi protetti senza stato Da verificare.
     let exc = good.replacen("protetto = true", "protetto = true\neccezione_protetti = true", 1);
     assert_eq!(Rule::parse("winsxs.toml", &exc).map(|_| ()), Err(RuleIssue::Exception));
     // Data non valida.

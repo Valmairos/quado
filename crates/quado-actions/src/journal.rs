@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Registro degli interventi (03 F-AC-6, 05 D8): `%APPDATA%\Quado\interventi.jsonl`. Non esiste prima
+//! Registro degli interventi: `%APPDATA%\Quado\interventi.jsonl`. Non esiste prima
 //! del primo intervento; ogni riga è un intervento completo in JSON, e per uno stesso `id` vale l'ultima
 //! riga (le misure dopo lo svuotamento o la procedura arrivano dopo). Salva codici e valori, mai frasi:
-//! si rilegge nella lingua corrente (05 D13). Si cancella dalle impostazioni.
+//! si rilegge nella lingua corrente. Si cancella dalle impostazioni.
 //!
 //! Formato di una riga (versione 1): chiavi in italiano, stati ed esiti con i codici del modello
 //! (`Estimate::code`, `ItemOutcome::code`, `MeasurePoint::code`) o con i codici di questo modulo dove il
@@ -110,7 +110,7 @@ fn parse_line(line: &[u8]) -> Option<JournalEntry> {
     r.into_entry()
 }
 
-/// Dimensione del file, se esiste (pagina "Dati e privacy", 05 D8).
+/// Dimensione del file, se esiste (pagina "Dati e privacy").
 pub fn size(data_dir: &Path) -> Option<u64> {
     std::fs::metadata(path(data_dir)).ok().map(|m| m.len())
 }

@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Indici per l'interfaccia (07 §1.3, M2): figli ordinati per dimensione, righe della tabella ad albero,
-//! elementi più grandi senza sovrapposizioni (F-OV-2), file più grandi (F-EX-5), ricerca e filtri (F-EX-4).
+//! Indici per l'interfaccia: figli ordinati per dimensione, righe della tabella ad albero, elementi più
+//! grandi senza sovrapposizioni, file più grandi, ricerca e filtri.
 //!
-//! Le dimensioni sono sempre quelle allocate ("Dimensioni su disco", F-SC-8). I nodi staccati da una
+//! Le dimensioni sono sempre quelle allocate ("Dimensioni su disco"). I nodi staccati da una
 //! riscansione e i nomi secondari degli hard link non compaiono negli elenchi di file.
 
 use std::cmp::Ordering;
@@ -226,7 +226,7 @@ impl NodeSet {
     }
 }
 
-/// Righe della tabella ad albero (F-EX-2): i figli di `root` e, sotto ogni cartella espansa, i suoi.
+/// Righe della tabella ad albero: i figli di `root` e, sotto ogni cartella espansa, i suoi.
 /// Le cartelle espanse si ricordano anche quando un antenato si chiude, come in Esplora file.
 #[derive(Clone, Debug, Default)]
 pub struct Outline {
@@ -469,16 +469,16 @@ pub fn is_ancestor(tree: &Tree, a: u32, b: u32) -> bool {
     false
 }
 
-/// "Dove finisce lo spazio" (F-OV-2) senza regole di classificazione (M2): al massimo `n` elementi
+/// "Dove finisce lo spazio" senza regole di classificazione: al massimo `n` elementi
 /// sotto `root`, file o cartelle, mai un elemento insieme a un suo antenato.
 ///
 /// Si parte dai figli di `root`. Una cartella dell'elenco si sostituisce con il suo contenuto quando,
 /// dopo la sostituzione, i suoi figli che entrano nei primi `n` coprono almeno metà dei suoi byte.
 /// Così una cartella che è quasi tutta una sottocartella lascia il posto a quella, mentre una cartella
 /// con molte cose medie (Download con cento installatori) resta un elemento solo.
-/// Dalla M3 le regole decidono le unità (05): `closed` dice quali elementi non si aprono mai (un gioco
-/// di Steam, la cache di npm, il Cestino), mentre ciò che nessuna regola riconosce segue la regola
-/// strutturale.
+/// Con le regole di classificazione si usa [`top_elements_with`]: `closed` dice quali elementi non si
+/// aprono mai (un gioco di Steam, la cache di npm, il Cestino), mentre ciò che nessuna regola riconosce
+/// segue la regola strutturale.
 pub fn top_elements(tree: &Tree, ord: &Ordered, root: u32, n: usize) -> Vec<u32> {
     top_elements_with(tree, ord, root, n, &|_| false)
 }
@@ -529,7 +529,7 @@ pub fn top_elements_with(tree: &Tree, ord: &Ordered, root: u32, n: usize, closed
     frontier
 }
 
-/// Filtri della ricerca e della vista File grandi (F-EX-4). `None` = nessun vincolo.
+/// Filtri della ricerca e della vista File grandi. `None` = nessun vincolo.
 #[derive(Clone, Debug, Default, PartialEq, Eq)]
 pub struct Filter {
     /// Allocata minima in byte.
@@ -540,7 +540,7 @@ pub struct Filter {
     pub modified_after: Option<i64>,
     /// Ultima modifica precedente (`FILETIME`).
     pub modified_before: Option<i64>,
-    /// Solo elementi di questo gruppo di colore (gestore, M3): il codice lo dà chi chiama.
+    /// Solo elementi di questo gruppo di colore (gestore): il codice lo dà chi chiama.
     pub group: Option<u8>,
 }
 
@@ -591,7 +591,7 @@ fn by_size_then_path(tree: &Tree, a: u32, b: u32) -> Ordering {
     tree.alloc(b).cmp(&tree.alloc(a)).then_with(|| tree.path(a).cmp(&tree.path(b)))
 }
 
-/// I file più grandi del volume per dimensione su disco (F-EX-5), al massimo `limit`.
+/// I file più grandi del volume per dimensione su disco, al massimo `limit`.
 pub fn largest_files(tree: &Tree, filter: &Filter, limit: usize, group_of: GroupOf<'_>) -> Vec<u32> {
     let mut all: Vec<u32> = (1..tree.len() as u32)
         .into_par_iter()
@@ -668,7 +668,7 @@ pub fn search(tree: &Tree, root: u32, needle: &Needle, filter: &Filter, group_of
         .filter(|&i| root == Tree::ROOT || is_ancestor(tree, root, i))
         .collect();
     // Solo per dimensione (a parità, per indice): con due milioni di risultati il confronto dei nomi
-    // costerebbe più della ricerca stessa (≤ 300 ms, F-EX-4).
+    // costerebbe più della ricerca stessa (≤ 300 ms).
     hits.par_sort_unstable_by_key(|&i| (std::cmp::Reverse(tree.alloc(i)), i));
     hits
 }
@@ -748,7 +748,7 @@ mod tests {
 
     #[test]
     fn top_elements_on_random_trees_are_an_antichain() {
-        // Alberi pseudocasuali con antenati e discendenti grandi (06 §1.4).
+        // Alberi pseudocasuali con antenati e discendenti grandi.
         let mut seed = 0x9E37_79B9_7F4A_7C15_u64;
         let mut rnd = |m: u64| {
             seed ^= seed << 13;

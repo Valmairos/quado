@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! `cargo xtask verifica-dll` (07 §3 riga 5, 06 §11, RS11).
+//! `cargo xtask verifica-dll`: una DLL esca accanto all'eseguibile non deve caricarsi, perché l'helper
+//! la caricherebbe con i privilegi di amministratore.
 //!
 //! 1. Il load config di `quado.exe` ha `DependentLoadFlags` = 0x800 (letto dall'intestazione PE).
 //! 2. Prova dell'esca: una copia di `version.dll` di System32 messa accanto all'eseguibile non viene

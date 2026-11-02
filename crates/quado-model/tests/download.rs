@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Lente Download nel modello (06 §3.1-3.3, F-DL-1, F-DL-3..5): famiglie, suffisso "(N)", file della
-//! stessa dimensione, copie identiche, archivi con la cartella estratta. Alberi costruiti in memoria:
-//! nessun file reale viene letto.
+//! Lente Download nel modello: famiglie, suffisso "(N)", file della stessa dimensione, copie identiche,
+//! archivi con la cartella estratta. Alberi costruiti in memoria: nessun file reale viene letto.
 
 use std::time::Instant;
 
@@ -125,7 +124,7 @@ fn families_in_downloads_and_in_another_user_folder() {
         assert!(lens.items.windows(2).all(|x| x[0].node < x[1].node), "in ordine di nodo");
         assert_eq!(lens.unread_dirs, 0);
     }
-    // Le sei famiglie dei riquadri, nell'ordine di 04 §6.6, e i codici stabili.
+    // Le sei famiglie dei riquadri, nell'ordine in cui compaiono nella vista, e i codici stabili.
     assert_eq!(LensFamily::SHOWN.map(LensFamily::code), ["installatori", "archivi", "immagini-disco", "video-audio", "documenti-immagini", "download-incompleti"]);
     for f in LensFamily::ALL {
         assert_eq!(LensFamily::from_code(f.code()), Some(f));
@@ -184,7 +183,7 @@ fn copy_suffix_cases() {
 
 #[test]
 fn copy_suffix_is_only_a_filter() {
-    // `setup (1).exe` con una dimensione diversa da `setup.exe` (F-DL-3, 06 §3.1).
+    // `setup (1).exe` con una dimensione diversa da `setup.exe`: il suffisso non basta a dire copia.
     let mut t = Tree::with_root(&w("C:\\"), 0);
     let dl = t.push(Tree::ROOT, &w("Downloads"), dir());
     let setup = t.push(dl, &w("setup.exe"), file(5_000_000));
@@ -312,7 +311,7 @@ fn detached_nodes_and_links_not_followed_stay_out() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Archivi (F-DL-5, 06 §3.3)
+// Archivi
 
 fn entry(path: &str, size: u64) -> ArchiveEntry {
     ArchiveEntry { path: path.into(), size, dir: false }
@@ -519,7 +518,7 @@ fn lens_on_100_000_files_is_fast() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Proprietà (06 §3.1, §3.2)
+// Proprietà
 
 const STEMS: [&str; 6] = ["setup", "foto", "archivio", "film", "Relazione è", "dati"];
 const EXTS: [&str; 13] = ["exe", "msi", "zip", "iso", "mp4", "mp3", "pdf", "jpg", "crdownload", "part", "xyz", "", "tar.gz"];

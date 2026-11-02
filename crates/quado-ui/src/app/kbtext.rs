@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Testi e segni della classificazione (M3): stati con icona e parola (04 §6.1), provenienza dei fatti
-//! con glifo ed etichetta, righe delle regole. Tutto dai file di lingua (05 D13): il core dà codici e
-//! valori, qui diventano frasi.
+//! Testi e segni della classificazione: stati con icona e parola, provenienza dei fatti con glifo ed
+//! etichetta, righe delle regole. Tutto dai file di lingua: il core dà codici e valori, qui diventano frasi.
 
 use quado_kb::{Classification, Kb, Match};
 use quado_model::record::{
@@ -42,7 +41,7 @@ pub fn evidence(p: Provenance) -> Evidence {
     }
 }
 
-/// L'attribuzione al gestore non basta per il colore: si mostra come "ipotesi" (03 §6.2).
+/// L'attribuzione al gestore non basta per il colore: si mostra come "ipotesi".
 pub fn is_hypothesis(m: &Match) -> bool {
     !m.attribution.colors()
 }
@@ -68,7 +67,7 @@ pub fn state_label(l: &Lingue, s: &State) -> String {
     }
 }
 
-/// Perché lo stato è Non sappiamo: il cambio di stato ha sempre il suo testo (07 §5.1).
+/// Perché lo stato è Non sappiamo: il cambio di stato ha sempre il suo testo.
 pub fn unknown_reason(l: &Lingue, r: UnknownReason, verified: Option<String>) -> String {
     match r {
         UnknownReason::NoRule => l.t("motivo-stato-nessuna-regola"),
@@ -81,7 +80,7 @@ pub fn unknown_reason(l: &Lingue, r: UnknownReason, verified: Option<String>) ->
 }
 
 /// Il record ha fatti dedotti, di identità o di gestibilità: solo allora la riga dell'affidabilità dice
-/// qualcosa (03 §6.2). Le voci della lente Download senza fatti dedotti non la mostrano.
+/// qualcosa. Le voci della lente Download senza fatti dedotti non la mostrano.
 pub fn has_deduced(r: &Record) -> bool {
     let proof = r.state.manageability().map(|p| p.facts()).unwrap_or_default();
     r.identity.0.iter().chain(proof).any(|f| matches!(f.provenance, Provenance::Deduced(_)))
@@ -205,11 +204,11 @@ pub fn fact_with_source(l: &Lingue, f: &Formatter, fact: &Fact) -> String {
     }
 }
 
-/// Come mostrare l'indirizzo di una fonte (valutazione dei consigli, 01/11/2026). Una pagina: l'indirizzo,
-/// che si copia. Un file che un programma scrive sul PC (`file:///`): «File del programma sul tuo PC» e il
-/// percorso dalla cartella nota (`%LOCALAPPDATA%\CapCut\...`), senza il nome di un utente. Un documento del
-/// repository (`docs/`): «Prova fatta con Quado» e il documento nel codice sorgente. Restituisce l'etichetta,
-/// se serve, il testo da mostrare e se ha senso copiarlo.
+/// Come mostrare l'indirizzo di una fonte. Una pagina: l'indirizzo, che si copia. Un file che un programma
+/// scrive sul PC (`file:///`): «File del programma sul tuo PC» e il percorso dalla cartella nota
+/// (`%LOCALAPPDATA%\CapCut\...`), senza il nome di un utente. Un documento del repository (`docs/`): «Prova
+/// fatta con Quado» e il documento nel codice sorgente. Restituisce l'etichetta, se serve, il testo da
+/// mostrare e se ha senso copiarlo.
 pub fn source_place(l: &Lingue, url: &str) -> (Option<String>, String, bool) {
     if let Some(rest) = url.strip_prefix("file:///") {
         return (Some(l.t("regole-fonte-file")), rest.replace("%20", " ").replace('/', "\\"), false);

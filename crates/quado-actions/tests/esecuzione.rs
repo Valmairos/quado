@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Esecuzione di un piano confermato (03 F-AC-3, F-AC-5, F-AC-8; 05 D7 e "Aggiornamento dopo M1"; 06
-//! §5.2, §5.4, §5.6) con letture e spostamenti simulati (`fake`): ricontrollo subito prima, un elemento
-//! alla volta, arresto al primo elemento sparito senza arrivare nel Cestino. Nessun file vero.
+//! Esecuzione di un piano confermato con letture e spostamenti simulati (`fake`): ricontrollo subito prima,
+//! un elemento alla volta, arresto al primo elemento sparito senza arrivare nel Cestino. Nessun file vero.
 
 use std::sync::atomic::{AtomicBool, Ordering};
 
@@ -164,7 +163,7 @@ fn folders_in_use_at_the_recheck_are_skipped_with_the_same_sample() {
     assert_eq!(at_simulation.len(), 3);
     // Processo aperto dopo la simulazione su un file della cartella; Restart Manager che non risponde
     // sull'altra. Per i file singoli il ricontrollo non ripete Restart Manager: se il file è aperto,
-    // fallisce lo spostamento (06 §5.4).
+    // fallisce lo spostamento.
     p.in_use("R:\\d\\x.dll", 99, "Processo di prova").rm_error("R:\\g\\z.bin", RmError::List(1223)).in_use("R:\\a.bin", 98, "Altro");
     let mover = FakeMover::new(&p);
     let r = esegui(piano, &p, &mover, &ExecProgress::default());
@@ -226,7 +225,7 @@ fn an_item_gone_without_reaching_the_bin_stops_the_plan() {
 #[test]
 fn windows_deleting_for_good_stops_the_plan() {
     // `NukeOnDelete` acceso dopo la simulazione: Windows elimina il primo elemento senza Cestino (come
-    // misurato in M1) e il piano si ferma lì.
+    // misurato su un VHDX di prova, `docs/m1/cestino-verifiche.md`) e il piano si ferma lì.
     let p = world();
     let piano = plan_of(&p, &["R:\\a.bin", "R:\\b.bin"]);
     p.bin("R:\\", |b| b.nuke_on_delete = true);

@@ -1,13 +1,13 @@
 [package]
 name = "xtask"
-description = "Strumenti di sviluppo di Quado: misure, alberi di prova, VHDX, verifiche (05 D10)"
+description = "Strumenti di sviluppo di Quado: misure, alberi di prova, VHDX, verifiche"
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
 publish.workspace = true
 license.workspace = true
 
-# Come le regole del workspace, ma `unsafe_code` è `deny` e non `forbid`: le prove di M1 sul Cestino
+# Come le regole del workspace, ma `unsafe_code` è `deny` e non `forbid`: le prove sul Cestino
 # (`src/cestino_cmd/win.rs`, fuori dal prodotto) chiamano la shell di Windows e lo permettono solo lì.
 [lints.rust]
 unsafe_code = "deny"
@@ -24,7 +24,7 @@ quado-scan-win = { workspace = true }
 quado-testkit = { workspace = true }
 quado-kb = { workspace = true }
 quado-ui = { workspace = true }
-# `confronto-testo` (06 §7): il testo di egui disegnato fuori schermo come negli snapshot dell'interfaccia.
+# `confronto-testo`: il testo di egui disegnato fuori schermo come negli snapshot dell'interfaccia.
 egui = { workspace = true }
 egui_kittest = { workspace = true, features = ["wgpu"] }
 image = { workspace = true }
@@ -32,8 +32,8 @@ unic-langid = { workspace = true }
 # `d3d12-costo` (baseline delle prestazioni): D3D12CreateDevice su ciascuna scheda video.
 windows = { workspace = true, features = ["Win32_Graphics_Direct3D", "Win32_Graphics_Direct3D12"] }
 windows-core = { workspace = true }
-# `sessione-prova` (06 §10): handle del processo (NtQuerySystemInformation, NtQueryObject), connessioni per
-# processo (GetExtendedTcpTable, GetExtendedUdpTable) e stato della rete (GetAdaptersAddresses).
+# `sessione-prova`, la prova della privacy: handle del processo (NtQuerySystemInformation, NtQueryObject),
+# connessioni per processo (GetExtendedTcpTable, GetExtendedUdpTable) e stato della rete (GetAdaptersAddresses).
 windows-sys = { workspace = true, features = [
     "Wdk_Foundation",
     "Wdk_System_SystemInformation",

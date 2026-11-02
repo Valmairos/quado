@@ -1,4 +1,4 @@
-# Cache di Chrome (07 §7, proposto): la svuota Chrome.
+# Cache di Chrome: la svuota Chrome.
 id = "cache-chrome"
 priorita = 3
 riconoscitore = "percorso"

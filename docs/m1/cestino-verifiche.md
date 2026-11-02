@@ -1,6 +1,6 @@
 ## Verifiche del Cestino su R:\ (volume {24c69897-74a3-4ec2-b864-7101bc40cd71}, Cestino ridotto a 20 MB)
 
-### Riga 2: `PreDeleteItem` e rifiuto del singolo elemento
+### `PreDeleteItem` e rifiuto del singolo elemento
 
 Tre elementi in un'unica operazione: `a.bin` (2 MB), `grande.bin` (30 MB, oltre la capacità), `b.bin` (2 MB).
 
@@ -58,7 +58,7 @@ Tre elementi in un'unica operazione: `a.bin` (2 MB), `grande.bin` (30 MB, oltre 
   - PerformOperations 0x00000000, operazioni annullate: false
   - Cestino secondo Windows: 0 elementi, 0 byte
 
-### Riga 3: come Windows conta la capacità
+### Come Windows conta la capacità
 
 - `sparso.bin`: logica 50 MB, quasi nessun cluster allocato; `compresso.txt`: logica 30 MB, compresso NTFS (31457280 The compression ratio is 8,0)
 - `sparso.bin`:
@@ -84,7 +84,7 @@ Tre elementi in un'unica operazione: `a.bin` (2 MB), `grande.bin` (30 MB, oltre 
   - PerformOperations 0x00000000, operazioni annullate: false
   - dopo f3: Cestino secondo Windows 3 elementi, 25165824 byte; su disco [("$IO1MWZ5.bin", 76), ("$IVPWIV7.bin", 76), ("$IXQI8WF.bin", 76), ("$RO1MWZ5.bin", 8388608), ("$RVPWIV7.bin", 8388608), ("$RXQI8WF.bin", 8388608)]
 
-### Riga 3 e riga 1: cartella orfana
+### Cartella orfana e svuotamento
 
   - PreDeleteItem `cartella12`: flag 0x282 (nel Cestino)
   - PostDeleteItem `cartella12`: flag 0x282, esito 0x00270008, nel Cestino: true

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Dati della scansione per l'interfaccia: la scansione in corso (F-SC-4, F-SC-5), il risultato con gli
-//! indici di `quado_model::view`, i lavori in background (ricerca, File grandi, verifica di una voce).
+//! Dati della scansione per l'interfaccia: la scansione in corso, il risultato con gli indici di
+//! `quado_model::view`, i lavori in background (ricerca, File grandi, verifica di una voce).
 
 use std::collections::HashSet;
 use std::sync::mpsc::{Receiver, TryRecvError, channel};
@@ -115,7 +115,7 @@ impl ScanJob {
     }
 }
 
-/// Data locale (scadenza delle regole, 07 §5.1).
+/// Data locale (scadenza delle regole).
 pub fn today() -> Date {
     system::local_time(system::now_filetime()).map_or(Date::new(2026, 10, 13), |t| Date::new(t.year, t.month as u8, t.day as u8))
 }
@@ -130,8 +130,9 @@ pub fn group_code(cls: &Classification, node: u32) -> u8 {
     }
 }
 
-/// "Dove finisce lo spazio" con le unità decise dalle regole: un elemento riconosciuto da una regola
-/// che non è un contenitore non si apre (05, "Aggiornamento dopo M2").
+/// "Dove finisce lo spazio" con le unità decise dalle regole: un elemento riconosciuto da una regola che non
+/// è un contenitore non si apre (la cartella di un gioco resta un solo elemento, senza scendere alle sue
+/// sottocartelle).
 pub fn top_list(tree: &Tree, ord: &Ordered, kb: &Kb, cls: &Classification) -> Vec<u32> {
     let closed = |n: u32| cls.own(n).is_some_and(|m| !kb.rules[cls.matches[m].rule].container);
     view::top_elements_with(tree, ord, Tree::ROOT, TOP_N, &closed)
@@ -143,11 +144,11 @@ pub struct Model {
     pub ord: Ordered,
 }
 
-/// Cartelle non leggibili e cosa sono, per la card dei conti (F-OV-3). Solo fatti dal percorso.
+/// Cartelle non leggibili e cosa sono, per la card dei conti. Solo fatti dal percorso.
 #[derive(Clone, Debug, Default)]
 pub struct Observed {
     /// Tutte le cartelle con un problema, in ordine di profondità, tranne quelle che l'helper ha misurato
-    /// come totale (`Flags::MEASURED`, F-SC-3).
+    /// come totale (`Flags::MEASURED`).
     pub unreadable: Vec<(u32, Problem)>,
     /// Cestini di altri account (`$Recycle.Bin\S-1-...` diverso dal SID corrente).
     pub other_bins: usize,
@@ -183,16 +184,16 @@ impl Observed {
     }
 }
 
-/// Cosa ha misurato l'helper elevato su questo modello (F-SC-3), per la card dei conti (F-OV-3). I nodi
-/// restano validi dopo altre modifiche del modello (i nodi sostituiti si staccano, non si rinumerano): la
-/// card mostra solo quelli ancora attaccati.
+/// Cosa ha misurato l'helper elevato su questo modello, per la card dei conti. I nodi restano validi dopo
+/// altre modifiche del modello (i nodi sostituiti si staccano, non si rinumerano): la card mostra solo
+/// quelli ancora attaccati.
 #[derive(Clone, Debug, Default)]
 pub struct Elevated {
     /// Cartelle elencate come amministratore: radici dei sottoalberi innestati.
     pub folders: Vec<u32>,
     /// Profili di altri account, misurati come totale.
     pub profiles: Vec<u32>,
-    /// Cestini di altri account, misurati come totale: nodo, SID, account che non esiste più (RS16).
+    /// Cestini di altri account, misurati come totale: nodo, SID, account che non esiste più.
     pub bins: Vec<(u32, String, bool)>,
     /// Spazio delle copie shadow all'ultima lettura (`None`: mai letto). Non entra nel bilancio: i file
     /// delle copie stanno in `System Volume Information`.
@@ -216,13 +217,13 @@ pub struct Loaded {
     pub observed: Observed,
     /// Cresce a ogni modifica del modello: invalida le cache delle viste.
     pub generation: u64,
-    /// Regole, prove degli estrattori e classificazione (M3).
+    /// Regole, prove degli estrattori e classificazione.
     pub kb: Arc<Kb>,
     pub evidence: Arc<Evidence>,
     pub cls: Arc<Classification>,
-    /// Vista Programmi (F-AP), dalle stesse prove e dalla classificazione (M4).
+    /// Vista Programmi, dalle stesse prove e dalla classificazione.
     pub programs: Arc<Programs>,
-    /// Misure dell'helper elevato (M6).
+    /// Misure dell'helper elevato.
     pub elevated: Elevated,
     /// Caratteri non ASCII dei nomi, per i font di ripiego ([`name_chars`]).
     pub name_chars: Arc<Vec<char>>,
@@ -259,7 +260,7 @@ impl Loaded {
     pub fn with_rules(volume: VolumeInfo, r: ScanResult, duration: Duration, user_sid: Option<&str>, kb: Arc<Kb>, evidence: Evidence) -> Self {
         let ScanResult { tree, links, problems, stats, volume: facts, balance, cancelled } = r;
         // Indici delle viste e classificazione insieme: dopo un annullamento il risultato parziale
-        // arriva prima (F-SC-5, obiettivo 500 ms).
+        // arriva prima (obiettivo 500 ms).
         let (ord, (cls, programs), chars) = std::thread::scope(|s| {
             let c = s.spawn(|| {
                 let cls = classify(&kb, &tree, &evidence, today());
@@ -386,7 +387,7 @@ pub fn spawn_largest(model: &Arc<Model>, cls: &Arc<Classification>, filter: Filt
     })
 }
 
-/// Esito di "Rileggi dal disco" (F-IN-6), da applicare al modello sul thread dell'interfaccia.
+/// Esito di "Rileggi dal disco", da applicare al modello sul thread dell'interfaccia.
 pub enum Verified {
     /// File: nuove dimensioni lette con `FileStandardInfo`.
     File { node: u32, logical: u64, alloc: u64 },
@@ -522,8 +523,7 @@ fn measurable(tree: &Tree, n: u32) -> bool {
     tree.is_dir(n) && tree.children(n).next().is_none()
 }
 
-/// Applica le risposte dell'helper elevato (F-SC-3) al modello, sul thread dell'interfaccia, all'arrivo di
-/// `Done`:
+/// Applica le risposte dell'helper elevato al modello, sul thread dell'interfaccia, all'arrivo di `Done`:
 /// - `Folder`: il sottoalbero sostituisce la cartella negata (`Tree::graft`), con i suoi problemi;
 /// - `Totals` (profilo altrui) e `Bin` (Cestino altrui): la cartella prende i totali misurati, senza figli
 ///   e senza nomi (`Tree::set_measured`);
@@ -656,7 +656,7 @@ pub struct Applied {
     pub needs_full_scan: bool,
 }
 
-/// Applica le riscansioni dei sottoalberi toccati da un intervento (F-VE-4): ogni cartella si ritrova per
+/// Applica le riscansioni dei sottoalberi toccati da un intervento: ogni cartella si ritrova per
 /// percorso nel modello di adesso e si sostituisce con la sua riscansione (nodi vecchi staccati, nuovi
 /// aggiunti, antenati riaggregati); una cartella sparita si stacca. Classificazione e viste si ricostruiscono
 /// una volta sola. Chiede che nessun lavoro in background tenga il modello (`App::wait_background`).
@@ -795,7 +795,7 @@ mod tests {
 
     #[test]
     fn observed_lists_from_the_fixture() {
-        // 06 §1.4, F-OV-3: cartelle negate con il loro numero, cestini di altri SID, profili altrui.
+        // Cartelle negate con il loro numero, cestini di altri SID, profili altrui.
         let (_, r) = synthetic::sample_c(false);
         let o = Observed::compute(&r.tree, &r.problems, Some("S-1-5-21-1-2-3-1001"));
         assert_eq!(o.unreadable.len(), 4);

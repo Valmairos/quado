@@ -1,4 +1,4 @@
-# Windows\Installer (decisioni §2): Lo gestisce Windows, nessuna procedura.
+# Windows\Installer: Lo gestisce Windows, nessuna procedura.
 id = "windows-installer"
 priorita = 1
 riconoscitore = "percorso"

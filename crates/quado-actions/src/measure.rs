@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Misure del volume per la verifica (03 F-VE-1, F-VE-2): spazio libero, Cestino secondo Windows, ora.
-//! La riscansione dei sottoalberi toccati la fa l'interfaccia, che aggiorna il modello (F-VE-4) e
-//! completa `Measure::still_present`.
+//! Misure del volume per la verifica: spazio libero, Cestino secondo Windows, ora.
+//! La riscansione dei sottoalberi toccati la fa l'interfaccia, che aggiorna il modello e completa
+//! `Measure::still_present`.
 
 use quado_model::intervention::{Measure, MeasurePoint};
 
@@ -9,7 +9,7 @@ use crate::probe::Probe;
 
 /// Misura il volume che contiene `path`: spazio libero (`Probe::free_space`), contenuto del Cestino
 /// secondo Windows (`Probe::volume_bin`) e ora (`Probe::now`), presa dopo le due letture: entrambe
-/// precedono `at`, e la misura di partenza si prende prima della prima chiamata a Windows (F-VE-1).
+/// precedono `at`, e la misura di partenza si prende prima della prima chiamata a Windows.
 ///
 /// Errore (codice di Windows) solo se lo spazio libero non si legge. Un Cestino non letto, o un volume
 /// senza Cestino, dà `bin: None`: la misura vale lo stesso e la voce del Cestino non compare.

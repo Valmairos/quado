@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Interventi di Quado (05 D7, D10): l'unico crate con API di scrittura e di avvio di procedure.
-//! Da M2 le azioni sempre disponibili dell'ispettore (F-IN-5), che parlano con la shell di Windows; da M4
-//! Restart Manager e il lanciatore della disinstallazione; da M5 simulazione, piano confermato,
-//! spostamento nel Cestino, procedure, misure e registro degli interventi. Dal cambio di nome, la copia e la
-//! cancellazione dei dati di Rilievo (`legacy`).
+//! Interventi di Quado: l'unico crate con API di scrittura e di avvio di procedure.
+//! Contiene le azioni sempre disponibili dell'ispettore, che parlano con la shell di Windows; Restart
+//! Manager e il lanciatore della disinstallazione; simulazione, piano confermato, spostamento nel Cestino,
+//! procedure, misure e registro degli interventi; la copia e la cancellazione dei dati di Rilievo, il nome
+//! precedente di Quado (`legacy`).
 
 mod estimate;
 pub mod elevate;

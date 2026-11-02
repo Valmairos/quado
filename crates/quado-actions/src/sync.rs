@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Cartelle sincronizzate che Windows non conosce (R10, valutazione dei consigli e parere sulle avvertenze,
-//! 01/11/2026). `CfGetSyncRootInfoByPath` (`win_probe.rs`) vede solo le cartelle registrate con l'interfaccia
-//! dei file nel cloud di Windows, come quelle di OneDrive. Qui, senza rete e in sola lettura:
+//! Cartelle sincronizzate che Windows non conosce: spostare nel Cestino un loro elemento lo elimina anche
+//! nel cloud e sugli altri dispositivi. `CfGetSyncRootInfoByPath` (`win_probe.rs`) vede solo le cartelle
+//! registrate con l'interfaccia dei file nel cloud di Windows, come quelle di OneDrive. Qui, senza rete e
+//! in sola lettura:
 //!
 //! - **cartelle dichiarate dalla configurazione di un programma** ([`SyncRoot`]), lette da `quado-kb`:
 //!   - Dropbox: `info.json` in `%LOCALAPPDATA%\Dropbox` o `%APPDATA%\Dropbox`, con `path` dei conti

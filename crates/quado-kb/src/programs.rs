@@ -1,24 +1,24 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Vista Programmi (03 F-AP, 05 D6): elenco dai programmi registrati, MSIX, Steam ed Epic; spazio solo
+//! Vista Programmi: elenco dai programmi registrati, MSIX, Steam ed Epic; spazio solo
 //! con una prova del percorso, ogni byte con un solo proprietario (prefisso più lungo); dichiarato
 //! contro misurato; uso noto; disinstallazione tramite interfaccia ufficiale; possibili residui.
 //!
-//! - Elenco (F-AP-1): voci di disinstallazione con `DisplayName` delle tre chiavi (quelle con
+//! - Elenco: voci di disinstallazione con `DisplayName` delle tre chiavi (quelle con
 //!   `SystemComponent=1` nascoste per default), pacchetti MSIX non framework, giochi Steam, prodotti
 //!   Epic. Gli errori degli estrattori arrivano come codici, mai con dati ricostruiti.
-//! - Spazio (F-AP-2): cartella da `InstallLocation`, dall'indizio di `UninstallString`/`DisplayIcon`
+//! - Spazio: cartella da `InstallLocation`, dall'indizio di `UninstallString`/`DisplayIcon`
 //!   (solo un percorso, mai eseguito), da `InstalledLocation` di MSIX o dai manifest dei launcher, con
 //!   gli stessi criteri del motore (`engine.rs`). Ogni byte ha un solo proprietario: la cartella di
 //!   programma più profonda che lo contiene; più programmi con la stessa cartella la condividono e i
 //!   byte si contano una volta. Gli elementi che una regola dichiara tuoi non si contano e producono
-//!   l'avviso "tuoi file" (F-AP-5). Fuori dalla cartella contano solo i dati delle regole che dichiarano
+//!   l'avviso "tuoi file". Fuori dalla cartella contano solo i dati delle regole che dichiarano
 //!   come gestore proprio quel programma (nome uguale, senza somiglianze). Senza prova: "posizione non
 //!   dichiarata" e nessun byte.
-//! - Dichiarato contro misurato (F-AP-3): `EstimatedSize` e `SizeOnDisk` restano fatti da fonte, mai
+//! - Dichiarato contro misurato: `EstimatedSize` e `SizeOnDisk` restano fatti da fonte, mai
 //!   sommati al misurato.
-//! - Uso noto (F-AP-4): `LastPlayed` di Steam; UserAssist solo con il tracciamento attivo, abbinato per
+//! - Uso noto: `LastPlayed` di Steam; UserAssist solo con il tracciamento attivo, abbinato per
 //!   cartella; `InstallDate`; per Epic e MSIX nessun dato d'uso. Lo stato resta Decidi tu.
-//! - Possibili residui (F-AP-6): cartelle di primo livello in Local, Roaming, LocalLow e ProgramData che
+//! - Possibili residui: cartelle di primo livello in Local, Roaming, LocalLow e ProgramData che
 //!   nessun programma e nessuna regola rivendicano e che nessun nome di programma installato spiega: il
 //!   confronto è per parole, e una cartella è spiegata se tutte le parole del suo nome stanno in uno stesso
 //!   nome dichiarato da un programma (`name_words`, `NameIndex`). Stato Non sappiamo, nessuna azione.
@@ -42,7 +42,7 @@ use crate::rules::Kb;
 // ---------------------------------------------------------------------------------------------
 // Tipi pubblici
 
-/// Da quale estrattore viene un programma (F-AP-1).
+/// Da quale estrattore viene un programma.
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum ProgramSource {
     /// Voce di disinstallazione: hive, nome della chiave e indice in `Uninstall::entries`.
@@ -55,7 +55,7 @@ pub enum ProgramSource {
     Epic { app_name: String },
 }
 
-/// Prova del percorso di un programma (F-AP-2).
+/// Prova del percorso di un programma.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum PathEvidence {
     /// `InstallLocation` della voce di disinstallazione.
@@ -80,9 +80,10 @@ pub enum Location {
     /// di Windows o una cartella che ne contiene una): nessun byte, come nel motore.
     Implausible { path: String, evidence: PathEvidence },
     /// Cartella del programma con la prova e la provenienza, come nel motore: da fonte con
-    /// `InstallLocation` di HKLM e con i manifest; dedotto media con le voci di HKCU (RS22) e con gli
-    /// indizi, alta se l'eseguibile dell'indizio di HKLM c'è o con due fonti concordi (CapCut). `node` è il
-    /// nodo della scansione; `None` se la cartella non c'è nella scansione (altro volume, cartella assente).
+    /// `InstallLocation` di HKLM e con i manifest; dedotto media con le voci di HKCU (scrivibili da
+    /// qualunque programma dell'utente) e con gli indizi, alta se l'eseguibile dell'indizio di HKLM c'è o
+    /// con due fonti concordi (CapCut). `node` è il nodo della scansione; `None` se la cartella non c'è
+    /// nella scansione (altro volume, cartella assente).
     Folder { path: String, evidence: PathEvidence, provenance: Provenance, node: Option<u32> },
 }
 
@@ -133,8 +134,8 @@ pub struct RuleData {
     pub inside: bool,
 }
 
-/// Tuoi file nella cartella di un programma (F-AP-5): elementi che una regola dichiara tuoi. Non si contano
-/// nel misurato; prima della disinstallazione la UI chiede di copiarli altrove (04 §6.8).
+/// Tuoi file nella cartella di un programma: elementi che una regola dichiara tuoi. Non si contano nel
+/// misurato; prima della disinstallazione la UI chiede di copiarli altrove.
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub struct YourFiles {
     pub node: u32,
@@ -149,7 +150,7 @@ pub struct YourFiles {
     pub relative: String,
 }
 
-/// Dimensione dichiarata (F-AP-3): `EstimatedSize` (KB convertiti in byte) o `SizeOnDisk` di Steam.
+/// Dimensione dichiarata: `EstimatedSize` (KB convertiti in byte) o `SizeOnDisk` di Steam.
 /// Sempre con la sua fonte, mai sommata al misurato.
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub struct Declared {
@@ -166,7 +167,7 @@ pub struct Launches {
     pub runs: u64,
 }
 
-/// Uso noto (F-AP-4): solo da fonti che lo registrano, ciascuna con la sua copertura. Mai "inutilizzato":
+/// Uso noto: solo da fonti che lo registrano, ciascuna con la sua copertura. Mai "inutilizzato":
 /// lo stato resta Decidi tu.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum Usage {
@@ -187,7 +188,7 @@ pub enum Usage {
     NotRecorded,
 }
 
-/// Metodo di disinstallazione ufficiale (F-AP-5). Quado non esegue mai `UninstallString`: la UI apre
+/// Metodo di disinstallazione ufficiale. Quado non esegue mai `UninstallString`: la UI apre
 /// l'interfaccia con `quado_actions::launch` (Impostazioni ▸ App copiando `name` negli appunti, pagina
 /// dell'app MSIX, `steam://uninstall/<appid>`) o rimanda alla libreria di Epic.
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
@@ -208,7 +209,7 @@ pub struct Program {
     /// `Publisher` della voce di disinstallazione.
     pub publisher: Option<String>,
     pub source: ProgramSource,
-    /// `SystemComponent=1`: nascosto per default (F-AP-1); Impostazioni ▸ App non lo elenca, quindi
+    /// `SystemComponent=1`: nascosto per default; Impostazioni ▸ App non lo elenca, quindi
     /// nessun metodo di disinstallazione.
     pub hidden: bool,
     pub location: Location,
@@ -242,7 +243,7 @@ pub enum ResidueBase {
     ProgramData,
 }
 
-/// Cartella che potrebbe essere un residuo (F-AP-6).
+/// Cartella che potrebbe essere un residuo.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct Residue {
     /// Cartella di primo livello sotto la base.
@@ -286,7 +287,7 @@ pub struct Programs {
 }
 
 impl Programs {
-    /// Byte misurati di tutti i programmi: una cartella condivisa conta una volta (06 §4).
+    /// Byte misurati di tutti i programmi: una cartella condivisa conta una volta.
     pub fn measured_total(&self) -> u64 {
         self.items.iter().enumerate().filter(|(i, p)| p.shared_with.iter().all(|j| j > i)).map(|(_, p)| p.space.bytes()).sum()
     }
@@ -374,7 +375,7 @@ pub fn name_key(s: &str) -> String {
     s.chars().filter(|c| c.is_alphanumeric()).flat_map(char::to_lowercase).collect()
 }
 
-/// Parole di un nome per il confronto dei residui (F-AP-6): sequenze di lettere o di cifre, in
+/// Parole di un nome per il confronto dei residui: sequenze di lettere o di cifre, in
 /// minuscolo. Una parola finisce a ogni carattere che non è una lettera o una cifra, al passaggio tra
 /// lettere e cifre (`7zip` e "7-Zip" danno `7`, `zip`; `Win11` dà `win`, `11`) e al CamelCase: tra una
 /// minuscola e una maiuscola (`CopperKite`) e prima dell'ultima maiuscola di una sigla seguita da una
@@ -579,7 +580,7 @@ struct Raw {
     fact_source: Source,
     hidden: bool,
     location: Location,
-    /// Criterio della prova di identità e di percorso (03 §6.2): l'affidabilità del record.
+    /// Criterio della prova di identità e di percorso: l'affidabilità del record.
     criterion: Criterion,
     declared: Option<Declared>,
     install_date: Option<Date>,
@@ -613,7 +614,7 @@ fn locate(tree: &Tree, ev: &Evidence, path: &str, evidence: PathEvidence, proven
     Location::Folder { path: p, evidence, provenance, node }
 }
 
-/// Voci di disinstallazione, con i criteri di `engine::Ctx::registered` (05 D6, RS22).
+/// Voci di disinstallazione, con i criteri di `engine::Ctx::registered`.
 fn collect_uninstall(tree: &Tree, ev: &Evidence, today: Option<Date>, out: &mut Vec<Raw>) {
     let Ok(u) = &ev.uninstall else { return };
     for (i, e) in u.entries.iter().enumerate() {
@@ -628,7 +629,7 @@ fn collect_uninstall(tree: &Tree, ev: &Evidence, today: Option<Date>, out: &mut 
         let location = match &path {
             None => Location::NotDeclared,
             Some(p) => {
-                // HKLM con InstallLocation: da fonte. HKCU o solo indizio: dedotto media (05 D6, RS22).
+                // HKLM con InstallLocation: da fonte. HKCU (scrivibile dall'utente) o solo indizio: dedotto media.
                 let mut c = if declared && machine { None } else { Some(Criterion::OneSource) };
                 let loc = locate(tree, ev, p, if declared { PathEvidence::InstallLocation } else { PathEvidence::UninstallHint }, Provenance::FromSource);
                 if let Some(n) = loc.node() {
@@ -755,8 +756,8 @@ fn steam_entry_appid(key: &str) -> Option<u32> {
 
 /// Le voci "Steam App N" del registro sono gli stessi giochi dei manifest di Steam: una riga sola, quella
 /// di Steam (uso noto, disinstallazione con `steam://uninstall/`), con il fatto della voce di
-/// disinstallazione e la sua data di installazione. Prima comparivano due righe con la cartella condivisa
-/// (nelle immagini di M4 alcuni giochi di Steam comparivano due volte).
+/// disinstallazione e la sua data di installazione. Senza l'unione lo stesso gioco comparirebbe in due
+/// righe, con la cartella condivisa.
 fn merge_steam_entries(raws: &mut Vec<Raw>) {
     let steam: HashMap<u32, usize> = raws
         .iter()
@@ -945,7 +946,7 @@ fn groups_and_space(tree: &Tree, ev: &Evidence, kb: &Kb, cls: &Classification, r
 
     // Dati fuori dalla cartella: regole che dichiarano come gestore un programma con quel nome esatto, e
     // la cartella dati di un pacchetto MSIX (`Local\Packages\<PFN>`, regola dei pacchetti MSIX). Solo
-    // attribuzioni che danno il colore (da fonte o dedotto alta, 03 §6.2) e un solo gruppo candidato.
+    // attribuzioni che danno il colore (da fonte o dedotto alta) e un solo gruppo candidato.
     let mut by_name: HashMap<&str, Vec<usize>> = HashMap::new();
     for (i, r) in raws.iter().enumerate() {
         let v = by_name.entry(r.name.trim()).or_default();
@@ -1355,11 +1356,11 @@ pub fn build(tree: &Tree, ev: &Evidence, kb: &Kb, cls: &Classification) -> Progr
         if g.area.is_some() && g.your_files.iter().any(|y| g.folder.is_none_or(|f| !is_ancestor(tree, f, y.node))) {
             hypotheses.push("funzione-programma-ipotesi-ambito".into());
         }
-        // Dichiarato (F-AP-3).
+        // Dichiarato.
         if let Some(d) = &r.declared {
             identity.push(fact("fatto-dimensione-dichiarata", Provenance::FromSource, d.source.clone(), vec![Value::Bytes(d.bytes)]));
         }
-        // Uso noto (F-AP-4).
+        // Uso noto.
         let usage = match r.kind {
             Kind::Steam => {
                 let (manifest, local_config) = r.steam.unwrap_or((None, None));

@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Azioni dell'ispettore sempre disponibili (03 F-IN-5): "Apri in Esplora file" e "Proprietà".
+//! Azioni dell'ispettore sempre disponibili: "Apri in Esplora file" e "Proprietà".
 //!
 //! Nessuna delle due modifica file né crea processi da Quado: parlano con la shell di Windows già
 //! in esecuzione. "Apri in Esplora file" seleziona l'elemento nella sua cartella senza aprirlo.
-//! "Proprietà" carica nel processo le estensioni della shell di terze parti (RS14 in 08), quindi parte
-//! solo su richiesta esplicita.
+//! "Proprietà" carica nel processo le estensioni della shell di terze parti, che su un
+//! segnaposto cloud possono scaricare il file, quindi parte solo su richiesta esplicita.
 //!
 //! Percorsi oltre 260 caratteri: la shell di Windows 10 non li accetta sempre. Se il percorso lungo
 //! viene rifiutato si riprova con il nome breve 8.3, quando il volume lo conserva. Il core restituisce
-//! un codice, la UI lo traduce (05 D13).
+//! un codice, la UI lo traduce.
 
 use windows::Win32::Foundation::HWND;
 use windows::Win32::Storage::FileSystem::GetShortPathNameW;
@@ -112,7 +112,7 @@ pub fn properties(path: &str) -> Result<(), ShellError> {
 }
 
 /// Testo con cui la shell di Windows scrive una dimensione, come in Esplora file
-/// (`StrFormatByteSizeEx`, cifre troncate). Serve al confronto di F-GE-3; non modifica niente.
+/// (`StrFormatByteSizeEx`, cifre troncate). Serve al confronto con le unità di Esplora file; non modifica niente.
 pub fn explorer_size_text(bytes: u64) -> Option<String> {
     use windows::Win32::UI::Shell::{SFBS_FLAGS_TRUNCATE_UNDISPLAYED_DECIMAL_DIGITS, StrFormatByteSizeEx};
     let mut buf = [0u16; 64];

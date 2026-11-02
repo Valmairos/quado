@@ -1,6 +1,6 @@
-# Dipendenze e output di build (decisioni §3): Decidi tu, solo con il lockfile del suo tipo accanto. Niente
-# `build`: con electron-builder contiene icone e script scritti a mano. Niente sotto AppData, le cartelle dei
-# programmi e le estensioni di VS Code: lì una node_modules fa parte di un programma.
+# Dipendenze e output di build: Decidi tu, solo con il lockfile del suo tipo accanto. Niente `build`: con
+# electron-builder contiene icone e script scritti a mano. Niente sotto AppData, le cartelle dei programmi e le
+# estensioni di VS Code: lì una node_modules fa parte di un programma.
 id = "progetti-sviluppo"
 priorita = 3
 riconoscitore = "lockfile"

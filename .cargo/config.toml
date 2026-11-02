@@ -1,6 +1,6 @@
 [alias]
 xtask = "run --release --quiet --package xtask --"
 
-# CRT statico (05 D9): niente VCRUNTIME140.dll da cercare, quindi niente esca possibile (06 §11).
+# CRT statico: niente VCRUNTIME140.dll da cercare accanto all'eseguibile, quindi nessuna DLL esca da caricare.
 [target.x86_64-pc-windows-msvc]
 rustflags = ["-C", "target-feature=+crt-static"]

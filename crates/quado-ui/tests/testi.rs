@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Testi dell'interfaccia (06 §7, 04 §6.8, 07 §1.7 "rifinitura"): i controlli del vocabolario e delle
-//! lingue che mancavano. Quelli che esistono già non si ripetono qui:
+//! Testi dell'interfaccia: controlli del vocabolario e delle lingue. Quelli che stanno già altrove non si
+//! ripetono qui:
 //! - stesse chiavi e stessi segnaposto in `it.ftl` ed `en.ftl`, ogni chiave italiana con il commento di
 //!   contesto, nessuna riga con errori: `quado_ui::i18n::tests::embedded_languages_are_complete_and_aligned`;
-//! - le parole vietate principali di 04 §6.8, i punti esclamativi, i trattini lunghi e medi nei valori dei
-//!   cataloghi dell'interfaccia e delle regole: `i18n::tests::forbidden_words_are_absent`;
+//! - le parole vietate principali, i punti esclamativi, i trattini lunghi e medi nei valori dei cataloghi
+//!   dell'interfaccia e delle regole: `i18n::tests::forbidden_words_are_absent`;
 //! - ogni chiave scritta nel codice esiste: `i18n::tests::every_key_used_in_code_exists`;
 //! - pseudo-lingua su ogni schermata, nessun testo nel codice né tagliato:
 //!   `tests/screens.rs::pseudo_language_covers_every_text`;
@@ -15,12 +15,12 @@
 //!   compreso) e `quado-actions`: `quado-model/tests/architettura.rs::core_types_carry_codes_not_sentences`.
 //!
 //! Qui:
-//! - il resto del vocabolario di 04 §6.8: le forme flesse delle parole vietate, "non usato da N giorni",
-//!   gli equivalenti inglesi, "residuo" solo come possibilità;
+//! - il resto del vocabolario vietato (docs/testi.md §3): le forme flesse delle parole vietate, "non usato da
+//!   N giorni", gli equivalenti inglesi, "residuo" solo come possibilità;
 //! - i cinque stati con le stesse parole in card, ispettore, conferma e risultato, da una sola funzione;
 //! - nessun testo nei tipi di errore e di esito della base delle regole (`quado-kb`);
-//! - gli stati vuoti e i messaggi aggiunti in M6, in pseudo-lingua: dal catalogo e interi;
-//! - l'avviso "Fine scansione" di 04 §6.8;
+//! - gli stati vuoti e altri messaggi delle viste, in pseudo-lingua: dal catalogo e interi;
+//! - l'avviso di fine scansione;
 //! - la barra di stato e la riga della scansione dicono com'è avviato Quado (`Env::elevated`), non chi è
 //!   l'utente.
 
@@ -62,7 +62,7 @@ fn messages(src: &str) -> Vec<(String, String)> {
     out
 }
 
-/// 04 §6.8: "Parole da non usare mai". Radici, così valgono anche le forme flesse ("inutilizzati",
+/// Parole da non usare mai (docs/testi.md §3). Radici, così valgono anche le forme flesse ("inutilizzati",
 /// "ottimizzare"). Le altre parole dell'elenco sono già in `i18n::tests::forbidden_words_are_absent`.
 const FORBIDDEN_IT: [&str; 12] = [
     "inutilizzat",
@@ -79,7 +79,7 @@ const FORBIDDEN_IT: [&str; 12] = [
     "pulizia intelligente",
 ];
 
-/// Gli stessi divieti in inglese (RS29: la traduzione conserva il senso di stati e avvisi).
+/// Gli stessi divieti in inglese: la traduzione conserva il senso di stati e avvisi.
 const FORBIDDEN_EN: [&str; 12] = [
     "unused",
     "never used",
@@ -96,7 +96,7 @@ const FORBIDDEN_EN: [&str; 12] = [
 ];
 
 #[test]
-fn vocabolario_di_04_completo_nei_due_cataloghi() {
+fn vocabolario_vietato_completo_nei_due_cataloghi() {
     let mut problems = Vec::new();
     for (tag, forbidden, residue, maybe) in [
         ("it", &FORBIDDEN_IT, ["residu", "residu"], ["possibil", "potrebbe"]),
@@ -110,7 +110,7 @@ fn vocabolario_di_04_completo_nei_due_cataloghi() {
                     problems.push(format!("{tag}: {k} contiene «{w}»"));
                 }
             }
-            // "Residuo" si scrive solo come possibilità (04 §6.8, F-AP-6).
+            // "Residuo" si scrive solo come possibilità.
             if residue.iter().any(|r| low.contains(r)) && !maybe.iter().any(|m| low.contains(m)) {
                 problems.push(format!("{tag}: {k} usa «residuo» senza dirlo possibile: {v}"));
             }
@@ -119,7 +119,7 @@ fn vocabolario_di_04_completo_nei_due_cataloghi() {
     assert!(problems.is_empty(), "{}", problems.join("\n"));
 }
 
-/// Le chiavi dei cinque stati (03 §6.1, 04 §6.1). `stato-lo-gestisce` ha la variante senza procedura.
+/// Le chiavi dei cinque stati. `stato-lo-gestisce` ha la variante senza procedura.
 const STATE_KEYS: [&str; 6] = ["stato-gestibile", "stato-da-verificare", "stato-decidi-tu", "stato-lo-gestisce", "stato-lo-gestisce-nessuna-procedura", "stato-non-sappiamo"];
 
 #[test]
@@ -333,7 +333,7 @@ fn shown_whole(h: &Harness<'_, App>, key: &str) {
 }
 
 #[test]
-fn gli_stati_vuoti_di_m6_vengono_dal_catalogo_e_non_si_tagliano() {
+fn gli_stati_vuoti_vengono_dal_catalogo_e_non_si_tagliano() {
     // Volumi: nessun volume con una lettera di unità.
     let mut h = Harness::builder().with_size([1280.0, 800.0]).build_ui_state(|ui, app: &mut App| app.show(ui), pseudo_app());
     h.run_steps(4);
@@ -401,7 +401,7 @@ fn gli_stati_vuoti_di_m6_vengono_dal_catalogo_e_non_si_tagliano() {
 
 #[test]
 fn fine_scansione_dice_durata_e_cartelle_negate() {
-    // 04 §6.8 "Fine scansione": durata, numero di cartelle con l'accesso negato da Windows, il loro
+    // L'avviso di fine scansione: durata, numero di cartelle con l'accesso negato da Windows, il loro
     // contenuto nel non attribuito.
     let mut env = Env::fixed();
     env.windows_languages = vec!["it-IT".into()];
@@ -518,8 +518,8 @@ fn body(src: &str, start: usize) -> &str {
 
 #[test]
 fn la_base_delle_regole_restituisce_codici_non_frasi() {
-    // 05 D13, 06 §7: come `core_types_carry_codes_not_sentences` per model, scan-win e actions. I tipi di
-    // errore, problema ed esito di `quado-kb` portano codici e valori; un percorso è un dato.
+    // Come `core_types_carry_codes_not_sentences` per model, scan-win e actions. I tipi di errore, problema
+    // ed esito di `quado-kb` portano codici e valori, le frasi stanno nei cataloghi; un percorso è un dato.
     let src_dir = Path::new(env!("CARGO_MANIFEST_DIR")).join("..").join("quado-kb").join("src");
     let mut stack = vec![src_dir];
     let mut files = Vec::new();

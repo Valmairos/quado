@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Raccolta con i privilegi (05 D3): `SeBackupPrivilege`, elenco delle cartelle negate con lo stesso
+//! Raccolta con i privilegi: `SeBackupPrivilege`, elenco delle cartelle negate con lo stesso
 //! scanner, totali senza nomi, SID orfani, copie shadow con WMI dentro il processo (non `vssadmin`, il
 //! cui output è localizzato), profilo dal registro.
 //!
@@ -9,7 +9,7 @@
 //!
 //! # Perché con il privilegio lo scanner legge le cartelle negate
 //!
-//! Verificato su `win.rs` (M6): ogni apertura passa da `win::open`, che chiama `CreateFileW` sempre con
+//! Verificato su `win.rs`: ogni apertura passa da `win::open`, che chiama `CreateFileW` sempre con
 //! `FILE_FLAG_BACKUP_SEMANTICS` (oltre a `FILE_FLAG_OPEN_REPARSE_POINT` e `FILE_FLAG_OPEN_NO_RECALL`).
 //! Con quel flag e `SeBackupPrivilege` abilitato nel token, Windows concede le richieste di lettura senza
 //! guardare la DACL: il privilegio copre `READ_CONTROL`, `ACCESS_SYSTEM_SECURITY`, `FILE_GENERIC_READ` e

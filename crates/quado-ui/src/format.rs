@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Numeri, dimensioni e date (03 F-GE-3, 05 D13).
+//! Numeri, dimensioni e date.
 //!
 //! - Separatori e data breve dal formato dell'area geografica di Windows, come Esplora file,
 //!   indipendenti dalla lingua dell'interfaccia.

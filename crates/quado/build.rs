@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! Build dell'eseguibile, solo con il linker di Microsoft:
-//! - le dipendenze statiche si cercano solo in System32 (06 §11, RS11, 07 §3 riga 5);
+//! - le dipendenze statiche si cercano solo in System32, così una DLL esca accanto all'eseguibile non si
+//!   carica (lo verifica `cargo xtask verifica-dll`);
 //! - le icone di `icona/` (generate da `cargo xtask icona`) diventano risorse dell'eseguibile. Il file `.res`
 //!   si scrive qui, senza strumenti esterni, e il linker lo incorpora come fa con quelli di `rc.exe`. Gruppo
 //!   1 `quado.ico`, l'icona dell'eseguibile (la usano Esplora file e il collegamento nel menu Start) e della

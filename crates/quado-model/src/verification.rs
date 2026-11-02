@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Stimato contro ottenuto (03 §6.3, F-VE-3): differenza, soglia del 5% e voci di spiegazione, ognuna
+//! Stimato contro ottenuto: differenza, soglia del 5% e voci di spiegazione, ognuna
 //! sostenuta da un fatto misurato. Funzioni pure sui tipi di `intervention`.
 //!
 //! # Differenza e percentuale
@@ -7,10 +7,9 @@
 //! L'ottenuto è la variazione del volume: spazio libero all'ultima misura meno spazio libero alla prima
 //! (la partenza), con il segno. La stima dà un intervallo atteso: `[e, e]` per una stima esatta,
 //! `[min, max]` per un intervallo. La differenza è la distanza con segno dell'ottenuto dall'intervallo
-//! (0 se ci cade dentro), e la percentuale si calcola sull'estremo più vicino (tabella "Confronto tra
-//! stimato e ottenuto" di 03 §6.3). I punti base si arrotondano per eccesso: così `basis_points` oltre
-//! [`EXPLAIN_THRESHOLD_BP`] equivale esattamente a "differenza oltre il 5%", e una differenza diversa da
-//! zero non si mostra mai come 0.
+//! (0 se ci cade dentro), e la percentuale si calcola sull'estremo più vicino. I punti base si
+//! arrotondano per eccesso: così `basis_points` oltre [`EXPLAIN_THRESHOLD_BP`] equivale esattamente a
+//! "differenza oltre il 5%", e una differenza diversa da zero non si mostra mai come 0.
 //!
 //! # Contributo di ogni voce
 //!
@@ -25,7 +24,7 @@
 //! | [`Explanation::StillInBin`] | − byte | Spostati ma non ancora liberati: subito dopo lo spostamento l'ottenuto è circa 0 e questa voce spiega la stima intera |
 //! | [`Explanation::OtherBinItems`] | + byte | Lo svuotamento libera anche ciò che era già nel Cestino: dopo lo svuotamento l'ottenuto è più grande della stima |
 //! | [`Explanation::StillOpen`] | 0 | Non quantificabile (Restart Manager dà i file, non i byte); impedisce però di attribuire ad altri processi un ottenuto minore del previsto |
-//! | [`Explanation::OtherActivity`] | il resto | Solo se la riscansione dice che la selezione non occupa più spazio (`still_present == Some(0)`): la differenza è dichiarata e non attribuita all'intervento (RS17) |
+//! | [`Explanation::OtherActivity`] | il resto | Solo se la riscansione dice che la selezione non occupa più spazio (`still_present == Some(0)`): la differenza è dichiarata e non attribuita all'intervento |
 //!
 //! Il resto che nessuna voce spiega e che supera ancora la soglia è `unexplained` ("Differenza non
 //! spiegata"). Con la riscansione che conferma la selezione sparita il resto va invece in
@@ -38,8 +37,8 @@
 use crate::intervention::{Comparison, EXPLAIN_THRESHOLD_BP, Explanation, Measure};
 use crate::record::Estimate;
 
-/// Fatti misurati che possono spiegare la differenza (03 §6.3, tabella delle voci). Li raccoglie
-/// l'interfaccia dal riepilogo dell'esecuzione, dalla simulazione e dalla riscansione.
+/// Fatti misurati che possono spiegare la differenza (le voci della tabella nel doc del modulo). Li
+/// raccoglie l'interfaccia dal riepilogo dell'esecuzione, dalla simulazione e dalla riscansione.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 pub struct ExplainFacts {
     /// Elementi saltati o falliti nel riepilogo: quanti e i loro byte stimati. Vanno contati gli
@@ -56,16 +55,16 @@ pub struct ExplainFacts {
     pub still_open_files: u64,
 }
 
-/// Tolleranza iniziale di 06 §6.1 tra stima esatta e variazione reale su VHDX, parte proporzionale:
-/// 1% della stima, in punti base. Si conferma o si corregge con le prime misure su VHDX (07 §1.6,
-/// criterio 3): chi la cambia scrive qui la misura che lo giustifica.
+/// Tolleranza tra stima esatta e variazione reale su VHDX, parte proporzionale: 1% della stima, in
+/// punti base. Confermata dalle misure su VHDX di `quado-actions/tests/fine_vhdx.rs`: chi la cambia
+/// scrive qui la misura che lo giustifica.
 pub const TOLERANCE_BP: u64 = 100;
 
-/// Tolleranza iniziale di 06 §6.1, parte fissa: 1 MiB (metadati, cluster, `$I` del Cestino). Da
-/// confermare come [`TOLERANCE_BP`].
+/// Tolleranza, parte fissa: 1 MiB (metadati, cluster, `$I` del Cestino). Confermata come
+/// [`TOLERANCE_BP`].
 pub const TOLERANCE_FIXED: u64 = 1 << 20;
 
-/// La variazione reale `obtained` cade entro la tolleranza di 06 §6.1 dalla stima esatta `estimate`:
+/// La variazione reale `obtained` cade entro la tolleranza dalla stima esatta `estimate`:
 /// |ottenuto − stima| ≤ 1% della stima + 1 MiB, senza arrotondamenti.
 pub fn within_tolerance(estimate: u64, obtained: i64) -> bool {
     let diff = (i128::from(obtained) - i128::from(estimate)).unsigned_abs();
@@ -106,8 +105,8 @@ fn clamp(x: i128) -> i64 {
     i64::try_from(x).unwrap_or(if x < 0 { i64::MIN } else { i64::MAX })
 }
 
-/// Altri elementi eliminati dal Cestino tra la partenza e l'ultima misura (03 §6.3: dimensione del
-/// Cestino alla partenza e dopo lo svuotamento), secondo il conteggio di Windows. Quelli che c'erano
+/// Altri elementi eliminati dal Cestino tra la partenza e l'ultima misura (dimensione del Cestino
+/// alla partenza e dopo lo svuotamento), secondo il conteggio di Windows. Quelli che c'erano
 /// alla partenza e non ci sono più: `cestino alla partenza − (cestino ora − ciò che questo intervento
 /// vi ha spostato e che c'è ancora)`, al più quanto c'era alla partenza. Gli elementi spostati da questo
 /// intervento non entrano nel conto: alla partenza non c'erano.
@@ -155,7 +154,7 @@ pub fn compare(estimate: &Estimate, measures: &[Measure], facts: &ExplainFacts) 
         _ => return Some(c),
     }
 
-    // Voci nell'ordine della tabella di 03 §6.3, ciascuna con il suo contributo (doc del modulo).
+    // Voci nell'ordine della tabella nel doc del modulo, ciascuna con il suo contributo.
     let mut contributions: i128 = 0;
     let (sf_items, sf_bytes) = facts.skipped_or_failed;
     if sf_items > 0 {

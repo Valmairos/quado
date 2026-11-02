@@ -1,7 +1,7 @@
-### Quado: testi dell'interfaccia in italiano (lingua di riferimento, 05 D13).
+### Quado: testi dell'interfaccia in italiano (lingua di riferimento).
 ### Ogni chiave ha un commento che dice dove compare e cosa evitare. Le regole sono in docs/testi.md e valgono
-### per ogni lingua: frasi brevi e descrittive, nessun punto esclamativo, nessuna parola di 04 §6.8 ("sicuro da
-### eliminare", "spazzatura", "ottimizza"...), nessuna causa attribuita allo spazio che non si misura.
+### per ogni lingua. Frasi brevi e descrittive, nessun punto esclamativo, nessuna parola vietata
+### ("sicuro da eliminare", "spazzatura", "ottimizza"), nessuna causa attribuita allo spazio che non si misura.
 ### I segnaposto ($nome) contengono testo già pronto: numeri e date arrivano formattati.
 ### $n serve solo a scegliere il plurale; il numero da mostrare è $testo.
 
@@ -20,7 +20,7 @@ conteggio-cartelle = { $n ->
    *[other] { $testo } cartelle
 }
 
-## Unità di misura (03 F-GE-3: come Esplora file)
+## Unità di misura (come Esplora file)
 
 # Unità "byte", con il plurale. Esplora file in italiano scrive "byte" anche al plurale.
 unita-byte = { $n ->
@@ -72,10 +72,10 @@ volumi-scansiona = Scansiona { $lettera }
 volumi-uso = { $usato } usati su { $totale }
 # Indicazione accanto all'unità dove è installato Windows.
 volumi-di-sistema = unità di sistema
-# Nota per le unità exFAT e FAT32 (F-SC-10): prima l'effetto sulle misure, poi cosa manca, senza allarmare.
+# Nota per le unità exFAT e FAT32: prima l'effetto sulle misure, poi cosa manca, senza allarmare.
 volumi-nota-fat = Su { $fs } le dimensioni su disco sono arrotondate al cluster. Questo file system non ha compressione né file con più nomi (hard link).
-# Nota per i file system diversi da NTFS, exFAT e FAT32 (ReFS, unità di rete): la dicitura "senza garanzie"
-# di F-SC-10 e il fatto che la sostiene (i totali sono provati con l'oracolo solo sui tre file system).
+# Nota per i file system diversi da NTFS, exFAT e FAT32 (ReFS, unità di rete): la dicitura "senza garanzie" e
+# il fatto che la sostiene. I totali sono provati con l'oracolo solo sui tre file system.
 volumi-senza-garanzie = Misure senza garanzie: i totali di Quado sono provati solo su NTFS, exFAT e FAT32.
 # Nota in fondo all'elenco delle unità: cosa non compare e cosa Quado non legge.
 volumi-nota = Le partizioni senza lettera di unità, come quella di un altro sistema operativo, restano fuori da questo elenco: Quado non le legge.
@@ -108,8 +108,8 @@ nav-file-grandi = File grandi
 nav-volumi = Unità
 # Voce in fondo alla barra laterale.
 nav-impostazioni = Impostazioni
-# Nota in fondo alla barra laterale. Dalla M5 Quado sposta file nel Cestino, sempre dopo l'anteprima e la conferma:
-# non promettere che non tocca niente.
+# Nota in fondo alla barra laterale. Quado sposta file nel Cestino solo dopo l'anteprima e la conferma: non
+# promettere che non tocca niente.
 nav-nota-sola-lettura = La scansione legge soltanto. Quado sposta file nel Cestino solo dopo l'anteprima e la tua conferma.
 # Suggerimento e nome accessibile del pulsante che riduce la barra laterale alle sole icone.
 barra-comprimi = Comprimi la barra laterale
@@ -147,7 +147,7 @@ stato-non-leggibili = { $n ->
     [one] { $testo } cartella non leggibile
    *[other] { $testo } cartelle non leggibili
 }
-# Come si conta lo spazio (F-SC-7, F-SC-8): dimensioni su disco, un file con più nomi conta una volta.
+# Come si conta lo spazio: dimensioni su disco, un file con più nomi conta una volta.
 stato-metodo = Dimensioni su disco, ogni file contato una volta
 # Come è avviato Quado, a destra nella barra di stato: non elevato. Parla di Quado, non dell'utente: con UAC
 # anche un amministratore avvia i programmi senza elevazione (docs/testi.md §6).
@@ -157,12 +157,11 @@ stato-amministratore = Avviato come amministratore
 
 ## Avvisi (banner)
 
-# Banner su ogni schermata con dati parziali (F-SC-5): la conseguenza e cosa fare. Cita il pulsante
-# barra-riesamina.
+# Banner su ogni schermata con dati parziali: la conseguenza e cosa fare. Cita il pulsante barra-riesamina.
 banner-interrotta = Scansione interrotta: i totali non comprendono le cartelle non lette. Per completarli, usa «Scansiona di nuovo».
-# Banner per exFAT e FAT32 (F-SC-10): l'effetto sulle misure, poi cosa manca.
+# Banner per exFAT e FAT32: l'effetto sulle misure, poi cosa manca.
 banner-fat = Unità { $fs }: le dimensioni su disco sono arrotondate al cluster. Questo file system non ha compressione né file con più nomi (hard link).
-# Banner per gli altri file system (F-SC-10): la dicitura "senza garanzie" e il fatto che la sostiene.
+# Banner per gli altri file system: la dicitura "senza garanzie" e il fatto che la sostiene.
 banner-senza-garanzie = File system { $fs }: misure senza garanzie. I totali di Quado sono provati solo su NTFS, exFAT e FAT32.
 # Banner quando la scansione non parte: cosa non è riuscito, cosa fare, il codice di Windows in fondo.
 banner-errore-scansione = Impossibile leggere { $volume }. Controlla che l'unità sia collegata, poi riprova dall'elenco delle unità. (Codice { $codice })
@@ -189,7 +188,7 @@ scansione-annulla = Annulla
 scansione-annullo = Annullamento…
 # Suggerimento accanto al pulsante Annulla.
 scansione-esc = Esc annulla.
-# Titolo dell'elenco delle cartelle di primo livello che crescono durante la scansione (F-SC-4).
+# Titolo dell'elenco delle cartelle di primo livello che crescono durante la scansione.
 scansione-primo-livello = Primo livello dell'unità
 # Nota sotto il titolo dell'elenco di primo livello.
 scansione-primo-livello-nota = I totali crescono mentre la scansione procede.
@@ -200,9 +199,9 @@ scansione-altri = { $n ->
     [one] e un altro elemento
    *[other] e altri { $testo } elementi
 }
-# Avviso nella barra di stato a fine scansione (04 §6.8 "Fine scansione"). $n cartelle con accesso negato,
-# $testo lo stesso numero già scritto, $durata già scritta. Il fatto misurato è l'accesso negato da Windows;
-# nessuna causa per il non attribuito oltre alle cartelle.
+# Avviso nella barra di stato a fine scansione. $n cartelle con accesso negato, $testo lo stesso numero già
+# scritto, $durata già scritta. Il fatto misurato è l'accesso negato da Windows; nessuna causa per il non
+# attribuito oltre alle cartelle.
 scansione-completata = { $n ->
     [0] Scansione completata in { $durata }.
     [one] Scansione completata in { $durata }. Windows ha negato l'accesso a una cartella: il suo contenuto resta nel non attribuito.
@@ -217,7 +216,7 @@ panoramica-meta-cluster = { $fs } · cluster da { $cluster }
 panoramica-scansione = Scansione del { $data } alle { $ora } · { $durata } · non come amministratore
 # Come panoramica-scansione, con Quado avviato come amministratore.
 panoramica-scansione-amministratore = Scansione del { $data } alle { $ora } · { $durata } · come amministratore
-# Titolo della card del bilancio (F-OV-1).
+# Titolo della card del bilancio.
 bilancio-titolo = Come è usato lo spazio
 # Nota sulle unità di misura, a destra nel titolo del bilancio (Esplora file).
 bilancio-unita-esplora = GB come in Esplora file (1 GB = 1024³ byte)
@@ -245,13 +244,13 @@ bilancio-libero = Libero
 bilancio-deriva = { $valore } ± { $deriva }
 # Suggerimento su un segmento della barra: quota della capacità dell'unità.
 bilancio-quota-volume = { $quota } dell'unità
-# Nota sulla deriva (03 §6.4): lo spazio usato è cambiato durante la scansione.
+# Nota sulla deriva: lo spazio usato è cambiato durante la scansione.
 bilancio-nota-deriva = Durante la scansione lo spazio usato è cambiato di { $deriva }: è l'incertezza sul non attribuito.
 # Nota sulla quota disco dell'utente.
 bilancio-nota-quota = Una quota disco riserva { $quota } dello spazio libero ad altri account.
 # Testo nelle card del bilancio e dei conti quando la scansione non è di un'unità intera (per esempio di una cartella).
 bilancio-non-disponibile = Disponibile solo dopo la scansione di un'unità intera.
-# Titolo della top list (F-OV-2).
+# Titolo della top list.
 top-titolo = Dove finisce lo spazio
 # Sottotitolo della top list, a destra del titolo.
 top-sottotitolo = Elementi più grandi, di qualunque tipo
@@ -265,7 +264,7 @@ top-suggerimento = { $quota } dello spazio usato. Fai clic per aprire l'elemento
 top-vuoto = Nessun elemento occupa spazio su disco in questa scansione.
 # Inizio della legenda dei glifi sotto la top list: misurato, da fonte, dedotto, non disponibile.
 top-legenda-fonte = Fonte di ogni fatto:
-# Titolo della card dei conti (F-OV-3). Il tono è descrittivo, non un allarme.
+# Titolo della card dei conti. Il tono è descrittivo, non un allarme.
 conti-titolo = Perché i conti non tornano del tutto
 # Riga: usato secondo Windows.
 conti-usato-windows = Spazio usato secondo Windows
@@ -275,10 +274,10 @@ conti-file-letti = File letti, ogni file contato una volta
 conti-metadati = Metadati di NTFS misurati: $MFT { $mft }, indici delle cartelle { $indici }, journal { $journal }
 # Riga finale: il resto. Non dire da cosa dipende.
 conti-non-attribuito = Non attribuito
-# Nota sui file con più nomi (04 §6.8): già contati una volta, non una riga da sottrarre. $byte è quanto
-# si aggiungerebbe contando ogni nome.
+# Nota sui file con più nomi: già contati una volta, non una riga da sottrarre. $byte è quanto si
+# aggiungerebbe contando ogni nome.
 conti-hard-link = File con più nomi (hard link): { $testo } nomi in più per gli stessi dati, già contati una volta. Contando ogni nome si aggiungerebbero { $byte }.
-# Titolo della lista dei fatti osservati (04 §6.8).
+# Titolo della lista dei fatti osservati.
 conti-osservato = Osservato
 # Cartelle non leggibili per qualunque motivo, con due esempi di nome. Nessun motivo nel testo: non tutte
 # sono negate per i privilegi.
@@ -298,7 +297,7 @@ conti-profili-altri = { $n ->
 }
 # Lista "Osservato" vuota.
 conti-osservato-nulla = Tutte le cartelle sono state lette.
-# Titolo della lista di ciò che si misura solo come amministratore (04 §6.8, docs/testi.md §6).
+# Titolo della lista di ciò che si misura solo come amministratore (docs/testi.md §6).
 conti-possibile = Possibile, misurabile solo come amministratore
 # Voce della lista "Possibile", con il termine del glossario.
 conti-copie-shadow = Punti di ripristino e copie shadow
@@ -315,7 +314,7 @@ conti-lette-amministratore = { $n ->
 }
 # Voce di "Osservato": Cestino di un altro account misurato come totale. Il SID serve solo a distinguere i Cestini.
 conti-cestino-altro = Cestino di un altro account ({ $sid }): { $dimensione }
-# Come sopra, quando il SID non corrisponde più a nessun account di questo PC (RS16).
+# Come sopra, quando il SID non corrisponde più a nessun account di questo PC.
 conti-cestino-orfano = Cestino di un account che non esiste più su questo PC ({ $sid }): { $dimensione }
 # Voce di "Osservato": profili di altri account misurati come totale, mai con nomi di file o cartelle. $file è il numero di file già scritto ("1.234 file").
 conti-profili-misurati = { $n ->
@@ -333,16 +332,16 @@ conti-copie-shadow-servizio-spento = Punti di ripristino e copie shadow: il serv
 # Voce di «Possibile» quando la lettura come amministratore delle copie shadow non è riuscita: forma degli errori, codice in fondo.
 conti-copie-shadow-errore = Impossibile leggere lo spazio di punti di ripristino e copie shadow. (Codice { $codice })
 
-## Ripeti come amministratore (03 F-SC-3, 05 D3)
+## Ripeti come amministratore
 
 # Spiegazione sopra il pulsante "Ripeti come amministratore": cosa legge Quado, cosa non legge, poi cosa
 # chiede Windows. Solo fatti, veri con e senza firma: niente citazione esatta del riquadro di Windows, che
-# cambia con la versione e la lingua (revisione dei testi, R15).
+# cambia con la versione e la lingua.
 helper-spiegazione = { $n ->
     [one] Come amministratore, Quado legge solo la cartella con accesso negato e lo spazio di punti di ripristino e copie shadow. Non legge il contenuto dei file. Di profili e Cestini di altri account mostra solo i totali. Windows chiede conferma: per un programma senza firma digitale indica l'autore come sconosciuto.
    *[other] Come amministratore, Quado legge solo le { $testo } cartelle con accesso negato e lo spazio di punti di ripristino e copie shadow. Non legge il contenuto dei file. Di profili e Cestini di altri account mostra solo i totali. Windows chiede conferma: per un programma senza firma digitale indica l'autore come sconosciuto.
 }
-# Pulsante della card dei conti: apre la richiesta di conferma di Windows. Nome fissato in 04 e citato da altri testi.
+# Pulsante della card dei conti: apre la richiesta di conferma di Windows. Nome fisso, citato da altri testi.
 helper-ripeti = Ripeti come amministratore
 # Stato: Windows mostra la richiesta di conferma (prompt UAC).
 helper-attesa = In attesa della conferma di Windows…
@@ -391,9 +390,9 @@ helper-motivo-processo = Ha risposto un processo diverso da quello avviato.
 helper-motivo-protocollo = Il processo di lettura ha mandato un messaggio non valido.
 # Motivo di helper-errore: connessione chiusa prima della fine.
 helper-motivo-chiuso = La connessione si è chiusa prima della fine.
-# Esito: quado.exe sta in Download o in una cartella temporanea, da cui Quado non si avvia come amministratore
-# (05 D3). Il controllo si fa prima della richiesta di Windows, che non compare. Cosa non è riuscito, perché,
-# poi cosa fare: il percorso d'esempio è quello dove si installa Quado.
+# Esito: quado.exe sta in Download o in una cartella temporanea, da cui Quado non si avvia come amministratore.
+# Lì un altro programma può lasciare una DLL esca. Il controllo si fa prima della richiesta di Windows, che non
+# compare. Cosa non è riuscito, perché, poi cosa fare: il percorso d'esempio è quello dove si installa Quado.
 helper-posizione = Impossibile leggere come amministratore da questa cartella. Per sicurezza Quado non si avvia come amministratore da Download o da una cartella temporanea. Sposta quado.exe in una cartella sua, per esempio %LOCALAPPDATA%\Programs\Quado, e riaprilo da lì.
 
 ## Esplora
@@ -420,11 +419,11 @@ esplora-vuoto-non-letta = Quado non ha letto il contenuto di questa cartella: il
 esplora-filtri-nessuno = Nessun elemento in questa cartella con questi filtri. Prova con «Togli i filtri».
 # Legenda: il colore grigio dei dati non classificati.
 gestore-non-classificato = Non classificato
-# Nome del gruppo di colore dei programmi (dalla M3).
+# Nome del gruppo di colore dei programmi.
 gestore-app = Programmi e dati delle app
-# Nome del gruppo di colore dei tuoi file (dalla M3).
+# Nome del gruppo di colore dei tuoi file.
 gestore-tuoi = Tuoi file
-# Nome del gruppo di colore di Windows (dalla M3).
+# Nome del gruppo di colore di Windows.
 gestore-windows = Windows
 # Legenda: il tratteggio.
 legenda-non-leggibile = Non leggibile
@@ -440,19 +439,19 @@ colonna-quota = Quota della cartella
 colonna-file = File
 # Intestazione di colonna, come in Esplora file.
 colonna-ultima-modifica = Ultima modifica
-# Intestazione di colonna: chi gestisce l'elemento (dalla M3).
+# Intestazione di colonna: chi gestisce l'elemento.
 colonna-gestito-da = Gestito da
 # Intestazione di colonna nei risultati: la cartella che contiene l'elemento.
 colonna-cartella = Cartella
-# Cella "Dimensioni su disco" di una cartella non leggibile: mai 0 (F-SC-6).
+# Cella "Dimensioni su disco" di una cartella non leggibile: mai 0.
 tabella-non-leggibile = non leggibile
 # Cella "Gestito da" prima della classificazione.
 tabella-non-classificato = non classificato
-# Indicazione accanto al nome di una junction o di un collegamento simbolico (F-SC-7).
+# Indicazione accanto al nome di una junction o di un collegamento simbolico.
 tag-collegamento = collegamento, non seguito
 # Indicazione accanto al nome di una cartella non leggibile.
 tag-non-leggibile = non leggibile
-# Indicazione accanto a un file segnaposto del cloud (F-SC-9).
+# Indicazione accanto a un file segnaposto del cloud.
 tag-cloud = nel cloud
 # Indicazione accanto a una cartella cloud non elencata per non scaricarne il contenuto.
 tag-cloud-non-elencata = cloud, non elencata
@@ -503,7 +502,7 @@ filtro-data-oltre-un-anno = Più di un anno fa
 filtro-data-oltre-tre-anni = Più di tre anni fa
 # Pulsante che toglie tutti i filtri. Altri testi lo citano tra «».
 filtro-azzera = Togli i filtri
-# Nota sotto i filtri (F-IN-3): il tipo viene dall'estensione, non dal contenuto.
+# Nota sotto i filtri: il tipo viene dall'estensione, non dal contenuto.
 filtro-nota-estensione = Tipi secondo l'estensione: Quado non legge il contenuto dei file.
 # Famiglia di file secondo l'estensione.
 famiglia-video = Video
@@ -534,7 +533,7 @@ famiglia-senza-estensione = Senza estensione
 
 ## File grandi
 
-# Titolo della schermata File grandi (F-EX-5).
+# Titolo della schermata File grandi.
 file-grandi-titolo = File grandi
 # Riga sotto il titolo. $volume è la lettera ("C:").
 file-grandi-meta = I file più grandi di { $volume } per dimensioni su disco, ogni file contato una volta: { $testo } in elenco.
@@ -555,7 +554,7 @@ tipo-unita = Unità
 tipo-cartella = Cartella
 # Tipo di una junction o di un collegamento simbolico.
 tipo-collegamento = Collegamento a un'altra cartella
-# Tipo di un file: "File MP4 · Video, secondo l'estensione" (F-IN-3).
+# Tipo di un file: "File MP4 · Video, secondo l'estensione".
 tipo-file = File { $estensione } · { $famiglia }, secondo l'estensione
 # Tipo di un file senza estensione.
 tipo-file-senza-estensione = File · { $famiglia }
@@ -571,17 +570,17 @@ fatto-dimensioni-su-disco = Dimensioni su disco: { $dimensione } ({ $byte } byte
 fatto-ultima-modifica = Ultima modifica: { $data } { $ora }
 # Fatto non disponibile: la cartella non si legge. $motivo viene da «motivo-*»: una frase completa, con il codice di Windows in fondo quando c'è.
 fatto-non-leggibile = Non leggibile: il contenuto resta nel non attribuito. { $motivo }
-# Fatto: segnaposto cloud con le due misure (F-SC-9).
+# Fatto: segnaposto cloud con le due misure.
 fatto-cloud = Segnaposto cloud: { $nel-cloud } nel cloud, { $locale } su questo disco.
-# Fatto non disponibile: cartella cloud non elencata, perché elencarla può scaricare dati dal cloud (09 scenario 25).
+# Fatto non disponibile: cartella cloud non elencata, perché elencarla può scaricare dati dal cloud.
 fatto-cloud-non-elencata = Cartella cloud non elencata: elencarla può avviare un download dal cloud.
-# Fatto: junction o collegamento simbolico non seguito (F-SC-7).
+# Fatto: junction o collegamento simbolico non seguito.
 fatto-collegamento = Collegamento non seguito: il contenuto si conta nella cartella a cui punta.
 # Fatto: file con più nomi (hard link), contato qui.
 fatto-hard-link = File con più nomi (hard link): i suoi byte sono contati una volta, qui.
 # Fatto: nome secondario di un file con più nomi, contato altrove.
 fatto-hard-link-secondario = File con più nomi (hard link): i suoi byte sono già contati altrove, con un altro nome.
-# Fatto: dimensioni su disco lette aprendo il file con soli attributi (compressione di Windows, F-SC-8).
+# Fatto: dimensioni su disco lette aprendo il file con soli attributi (compressione di Windows).
 fatto-allocata-corretta = Dimensioni su disco lette dal file: Windows lo comprime.
 # Fatto: attributi di Windows, elenco separato da virgole.
 fatto-attributi = Attributi: { $elenco }
@@ -613,7 +612,7 @@ motivo-altro = Windows ha restituito un errore. (Codice { $codice })
 ispettore-parti-principali = Parti più grandi
 # Titolo di sezione: ripartizione per tipo.
 ispettore-tipi-di-file = Tipi di file
-# Nota sotto la ripartizione per tipo (F-IN-3), uguale a quella sotto i filtri.
+# Nota sotto la ripartizione per tipo, uguale a quella sotto i filtri.
 ispettore-secondo-estensione = Tipi secondo l'estensione: Quado non legge il contenuto dei file.
 # Testo mentre la ripartizione per tipo si calcola.
 ispettore-calcolo = Calcolo dei tipi di file…
@@ -621,16 +620,16 @@ ispettore-calcolo = Calcolo dei tipi di file…
 ispettore-nessun-file = Nessun file in questa cartella.
 # Titolo di sezione delle azioni.
 ispettore-azioni = Azioni
-# Pulsante: seleziona l'elemento in Esplora file senza aprirlo (F-IN-5). Nome fissato in 04 e citato da altri testi.
+# Pulsante: seleziona l'elemento in Esplora file senza aprirlo. Nome fisso, citato da altri testi.
 azione-apri-in-esplora = Apri in Esplora file
 # Pulsante: copia il percorso completo negli appunti.
 azione-copia-percorso = Copia percorso
 # Pulsante: finestra Proprietà di Windows.
 azione-proprieta = Proprietà
-# Suggerimento del pulsante Proprietà (RS14): la shell carica estensioni di altri programmi.
+# Suggerimento del pulsante Proprietà: la shell carica estensioni di altri programmi.
 azione-proprieta-suggerimento = Apre la finestra Proprietà di Windows, che può caricare estensioni di altri programmi.
-# Pulsante: rilegge l'elemento dal disco (F-IN-6, «Verifica questa voce» nei documenti più vecchi). Il verbo "verificare"
-# resta allo stato Da verificare e alla verifica dopo un intervento.
+# Pulsante: rilegge l'elemento dal disco. Il verbo "verificare" resta allo stato Da verificare e alla verifica
+# dopo un intervento.
 azione-verifica = Rileggi dal disco
 # Suggerimento del pulsante «Rileggi dal disco».
 azione-verifica-suggerimento = Rilegge le dimensioni dal disco, in sola lettura, e aggiorna i totali.
@@ -643,11 +642,11 @@ verifica-cambiata = Riletto alle { $ora }: dimensioni su disco da { $prima } a {
 # Errore: la voce non si è potuta rileggere. Cosa non è riuscito, cosa resta, cosa fare, il codice in fondo.
 # Cita il pulsante barra-riesamina.
 verifica-errore = Impossibile rileggere l'elemento. Restano le misure della scansione: riprova, oppure usa «Scansiona di nuovo». (Codice { $codice })
-# Classe di provenienza (legenda, suggerimento del glifo, «Provenienza della cartella»): letto da Quado in questa scansione. Parola fissa di 04.
+# Classe di provenienza (legenda, suggerimento del glifo, «Provenienza della cartella»): letto da Quado in questa scansione. Parola fissa del glossario (docs/testi.md §6).
 fonte-misurato = misurato
-# Classe di provenienza: dichiarato da Windows o da un programma. Parola fissa di 04.
+# Classe di provenienza: dichiarato da Windows o da un programma. Parola fissa del glossario (docs/testi.md §6).
 fonte-da-fonte = da fonte
-# Classe di provenienza: ricavato da indizi, può sbagliare. Parola fissa di 04.
+# Classe di provenienza: ricavato da indizi, può sbagliare. Parola fissa del glossario (docs/testi.md §6).
 fonte-dedotto = dedotto
 # Classe di provenienza: non leggibile o non misurabile.
 fonte-non-disponibile = non disponibile
@@ -677,7 +676,7 @@ impostazioni-titolo = Impostazioni
 impostazioni-lingua = Lingua
 # Tra parentesi accanto a una lingua che viene da un file dell'utente.
 impostazioni-lingua-file-utente = dal tuo file
-# Nota sotto la scelta della lingua (05 D13). $cartella è il percorso. Il nome del file è il codice della lingua (i18n::user_files); un file it.ftl corregge l'italiano.
+# Nota sotto la scelta della lingua. $cartella è il percorso. Il nome del file è il codice della lingua (i18n::user_files); un file it.ftl corregge l'italiano.
 impostazioni-lingua-nota = Puoi correggere un testo o aggiungere una lingua con un file .ftl in { $cartella }. Il nome del file è il codice della lingua, per esempio it.ftl o fr.ftl. Poi scegli «Ricarica i file».
 # Pulsante: apre la cartella delle lingue in Esplora file.
 impostazioni-lingua-apri-cartella = Apri la cartella delle lingue
@@ -706,7 +705,7 @@ impostazioni-unita = Unità di misura
 unita-scelta-esplora = Come in Esplora file (1 GB = 1024³ byte)
 # Scelta delle unità decimali del Sistema internazionale.
 unita-scelta-si = Decimali (1 GB = 10⁹ byte)
-# Nota sotto le unità (F-GE-3). Prima occorrenza nella schermata dei file con più nomi: il termine tecnico tra parentesi.
+# Nota sotto le unità. Prima occorrenza nella schermata dei file con più nomi: il termine tecnico tra parentesi.
 impostazioni-unita-nota = Con «Come in Esplora file» un singolo file ha le stesse dimensioni che vedi in Esplora file. Il totale di una cartella può differire perché Quado conta una volta sola i file con più nomi (hard link).
 # Titolo della card delle informazioni sul programma.
 impostazioni-informazioni = Informazioni
@@ -790,18 +789,18 @@ barra-laterale-compressa = Compressa
 # Titolo della colonna a destra con l'anteprima dal vivo di colori, densità e testo.
 impostazioni-anteprima = Anteprima
 
-## M3: classificazione, stati, record di raccomandazione, Windows e sistema, regole.
+## Classificazione, stati, record di raccomandazione, Windows e sistema, regole.
 
-# Voce della barra laterale: vista Windows e sistema (F-SY-1).
+# Voce della barra laterale: vista Windows e sistema.
 nav-sistema = Windows e sistema
 # Voce della barra laterale, in basso: elenco delle regole.
 nav-regole = Regole
-# Voce della barra laterale: vista Download (F-DL).
+# Voce della barra laterale: vista Download.
 nav-download = Download
-# Voce della barra laterale: vista Programmi (F-AP).
+# Voce della barra laterale: vista Programmi.
 nav-programmi = Programmi
 
-# Banner della Panoramica quando ci sono regole verificate da più di 6 mesi (07 §5.1). Dice la conseguenza: a 12 mesi dalla verifica la regola non propone più interventi.
+# Banner della Panoramica quando ci sono regole verificate da più di 6 mesi. Dice la conseguenza: a 12 mesi dalla verifica la regola non propone più interventi.
 banner-regole-da-riverificare = { $n ->
     [one] { $testo } regola da riverificare: è stata verificata più di sei mesi fa. A dodici mesi dalla verifica non propone più interventi.
    *[other] { $testo } regole da riverificare: sono state verificate più di sei mesi fa. A dodici mesi dalla verifica non propongono più interventi.
@@ -809,14 +808,14 @@ banner-regole-da-riverificare = { $n ->
 # Pulsante del banner: apre l'elenco delle regole (docs/testi.md §4).
 banner-regole-apri = Apri le regole
 
-# Legenda della barra del bilancio: grigio dei dati senza un gestore sicuro (03 §6.2).
+# Legenda della barra del bilancio: grigio dei dati senza un gestore sicuro.
 bilancio-non-classificato-ipotesi = Non classificato o ipotesi
 # Legenda della mappa, stesso significato.
 legenda-non-classificato-ipotesi = Non classificato o ipotesi
-# Etichetta accanto a un'attribuzione incerta: grigio, nessun colore del gestore (04 §6.8).
+# Etichetta accanto a un'attribuzione incerta: grigio, nessun colore del gestore.
 etichetta-ipotesi = ipotesi
 
-# Titolo della card degli interventi possibili (F-OV-4).
+# Titolo della card degli interventi possibili.
 interventi-titolo = Interventi possibili
 # Sottotitolo: da dove vengono le voci e dove si agisce. Dalla card non parte nessuna azione: un clic apre l'elemento con l'ispettore.
 interventi-sottotitolo = Ogni voce viene da una regola, con la fonte e la data di verifica. Seleziona una voce per vedere nell'ispettore cosa puoi fare, con ipotesi e rischi. Da questa card Quado non cambia niente sul disco.
@@ -840,18 +839,18 @@ interventi-altri = { $n ->
     [one] Un'altra voce è nell'ispettore del suo elemento.
    *[other] Altre { $testo } voci sono nell'ispettore dei loro elementi.
 }
-# Card degli interventi senza voci (stato vuoto). Ricorda come ci arrivano le copie (F-DL-4): solo dopo il confronto. Cita il pulsante della vista Download.
+# Card degli interventi senza voci (stato vuoto). Ricorda come ci arrivano le copie: solo dopo il confronto. Cita il pulsante della vista Download.
 interventi-vuoto = Nessuna regola propone interventi su questa unità. Le copie identiche in Download compaiono qui dopo «Confronta il contenuto».
 # Pulsante di una voce della card degli interventi: apre l'elemento in Esplora, dove l'ispettore dice cosa
 # puoi fare. Le stesse parole della sezione dell'ispettore (ispettore-cosa-puoi-fare).
 interventi-cosa-puoi-fare = Vedi cosa puoi fare
 
-# Filtro "Gestito da" in ricerca e File grandi (F-EX-4).
+# Filtro "Gestito da" in ricerca e File grandi.
 filtro-gestore = Gestito da
 # Filtro senza vincolo.
 filtro-gestore-tutti = Tutti
 
-# Stati di valutazione (03 §6.1, 04 §6.1): sempre con l'icona, parole fisse del glossario. Gestibile: prova di gestibilità diretta.
+# Stati di valutazione: sempre con l'icona, parole fisse del glossario. Gestibile: prova di gestibilità diretta.
 stato-gestibile = Gestibile
 # Da verificare: si legge "non ancora", mai "puoi cancellare".
 stato-da-verificare = Da verificare
@@ -859,24 +858,24 @@ stato-da-verificare = Da verificare
 stato-decidi-tu = Decidi tu
 # Lo gestisce X, con la sua procedura. $chi è un nome (Windows, npm, CapCut).
 stato-lo-gestisce = Lo gestisce { $chi }
-# Variante senza procedura (09).
+# Variante senza procedura.
 stato-lo-gestisce-nessuna-procedura = Lo gestisce { $chi }. Nessuna procedura: non toccare
 # Non sappiamo: nessuna prova sul ruolo.
 stato-non-sappiamo = Non sappiamo
 # Perché Non sappiamo: nessuna regola. Cita il pulsante dell'ispettore.
 motivo-stato-nessuna-regola = Nessuna regola riconosce questo elemento. Puoi vederne le misure e usare «Apri in Esplora file».
-# Perché Non sappiamo: versione fuori dall'intervallo della regola (03 §6.1 regola 4).
+# Perché Non sappiamo: versione fuori dall'intervallo della regola.
 motivo-stato-versione = La versione installata è fuori da quelle verificate per la regola, oppure non si conosce. Quado non propone interventi.
-# Perché Non sappiamo: regola scaduta, oltre 12 mesi dalla verifica (07 §5.1). $data è la data di verifica.
+# Perché Non sappiamo: regola scaduta, oltre 12 mesi dalla verifica. $data è la data di verifica.
 motivo-stato-regola-scaduta = La regola è stata verificata il { $data }, più di un anno fa. Quado mostra la spiegazione come ipotesi e non propone interventi.
-# Perché Non sappiamo: due regole in conflitto (03 §6.1 regola 5).
+# Perché Non sappiamo: due regole in conflitto.
 motivo-stato-conflitto = Due regole descrivono questo elemento in modo diverso. Quado le mostra entrambe e non propone interventi.
 # Perché Non sappiamo: solo il nome.
 motivo-stato-solo-nome = Il ruolo di questo elemento si ricava solo dal nome. Quado non propone interventi.
 # Perché Non sappiamo: manca la prova di gestibilità.
 motivo-stato-senza-prova = La regola non trova una prova che agire su questo elemento abbia effetti noti. Quado non propone interventi.
 
-# Affidabilità dei fatti dedotti (03 §6.2): livello. Parola fissa di 04 ("dedotto alta").
+# Affidabilità dei fatti dedotti: livello. Parola fissa del glossario ("dedotto alta", docs/testi.md §6).
 affidabilita-alta = alta
 # Livello medio.
 affidabilita-media = media
@@ -901,21 +900,21 @@ criterio-scaduta = regola verificata più di un anno fa
 # Criterio: conflitto.
 criterio-conflitto = regole in conflitto
 
-# Tipo di azione del record (03 §6.1), dopo «Azione:».
+# Tipo di azione del record, dopo «Azione:».
 azione-tipo-cestino = spostamento nel Cestino, dopo l'anteprima
 # Procedura di Windows o del programma che gestisce l'elemento.
 azione-tipo-procedura = procedura di Windows o del programma che lo gestisce
 # Comando mostrato e copiato, mai eseguito.
 azione-tipo-comando = comando ufficiale, che Quado mostra e copia senza eseguirlo
-# Disinstallazione dalla vista Programmi, con Impostazioni › App o con il launcher del gioco (04 §6.7).
+# Disinstallazione dalla vista Programmi, con Impostazioni › App o con il launcher del gioco.
 azione-tipo-disinstallazione = disinstallazione dalla vista Programmi, con Impostazioni › App o con il launcher
 # Nessuna azione oltre a quelle sempre presenti nell'ispettore.
 azione-tipo-nessuna = nessuna, oltre a quelle sempre disponibili
 # Privilegi, dopo «Privilegi:»: basta l'account standard.
 privilegi-nessuno = non serve essere amministratore
-# Privilegi: amministratore. Quado non esegue comandi da amministratore (05 D7).
+# Privilegi: amministratore. Quado non esegue comandi da amministratore.
 privilegi-amministratore = il comando va eseguito come amministratore, quindi Quado lo mostra e lo copia senza eseguirlo
-# Esito di un controllo che si esegue nell'anteprima prima di agire (M5).
+# Esito di un controllo che si esegue nell'anteprima prima di agire.
 controllo-esito-simulazione = si controlla nell'anteprima
 # Controllo superato.
 controllo-esito-superato = superato
@@ -923,8 +922,8 @@ controllo-esito-superato = superato
 controllo-esito-non-superato = non superato
 # Controllo manuale: lo spunta l'utente.
 controllo-esito-da-spuntare = da spuntare
-# Stima esatta (03 §6.3). Compare sempre da sola, senza etichetta davanti (ispettore, card, vista Download, storico):
-# per questo comincia con la parola Stima.
+# Stima esatta. Compare sempre da sola, senza etichetta davanti (ispettore, card, vista Download, storico): per
+# questo comincia con la parola Stima.
 stima-esatta = Stima esatta: { $valore }
 # Stima a intervallo.
 stima-intervallo = Stima: tra { $minimo } e { $massimo }
@@ -937,7 +936,7 @@ stima-nessuna-azione = Nessuna stima: nessun intervento proposto
 # Si calcola nell'anteprima: cartelle non leggibili o file con altri nomi.
 stima-nella-simulazione = Si calcola nell'anteprima, quando Quado rilegge i file
 
-# Ispettore, sezione "Cos'è" (F-IN-1).
+# Ispettore, sezione "Cos'è".
 ispettore-cos-e = Cos'è
 # Fatto sotto "Cos'è" quando nessuna regola riconosce l'elemento.
 ispettore-nessuna-regola = Nessuna regola lo riconosce
@@ -950,11 +949,11 @@ ispettore-vai-elemento = Vai a quell'elemento
 ispettore-prova-gestibilita = Prova di gestibilità
 # Riga del gestore.
 ispettore-gestito-da = Gestito da: { $gestore }
-# Sezione "Perché è così grande": schemi riconosciuti dalle regole (F-IN-2).
+# Sezione "Perché è così grande": schemi riconosciuti dalle regole.
 ispettore-schemi = Riconosciuto dalle regole
 # Sotto uno schema: la regola che lo riconosce.
 ispettore-schema-regola = Regola: { $regola }
-# Sezione "Cosa puoi fare" (F-IN-4).
+# Sezione "Cosa puoi fare".
 ispettore-cosa-puoi-fare = Cosa puoi fare
 # Nodo dentro un elemento riconosciuto: le azioni sono dell'elemento che lo contiene.
 ispettore-azioni-elemento = Seleziona l'elemento che lo contiene per vedere cosa puoi fare.
@@ -1012,11 +1011,11 @@ regole-vuoto = Impossibile leggere le regole incluse in Quado. Senza regole, per
 regole-verificata = Verificata il { $data }
 # Intervallo di versioni.
 regole-versioni = { $programma } da { $min } a { $max }
-# Oltre 6 mesi (07 §5.1), sotto la riga «Verificata il».
+# Oltre 6 mesi, sotto la riga «Verificata il».
 regole-scadenza-riverificare = Da riverificare: la verifica del { $data } ha più di sei mesi.
-# Oltre 11 mesi (07 §5.1): quando la regola smette di proporre interventi. $limite è la data di verifica più 12 mesi.
+# Oltre 11 mesi: quando la regola smette di proporre interventi. $limite è la data di verifica più 12 mesi.
 regole-scadenza-annuncio = La verifica del { $data } vale fino al { $limite }. Se la regola non viene riverificata, da quel giorno non propone più interventi.
-# Oltre 12 mesi (07 §5.1).
+# Oltre 12 mesi.
 regole-scadenza-scaduta = La verifica del { $data } ha più di un anno. La regola non propone più interventi e la sua spiegazione vale come ipotesi.
 # Tipo di fonte.
 regole-fonte-ufficiale = fonte ufficiale
@@ -1036,7 +1035,7 @@ regole-fonti = { $n ->
    *[other] { $testo } fonti
 }
 
-# Esito di un estrattore (05 D6) nella colonna dei valori: la fonte non c'è.
+# Esito di un estrattore nella colonna dei valori: la fonte non c'è.
 estrattore-non-presente = non presente
 # Accesso negato senza amministratore.
 estrattore-accesso-negato = si legge solo come amministratore
@@ -1044,7 +1043,7 @@ estrattore-accesso-negato = si legge solo come amministratore
 estrattore-segnaposto-cloud = non letto, il file è solo nel cloud
 # Errore di Windows: il codice in fondo, tra parentesi.
 estrattore-errore = non letto (Codice { $codice })
-# Formato inatteso (06 §2.3). $motivo dice quale (formato-*). Niente due punti: programmi-fonte-errore mette il valore dopo «Fonte:».
+# Formato inatteso. $motivo dice quale (formato-*). Niente due punti: programmi-fonte-errore mette il valore dopo «Fonte:».
 estrattore-non-riuscito = non letto, { $motivo }
 # Motivi.
 formato-troncato = il file finisce a metà
@@ -1078,7 +1077,7 @@ sistema-titolo = Windows e sistema
 sistema-sottotitolo = Spazio usato da Windows su questa unità, con la misura e lo stato di ogni voce.
 # Titolo della card delle voci.
 sistema-voci = Voci di sistema
-# Voci (F-SY-1). Il nome del file o della cartella tra parentesi serve a ritrovarla.
+# Voci. Il nome del file o della cartella tra parentesi serve a ritrovarla.
 sistema-voce-paging = File di paging (pagefile.sys)
 # Voci.
 sistema-voce-swap = File di swap (swapfile.sys)
@@ -1117,16 +1116,16 @@ sistema-cestino-windows = { $valore }, { $n ->
 sistema-cestino-secondo-windows = Secondo Windows
 # Etichetta.
 sistema-cestino-su-disco = Su disco
-# Etichetta della riga con le cartelle del Cestino senza file indice (F-SY-2), accanto alla spiegazione della regola cestino-orfane.
+# Etichetta della riga con le cartelle del Cestino senza file indice, accanto alla spiegazione della regola cestino-orfane.
 sistema-cestino-orfane = Cartelle senza indice
-# Valore non disponibile senza amministratore: mai 0 (F-SY-1).
+# Valore non disponibile senza amministratore: mai 0.
 sistema-non-disponibile-admin = si misura solo come amministratore
 # Metadati non disponibili su questo file system.
 sistema-non-disponibile-fs = non disponibile su questo file system
 # Nota in fondo alla card: un clic su una voce la apre in Esplora con l'ispettore.
 sistema-nota-procedure = Seleziona una voce per vedere nell'ispettore la procedura o il comando di Microsoft, con la fonte in Regole. Quado mostra e copia i comandi senza eseguirli.
 
-# Configurazione letta in sola lettura (F-SY-3): titolo.
+# Configurazione letta in sola lettura: titolo.
 configurazione-titolo = Configurazione letta
 # Sottotitolo.
 configurazione-sottotitolo = Letta durante la scansione da Windows e dai file di configurazione dei programmi, senza cambiare niente.
@@ -1175,7 +1174,7 @@ configurazione-capacita-predefinita = valore predefinito di Windows
 configurazione-cestino-elimina-subito = Eliminazione senza passare dal Cestino
 # Voci: il nome del valore nel registro serve a verificarlo.
 configurazione-tracciamento = Tracciamento degli avvii delle app (Start_TrackProgs)
-# Valore (04 §6.8, testo di riferimento).
+# Valore con Start_TrackProgs = 0: lo stesso testo di programmi-tracciamento-spento.
 configurazione-tracciamento-spento = Tracciamento degli avvii di Windows disattivato: nessun dato d'uso
 # Voci: nome di Windows della finestra.
 configurazione-ripristino = Protezione sistema (punti di ripristino)
@@ -1190,7 +1189,7 @@ configurazione-origine-npmrc = da .npmrc
 # Da dove viene il percorso.
 configurazione-origine-predefinito = percorso predefinito della documentazione
 
-# Fonti lette durante la scansione (06 §2.3): titolo.
+# Fonti lette durante la scansione: titolo.
 fonti-titolo = Fonti lette durante la scansione
 # Fonte.
 fonti-disinstallazione = Voci di disinstallazione
@@ -1230,7 +1229,7 @@ fonti-capcut = CapCut
 fonti-versione = versione { $versione }
 # Fonte.
 fonti-userassist = Avvii registrati da Windows (UserAssist)
-# Esito con il tracciamento spento (F-AP-4).
+# Esito con il tracciamento spento.
 fonti-userassist-non-usato = non letto, il tracciamento degli avvii è disattivato
 # Esito.
 fonti-voci-semplici = { $n ->
@@ -1238,13 +1237,13 @@ fonti-voci-semplici = { $n ->
    *[other] { $testo } voci
 }
 
-# Fonte di un fatto dichiarato (F-IN-1), dopo il fatto e «·». Codici di `Source`. In parole comprensibili; il nome tecnico, tra parentesi, solo dove serve a verificare il fatto.
+# Fonte di un fatto dichiarato, dopo il fatto e «·». Codici di `Source`. In parole comprensibili; il nome tecnico, tra parentesi, solo dove serve a verificare il fatto.
 origine-scansione = scansione
 # Fonte: voce di disinstallazione nel registro, per tutti gli account.
 origine-disinstallazione-hklm = voce di disinstallazione per tutti gli account (HKLM)
 # Fonte: voce di disinstallazione dei programmi a 32 bit, per tutti gli account.
 origine-disinstallazione-wow = voce di disinstallazione a 32 bit per tutti gli account (HKLM, WOW6432Node)
-# Fonte: voce del tuo account, scrivibile dall'utente (RS22).
+# Fonte: voce del tuo account, scrivibile dall'utente.
 origine-disinstallazione-hkcu = voce di disinstallazione del tuo account (HKCU)
 # Fonte: pacchetto MSIX.
 origine-msix = pacchetto di Microsoft Store
@@ -1293,11 +1292,11 @@ gestore-windows-breve = Windows
 # Nome breve.
 gestore-non-classificato-breve = Non classificato
 
-## M4: vista Download (F-DL, 04 §6.6 punto 3). Nomi delle famiglie in `lente-famiglia-<codice>`.
+## Vista Download. Nomi delle famiglie in `lente-famiglia-<codice>`.
 
 # Titolo della schermata Download.
 download-titolo = Download
-# Metodo dichiarato nella testata (04 §6.6).
+# Metodo dichiarato nella testata.
 download-metodo = Quado riconosce il tipo dall'estensione e legge la versione degli installatori senza eseguirli.
 # Riga sotto il titolo: percorso della cartella, dimensioni su disco, numero di file ($file è già scritto, per esempio "2.420 file").
 download-meta = { $percorso } · { $dimensione } · { $file }
@@ -1346,31 +1345,31 @@ download-riquadro = { $famiglia }: { $dimensione }, { $file }
 # Riga sotto i riquadri: i file di altri tipi, così la somma dei riquadri torna con la testata.
 download-altri-file = Altri file: { $dimensione } in { $file }
 
-# Filtro di F-DL-3: file con il suffisso " (N)" nel nome. È solo un filtro.
+# Filtro: file con il suffisso " (N)" nel nome. È solo un filtro.
 download-filtro-suffisso = Con «(N)» nel nome: { $n ->
     [one] un file
    *[other] { $testo } file
 }
 # Titolo del dettaglio del filtro.
 download-filtro-titolo = File con «(N)» nel nome
-# Nota del filtro (F-DL-3): non raggruppa, non è una prova, non cambia lo stato.
+# Nota del filtro: non raggruppa, non è una prova, non cambia lo stato.
 download-filtro-nota = Il filtro mostra i file con «(N)» nel nome e lascia invariati voci e stati. Il suffisso non prova che due file siano copie: lo dice solo il confronto del contenuto.
 # Nessun file con il suffisso.
 download-filtro-vuoto = Nessun file con «(N)» nel nome in questa cartella.
 
-# Comando: impronta SHA-256 dei file della stessa dimensione (F-DL-4). Prima chiede conferma.
+# Comando: impronta SHA-256 dei file della stessa dimensione. Prima chiede conferma.
 download-comando-confronta = Confronta il contenuto
-# Comando: risorsa di versione degli exe e tabella Property degli MSI (F-DL-2). Prima chiede conferma.
+# Comando: risorsa di versione degli exe e tabella Property degli MSI. Prima chiede conferma.
 download-comando-installatori = Leggi i dati di versione
-# Comando: indice degli zip con una cartella dello stesso nome accanto (F-DL-5). Prima chiede conferma.
+# Comando: indice degli zip con una cartella dello stesso nome accanto. Prima chiede conferma.
 download-comando-archivi = Leggi l'indice degli archivi
-# Comando: interroga di nuovo il controllo dei file aperti sui download incompleti (F-DL-6).
+# Comando: interroga di nuovo il controllo dei file aperti sui download incompleti.
 download-comando-uso = Controlla di nuovo l'uso
 # Suggerimento del comando: cosa fa e cosa non fa.
 download-comando-uso-suggerimento = Chiede a Windows quali programmi hanno aperto questi file, senza leggerne il contenuto.
 # Motivo di un comando disattivato: confronto già fatto per tutti i gruppi.
 download-motivo-gia-confrontati = Tutti i file con le stesse dimensioni sono già stati confrontati.
-# Motivo di un comando disattivato: i file della stessa dimensione sono segnaposto cloud (05 D6).
+# Motivo di un comando disattivato: i file della stessa dimensione sono segnaposto cloud.
 download-motivo-cloud = I file con le stesse dimensioni sono solo nel cloud: Quado non li legge, per non scaricarli.
 # Motivo di un comando disattivato: nessun gruppo da confrontare.
 download-motivo-nessun-gruppo = Non ci sono file con le stesse dimensioni da confrontare.
@@ -1381,7 +1380,7 @@ download-motivo-nessun-archivio = Nessun archivio zip con una cartella dello ste
 # Motivo di un comando disattivato: un'altra lettura in corso o in attesa di conferma.
 download-motivo-lettura-in-corso = Quado fa una lettura alla volta: questo comando si attiva quando l'altra termina o la fermi.
 
-# Prima del confronto (04 §6.8, "Lettura del contenuto"): quanti file, quanti byte, e l'ultimo accesso. $byte è una dimensione.
+# Prima del confronto: quanti file, quanti byte, e l'ultimo accesso. $byte è una dimensione.
 download-confronta-domanda = { $n ->
     [one] Il confronto legge per intero il file ({ $byte }) e ne calcola l'impronta, sul tuo PC. Aggiorna la data di ultimo accesso del file.
    *[other] Il confronto legge per intero i { $testo } file ({ $byte }) e ne calcola l'impronta, sul tuo PC. Aggiorna la data di ultimo accesso di questi file.
@@ -1391,12 +1390,12 @@ download-confronta-cloud = { $n ->
     [one] Quado salta un file che è solo nel cloud, per non scaricarlo.
    *[other] Quado salta { $testo } file che sono solo nel cloud, per non scaricarli.
 }
-# Prima della lettura degli installatori (F-DL-2): quanti file, la loro dimensione, e l'ultimo accesso.
+# Prima della lettura degli installatori: quanti file, la loro dimensione, e l'ultimo accesso.
 download-installatori-domanda = { $n ->
     [one] La lettura apre l'installatore ({ $byte }) solo nella parte con nome e versione, senza eseguirlo. Aggiorna la data di ultimo accesso del file.
    *[other] La lettura apre i { $testo } installatori ({ $byte } in tutto) solo nella parte con nome e versione, senza eseguirli. Aggiorna la data di ultimo accesso di questi file.
 }
-# Prima della lettura degli indici degli zip (F-DL-5): quanti archivi, la loro dimensione, e l'ultimo accesso.
+# Prima della lettura degli indici degli zip: quanti archivi, la loro dimensione, e l'ultimo accesso.
 download-archivi-domanda = { $n ->
     [one] La lettura apre l'archivio ({ $byte }) solo nella parte finale, dove c'è l'indice dei file, senza decomprimerlo. Aggiorna la data di ultimo accesso del file.
    *[other] La lettura apre i { $testo } archivi ({ $byte } in tutto) solo nella parte finale, dove c'è l'indice dei file, senza decomprimerli. Aggiorna la data di ultimo accesso di questi file.
@@ -1421,13 +1420,13 @@ download-avanzamento-attributi = Controllo degli installatori in corso… { $fil
 
 # Fine del confronto. $letti e $totale già scritti.
 download-esito-confronto = Confronto completato: { $letti } file letti su { $totale }.
-# Confronto annullato a metà (06 §3.2): nessun gruppo parziale vale come completo.
+# Confronto annullato a metà: nessun gruppo parziale vale come completo.
 download-esito-confronto-interrotto = Confronto interrotto: { $letti } file letti su { $totale }. I gruppi letti solo in parte restano con il contenuto non confrontato.
 # Fine della lettura dei dati di versione.
 download-esito-installatori = Dati di versione letti: { $letti } file su { $totale }.
 # Lettura dei dati di versione annullata.
 download-esito-installatori-interrotto = Lettura dei dati di versione interrotta: { $letti } file letti su { $totale }. Gli altri restano da leggere.
-# Seconda richiesta sugli stessi file (F-DL-2): nessuna lettura, dati dalla cache della sessione.
+# Seconda richiesta sugli stessi file: nessuna lettura, dati dalla cache della sessione.
 download-esito-installatori-cache = I dati di versione vengono dalla lettura già fatta in questa sessione: da allora i file non sono cambiati.
 # Fine della lettura degli indici.
 download-esito-archivi = Indici letti: { $letti } su { $totale }.
@@ -1439,9 +1438,9 @@ download-esito-non-letti = { $n ->
    *[other] { $testo } file non sono stati letti: i motivi sono nel dettaglio delle voci.
 }
 
-# Titolo dell'elenco delle voci (04 §6.6).
+# Titolo dell'elenco delle voci.
 download-elenco-titolo = Cosa riconosce Quado in questa cartella
-# Regola in testata all'elenco (03 §6.1, regola 2).
+# Regola in testata all'elenco.
 download-elenco-regola = Nome, data o dimensioni da soli non bastano per proporre un'azione.
 # Elenco vuoto.
 download-elenco-vuoto = Quado non riconosce il ruolo di nessun file in questa cartella.
@@ -1452,7 +1451,7 @@ download-legenda-gestisce = Lo gestisce un programma o Windows
 
 # Titolo di riga: file della stessa dimensione non confrontati o confrontati solo in parte. $n numero di file (qui non usato).
 download-voce-stessa-dimensione = File con le stesse dimensioni, contenuto non confrontato
-# Titolo di riga: copie con lo stesso contenuto dopo il confronto (F-DL-4).
+# Titolo di riga: copie con lo stesso contenuto dopo il confronto.
 download-voce-copie = Copie identiche
 # Titolo di riga: stessa dimensione, contenuto diverso.
 download-voce-contenuto-diverso = Stesse dimensioni, contenuto diverso
@@ -1471,7 +1470,7 @@ download-voce-installatori-non-riusciti = { $n ->
     [one] Installatore con i dati di versione non leggibili
    *[other] Installatori con i dati di versione non leggibili
 }
-# Titolo di riga: programma installato alla stessa versione (04 §6.6).
+# Titolo di riga: programma installato alla stessa versione.
 download-voce-installatori-stessa-versione = { $n ->
     [one] Installatore di un programma già installato alla stessa versione
    *[other] Installatori di programmi già installati alla stessa versione
@@ -1491,14 +1490,14 @@ download-voce-installatori-senza-confronto = { $n ->
     [one] Installatore senza confronto con i programmi installati
    *[other] Installatori senza confronto con i programmi installati
 }
-# Titolo di riga: zip con una cartella dello stesso nome accanto (F-DL-5).
+# Titolo di riga: zip con una cartella dello stesso nome accanto.
 download-voce-archivio = Archivio con una cartella dello stesso nome accanto
 # Titolo di riga: immagini disco.
 download-voce-immagini-disco = { $n ->
     [one] Immagine disco
    *[other] Immagini disco
 }
-# Titolo di riga: download incompleti che il controllo dei file aperti non trova in uso (F-DL-6).
+# Titolo di riga: download incompleti che il controllo dei file aperti non trova in uso.
 download-voce-incompleti-liberi = { $n ->
     [one] Download incompleto non in uso
    *[other] Download incompleti non in uso
@@ -1571,9 +1570,9 @@ download-non-letto-annullato = lettura interrotta
 download-origine = Quado ha costruito questa voce dalle misure della scansione e dalle letture chieste in questa sessione, senza usare una regola.
 # Installatori che nessun lettore legge.
 download-installatori-altri-tipi = Quado non legge i dati di versione dei pacchetti MSIX e APPX e delle patch MSP: restano senza confronto.
-# Prima del confronto le caselle sono disattivate (04 §6.6).
+# Prima del confronto le caselle sono disattivate.
 download-caselle-dopo = Dopo «Confronta il contenuto», se i file risultano identici, scegli quale copia tenere.
-# Dopo il confronto: quale copia resta, e come si spostano le altre (M5: dall'anteprima, mai da qui direttamente).
+# Dopo il confronto: quale copia resta, e come si spostano le altre (solo dall'anteprima, mai da qui direttamente).
 download-tieni-nota = Quado tiene la copia creata per prima, se non ne scegli un'altra. Le altre vanno nel Cestino solo con «Sposta nel Cestino…», dopo l'anteprima e la tua conferma.
 # Data di creazione di una copia, letta durante il confronto.
 download-file-creato = Creato il { $data }
@@ -1589,7 +1588,7 @@ download-casella = Scegli { $nome }
 download-tieni = Tieni { $nome }
 # Dettaglio di una famiglia: prima dei file più grandi.
 download-famiglia-nota = Tipo riconosciuto dall'estensione. I file più grandi:
-# Comando nell'ispettore di Esplora su una cartella del profilo dell'utente (F-DL-1): apre la schermata Download su quella cartella.
+# Comando nell'ispettore di Esplora su una cartella del profilo dell'utente: apre la schermata Download su quella cartella.
 download-apri-lente = Apri nella vista Download
 # Suggerimento del comando.
 download-apri-lente-suggerimento = Mostra tipi di file e voci di questa cartella dai dati della scansione, senza aprire i file.
@@ -1597,7 +1596,7 @@ download-apri-lente-suggerimento = Mostra tipi di file e voci di questa cartella
 # Stessa forma di interventi-sottotitolo.
 interventi-sottotitolo-lente = Ogni voce viene da una regola, con la fonte e la data di verifica, o da prove misurate nella vista Download. Seleziona una voce per vedere nell'ispettore cosa puoi fare. Da questa card Quado non cambia niente sul disco.
 
-## M4: Programmi (F-AP).
+## Programmi.
 
 # Titolo della schermata Programmi.
 programmi-titolo = Programmi
@@ -1605,25 +1604,25 @@ programmi-titolo = Programmi
 programmi-sottotitolo = Programmi registrati in Windows, app di Microsoft Store, giochi di Steam e prodotti di Epic. Quado conta lo spazio di un programma solo quando una fonte ne dichiara la cartella.
 # Testata, primo riquadro: quanti programmi sono elencati.
 programmi-tessera-programmi = Programmi elencati
-# Nota sotto il numero, con i componenti di sistema nascosti (F-AP-1).
+# Nota sotto il numero, con i componenti di sistema nascosti.
 programmi-tessera-senza-componenti = Senza i componenti di sistema
 # Nota sotto il numero, con i componenti di sistema mostrati.
 programmi-tessera-con-componenti = Con i componenti di sistema
 # Testata, secondo riquadro: spazio misurato dei programmi elencati.
 programmi-tessera-spazio = Spazio misurato
-# Nota sullo spazio: una cartella condivisa conta una volta, il dichiarato non si somma (F-AP-2, F-AP-3).
+# Nota sullo spazio: una cartella condivisa conta una volta, il dichiarato non si somma.
 programmi-tessera-spazio-nota = Dimensioni su disco. Una cartella dichiarata da più programmi conta una volta. Le dimensioni dichiarate restano fuori dal totale.
-# Testata, terzo riquadro: programmi senza prova del percorso (F-AP-2).
+# Testata, terzo riquadro: programmi senza prova del percorso.
 programmi-tessera-non-dichiarata = Posizione non dichiarata
 # Nota: niente spazio per somiglianza del nome.
 programmi-tessera-non-dichiarata-nota = Quado attribuisce spazio solo con una prova del percorso, mai per somiglianza del nome.
-# Start_TrackProgs = 0 (04 §6.8, F-AP-4): testo esatto, senza punto finale.
+# Start_TrackProgs = 0: testo esatto, senza punto finale.
 programmi-tracciamento-spento = Tracciamento degli avvii di Windows disattivato: nessun dato d'uso
-# Start_TrackProgs = 1: copertura di UserAssist (F-AP-4).
+# Start_TrackProgs = 1: copertura di UserAssist.
 programmi-tracciamento-attivo = Tracciamento degli avvii di Windows attivo: l'ultimo avvio viene da UserAssist. UserAssist conta gli avvii da Esplora file e da Start. Restano fuori quelli da riga di comando, da altri launcher e da attività pianificate.
 # Start_TrackProgs assente, inatteso o non leggibile.
 programmi-tracciamento-non-letto = Impostazione del tracciamento degli avvii non letta: nessun dato d'uso da UserAssist.
-# Copertura delle altre fonti d'uso (F-AP-4). Mai "inutilizzato" o "mai usato".
+# Copertura delle altre fonti d'uso. Mai "inutilizzato" o "mai usato".
 programmi-uso-copertura = Steam registra l'ultima sessione dei suoi giochi; Epic e Microsoft Store non registrano l'uso.
 # Fonte dei programmi non letta. $fonte nome della fonte, $motivo dal codice di errore.
 programmi-fonte-errore = { $fonte }: { $motivo }
@@ -1631,9 +1630,9 @@ programmi-fonte-errore = { $fonte }: { $motivo }
 programmi-fonte-errore-elemento = { $fonte }, { $percorso }: { $motivo }
 # Scelta della sezione: l'elenco dei programmi. $testo numero già scritto.
 programmi-sezione-programmi = Programmi ({ $testo })
-# Scelta della sezione: possibili residui (F-AP-6). "Residuo" solo come possibilità.
+# Scelta della sezione: possibili residui. "Residuo" solo come possibilità.
 programmi-sezione-residui = Possibili residui ({ $testo })
-# Interruttore dei componenti di sistema, spento per default (F-AP-1). $testo numero già scritto.
+# Interruttore dei componenti di sistema, spento per default. $testo numero già scritto.
 programmi-mostra-componenti = Mostra componenti di sistema ({ $testo })
 # Suggerimento nella casella di ricerca dei programmi.
 programmi-cerca = Cerca un programma per nome
@@ -1641,9 +1640,9 @@ programmi-cerca = Cerca un programma per nome
 programmi-colonna-fonte = Fonte
 # Intestazione di colonna.
 programmi-colonna-versione = Versione
-# Intestazione di colonna: dimensione dichiarata dalla fonte, mai sommata (F-AP-3).
+# Intestazione di colonna: dimensione dichiarata dalla fonte, mai sommata.
 programmi-colonna-dichiarata = Dimensioni dichiarate
-# Intestazione di colonna: ultimo uso noto (F-AP-4).
+# Intestazione di colonna: ultimo uso noto.
 programmi-colonna-uso = Ultimo uso noto
 # Intestazione di colonna: InstallDate.
 programmi-colonna-installazione = Installato il
@@ -1663,7 +1662,7 @@ programmi-fonte-msix = Microsoft Store
 programmi-fonte-steam = Steam
 # Fonte nella tabella: manifest di Epic.
 programmi-fonte-epic = Epic
-# Spazio misurato senza prova del percorso (F-AP-2): mai 0, mai una cifra.
+# Spazio misurato senza prova del percorso: mai 0, mai una cifra.
 programmi-cella-non-dichiarata = posizione non dichiarata
 # Cartella dichiarata ma non nella scansione o non leggibile.
 programmi-cella-non-misurato = non misurato
@@ -1706,7 +1705,7 @@ programmi-residui-nessuno = Nessun possibile residuo in Local, Roaming, LocalLow
 programmi-nessuna-selezione = Seleziona un programma per vederne fonte, spazio e uso noto.
 # Dettaglio dei residui senza selezione.
 programmi-residuo-nessuna-selezione = Seleziona una cartella per vederne le misure.
-# Testata della sezione dei possibili residui (F-AP-6, 04 §6.8): il criterio e cosa si può fare.
+# Testata della sezione dei possibili residui: il criterio e cosa si può fare.
 programmi-residui-regola = Cartelle in Local, Roaming, LocalLow e ProgramData che Quado non associa a un programma installato o a una regola. Il confronto è solo per nome e può sbagliare, quindi Quado non propone azioni. Per decidere, guarda la cartella con «Apri in Esplora file».
 # Base di un possibile residuo. $base nome della cartella nota.
 programmi-residuo-base = Cartella di base: { $base }
@@ -1734,13 +1733,13 @@ programmi-titolo-non-plausibile = Nessuno spazio attribuito
 programmi-sezione-posizione = Posizione
 # Sezione del dettaglio: misurato, dichiarato, dati dalle regole.
 programmi-sezione-spazio = Spazio
-# Sezione del dettaglio: uso noto con la copertura (F-AP-4).
+# Sezione del dettaglio: uso noto con la copertura.
 programmi-sezione-uso = Uso noto
 # Sezione del dettaglio: elementi riconosciuti dalle regole come dati del programma.
 programmi-sezione-dati = Dati riconosciuti dalle regole
 # Sezione del dettaglio: la funzione di Quado che produce il record.
 programmi-sezione-funzione = Funzione
-# Prova del percorso: InstallLocation (F-AP-2).
+# Prova del percorso: InstallLocation.
 programmi-prova-installlocation = Prova del percorso: InstallLocation della voce di disinstallazione.
 # Indizio del percorso: cartella dell'eseguibile nominato dal comando di disinstallazione o dall'icona, comando mai eseguito.
 programmi-prova-indizio = Indizio del percorso: la cartella dell'eseguibile nominato dal comando di disinstallazione o dall'icona. Quado legge quel comando e non lo esegue mai.
@@ -1764,11 +1763,11 @@ programmi-dati-fuori = { $n ->
     [one] Un elemento fuori dalla cartella, gestito da questo programma
    *[other] { $n_testo } elementi fuori dalla cartella, gestiti da questo programma
 }
-# Nota sul dichiarato (F-AP-3).
+# Nota sul dichiarato.
 programmi-dichiarato-nota = Le dimensioni dichiarate vengono dal programma di installazione o da Steam e possono essere vecchie. Quado le mostra accanto a quelle misurate e le tiene fuori dai totali.
-# Copertura di Steam (F-AP-4, revisione/prove-windows §A).
+# Copertura di Steam come fonte d'uso.
 programmi-copertura-steam = Steam registra le sessioni dei giochi avviati da Steam; gli avvii fuori da Steam potrebbero mancare.
-# Pulsante che apre il dialogo di disinstallazione (F-AP-5). Non disinstalla nulla da solo.
+# Pulsante che apre il dialogo di disinstallazione. Non disinstalla nulla da solo.
 programmi-disinstalla = Disinstalla…
 # Pulsante: porta l'Esplora di Quado sulla cartella.
 programmi-mostra-in-esplora = Mostra in Esplora
@@ -1780,9 +1779,9 @@ programmi-dialogo-titolo-steam = Aprire Steam per disinstallare { $programma }?
 # Titolo del dialogo quando Quado non apre niente: Epic, e ogni programma dopo l'apertura o dopo un errore. Nome del
 # compito, senza domanda: il pulsante è «Chiudi», con «Ho eseguito la procedura» dopo l'apertura.
 programmi-dialogo-titolo-guida = Come disinstallare { $programma }
-# Sotto il titolo del dialogo: cosa fa Quado e cosa no (F-AP-5).
+# Sotto il titolo del dialogo: cosa fa Quado e cosa no.
 programmi-dialogo-sottotitolo = La disinstallazione avviene nell'interfaccia ufficiale, dove confermi tu. Quado non esegue mai il comando di disinstallazione scritto nel registro.
-# Programmi Win32 (04 §6.7): cosa succede con il pulsante.
+# Programmi Win32: cosa succede con il pulsante.
 programmi-dialogo-impostazioni = Quado copia il nome «{ $programma }» negli appunti e apre Impostazioni › App, dove lo incolli nella casella di ricerca.
 # App di Microsoft Store.
 programmi-dialogo-msix = Quado apre la pagina di { $programma } in Impostazioni › App.
@@ -1800,7 +1799,7 @@ programmi-dialogo-apri-impostazioni = Apri Impostazioni
 programmi-dialogo-apri-steam = Apri Steam
 # Pulsante che chiude il dialogo dopo l'apertura.
 programmi-dialogo-chiudi = Chiudi
-# Dopo l'apertura per Win32: testo di 04 §6.8.
+# Dopo l'apertura per Win32: il nome del programma è negli appunti.
 programmi-dialogo-aperto-impostazioni = Si apre Impostazioni › App. Il nome «{ $programma }» è negli appunti: incollalo nella casella di ricerca.
 # Dopo l'apertura per Microsoft Store.
 programmi-dialogo-aperto-msix = Si apre Impostazioni › App, nella pagina di { $programma }.
@@ -1811,72 +1810,72 @@ programmi-dialogo-errore = Impossibile aprire la pagina. Riprova, oppure aprila 
 # PFN o appid non accettati dal lanciatore: non si apre nulla.
 programmi-dialogo-non-valido = Impossibile aprire la pagina: il nome del pacchetto o il numero del gioco non è valido. Aprila a mano da Impostazioni › App o da Steam.
 
-## M5: interventi, parti comuni (03 F-AC, F-VE).
+## Interventi, parti comuni.
 
-# Voce della barra laterale: vista Interventi, con il risultato dell'ultimo spostamento e lo storico (F-VE-5).
+# Voce della barra laterale: vista Interventi, con il risultato dell'ultimo spostamento e lo storico.
 nav-interventi = Interventi
-# Pulsante sotto il record: avvia l'anteprima (simulazione) e apre la conferma dello spostamento (F-AC-2). I puntini dicono che prima dell'azione c'è un dialogo.
+# Pulsante sotto il record: avvia l'anteprima (simulazione) e apre la conferma dello spostamento. I puntini dicono che prima dell'azione c'è un dialogo.
 azione-prepara-cestino = Sposta nel Cestino…
 # Pulsante sotto il record: misura lo spazio libero e apre la pagina della procedura (Impostazioni, Cestino).
 azione-apri-procedura = Apri la procedura
-# Pulsante sotto il record: dopo una procedura o un comando, avvia le nuove misure (F-VE-2).
+# Pulsante sotto il record: dopo una procedura o un comando, avvia le nuove misure.
 azione-ho-eseguito = Ho eseguito la procedura
 
-## M5: spostamento nel Cestino, conferma e risultato (agente E1).
+## Spostamento nel Cestino, conferma e risultato.
 
-# Titolo del dialogo di conferma: domanda con l'azione e la quantità (testi.md §4, 04 §6.6). Il pulsante principale usa lo stesso verbo. $n elementi scelti, $n_testo già scritto, $nome regola o funzione.
+# Titolo del dialogo di conferma: domanda con l'azione e la quantità (docs/testi.md §4). Il pulsante principale usa lo stesso verbo. $n elementi scelti, $n_testo già scritto, $nome regola o funzione.
 spostamento-titolo = { $n ->
     [one] Spostare un elemento di «{ $nome }» nel Cestino?
    *[other] Spostare { $n_testo } elementi di «{ $nome }» nel Cestino?
 }
-# Sotto il titolo del dialogo, anche durante la simulazione: niente è ancora successo e cosa fa partire lo spostamento (03 F-AC-3, 04 §6.6). Cita spostamento-sposta.
+# Sotto il titolo del dialogo, anche durante la simulazione: niente è ancora successo e cosa fa partire lo spostamento. Cita spostamento-sposta.
 spostamento-sottotitolo = Anteprima: Quado sposta gli elementi solo quando scegli «Sposta nel Cestino».
 # Nome accessibile del pulsante con la sola icona X in alto a destra del dialogo: chiude senza spostare niente.
 spostamento-chiudi = Chiudi senza spostare
 # Nome quando la regola o la funzione non ha un nome tradotto: compare tra «» nel titolo e in testa al risultato.
 spostamento-elementi-scelti = Elementi scelti
-# Titolo del dialogo mentre la simulazione rilegge gli attributi (03 §6.3). $nome regola o funzione.
+# Titolo del dialogo mentre la simulazione rilegge gli attributi. $nome regola o funzione.
 spostamento-simulazione-titolo = Anteprima dello spostamento nel Cestino: { $nome }
-# Durante la simulazione: cosa legge e cosa no (03 §6.3).
+# Durante la simulazione: cosa legge e cosa no.
 spostamento-simulazione-testo = Quado rilegge solo gli attributi degli elementi, poi esegue i controlli. I file che stanno solo nel cloud non vengono scaricati.
 # Avanzamento della simulazione. $n voci lette, $testo già scritto.
 spostamento-simulazione-letti = { $n ->
     [one] Un file o una cartella letti
    *[other] { $testo } file e cartelle letti
 }
-# Riga sotto il titolo: le prove (04 §6.6). $prove fatti separati da punto e virgola.
+# Riga sotto il titolo: le prove. $prove fatti separati da punto e virgola.
 spostamento-riga-prove = Prove: { $prove }
 # Riga sotto il titolo: la regola. $nome nome, $id identificativo, $data data di verifica.
 spostamento-riga-regola = Regola: { $nome } ({ $id }), verificata il { $data }
 # Riga sotto il titolo per una funzione di Quado (vista Download), che non ha una regola. $nome nome della funzione.
 spostamento-riga-funzione = Funzione di Quado: { $nome }. Usa solo prove misurate o lette in questa sessione.
-# Primo dei tre numeri: dimensioni su disco degli elementi scelti (04 §6.6).
+# Primo dei tre numeri: dimensioni su disco degli elementi scelti.
 spostamento-numero-da-spostare = Da spostare
-# Secondo numero: spazio liberato subito, sempre zero perché il Cestino trattiene i file (03 §6.3).
+# Secondo numero: spazio liberato subito, sempre zero perché il Cestino trattiene i file.
 spostamento-numero-subito = Liberato subito
-# Terzo numero: stima dello spazio dopo lo svuotamento del Cestino, con il suo stato (03 §6.3).
+# Terzo numero: stima dello spazio dopo lo svuotamento del Cestino, con il suo stato.
 spostamento-numero-dopo = Dopo lo svuotamento del Cestino
 # Stato della stima esatta, sotto il terzo numero e sotto "Stimato" nel risultato.
 spostamento-stima-esatta = stima esatta
 # Valore di una stima a intervallo. $minimo e $massimo dimensioni già scritte.
 spostamento-stima-intervallo-valore = da { $minimo } a { $massimo }
-# Stato di una stima a intervallo, con il motivo: la selezione contiene cartelle che si leggono solo come amministratore (03 §6.3, estimate.rs).
+# Stato di una stima a intervallo, con il motivo: la selezione contiene cartelle che si leggono solo come amministratore (estimate.rs).
 spostamento-stima-intervallo = stima a intervallo: alcune cartelle si leggono solo come amministratore
 # Valore del terzo numero quando la stima non ha un valore.
 spostamento-stima-nessun-valore = non stimabile
 # Sotto i tre numeri: perché il valore "Liberato subito" è zero.
 spostamento-numeri-nota = Il Cestino trattiene i file: lo spazio si libera quando lo svuoti tu o Sensore memoria.
-# File esclusi dalla stima perché hanno altri nomi (03 §6.3). $n file, $n_testo già scritto, $byte dimensioni su disco già scritte.
+# File esclusi dalla stima perché hanno altri nomi. $n file, $n_testo già scritto, $byte dimensioni su disco già scritte.
 spostamento-esclusi-nomi = { $n ->
     [one] Un file escluso dalla stima ({ $byte }): ha altri nomi (hard link) fuori dalla selezione, quindi il suo spazio non si libera.
    *[other] { $n_testo } file esclusi dalla stima ({ $byte }): hanno altri nomi (hard link) fuori dalla selezione, quindi il loro spazio non si libera.
 }
-# Cartelle non leggibili nella selezione (03 §6.3): la stima diventa un intervallo. $n cartelle, $n_testo già scritto.
+# Cartelle non leggibili nella selezione: la stima diventa un intervallo. $n cartelle, $n_testo già scritto.
 spostamento-cartelle-negate = { $n ->
     [one] Una cartella della selezione si legge solo come amministratore: la stima non comprende il suo contenuto.
    *[other] { $n_testo } cartelle della selezione si leggono solo come amministratore: la stima non comprende il loro contenuto.
 }
-# Titolo dell'elenco con le caselle (04 §6.6).
+# Titolo dell'elenco con le caselle.
 spostamento-elenco = Elementi
 # Accanto al titolo dell'elenco del dialogo di conferma: quanti elementi sono scelti tra quelli che si
 # possono spostare. Segue le caselle.
@@ -1884,43 +1883,43 @@ spostamento-selezionati = { $n ->
     [one] { $testo } di { $totale } selezionato
    *[other] { $testo } di { $totale } selezionati
 }
-# Accanto a un elemento fisso e disattivato: la versione in uso di CapCut (03 §6.1).
+# Accanto a un elemento fisso e disattivato: la versione in uso di CapCut.
 spostamento-fisso-versione-in-uso = esclusa: è la versione in uso
-# Accanto a un elemento fisso e disattivato: la versione precedente di CapCut, tenuta per default (03 §6.1).
+# Accanto a un elemento fisso e disattivato: la versione precedente di CapCut, tenuta per default.
 spostamento-fisso-versione-tenuta = tenuta: è la versione precedente
-# Accanto a un elemento fisso e disattivato: la copia che resta tra le copie identiche (F-DL-4).
+# Accanto a un elemento fisso e disattivato: la copia che resta tra le copie identiche.
 spostamento-fisso-copia = tenuta: è la copia da conservare
-# Sotto un elemento bloccato: cartella di Windows (F-AC-4).
+# Sotto un elemento bloccato: cartella di Windows.
 spostamento-blocco-protetto-windows = Non si sposta: è una cartella di Windows.
-# Sotto un elemento bloccato: WinSxS (F-AC-4). Il nome tecnico tra parentesi serve a riconoscerla.
+# Sotto un elemento bloccato: WinSxS. Il nome tecnico tra parentesi serve a riconoscerla.
 spostamento-blocco-protetto-winsxs = Non si sposta: è l'archivio dei componenti di Windows (WinSxS).
-# Sotto un elemento bloccato: Windows\Installer (F-AC-4), con il nome della regola.
+# Sotto un elemento bloccato: Windows\Installer, con il nome della regola.
 spostamento-blocco-protetto-installer = Non si sposta: è la cache di Windows Installer.
-# Sotto un elemento bloccato: System Volume Information (F-AC-4).
+# Sotto un elemento bloccato: System Volume Information.
 spostamento-blocco-protetto-svi = Non si sposta: è System Volume Information, una cartella di sistema di Windows.
-# Sotto un elemento bloccato: file di paging (F-AC-4).
+# Sotto un elemento bloccato: file di paging.
 spostamento-blocco-protetto-paging = Non si sposta: è il file di paging di Windows.
-# Sotto un elemento bloccato: file di ibernazione (F-AC-4).
+# Sotto un elemento bloccato: file di ibernazione.
 spostamento-blocco-protetto-ibernazione = Non si sposta: è il file di ibernazione di Windows.
-# Sotto un elemento bloccato: file di swap (F-AC-4).
+# Sotto un elemento bloccato: file di swap.
 spostamento-blocco-protetto-swap = Non si sposta: è il file di swap di Windows.
-# Sotto un elemento bloccato: cartella di un programma registrato, senza l'eccezione della regola o con un suo controllo non superato (F-AC-4, F-AP-5). Niente invito a disinstallare: per una versione di CapCut in uso toglierebbe anche i progetti (09 §8).
+# Sotto un elemento bloccato: cartella di un programma registrato, senza l'eccezione della regola o con un suo controllo non superato. Niente invito a disinstallare: per una versione di CapCut in uso toglierebbe anche i progetti.
 spostamento-blocco-protetto-programma = Non si sposta: sta nella cartella di un programma installato.
-# Sotto un elemento bloccato: unità senza Cestino (F-AC-1).
+# Sotto un elemento bloccato: unità senza Cestino.
 spostamento-blocco-senza-cestino = Questa unità non ha un Cestino: Windows eliminerebbe l'elemento per sempre.
-# Sotto un elemento bloccato: NukeOnDelete = 1 (F-AC-1, F-AC-7). La conseguenza: niente da ripristinare.
+# Sotto un elemento bloccato: NukeOnDelete = 1. La conseguenza: niente da ripristinare.
 spostamento-blocco-elimina-subito = Il Cestino di questa unità è impostato per eliminare subito i file: l'elemento non si potrebbe ripristinare.
-# Sotto un elemento bloccato: capacità del Cestino non registrata (05 D7).
+# Sotto un elemento bloccato: capacità del Cestino non registrata.
 spostamento-blocco-capacita-ignota = Quado non sa quanto può contenere il Cestino di questa unità, quindi l'elemento resta al suo posto.
-# Sotto un elemento bloccato: elemento più grande del Cestino (F-AC-5). Misurato su R: il 14/10/2026: Windows chiede di eliminarlo per sempre (mover.rs). $dimensione dimensione logica, $capacita capacità, già scritte.
+# Sotto un elemento bloccato: elemento più grande del Cestino. Misurato su R: il 14/10/2026: Windows chiede di eliminarlo per sempre (mover.rs). $dimensione dimensione logica, $capacita capacità, già scritte.
 spostamento-blocco-piu-grande = Elemento da { $dimensione } in un Cestino da { $capacita }: Windows non lo sposterebbe nel Cestino e chiederebbe di eliminarlo per sempre.
-# Sotto un elemento bloccato: programmi che usano i file dell'elemento (F-AC-8). $processi elenco di nomi.
+# Sotto un elemento bloccato: programmi che usano i file dell'elemento. $processi elenco di nomi.
 spostamento-blocco-in-uso = In uso da { $processi }
 # Un programma nell'elenco: il nome dato da Windows e il numero che mostra Gestione attività. $nome nome del processo, $pid numero del processo.
 spostamento-processo = { $nome } (PID { $pid })
-# Sotto un elemento bloccato: il controllo dei file in uso non ha risposto (F-AC-8). $codice errore di Windows, in fondo come in testi.md §4.
+# Sotto un elemento bloccato: il controllo dei file in uso non ha risposto. $codice errore di Windows, in fondo come in docs/testi.md §4.
 spostamento-blocco-restart-manager = Windows non ha detto se i file sono in uso, quindi l'elemento resta al suo posto. (Codice { $codice })
-# Sotto un elemento bloccato: collegamenti, voci di registro o attività che puntano all'elemento (F-AC-9). $elenco riferimenti trovati.
+# Sotto un elemento bloccato: collegamenti, voci di registro o attività che puntano all'elemento. $elenco riferimenti trovati.
 spostamento-blocco-riferimenti = Puntano a questo elemento: { $elenco }
 # Un riferimento nell'elenco, dopo «Puntano a questo elemento:». $dove chiave, collegamento o attività, $tipo dove è
 # stato trovato (spostamento-rif-*), tra parentesi per non ripetere i due punti.
@@ -1941,7 +1940,7 @@ spostamento-rif-run-sistema = avvio automatico per tutti gli account
 spostamento-rif-collegamento = collegamento
 # Tipo di riferimento: attività pianificata.
 spostamento-rif-attivita = attività pianificata
-# Sotto un elemento bloccato: percorso di 260 caratteri o più (prove su VHDX di M5).
+# Sotto un elemento bloccato: percorso di 260 caratteri o più (comportamento di Windows provato su un VHDX).
 spostamento-blocco-percorso-lungo = Percorso di 260 caratteri o più: Windows non lo sposterebbe nel Cestino e chiederebbe di eliminarlo per sempre.
 # Sotto una cartella bloccata: un elemento al suo interno ha un percorso di 260 caratteri o più.
 spostamento-blocco-contiene-lungo = Contiene un percorso di 260 caratteri o più: Windows non sposterebbe la cartella nel Cestino e chiederebbe di eliminarla per sempre.
@@ -1951,9 +1950,9 @@ spostamento-blocco-illeggibile = Impossibile leggere l'elemento, quindi resta al
 spostamento-blocco-mancante = Non esiste più.
 # Sotto un elemento bloccato: elemento su un'altra unità rispetto agli altri.
 spostamento-blocco-altra-unita = Sta su un'altra unità rispetto agli altri elementi.
-# Titolo della sezione dei controlli automatici (04 §6.6).
+# Titolo della sezione dei controlli automatici.
 spostamento-controlli = Controlli
-# Controllo dei file in uso superato (F-AC-8). $ora ora del controllo.
+# Controllo dei file in uso superato. $ora ora del controllo.
 spostamento-rm-ok = Nessun file è in uso, secondo Windows (controllo delle { $ora }).
 # Controllo dei file in uso con elementi in uso, con l'azione per spostarli. $n elementi in uso, $n_testo già scritto,
 # $ora ora del controllo. Cita azione-prepara-cestino.
@@ -1966,29 +1965,29 @@ spostamento-rm-errore = { $n ->
     [one] Per un elemento Windows non ha detto se i file sono in uso: resta al suo posto.
    *[other] Per { $n_testo } elementi Windows non ha detto se i file sono in uso: restano al loro posto.
 }
-# Nessun riferimento trovato (F-AC-9).
+# Nessun riferimento trovato.
 spostamento-rif-ok = Nessun collegamento, voce di registro o attività pianificata punta a questi elementi.
-# Riferimenti trovati (F-AC-9). $n elementi con riferimenti, $n_testo già scritto.
+# Riferimenti trovati. $n elementi con riferimenti, $n_testo già scritto.
 spostamento-rif-trovati = { $n ->
     [one] Collegamenti, voci di registro o attività pianificate puntano a un elemento: resta al suo posto.
    *[other] Collegamenti, voci di registro o attività pianificate puntano a { $n_testo } elementi: restano al loro posto.
 }
-# Controllo dei riferimenti parziale (F-AC-9). $fonti tipi di fonte non letti per intero.
+# Controllo dei riferimenti parziale. $fonti tipi di fonte non letti per intero.
 spostamento-rif-parziale = Controllo parziale. Fonti non lette per intero: { $fonti }.
-# Capacità del Cestino sufficiente (F-AC-7). $volume lettera, $totale contenuto più selezione, $capacita capacità, già scritte.
+# Capacità del Cestino sufficiente. $volume lettera, $totale contenuto più selezione, $capacita capacità, già scritte.
 spostamento-capacita-ok = Il Cestino di { $volume } può contenere questa selezione: arriverebbe a { $totale } su { $capacita }.
-# Capacità superata: testo di 04 §6.8. $volume lettera, $capacita e $totale già scritte.
+# Capacità superata: spostamento bloccato e cosa fa Windows oltre il limite. $volume lettera, $capacita e $totale già scritte.
 spostamento-capacita-superata = Spostamento bloccato: il Cestino di { $volume } può contenere { $capacita } e con questa selezione arriverebbe a { $totale }. Oltre quel limite Windows elimina da solo gli elementi più vecchi.
-# Capacità o contenuto del Cestino non letti (F-AC-7). $volume lettera.
+# Capacità o contenuto del Cestino non letti. $volume lettera.
 spostamento-capacita-ignota = Spostamento bloccato: impossibile leggere la capacità o il contenuto del Cestino di { $volume }.
-# Sensore memoria attivo: testo di 04 §6.8. $giorni numero, $giorni_testo già scritto.
+# Sensore memoria attivo: dopo quanti giorni elimina gli elementi del Cestino. $giorni numero, $giorni_testo già scritto.
 spostamento-sensore = { $giorni ->
     [one] Sensore memoria elimina in automatico gli elementi che restano nel Cestino per più di un giorno.
    *[other] Sensore memoria elimina in automatico gli elementi che restano nel Cestino per più di { $giorni_testo } giorni.
 }
 # Un altro controllo automatico della regola, con il suo esito. $controllo testo del controllo, $esito.
 spostamento-controllo-regola = { $controllo }: { $esito }
-# Titolo dei controlli manuali da spuntare (F-AC-2).
+# Titolo dei controlli manuali da spuntare.
 spostamento-manuali = Da spuntare prima di spostare
 # Controllo manuale di un elemento: il nome e il testo del controllo. $nome nome dell'elemento, $testo.
 spostamento-manuale-elemento = { $nome }: { $testo }
@@ -1996,13 +1995,13 @@ spostamento-manuale-elemento = { $nome }: { $testo }
 spostamento-sincronizzato-cloud = Questo elemento sta nella cartella di { $provider }: spostarlo nel Cestino lo elimina anche nel cloud e sugli altri dispositivi collegati.
 # Controllo manuale per un file in una cartella sincronizzata tra dispositivi senza cloud (Syncthing, Resilio Sync), riconosciuta dal suo marcatore. $provider nome del programma.
 spostamento-sincronizzato-dispositivi = Questo elemento sta in una cartella sincronizzata con { $provider }: spostarlo nel Cestino lo elimina anche sugli altri dispositivi che sincronizzano la cartella.
-# Esito del controllo delle cartelle sincronizzate quando nessun elemento ne sta in una: cosa Quado guarda e cosa no (R10).
+# Esito del controllo delle cartelle sincronizzate quando nessun elemento ne sta in una: cosa Quado guarda e cosa no.
 spostamento-sinc-ok = Nessun elemento sta in una cartella sincronizzata che Quado riconosce. Quado riconosce le cartelle registrate in Windows, come quelle di OneDrive, e quelle di Dropbox, Syncthing e Resilio Sync. Le cartelle di altri programmi di sincronizzazione controllale tu.
 # Sotto i controlli, per ogni servizio con un cloud: le copie nel cloud non passano dal Cestino del PC. $provider nome del programma.
 spostamento-sincronizzato-ripristino = I file che stanno solo nel cloud non arrivano nel Cestino di questo PC: si recuperano dal cestino di { $provider } sul web.
-# Controllo manuale per un file sincronizzato: testo di 04 §6.8 (F-AC-2, R10). Qui "elimina" è giusto: il file sparisce dal cloud. $provider nome del provider.
+# Controllo manuale per un file sincronizzato. Qui "elimina" è giusto: il file sparisce dal cloud. $provider nome del provider.
 spostamento-sincronizzato = Questo elemento è sincronizzato con { $provider }: spostarlo nel Cestino lo elimina anche nel cloud e sugli altri dispositivi. Per liberare spazio senza eliminarlo usa «Libera spazio» di { $provider }.
-# Reversibilità (04 §6.8), come si ripristina (nome del comando di Windows) e la domanda di Windows per gli elementi che non entrano nel Cestino: Quado non la sopprime (mover.rs, F-AC-5; misurato: con "No" l'elemento resta).
+# Reversibilità, come si ripristina (nome del comando di Windows) e la domanda di Windows per gli elementi che non entrano nel Cestino: Quado non la sopprime (mover.rs; misurato: con "No" l'elemento resta).
 spostamento-reversibilita = Puoi ripristinare gli elementi dal Cestino finché non lo svuoti tu o Sensore memoria: apri il Cestino, seleziona gli elementi e scegli «Ripristina gli elementi selezionati». Se Windows chiede di eliminare un elemento per sempre, scegli No: l'elemento resta al suo posto.
 # Titolo della parte della conferma con le ipotesi e i rischi della raccomandazione, sopra l'elenco.
 spostamento-ipotesi-rischi = Ipotesi e rischi
@@ -2010,11 +2009,11 @@ spostamento-ipotesi-rischi = Ipotesi e rischi
 spostamento-seleziona-tutti = Seleziona tutti
 # Nel risultato, sotto i nomi degli elementi spostati: come rimetterli al loro posto (nome del comando di Windows).
 spostamento-ripristina = Per rimetterli al loro posto: apri il Cestino, seleziona gli elementi e scegli «Ripristina gli elementi selezionati».
-# Punti di ripristino attivi: testo di 04 §6.8 (03 §6.3).
+# Avviso con i punti di ripristino attivi.
 spostamento-punti-ripristino = Con i punti di ripristino attivi, parte dello spazio liberato può tornare occupato nei giorni successivi.
-# Stato dei punti di ripristino non letto (03 §6.3).
+# Stato dei punti di ripristino non letto.
 spostamento-punti-ripristino-ignoti = Impossibile leggere lo stato dei punti di ripristino. Se sono attivi, parte dello spazio liberato può tornare occupato nei giorni successivi.
-# Titolo della scheda completa della raccomandazione, in fondo al dialogo (03 F-AC-3).
+# Titolo della scheda completa della raccomandazione, in fondo al dialogo.
 spostamento-scheda = Scheda della raccomandazione
 # Sottotitolo della scheda: i fatti che dicono cos'è l'elemento.
 spostamento-scheda-identita = Prova di identità
@@ -2022,11 +2021,11 @@ spostamento-scheda-identita = Prova di identità
 spostamento-scheda-regola = { $nome } · { $id }
 # Fonte della regola nella scheda. $titolo titolo della fonte, $tipo ufficiale o no.
 spostamento-scheda-fonte = Fonte: { $titolo } · { $tipo }
-# Piede del dialogo (04 §6.6).
+# Piede del dialogo.
 spostamento-esc = Esc annulla.
 # Pulsante del dialogo: chiude senza spostare niente.
 spostamento-annulla = Annulla
-# Pulsante principale del dialogo, l'unico in inchiostro (04 §6.1, principio 9): stesso verbo del titolo.
+# Pulsante principale del dialogo, l'unico in inchiostro: stesso verbo del titolo.
 spostamento-sposta = Sposta nel Cestino
 # Perché il pulsante principale è disattivato: nessun elemento scelto.
 spostamento-manca-scelta = Scegli almeno un elemento.
@@ -2040,11 +2039,11 @@ spostamento-manca-blocco = Un elemento scelto ha un controllo non superato.
 spostamento-manca-azione = Questa raccomandazione non propone uno spostamento nel Cestino.
 # Avviso nella barra di stato: un altro spostamento è già in corso.
 spostamento-occupato = Uno spostamento è già in corso: aspetta che finisca.
-# Titolo del risultato (04 §6.6 schermata 5).
+# Titolo del risultato.
 spostamento-risultato-titolo = Risultato dello spostamento
 # Sotto il titolo del risultato. $nome regola o funzione, $data e $ora della misura di partenza.
 spostamento-risultato-quando = { $nome } · { $data } alle { $ora }
-# Registro scritto (F-AC-6). Il risultato sta in cima alla vista Interventi, sopra lo storico.
+# Registro scritto. Il risultato sta in cima alla vista Interventi, sopra lo storico.
 spostamento-registro-scritto = Intervento registrato nello storico qui sotto
 # Registro in scrittura.
 spostamento-registro-in-corso = Registrazione in corso…
@@ -2052,45 +2051,45 @@ spostamento-registro-in-corso = Registrazione in corso…
 spostamento-registro-errore = Impossibile scrivere il registro degli interventi: questo intervento non comparirà nello storico. (Codice { $codice })
 # Registro non scritto perché manca la cartella dei dati di Quado.
 spostamento-registro-nessuna-cartella = Intervento non registrato: la cartella dei dati di Quado non è disponibile.
-# Passo 1 del risultato (04 §6.6).
+# Passo 1 del risultato.
 spostamento-passo-spostamento = Spostamento
 # Esecuzione in corso. $fatti elementi conclusi, $totale elementi del piano, già scritti.
 spostamento-in-corso = Spostamento in corso… { $fatti } di { $totale }
-# Misura di partenza non riuscita: niente spostato (F-VE-1). $codice errore di Windows.
+# Misura di partenza non riuscita: niente spostato. $codice errore di Windows.
 spostamento-partenza-errore = Impossibile misurare lo spazio libero prima di spostare, quindi Quado non ha spostato niente. (Codice { $codice })
 # Elementi spostati. $n spostati, $n_testo già scritto, $totale elementi del piano già scritto.
 spostamento-spostati = { $n ->
     [one] Un elemento su { $totale } spostato nel Cestino
    *[other] { $n_testo } elementi su { $totale } spostati nel Cestino
 }
-# Tutti spostati (04 §6.6): il ricontrollo li ha trovati come nell'anteprima.
+# Tutti spostati: il ricontrollo li ha trovati come nell'anteprima.
 spostamento-nessuno-saltato = Quado ha ricontrollato ogni elemento subito prima di spostarlo: tutti erano come nell'anteprima.
-# Alcuni non spostati: il ricontrollo (F-AC-8, RS6).
+# Alcuni non spostati: il ricontrollo.
 spostamento-ricontrollati = Quado ha ricontrollato ogni elemento subito prima di spostarlo. Gli elementi non spostati sono qui sotto, con il motivo.
 # Un elemento non spostato con il suo esito. $nome nome, $esito.
 spostamento-esito-riga = { $nome }: { $esito }
-# Esito: saltato perché cambiato dopo l'anteprima (RS6).
+# Esito: saltato perché cambiato dopo l'anteprima.
 spostamento-esito-cambiato = saltato perché è cambiato dopo l'anteprima. È ancora al suo posto.
 # Esito: saltato perché non c'era più.
 spostamento-esito-mancante = saltato perché non c'era più.
-# Esito: saltato perché in uso al ricontrollo (F-AC-8).
+# Esito: saltato perché in uso al ricontrollo.
 spostamento-esito-in-uso = saltato perché era in uso al ricontrollo. È ancora al suo posto.
 # Esito: saltato perché il ricontrollo non lo ha letto. $codice errore di Windows.
 spostamento-esito-illeggibile = saltato perché il ricontrollo non è riuscito a leggerlo. È ancora al suo posto. (Codice { $codice })
 # Esito: Windows non lo ha spostato, anche quando l'utente risponde "No" alla domanda di Windows. $codice HRESULT esadecimale.
 spostamento-esito-fallito = non spostato da Windows. È ancora al suo posto. (Codice { $codice })
-# Esito: sparito senza arrivare nel Cestino; il piano si ferma (05, "Aggiornamento dopo M1"). $codice HRESULT.
+# Esito: sparito senza arrivare nel Cestino; il piano si ferma qui e non tocca gli elementi seguenti. $codice HRESULT.
 spostamento-esito-non-nel-cestino = è sparito dal suo posto senza arrivare nel Cestino. Quado si è fermato qui e ha lasciato al loro posto gli elementi seguenti. (Codice { $codice })
 # Esito: non raggiunto perché il piano si è fermato prima.
 spostamento-esito-non-raggiunto = non spostato: Quado si è fermato prima di arrivarci. È ancora al suo posto.
-# Esito parziale (04 §6.8 "Errore parziale", RS8): come ripristinare gli elementi spostati. «Ripristina» è il comando del Cestino di Windows. $n non spostati, $n_testo, $m nel Cestino già scritto.
+# Esito parziale: come ripristinare gli elementi spostati. «Ripristina» è il comando del Cestino di Windows. $n non spostati, $n_testo, $m nel Cestino già scritto.
 spostamento-parziale = { $n ->
     [one] Un elemento non è stato spostato. Gli elementi spostati ({ $m }) sono nel Cestino: per rimetterli al loro posto apri il Cestino, selezionali e scegli «Ripristina».
    *[other] { $n_testo } elementi non sono stati spostati. Gli elementi spostati ({ $m }) sono nel Cestino: per rimetterli al loro posto apri il Cestino, selezionali e scegli «Ripristina».
 }
 # Nessun elemento spostato.
 spostamento-nessuno = Nessun elemento è stato spostato nel Cestino.
-# Passo 2 del risultato: spazio libero (04 §6.6).
+# Passo 2 del risultato: spazio libero.
 spostamento-passo-spazio = Spazio libero
 # Spazio libero alla misura di partenza.
 spostamento-spazio-prima = Prima
@@ -2098,7 +2097,7 @@ spostamento-spazio-prima = Prima
 spostamento-spazio-ora = Ora
 # Differenza tra le due misure.
 spostamento-spazio-differenza = Differenza
-# Perché lo spazio libero non cambia subito (03 §6.3).
+# Perché lo spazio libero non cambia subito.
 spostamento-spazio-nota = Lo spazio libero resta quasi lo stesso finché il Cestino trattiene i file: si libera quando lo svuoti tu o Sensore memoria.
 # Misura non riuscita, dopo lo spostamento o dopo lo svuotamento. $codice errore di Windows.
 spostamento-misura-errore = Impossibile misurare lo spazio libero: manca il confronto con la stima. (Codice { $codice })
@@ -2106,16 +2105,16 @@ spostamento-misura-errore = Impossibile misurare lo spazio libero: manca il conf
 spostamento-piu = +{ $valore }
 # Valore con il segno meno. $valore dimensione già scritta.
 spostamento-meno = -{ $valore }
-# Passo 3 del risultato: eliminazione dal Cestino (04 §6.6, §6.7 "Liberare davvero lo spazio").
+# Passo 3 del risultato: eliminazione dal Cestino.
 spostamento-passo-cestino = Eliminazione dal Cestino
-# Testo di 04 §6.8 "Apri il Cestino", seguito dai nomi. $n elementi spostati, $n_testo, $data e $ora dello spostamento.
+# Passo 3, sopra i pulsanti: eliminare solo gli elementi spostati da Quado, seguito dai nomi. $n elementi spostati, $n_testo, $data e $ora dello spostamento.
 spostamento-apri-testo = { $n ->
     [one] Apri il Cestino ed elimina solo l'elemento spostato da Quado il { $data } alle { $ora }:
    *[other] Apri il Cestino ed elimina solo i { $n_testo } elementi spostati da Quado il { $data } alle { $ora }:
 }
-# Pulsante: apre il Cestino di Windows (F-AC-1).
+# Pulsante: apre il Cestino di Windows.
 spostamento-apri = Apri il Cestino
-# Testo di 04 §6.8 "Svuota il Cestino". $n altri elementi, $n_testo, $byte dimensione già scritta.
+# Passo 3, sopra i pulsanti: cos'altro elimina «Svuota il Cestino…». $n altri elementi, $n_testo, $byte dimensione già scritta.
 spostamento-svuota-testo = { $n ->
     [one] Il dialogo di Windows elimina anche un altro elemento per { $byte }, secondo il conteggio di Windows.
    *[other] Il dialogo di Windows elimina anche { $n_testo } altri elementi per { $byte }, secondo il conteggio di Windows.
@@ -2124,13 +2123,13 @@ spostamento-svuota-testo = { $n ->
 spostamento-svuota-nessun-altro = Secondo il conteggio di Windows, il Cestino contiene solo gli elementi spostati ora.
 # Contenuto del Cestino non letto.
 spostamento-svuota-ignoto = Il dialogo di Windows elimina anche gli altri elementi del Cestino. Windows non ha detto quanti sono.
-# Pulsante: svuota il Cestino con il dialogo di conferma di Windows (F-AC-1).
+# Pulsante: svuota il Cestino con il dialogo di conferma di Windows.
 spostamento-svuota = Svuota il Cestino…
 # Mentre il dialogo di Windows è aperto.
 spostamento-svuota-in-corso = Il dialogo di Windows è aperto: conferma o annulla lì.
 # Il Cestino non è stato svuotato: dialogo annullato o errore. $codice HRESULT esadecimale.
 spostamento-svuota-errore = Il Cestino non è stato svuotato: il dialogo è stato annullato o Windows ha dato un errore. (Codice { $codice })
-# Passo 4 del risultato: verifica (04 §6.6, §6.7 "Verifica dopo l'azione").
+# Passo 4 del risultato: verifica.
 spostamento-passo-verifica = Verifica dopo lo svuotamento
 # Prima dello svuotamento: cosa farà la verifica. Le misure partono solo dal pulsante del passo 3 (spostamento-svuota, citato).
 spostamento-verifica-attesa = Quando svuoti il Cestino con «Svuota il Cestino…», Quado misura di nuovo lo spazio libero e le cartelle toccate, poi confronta il risultato con la stima.
@@ -2138,51 +2137,51 @@ spostamento-verifica-attesa = Quando svuoti il Cestino con «Svuota il Cestino�
 spostamento-confronto-dopo-azione = Subito dopo lo spostamento
 # Titolo del confronto dopo lo svuotamento.
 spostamento-confronto-dopo-svuotamento = Dopo lo svuotamento del Cestino
-# Primo dei due numeri separati del confronto (F-VE-3): la stima.
+# Primo dei due numeri separati del confronto: la stima.
 spostamento-stimato = Stimato
-# Secondo dei due numeri separati del confronto (F-VE-3): l'ottenuto, cioè la variazione misurata dello spazio libero.
+# Secondo dei due numeri separati del confronto: l'ottenuto, cioè la variazione misurata dello spazio libero.
 spostamento-variazione = Variazione dello spazio libero
-# Sotto i due numeri: testo di 04 §6.8 "Verifica".
+# Sotto i due numeri: cosa comprende la variazione.
 spostamento-variazione-nota = La variazione comprende anche ciò che altri programmi hanno scritto o eliminato nel frattempo.
-# Differenza tra stimato e ottenuto (03 §6.3). $valore con il segno, $percento.
+# Differenza tra stimato e ottenuto. $valore con il segno, $percento.
 spostamento-differenza = Differenza: { $valore } ({ $percento })
 # Differenza senza percentuale (stima a intervallo che parte da zero). $valore con il segno.
 spostamento-differenza-senza-percento = Differenza: { $valore }
 # La variazione cade nella stima.
 spostamento-differenza-nessuna = La variazione rientra nella stima.
-# Stima senza valore o pari a zero: solo l'ottenuto (03 §6.3).
+# Stima senza valore o pari a zero: solo l'ottenuto.
 spostamento-solo-ottenuto = Senza un valore stimato conta solo la variazione dello spazio libero.
-# Voce di spiegazione: elementi saltati o falliti (03 §6.3). $n elementi, $n_testo, $byte già scritti.
+# Voce di spiegazione: elementi saltati o falliti. $n elementi, $n_testo, $byte già scritti.
 spostamento-voce-saltati = { $n ->
     [one] Un elemento non spostato: { $byte } della stima restano al loro posto.
    *[other] { $n_testo } elementi non spostati: { $byte } della stima restano al loro posto.
 }
-# Voce di spiegazione: file con altri nomi (03 §6.3). $n file, $n_testo, $byte già scritti.
+# Voce di spiegazione: file con altri nomi. $n file, $n_testo, $byte già scritti.
 spostamento-voce-altri-nomi = { $n ->
     [one] Un file ha altri nomi (hard link) fuori dalla selezione ({ $byte }): il suo spazio si libera solo quando non resta nessun nome. La stima lo esclude già.
    *[other] { $n_testo } file hanno altri nomi (hard link) fuori dalla selezione ({ $byte }): il loro spazio si libera solo quando non resta nessun nome. La stima li esclude già.
 }
-# Voce di spiegazione: contenuto ancora nel Cestino (03 §6.3). $byte già scritti.
+# Voce di spiegazione: contenuto ancora nel Cestino. $byte già scritti.
 spostamento-voce-nel-cestino = Ancora nel Cestino: { $byte }. Questo spazio si libera quando il Cestino si svuota.
-# Voce di spiegazione: altri elementi eliminati svuotando il Cestino (03 §6.3). $n elementi, $n_testo, $byte già scritti.
+# Voce di spiegazione: altri elementi eliminati svuotando il Cestino. $n elementi, $n_testo, $byte già scritti.
 spostamento-voce-altri-elementi = { $n ->
     [one] Svuotando il Cestino è stato eliminato anche un altro elemento, per { $byte } secondo il conteggio di Windows.
    *[other] Svuotando il Cestino sono stati eliminati anche { $n_testo } altri elementi, per { $byte } secondo il conteggio di Windows.
 }
-# Voce di spiegazione: file ancora in uso allo svuotamento (03 §6.3). $n file, $n_testo.
+# Voce di spiegazione: file ancora in uso allo svuotamento. $n file, $n_testo.
 spostamento-voce-file-aperti = { $n ->
     [one] Un file della selezione era ancora in uso quando il Cestino è stato svuotato, secondo Windows.
    *[other] { $n_testo } file della selezione erano ancora in uso quando il Cestino è stato svuotato, secondo Windows.
 }
-# Voce di spiegazione: attività di altri programmi (03 §6.3, RS17). $valore con il segno.
+# Voce di spiegazione: attività di altri programmi. $valore con il segno.
 spostamento-voce-altri-processi = Attività di altri programmi: { $valore }. La nuova scansione delle cartelle conferma che gli elementi spostati non occupano più spazio, quindi questa parte della differenza non viene dall'intervento.
-# Differenza oltre il 5% che le voci non spiegano: testo di 04 §6.8. $valore con il segno, $percento.
+# Differenza oltre il 5% che le voci non spiegano. $valore con il segno, $percento.
 spostamento-non-spiegata = Differenza non spiegata: { $valore } ({ $percento }).
-# Regola del 5% (F-VE-3).
+# Regola del 5%.
 spostamento-regola-5 = Oltre il 5% di differenza, Quado la spiega voce per voce o la dichiara non spiegata.
-# Nuova scansione delle cartelle toccate in corso (F-VE-2).
+# Nuova scansione delle cartelle toccate in corso.
 spostamento-riscansione-in-corso = Nuova scansione delle cartelle toccate in corso…
-# Nuova scansione conclusa (F-VE-4).
+# Nuova scansione conclusa.
 spostamento-riscansione-fatta = Cartelle toccate scansionate di nuovo: i totali sono aggiornati.
 # Tra le cartelle toccate c'è la radice dell'unità: nessuna nuova scansione parziale. Cita barra-riesamina.
 spostamento-riscansione-radice = Alcuni elementi stavano nella radice dell'unità. Per aggiornare i totali scegli «Scansiona di nuovo»: Quado rilegge tutta l'unità.
@@ -2192,9 +2191,9 @@ spostamento-riscansione-fallite = { $n ->
    *[other] Impossibile scansionare di nuovo { $n_testo } cartelle toccate: i loro totali restano quelli di prima. Per aggiornarli scegli «Scansiona di nuovo».
 }
 
-## M5: vista Interventi, procedure e comandi, Dati e privacy (agente E2).
+## Vista Interventi, procedure e comandi, Dati e privacy.
 
-# Procedure e comandi sotto il record (03 F-AC-1, F-VE-1, F-VE-2; 04 §6.7 "Procedure esterne").
+# Procedure e comandi sotto il record.
 # Pulsante della procedura del Cestino: misura lo spazio libero e apre il Cestino in Esplora file.
 procedura-apri-cestino = Apri il Cestino
 # Pulsante della procedura di Impostazioni › Sistema › Archiviazione (ms-settings:storagesense): File temporanei è a un clic da lì.
@@ -2205,9 +2204,9 @@ procedura-apri-file-temporanei = Apri Impostazioni › File temporanei
 procedura-misura-partenza = Misura lo spazio libero
 # Suggerimento del pulsante precedente. Cita azione-ho-eseguito.
 procedura-misura-partenza-suggerimento = Legge lo spazio libero e il contenuto del Cestino secondo Windows. Poi segui la procedura nell'app e scegli «Ho eseguito la procedura».
-# Pulsante del record del Cestino: apre il dialogo di conferma di Windows, dopo il testo con il conteggio (F-AC-1). Mai "svuota tutto" implicito.
+# Pulsante del record del Cestino: apre il dialogo di conferma di Windows, dopo il testo con il conteggio. Mai "svuota tutto" implicito.
 procedura-svuota-cestino = Svuota il Cestino…
-# Prima di "Svuota il Cestino…": conteggio di Windows letto ora (04 §6.8). Svuotare elimina per sempre. $n e $testo numero di elementi, $dimensione già scritta. Cita procedura-apri-cestino.
+# Prima di "Svuota il Cestino…": conteggio di Windows letto ora. Svuotare elimina per sempre. $n e $testo numero di elementi, $dimensione già scritta. Cita procedura-apri-cestino.
 procedura-cestino-conteggio = Il dialogo di Windows elimina per sempre { $n ->
     [one] l'unico elemento del Cestino
    *[other] tutti i { $testo } elementi del Cestino
@@ -2234,7 +2233,7 @@ procedura-partenza-errore = Impossibile misurare lo spazio libero prima della pr
 procedura-pagina-errore = Impossibile aprire la pagina. Riprova, oppure aprila a mano. (Codice { $codice })
 # URI della regola non tra quelli che il lanciatore conosce: non si apre niente (barra di stato).
 procedura-pagina-non-valida = Impossibile aprire la pagina di questa procedura: il suo indirizzo non è tra quelli che Quado apre.
-# Comando ufficiale, prima della copia (04 §6.8 "Procedura esterna"). Cita record-copia e azione-ho-eseguito.
+# Comando ufficiale, prima della copia. Cita record-copia e azione-ho-eseguito.
 procedura-comando-nota = Quado mostra e copia il comando, ma non lo esegue. «Copia» misura anche lo spazio libero di partenza. Dopo aver eseguito il comando, scegli «Ho eseguito la procedura» per misurare il risultato.
 # "Ho eseguito la procedura" senza misura di partenza: si registra la sola misura. Cita azione-ho-eseguito.
 procedura-senza-partenza = Senza una misura dello spazio libero presa prima della procedura, «Ho eseguito la procedura» registra solo lo spazio libero di adesso e non calcola la variazione.
@@ -2255,19 +2254,19 @@ procedura-svuota-codice = Il dialogo di Windows si è chiuso con un codice: cosa
 procedura-registrato = Intervento registrato nella vista Interventi.
 # Registro non scritto, con la conseguenza. $codice numero di Windows.
 procedura-registro-errore = Impossibile scrivere il registro degli interventi: questa misura non comparirà nella vista Interventi. (Codice { $codice })
-# Dialogo di disinstallazione, dopo l'apertura (F-AP-5, F-VE-2). Cita azione-ho-eseguito e barra-riesamina.
+# Dialogo di disinstallazione, dopo l'apertura. Cita azione-ho-eseguito e barra-riesamina.
 procedura-disinstallazione-dopo = Quando hai finito, scegli «Ho eseguito la procedura»: Quado misura di nuovo lo spazio libero e la cartella del programma. «Scansiona di nuovo» rilegge tutta l'unità.
 
-# Verifica: testi comuni allo storico e all'esito delle procedure (03 §6.3, 04 §6.8 "Verifica").
+# Verifica: testi comuni allo storico e all'esito delle procedure.
 # Variazione positiva: spazio liberato. $valore dimensione già scritta.
 storico-piu = +{ $valore }
 # Variazione negativa: spazio occupato.
 storico-meno = -{ $valore }
 # Stima a intervallo, nella riga "Stimato": stessa forma del dialogo.
 storico-intervallo = da { $minimo } a { $massimo }
-# Stimato e ottenuto: due numeri separati, mai sommati (04 §6.8).
+# Stimato e ottenuto: due numeri separati, mai sommati.
 storico-verifica = Stimato: { $stimato }. Variazione dello spazio libero: { $variazione }. La variazione comprende anche ciò che altri programmi hanno scritto o eliminato nel frattempo.
-# Stima non stimabile o pari a 0: solo l'ottenuto (03 §6.3).
+# Stima non stimabile o pari a 0: solo l'ottenuto.
 storico-verifica-solo-variazione = Variazione dello spazio libero: { $variazione }. La variazione comprende anche ciò che altri programmi hanno scritto o eliminato nel frattempo.
 # Differenza oltre il 5%: seguono le voci. $percentuale già scritta.
 storico-differenza-oltre = Differenza: { $differenza } ({ $percentuale }), oltre il 5%.
@@ -2275,14 +2274,14 @@ storico-differenza-oltre = Differenza: { $differenza } ({ $percentuale }), oltre
 storico-differenza-entro = Differenza: { $differenza } ({ $percentuale }), entro il 5%.
 # Differenza senza percentuale (intervallo che parte da 0).
 storico-differenza = Differenza: { $differenza }.
-# Parte della differenza che le voci non spiegano (04 §6.8).
+# Parte della differenza che le voci non spiegano.
 storico-non-spiegata = Differenza non spiegata: { $differenza } ({ $percentuale }).
 # Voce: elementi saltati o falliti (riepilogo dell'esecuzione).
 storico-spiegazione-saltati = { $n ->
     [one] Un elemento non spostato
    *[other] { $testo } elementi non spostati
 }: { $dimensione } della stima restano al loro posto.
-# Voce: file esclusi perché hanno altri nomi (03 §6.3).
+# Voce: file esclusi perché hanno altri nomi.
 storico-spiegazione-altri-nomi = { $n ->
     [one] Un file escluso dalla stima perché ha altri nomi (hard link) fuori dalla selezione
    *[other] { $testo } file esclusi dalla stima perché hanno altri nomi (hard link) fuori dalla selezione
@@ -2304,7 +2303,7 @@ storico-spiegazione-altri-processi = Attività di altri programmi: { $variazione
 # Quanto occupano ancora gli elementi secondo la nuova scansione delle cartelle toccate.
 storico-ancora-presenti = Secondo la nuova scansione, gli elementi occupano ancora { $dimensione }.
 
-# Vista Interventi: storico dal registro (F-VE-5).
+# Vista Interventi: storico dal registro.
 # Titolo dello storico.
 storico-titolo = Storico degli interventi
 # Sottotitolo: cosa c'è in ogni voce, poi il percorso del file. $percorso del file interventi.jsonl.
@@ -2389,7 +2388,7 @@ storico-nessuna-misura = Nessuna misura registrata.
 # Più misure ma nessun confronto.
 storico-senza-confronto = Misure registrate senza un confronto con la stima.
 
-# Impostazioni › Dati e privacy (05 D8, F-AC-6).
+# Impostazioni › Dati e privacy.
 # Titolo della card.
 privacy-titolo = Dati e privacy
 # Nota. $cartella è %APPDATA%\Quado.

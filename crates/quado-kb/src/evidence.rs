@@ -8,7 +8,7 @@ use crate::extract::{BinSettings, Epic, ExtractError, MsixPackage, Power, Steam,
 pub struct KnownFolders {
     pub profile: Option<String>,
     pub local: Option<String>,
-    /// `AppData\LocalLow` (residui, F-AP-6).
+    /// `AppData\LocalLow` (possibili residui dei programmi).
     pub local_low: Option<String>,
     pub roaming: Option<String>,
     pub program_data: Option<String>,

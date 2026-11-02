@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Unità (F-SC-1) e scansione in corso (F-SC-4, F-SC-5), variante A. Primo avvio: una colonna centrata con
-//! il titolo, la promessa della sola lettura e una card per unità (icona, nome, tipo, la cifra grande e
-//! leggera dello spazio usato, la barra e «Scansiona C:» come azione principale), poi la scansione del volume
-//! di sistema con un clic (04 §6.7). La scansione in corso tiene la stessa colonna: le quattro cifre dal vivo,
-//! «Annulla» ed Esc, e il primo livello dell'unità con i totali che crescono.
+//! Unità e scansione in corso, variante A. Primo avvio: una colonna centrata con il titolo, la promessa della
+//! sola lettura e una card per unità (icona, nome, tipo, la cifra grande e leggera dello spazio usato, la
+//! barra e «Scansiona C:» come azione principale), poi la scansione del volume di sistema con un clic. La
+//! scansione in corso tiene la stessa colonna: le quattro cifre dal vivo, «Annulla» ed Esc, e il primo
+//! livello dell'unità con i totali che crescono.
 
 use std::sync::atomic::Ordering::Relaxed;
 
@@ -154,7 +154,7 @@ fn volume_card(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, v: &Volume, 
         let mut bui = ui.new_child(egui::UiBuilder::new().max_rect(b).layout(Layout::left_to_right(Align::Center)));
         let kind = if primary { ButtonKind::Primary } else { ButtonKind::Secondary };
         clicked = widgets::button(&mut bui, p, &label, None, kind, enabled).clicked();
-        // File system con misure diverse da NTFS: la nota (F-SC-10), in avviso se non ci sono garanzie.
+        // File system con misure diverse da NTFS: la nota, in avviso se non ci sono garanzie.
         match info.support {
             Support::Full => {}
             Support::Fat => {
@@ -211,9 +211,8 @@ fn figure_line(ui: &mut Ui, p: &Palette, value: &str, label: &str, right: &str) 
     resp.widget_info(|| egui::WidgetInfo::labeled(egui::WidgetType::Label, true, &name));
 }
 
-/// Avviso di fine scansione (04 §6.8 "Fine scansione"), per la barra di stato: durata e cartelle con
-/// l'accesso negato, il cui contenuto resta nel non attribuito. Nessun avviso per una scansione annullata:
-/// lì vale il banner "Scansione interrotta".
+/// Avviso di fine scansione, per la barra di stato: durata e cartelle con l'accesso negato, il cui contenuto
+/// resta nel non attribuito. Nessun avviso per una scansione annullata: lì vale il banner "Scansione interrotta".
 pub fn completion_notice(l: &Lingue, f: &Formatter, d: &Loaded) -> Option<String> {
     if d.cancelled {
         return None;
@@ -223,7 +222,7 @@ pub fn completion_notice(l: &Lingue, f: &Formatter, d: &Loaded) -> Option<String
 }
 
 /// Scansione in corso, nella colonna di Unità: titolo, cosa succede, le quattro cifre dal vivo in una card con
-/// «Annulla» ed Esc in fondo, poi il primo livello dell'unità con i totali che crescono (F-SC-4).
+/// «Annulla» ed Esc in fondo, poi il primo livello dell'unità con i totali che crescono.
 pub fn scanning(app: &mut App, ui: &mut Ui, p: &Palette) {
     let Some(job) = app.job.as_ref() else { return };
     let (l, f) = (&app.lingue, &app.fmt);

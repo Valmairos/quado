@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Estrattori (06 §2.3): per ognuno un caso valido (fixture sintetica nel formato vero), uno troncato e uno con
+//! Estrattori: per ognuno un caso valido (fixture sintetica nel formato vero), uno troncato e uno con
 //! il formato cambiato. Un formato inatteso dà "estrattore non riuscito" con il motivo, mai un dato
 //! ricostruito. I lettori di formati non fidati ricevono ingressi casuali senza andare in panic.
 
@@ -57,7 +57,7 @@ fn steam_manifests() {
     let game = s.apps.iter().find(|a| a.appid == 3_999_910).expect("Hollow Peaks");
     assert_eq!(game.installdir, "hollow peaks");
     assert!(game.size_on_disk.is_some());
-    // LastPlayed di localconfig.vdf e dei manifest concordano entro un giorno (06 §4).
+    // LastPlayed di localconfig.vdf e dei manifest concordano entro un giorno.
     for a in &s.apps {
         if let (Some(m), Some(&(_, l))) = (a.last_played, s.local_last_played.iter().find(|(id, _)| *id == a.appid)) {
             assert!((m - l).abs() <= 86_400, "{}: {m} contro {l}", a.name);
@@ -108,7 +108,7 @@ fn capcut_files() {
 
 #[test]
 fn userassist_only_with_tracking() {
-    // Questo PC: Start_TrackProgs = 0 e la chiave con dati vecchi. Nessun valore si usa (F-AP-4).
+    // Questo PC: Start_TrackProgs = 0 e la chiave con dati vecchi. Nessun valore si usa.
     let reg = common::registry();
     assert_eq!(extract::track_progs(&reg), TrackProgs::Off);
     assert_eq!(extract::userassist(&reg), Ok(UserAssist::NotTracked(TrackProgs::Off)));

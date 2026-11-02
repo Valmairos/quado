@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Contenuto di prova dell'helper elevato (06 §1.5) sul VHDX NTFS di prova (`R:`), creato senza
+//! Contenuto di prova dell'helper elevato sul VHDX NTFS di prova (`R:`), creato senza
 //! elevazione, e i valori attesi misurati con l'oracolo prima di chiudere le ACL.
 //!
 //! Contenuto, sotto la radice del VHDX:
@@ -16,7 +16,7 @@
 //!
 //! Su `R:` i processi dell'utente non elevati non ottengono `WRITE_DAC` né `WRITE_OWNER`, neanche sulle proprie
 //! cartelle con controllo completo (errore 5 su `CreateFileW` con quei diritti; su C: sì; misurato il
-//! 14/10/2026 in M5, `fine_vhdx.rs`, e di nuovo il 16/10/2026). `icacls` e `SetFileSecurityW` quindi non
+//! 14/10/2026 con `fine_vhdx.rs`, e di nuovo il 16/10/2026). `icacls` e `SetFileSecurityW` quindi non
 //! funzionano lì. Le ACL si danno alla creazione (`CreateDirectoryW` con un descrittore), che non chiede
 //! `WRITE_DAC`:
 //! 1. il contenuto si crea in una cartella di preparazione con le ACL ereditate (leggibile);
@@ -55,7 +55,7 @@ use crate::trees::{mounted_vhdx, write_file};
 pub const PROFILE_SID: &str = "S-1-5-21-1-2-3-9999";
 /// Cestino di un account che esiste: SYSTEM.
 pub const SYSTEM_SID: &str = "S-1-5-18";
-/// Cestino di un account che non esiste più (RS16).
+/// Cestino di un account che non esiste più.
 pub const ORPHAN_BIN_SID: &str = "S-1-5-21-1-2-3-9998";
 
 /// Diritti dell'utente sulle cartelle chiuse: `FILE_ADD_FILE`, `FILE_ADD_SUBDIRECTORY`, `FILE_TRAVERSE`,
@@ -100,7 +100,7 @@ pub struct ExpectedBin {
     pub folder: ExpectedFolder,
 }
 
-/// Valori attesi della prova elevata (06 §1.5), misurati dall'oracolo come utente prima della chiusura.
+/// Valori attesi della prova elevata, misurati dall'oracolo come utente prima della chiusura.
 #[derive(Clone, Debug)]
 pub struct Expected {
     /// Radice del volume (`R:\`).

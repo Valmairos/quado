@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! File grandi (F-EX-5), variante A: come Esplora, con l'ispettore a destra su tutta l'altezza nel tono della
-//! barra laterale. A sinistra i filtri in linea di F-EX-4 (gli stessi di Esplora e della ricerca), la riga che
+//! File grandi, variante A: come Esplora, con l'ispettore a destra su tutta l'altezza nel tono della
+//! barra laterale. A sinistra i filtri in linea (gli stessi di Esplora e della ricerca), la riga che
 //! dice cosa c'è in elenco e la tabella dei file più grandi del volume per dimensioni su disco.
 
 use std::time::Duration;

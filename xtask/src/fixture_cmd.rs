@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! `cargo xtask fixture-regole [--progetti "a;b"] [--uscita DIR]`: bozza delle fixture delle regole
-//! (06 §2.3; 07 §5.1, passo 4) letta da questo PC.
+//! letta da questo PC.
 //!
 //! Legge in sola lettura: una scansione di C:, le chiavi di registro e i file nominati dalle regole.
 //! Il profilo diventa `C:\Users\demo`, il SID uno finto. Le cartelle oltre la profondità scelta si

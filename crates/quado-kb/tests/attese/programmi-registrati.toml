@@ -1,5 +1,5 @@
-# 06 §2.1 (programma grande): Decidi tu, disinstallazione dall'interfaccia ufficiale. InstallLocation di
-# HKLM: da fonte. Indizio dall'eseguibile di HKLM presente nella cartella: dedotto alta.
+# Programma grande: Decidi tu, disinstallazione dall'interfaccia ufficiale. InstallLocation di HKLM: da fonte.
+# Indizio dall'eseguibile di HKLM presente nella cartella: dedotto alta.
 [[voci]]
 percorso = 'C:\Program Files (x86)\Steam'
 stato = "decidi-tu"

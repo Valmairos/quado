@@ -1,4 +1,4 @@
-# Cestino dell'utente (decisioni §4, F-SY-2): misurato in due modi, procedure di Windows.
+# Cestino dell'utente: misurato in due modi (secondo Windows e su disco), procedure di Windows.
 id = "cestino"
 priorita = 1
 riconoscitore = "cestino"

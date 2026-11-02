@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! `WinProbe` sul sistema vero (05 D7, 03 §6.3): attributi senza aprire il contenuto, elenco delle
+//! `WinProbe` sul sistema vero: attributi senza aprire il contenuto, elenco delle
 //! cartelle, Restart Manager, cartella di sincronizzazione di prova, spazio libero. Solo letture delle
 //! cose create dal test in una cartella temporanea su C:; il Cestino di C: si legge soltanto.
 
@@ -260,7 +260,7 @@ impl Probe for Reads<'_> {
     }
 }
 
-/// Albero di prova con i casi della stima (03 §6.3): file normali e vuoti, residente nella MFT, compresso
+/// Albero di prova con i casi della stima: file normali e vuoti, residente nella MFT, compresso
 /// NTFS, sparse, WOF, hard link (due nomi dentro e uno fuori), junction, collegamento simbolico se la
 /// Modalità sviluppatore lo permette, sottocartella negata, percorso oltre i 260 caratteri, nomi non ASCII,
 /// flusso alternativo. Restituisce la cartella da simulare e quella con il nome fuori.

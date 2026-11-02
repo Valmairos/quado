@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Esplora (F-EX-1..4): barra del percorso con dimensione e quota dello spazio usato, avanti e
-//! indietro, mappa ad albero su due livelli, tabella ad albero virtualizzata e sincronizzata con la
-//! mappa, ricerca per nome con i filtri, tastiera completa.
+//! Esplora: barra del percorso con dimensione e quota dello spazio usato, avanti e indietro, mappa ad albero
+//! su due livelli, tabella ad albero virtualizzata e sincronizzata con la mappa, ricerca per nome con i
+//! filtri, tastiera completa.
 
 use std::time::{Duration, Instant};
 
@@ -141,7 +141,7 @@ impl ExploreState {
     }
 }
 
-/// Sistema di date proposte nei filtri (F-EX-4).
+/// Sistema di date proposte nei filtri.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 pub enum DatePreset {
     #[default]
@@ -209,7 +209,7 @@ pub struct FilterUi {
     pub min_unit: MinUnit,
     pub family: Option<Family>,
     pub date: DatePreset,
-    /// Gestito da (M3): il gruppo di colore, "non classificato" compreso.
+    /// Gestito da: il gruppo di colore, "non classificato" compreso.
     pub group: Option<Gestore>,
 }
 
@@ -245,7 +245,7 @@ impl FilterUi {
     }
 }
 
-/// Ricerca per nome (F-EX-4): casella nella barra del titolo, risultati in Esplora.
+/// Ricerca per nome: casella nella barra del titolo, risultati in Esplora.
 #[derive(Default)]
 pub struct SearchState {
     pub text: String,
@@ -423,7 +423,7 @@ impl treemap::Source for Src<'_> {
     }
 }
 
-/// Non misurato: cartella non leggibile o cartella cloud non elencata (tratteggio, 04 §6.1).
+/// Non misurato: cartella non leggibile o cartella cloud non elencata (tratteggio).
 pub fn unmeasured(t: &Tree, n: u32) -> bool {
     t.flags(n).any(Flags::DENIED | Flags::ERROR | Flags::CLOUD_NOT_LISTED | Flags::PARTIAL)
 }
@@ -582,8 +582,7 @@ fn filter_status(app: &App) -> String {
     }
 }
 
-/// Legenda dei gestori (`.exlegend`): il colore e la forma sono il gestore (04 §6.2); il tratteggio è il
-/// non leggibile.
+/// Legenda dei gestori (`.exlegend`): il colore e la forma sono il gestore; il tratteggio è il non leggibile.
 fn legend(ui: &mut Ui, p: &Palette, l: &Lingue) {
     ui.horizontal_wrapped(|ui| {
         ui.spacing_mut().item_spacing = vec2(6.0, 4.0);
@@ -655,7 +654,7 @@ pub fn menu_choice(ui: &mut Ui, p: &Palette, label: &str, on: bool) -> Response 
     resp
 }
 
-/// Filtri in linea di Esplora e della ricerca (F-EX-4): dimensioni minime, tipo, ultima modifica, gestore,
+/// Filtri in linea di Esplora e della ricerca: dimensioni minime, tipo, ultima modifica, gestore,
 /// ciascuno con il suo menu; "Togli i filtri" quando ce n'è uno. Restituisce `true` se un filtro è cambiato.
 pub fn filter_chips(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, fu: &mut FilterUi, id: &str) -> bool {
     let before = fu.clone();
@@ -754,7 +753,7 @@ fn map(app: &mut App, ui: &mut Ui, p: &Palette, rect: Rect) {
     let inner = rect.shrink(2.0);
     let root = st.outline.root;
     let m = &mut st.map;
-    // Due livelli sotto la cartella aperta (F-EX-1): i gruppi e le loro aree.
+    // Due livelli sotto la cartella aperta: i gruppi e le loro aree.
     let opts = treemap::Options { padding: 2.0, header: MAP_HEADER, min_header_rect: 56.0, min_side: 4.0, max_depth: 2, min_area: 2.0, root_header: false };
     if m.key != Some((inner, root, d.generation)) {
         m.layout = treemap::layout(&Src(d), root, inner, &opts);
@@ -906,7 +905,7 @@ fn map(app: &mut App, ui: &mut Ui, p: &Palette, rect: Rect) {
     }
 }
 
-/// Area della mappa che mostra `node`: la sua, o quella del suo antenato più profondo (F-EX-2).
+/// Area della mappa che mostra `node`: la sua, o quella del suo antenato più profondo.
 pub fn selected_tile(layout: &treemap::Layout, t: &Tree, node: u32) -> Option<usize> {
     let mut best: Option<(usize, u16)> = None;
     for (k, tile) in layout.tiles.iter().enumerate() {
@@ -1056,7 +1055,7 @@ fn tree_table(app: &mut App, ui: &mut Ui, p: &Palette) {
             painter.text(pos2(a + 10.0, cy), Align2::LEFT_CENTER, f.date(t.mtime(node)), widgets::num(13.0), p.text_2);
         }
         if let Some((a, b)) = xs[5] {
-            // Gestito da (F-EX-2): gruppo con il glifo della provenienza; "ipotesi" se non colora.
+            // Gestito da: gruppo con il glifo della provenienza; "ipotesi" se non colora.
             let m = d.cls.match_of(node).map(|k| &d.cls.matches[k]);
             match m {
                 Some(m) => {

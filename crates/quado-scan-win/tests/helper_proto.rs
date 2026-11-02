@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Protocollo dell'helper (05 D3, 06 §11): codifica e decodifica di richieste e risposte, validazione dei
+//! Protocollo dell'helper: codifica e decodifica di richieste e risposte, validazione dei
 //! percorsi, ambito delle cartelle. Ingressi casuali (`proptest`): nessun panico e nessuna allocazione
 //! oltre i limiti, misurata con un allocatore che registra la richiesta più grande del thread.
 

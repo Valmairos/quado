@@ -1,4 +1,4 @@
-# Cartella di Windows: protetta (F-AC-4), nessuna procedura. System32 resta a questa regola.
+# Cartella di Windows: protetta, nessuna procedura. System32 resta a questa regola.
 [[voci]]
 percorso = 'C:\Windows'
 stato = "lo-gestisce-nessuna-procedura"

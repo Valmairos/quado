@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Base delle regole (05 D6): file TOML in `regole/`, incorporati. Ogni regola dichiara dove si
-//! applica, come riconosce la struttura, i campi del record, le fonti con l'estratto, l'intervallo di
-//! versioni, la data di verifica e la sua fixture. I testi visibili stanno in `regole/<lingua>.ftl`
-//! con chiavi `regola-<id>-<campo>` (05 D13).
+//! Base delle regole: file TOML in `regole/`, incorporati. Ogni regola dichiara dove si applica, come
+//! riconosce la struttura, i campi del record, le fonti con l'estratto, l'intervallo di versioni, la
+//! data di verifica e la sua fixture. I testi visibili stanno in `regole/<lingua>.ftl` con chiavi
+//! `regola-<id>-<campo>`.
 
 use serde::Deserialize;
 
@@ -25,7 +25,7 @@ pub enum Recognizer {
     Steam,
     /// Installazioni di Epic dai manifest.
     Epic,
-    /// Programmi dalle voci di disinstallazione (prefisso più lungo, F-AP-2).
+    /// Programmi dalle voci di disinstallazione (prefisso più lungo).
     Registered,
     /// Dati dei pacchetti MSIX (`Packages\<nome di famiglia>`).
     Msix,
@@ -63,7 +63,7 @@ impl Recognizer {
 }
 
 /// Stato dichiarato dalla regola. Gestibile e Da verificare diventano tali solo se il riconoscitore
-/// produce una prova di gestibilità (05 D6).
+/// produce una prova di gestibilità.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum StateCode {
     Manageable,
@@ -108,10 +108,10 @@ impl ActionCode {
     }
 }
 
-/// Metodo della stima dichiarato dalla regola (03 §6.3).
+/// Metodo della stima dichiarato dalla regola.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum EstimateCode {
-    /// Allocata degli elementi, dal modello (ricalcolata nella simulazione di M5).
+    /// Allocata degli elementi, dal modello (ricalcolata nella simulazione).
     Exact,
     /// Hard link verso cartelle che la regola non conta.
     NotEstimableLinks,
@@ -189,9 +189,10 @@ pub struct Versioni {
 pub struct Fonte {
     pub url: String,
     pub titolo: String,
-    /// Frase copiata dalla fonte che giustifica la gestione (RS10).
+    /// Frase copiata dalla fonte che giustifica la gestione: chi rilegge la regola la confronta con la
+    /// pagina.
     pub estratto: String,
-    /// Documentazione di Microsoft o del programma (03 §6.1 regola 3).
+    /// Documentazione di Microsoft o del programma.
     pub ufficiale: bool,
 }
 
@@ -278,7 +279,7 @@ pub struct Rule {
     pub try_before_empty: bool,
     /// «Svuota il Cestino…» chiede prima la spunta della prova fatta.
     pub tick_tried: bool,
-    /// Elemento protetto (F-AC-4).
+    /// Elemento protetto.
     pub protected: bool,
     pub protected_exception: bool,
     pub privileges: Privileges,
@@ -310,7 +311,7 @@ pub enum RuleIssue {
     /// Nessuna fonte, o una fonte senza URL https, titolo o estratto.
     Source,
     Date,
-    /// Eccezione a F-AC-4 senza stato Da verificare (03 §6.1).
+    /// Eccezione degli elementi protetti senza stato Da verificare.
     Exception,
     /// "Lo gestisce X" senza X.
     ManagedBy,

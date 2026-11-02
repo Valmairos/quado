@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! `quado --immagini DIR`: scansiona il volume di sistema e salva le schermate con i dati veri, in
-//! tema chiaro e scuro (revisioni di M2, M3, M4 e M5). La lente Download si apre senza letture di
-//! contenuto. L'ultima immagine è il dialogo di conferma dello spostamento delle versioni precedenti di
-//! CapCut: la simulazione legge solo attributi, Restart Manager e riferimenti, e niente si conferma.
+//! tema chiaro e scuro. La lente Download si apre senza letture di contenuto. L'ultima immagine è il
+//! dialogo di conferma dello spostamento delle versioni precedenti di CapCut: la simulazione legge solo
+//! attributi, Restart Manager e riferimenti, e niente si conferma.
 //! Le immagini restano sul PC: contengono nomi di file.
 
 use std::path::PathBuf;
@@ -88,7 +88,7 @@ impl Shots {
                     app.rules_view.scroll_to = true;
                 }
                 6 => {
-                    // CapCut: programma con tuoi file nella cartella (F-AP-5) e dati dalle regole.
+                    // CapCut: programma con tuoi file nella cartella e dati dalle regole.
                     app.programs.section = quado_ui::app::programs_view::Section::Programs;
                     app.programs.selected = d.programs.items.iter().position(|p| p.name.eq_ignore_ascii_case("CapCut"));
                 }

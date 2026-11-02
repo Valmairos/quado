@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! `cargo xtask vhdx <crea|freddo|elimina|stato>` (06 §1.3, 07 §3).
+//! `cargo xtask vhdx <crea|freddo|elimina|stato>`.
 //!
 //! I VHDX di prova vivono in `C:\RilievoProve`: un volume NTFS, uno exFAT e uno FAT32, espandibili.
 //! Creare, montare, smontare ed eliminare richiede l'amministratore: il comando scrive uno script
-//! PowerShell e lo esegue elevato con la richiesta UAC (chi usa il PC la approva a ogni sessione,
-//! 00 §7 punto 6). Lo script riparte dallo stato in cui trova i dischi e scrive tutto il suo output in
+//! PowerShell e lo esegue elevato con la richiesta UAC (chi usa il PC la approva a ogni
+//! sessione). Lo script riparte dallo stato in cui trova i dischi e scrive tutto il suo output in
 //! `C:\RilievoProve\log-<comando>.txt`. Le prove sui volumi montati girano poi da utente normale.
 
 use std::path::{Path, PathBuf};
@@ -123,7 +123,7 @@ $stato += "{name}`t$letter"
         }
     }
     s.push_str(&format!("Set-Content -Path '{DIR}\\stato.tsv' -Encoding ASCII -Value $stato\n"));
-    // 07 §3 riga 6: candidati per lo stato e la dimensione dell'archiviazione riservata.
+    // Candidati per lo stato e la dimensione dell'archiviazione riservata.
     s.push_str(
         r#"
 Write-Output '=== DISM /Online /Get-ReservedStorageState'

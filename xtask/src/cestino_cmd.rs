@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! `cargo xtask cestino`: verifiche del Cestino sul VHDX NTFS di prova (07 §3 righe 1-3).
+//! `cargo xtask cestino`: verifiche del Cestino sul VHDX NTFS di prova. Gli esiti sono in
+//! `docs/m1/cestino-verifiche.md` e `docs/m1/cestino-verifiche-bis.md`.
 //!
 //! Lavora solo su `R:\` (il volume di prova): crea file propri, li sposta nel Cestino di quel volume,
 //! riduce per la durata della prova la capacità del Cestino di quel solo volume e alla fine la
@@ -119,8 +120,8 @@ pub fn run() -> Result<(), String> {
             std::fs::create_dir_all(work).unwrap();
         };
 
-        // --- 07 §3 riga 2: PreDeleteItem e codice di rifiuto del singolo elemento.
-        let _ = writeln!(out, "### Riga 2: `PreDeleteItem` e rifiuto del singolo elemento\n");
+        // --- PreDeleteItem e codice di rifiuto del singolo elemento.
+        let _ = writeln!(out, "### `PreDeleteItem` e rifiuto del singolo elemento\n");
         let _ = writeln!(out, "Tre elementi in un'unica operazione: `a.bin` (2 MB), `grande.bin` (30 MB, oltre la capacità), `b.bin` (2 MB).\n");
         let mut runs: Vec<(&str, Guard)> = vec![("nessuna protezione (controllo)", Guard::None)];
         runs.extend(recycle::candidate_codes().into_iter().map(|(n, hr)| (n, Guard::Reject(hr))));
@@ -141,8 +142,8 @@ pub fn run() -> Result<(), String> {
             let _ = writeln!(out, "  - Cestino secondo Windows: {items} elementi, {bytes} byte\n");
         }
 
-        // --- 07 §3 riga 3a: dimensione logica o allocata per decidere "troppo grande".
-        let _ = writeln!(out, "### Riga 3: come Windows conta la capacità\n");
+        // --- Dimensione logica o allocata per decidere "troppo grande".
+        let _ = writeln!(out, "### Come Windows conta la capacità\n");
         reset(&work);
         let sparse = work.join("sparso.bin");
         trees::sparse_file(&sparse, 50 * MB as u64);
@@ -162,7 +163,7 @@ pub fn run() -> Result<(), String> {
             describe(&o, &mut out);
         }
 
-        // --- 07 §3 riga 3b: cosa elimina Windows per fare spazio.
+        // --- Cosa elimina Windows per fare spazio.
         reset(&work);
         let _ = writeln!(out, "\n- Riempimento: tre file da 8 MB spostati uno alla volta in un Cestino da {CAPACITY_MB} MB.");
         for k in 1..=3 {
@@ -174,8 +175,8 @@ pub fn run() -> Result<(), String> {
             let _ = writeln!(out, "  - dopo f{k}: Cestino secondo Windows {items} elementi, {bytes} byte; su disco {:?}", bin_contents(&root));
         }
 
-        // --- Cartella orfana (contata o no) e svuotamento (07 §3 righe 3 e 1).
-        let _ = writeln!(out, "\n### Riga 3 e riga 1: cartella orfana\n");
+        // --- Cartella orfana (contata o no) e svuotamento.
+        let _ = writeln!(out, "\n### Cartella orfana e svuotamento\n");
         reset(&work);
         let folder = work.join("cartella12");
         for k in 0..3 {
@@ -218,7 +219,7 @@ pub fn run() -> Result<(), String> {
     result
 }
 
-/// Seconda serie, mirata (07 §3 righe 2 e 3): esito di ogni elemento letto anche dal contenuto del Cestino.
+/// Seconda serie, mirata: esito di ogni elemento letto anche dal contenuto del Cestino.
 pub fn run_followup() -> Result<(), String> {
     let (_, root) = trees::mounted_vhdx().into_iter().find(|(n, _)| n == "ntfs").ok_or("VHDX NTFS non montato")?;
     let guid = volume_guid(&root.to_string_lossy())?;

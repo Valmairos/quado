@@ -1,5 +1,5 @@
-# Installazione precedente di Windows (valutazione dei consigli, 01/11/2026): Lo gestisce Windows, che la
-# elimina da solo dopo 10 giorni; prima si toglie da Impostazioni › File temporanei. Dopo non si torna indietro.
+# Installazione precedente di Windows: Lo gestisce Windows, che la elimina da solo dopo 10 giorni; prima si
+# toglie da Impostazioni › File temporanei. Dopo non si torna indietro.
 id = "windows-old"
 priorita = 1
 riconoscitore = "percorso"

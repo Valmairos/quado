@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Procedure e comandi, vista Interventi e Dati e privacy (M5, agente E2) provati con `egui_kittest`
-//! (06 §5.6, §5.7, §6.2; 03 F-AC-1, F-AC-6, F-VE-1, F-VE-2, F-VE-5).
+//! Procedure e comandi, vista Interventi e Dati e privacy provati con `egui_kittest`.
 //!
 //! Nessun test usa `Actions::live`: letture, misure e Cestino passano da `FakeProbe`, il lanciatore è
 //! finto, la riscansione è finta (nessuna cartella vera si legge), il registro sta in cartelle temporanee.
@@ -200,7 +199,7 @@ fn has_label(h: &Harness<'_, App>, s: &str) -> bool {
 
 #[test]
 fn procedure_measures_before_opening_and_done_writes_the_journal() {
-    // F-AC-1, F-VE-1, F-VE-2: "Apri il Cestino" prende la misura di partenza e poi chiama il lanciatore;
+    // "Apri il Cestino" prende la misura di partenza e poi chiama il lanciatore;
     // "Ho eseguito la procedura" misura, riscansiona, confronta e scrive il registro.
     let dir = TempDir::new("apri");
     let p = probe();
@@ -249,7 +248,7 @@ fn procedure_measures_before_opening_and_done_writes_the_journal() {
     assert_eq!(e.measures[1].still_present, Some(4096));
     let c = e.comparison.as_ref().expect("confronto");
     assert_eq!((c.obtained, c.difference), (3 * GIB as i64, None), "stima non stimabile: solo l'ottenuto");
-    // Il modello è aggiornato con la riscansione (F-VE-4).
+    // Il modello è aggiornato con la riscansione.
     let d = h.state().data.as_ref().expect("dati");
     let bin = intervention_jobs::find_node(d.tree(), BIN).expect("Cestino");
     assert_eq!(d.tree().alloc(bin), 4096);
@@ -257,7 +256,7 @@ fn procedure_measures_before_opening_and_done_writes_the_journal() {
 
 #[test]
 fn copying_a_command_takes_the_start_measure_and_runs_nothing() {
-    // F-AC-1: il comando si copia negli appunti, non si esegue; la copia prende la misura di partenza.
+    // Il comando si copia negli appunti, non si esegue; la copia prende la misura di partenza.
     let dir = TempDir::new("comando");
     let p = probe();
     let mut h = harness(app(&p, Some(dir.path())));
@@ -322,7 +321,7 @@ fn done_without_start_measure_records_only_the_measure() {
 
 #[test]
 fn empty_bin_says_the_windows_count_first_then_measures() {
-    // F-AC-1, 04 §6.7: "Svuota il Cestino…" preceduto dal numero e dai GB secondo Windows; il dialogo di
+    // "Svuota il Cestino…" preceduto dal numero e dai GB secondo Windows; il dialogo di
     // Windows (finto) svuota, poi misura dopo lo svuotamento e registro.
     let dir = TempDir::new("svuota");
     let p = probe();
@@ -353,7 +352,7 @@ fn empty_bin_says_the_windows_count_first_then_measures() {
 
 #[test]
 fn uninstall_dialog_measures_before_opening_and_after_done() {
-    // F-AP-5, F-VE-1, F-VE-2: misura di partenza al pulsante che apre Impostazioni, poi "Ho eseguito la
+    // Misura di partenza al pulsante che apre Impostazioni, poi "Ho eseguito la
     // procedura" nel dialogo, con l'esito nel dialogo e il registro.
     let dir = TempDir::new("disinstalla");
     let p = probe();
@@ -455,7 +454,7 @@ fn fixture() -> Vec<JournalEntry> {
 
 #[test]
 fn history_shows_one_entry_per_journal_line_with_the_same_values() {
-    // F-VE-5, 06 §6.2: con un registro di N interventi la vista mostra N voci con gli stessi valori del
+    // Con un registro di N interventi la vista mostra N voci con gli stessi valori del
     // file; le righe illeggibili si dichiarano; la barra laterale mostra il numero.
     let dir = TempDir::new("storico");
     let entries = fixture();
@@ -515,7 +514,7 @@ fn history_shows_one_entry_per_journal_line_with_the_same_values() {
 
 #[test]
 fn privacy_page_lists_the_files_and_deletes_the_journal() {
-    // F-AC-6, 05 D8: Dati e privacy elenca i file con la dimensione; la cancellazione del registro chiede
+    // Dati e privacy elenca i file con la dimensione; la cancellazione del registro chiede
     // conferma, poi il file non c'è più e la vista Interventi è vuota. Le impostazioni restano.
     let dir = TempDir::new("privacy");
     std::fs::write(dir.path().join("impostazioni.txt"), "tema = scuro\n").expect("impostazioni");

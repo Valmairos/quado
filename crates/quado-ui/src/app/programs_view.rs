@@ -1,19 +1,19 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Programmi (03 F-AP, 04 §6.6-6.8): programmi registrati, app di Microsoft Store, giochi di Steam ed Epic
-//! con fonte, versione, spazio misurato solo con una prova del percorso, dichiarato con la sua fonte (mai
-//! sommato), ultimo uso noto con la copertura della fonte e data di installazione. Il dettaglio mostra i
-//! fatti del record con glifo e fonte, la prova del percorso, i dati riconosciuti dalle regole, l'avviso
-//! dei tuoi file e la scheda Decidi tu.
+//! Programmi: programmi registrati, app di Microsoft Store, giochi di Steam ed Epic con fonte, versione,
+//! spazio misurato solo con una prova del percorso, dichiarato con la sua fonte (mai sommato), ultimo uso
+//! noto con la copertura della fonte e data di installazione. Il dettaglio mostra i fatti del record con
+//! glifo e fonte, la prova del percorso, i dati riconosciuti dalle regole, l'avviso dei tuoi file e la scheda
+//! Decidi tu.
 //!
-//! - Disinstallazione (F-AP-5, 04 §6.7): "Disinstalla…" apre un dialogo che mostra prima i tuoi file e ne
+//! - Disinstallazione: "Disinstalla…" apre un dialogo che mostra prima i tuoi file e ne
 //!   chiede la conferma esplicita, poi apre l'interfaccia ufficiale con `quado_actions::launch` (valori
 //!   tipizzati: mai `UninstallString`). Per Epic solo il rinvio alla libreria del launcher.
-//! - Possibili residui (F-AP-6): sezione a parte con il criterio in testata, stato Non sappiamo e le sole
+//! - Possibili residui: sezione a parte con il criterio in testata, stato Non sappiamo e le sole
 //!   azioni "Apri in Esplora file" e "Mostra in Esplora".
 //! - Il lanciatore e "Apri in Esplora file" sono funzioni nello stato della schermata: i test le
 //!   sostituiscono e registrano le chiamate senza aprire Impostazioni, Steam o Esplora file.
 //!
-//! Il core dà codici e valori (`quado_kb::programs`); le frasi vengono dai file di lingua (05 D13).
+//! Il core dà codici e valori (`quado_kb::programs`); le frasi vengono dai file di lingua.
 
 use std::collections::HashSet;
 use std::sync::Arc;
@@ -61,7 +61,7 @@ pub enum Outcome {
     Invalid,
 }
 
-/// Dialogo di disinstallazione (F-AP-5).
+/// Dialogo di disinstallazione.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct UninstallDialog {
     /// Indice in `Programs::items`.
@@ -74,7 +74,7 @@ pub struct UninstallDialog {
 /// Stato della schermata.
 pub struct ProgramsState {
     pub section: Section,
-    /// Mostra i componenti di sistema (`SystemComponent=1`), nascosti per default (F-AP-1).
+    /// Mostra i componenti di sistema (`SystemComponent=1`), nascosti per default.
     pub show_hidden: bool,
     /// Ricerca per nome.
     pub query: String,
@@ -154,7 +154,7 @@ struct Cache {
     /// Tutti i programmi per spazio misurato decrescente, poi non misurati, poi senza spazio; a parità per nome.
     order: Vec<usize>,
     cells: Vec<Cells>,
-    /// Testo di ogni possibile residuo (04 §6.8), con la data.
+    /// Testo di ogni possibile residuo, con la data.
     residue_texts: Vec<String>,
     /// Larghezze delle colonne fisse misurate sui testi (al primo frame dopo la ricostruzione).
     widths: Option<Vec<f32>>,
@@ -184,7 +184,7 @@ fn source_long(l: &Lingue, p: &Program) -> String {
     })
 }
 
-/// Spazio misurato nella tabella: la cifra, oppure perché non c'è (F-AP-2). Mai 0 senza misura.
+/// Spazio misurato nella tabella: la cifra, oppure perché non c'è. Mai 0 senza misura.
 fn measured_cell(l: &Lingue, f: &Formatter, p: &Program) -> (String, bool) {
     match (p.space, &p.location) {
         (Space::Measured(b), _) => (f.size(b), true),
@@ -194,7 +194,7 @@ fn measured_cell(l: &Lingue, f: &Formatter, p: &Program) -> (String, bool) {
     }
 }
 
-/// Dimensione dichiarata con la fonte breve (F-AP-3); vuota se la fonte non ne dichiara una.
+/// Dimensione dichiarata con la fonte breve; vuota se la fonte non ne dichiara una.
 fn declared_cell(l: &Lingue, f: &Formatter, p: &Program) -> String {
     let Some(d) = &p.declared else { return String::new() };
     let source = match d.source {
@@ -205,7 +205,7 @@ fn declared_cell(l: &Lingue, f: &Formatter, p: &Program) -> String {
     l.ta("programmi-cella-dichiarata", &[("dimensione", f.size(d.bytes).into()), ("fonte", source.into())])
 }
 
-/// Ultimo uso noto nella tabella (F-AP-4): Steam, UserAssist solo con il tracciamento attivo, altrimenti
+/// Ultimo uso noto nella tabella: Steam, UserAssist solo con il tracciamento attivo, altrimenti
 /// "nessun dato d'uso"; il perché (tracciamento spento, piattaforma che non registra) sta nella testata e
 /// nel dettaglio. Mai "inutilizzato" o "mai usato".
 fn usage_cell(l: &Lingue, f: &Formatter, p: &Program) -> String {
@@ -430,7 +430,7 @@ fn summary(app: &App, ui: &mut Ui, p: &Palette, programs: &Programs) {
         });
     });
     ui.add_space(10.0);
-    // Uso noto (F-AP-4): con il tracciamento spento il testo esatto di 04 §6.8 e nessun valore UserAssist.
+    // Uso noto: con il tracciamento spento il testo che lo dice e nessun valore UserAssist.
     let tracking = match programs.tracking {
         TrackProgs::Off => l.t("programmi-tracciamento-spento"),
         TrackProgs::On => l.t("programmi-tracciamento-attivo"),
@@ -439,7 +439,7 @@ fn summary(app: &App, ui: &mut Ui, p: &Palette, programs: &Programs) {
     let e = if matches!(programs.tracking, TrackProgs::On | TrackProgs::Off) { Evidence::Source } else { Evidence::Unavailable };
     fact(ui, p, l, e, &tracking);
     fact(ui, p, l, Evidence::Source, &l.t("programmi-uso-copertura"));
-    // Fonti non lette o elementi saltati: il motivo, mai dati ricostruiti (F-AP-1).
+    // Fonti non lette o elementi saltati: il motivo, mai dati ricostruiti.
     for s in &programs.errors {
         let source = l.t(match s.extractor {
             Extractor::Uninstall => "fonti-disinstallazione",
@@ -488,7 +488,7 @@ fn toolbar(app: &mut App, ui: &mut Ui, p: &Palette, programs: &Programs) {
             return;
         }
         ui.add_space(6.0);
-        // Il segnaposto entra intero anche in una traduzione più lunga (RS30).
+        // Il segnaposto entra intero anche in una traduzione più lunga.
         let hint = l.t("programmi-cerca");
         let hint_w = ui.painter().layout_no_wrap(hint.clone(), widgets::sans(13.0), p.text_3).size().x;
         let te = widgets::search_field(ui, p, Id::new(("programmi", "ricerca")), &mut st.query, &hint, hint_w.max(220.0) + 56.0);
@@ -510,7 +510,7 @@ fn toolbar(app: &mut App, ui: &mut Ui, p: &Palette, programs: &Programs) {
 // Tabella dei programmi
 
 /// Larghezze delle colonne fisse: abbastanza per l'intestazione e per ogni testo della colonna, così
-/// nessun testo tradotto si tronca (RS30). La colonna del nome prende il resto.
+/// nessun testo tradotto si tronca. La colonna del nome prende il resto.
 fn program_widths(ui: &Ui, l: &Lingue, cache: &Cache) -> Vec<f32> {
     let painter = ui.painter();
     let base = table::fit_widths(painter, l, &PROGRAM_COLS);
@@ -583,7 +583,7 @@ fn program_table(app: &mut App, ui: &mut Ui, p: &Palette, programs: &Programs, r
         }
         let cy = rect.center().y;
         if let Some((a, b)) = xs[0] {
-            // Forma dei programmi se c'è una misura, tratteggio se no (04 §6.1, principio 2).
+            // Forma dei programmi se c'è una misura, tratteggio se no.
             if c.figure {
                 widgets::manager_glyph(painter, pos2(a + 15.0, cy), Gestore::App, p);
             } else {
@@ -744,7 +744,7 @@ fn program_detail(app: &mut App, ui: &mut Ui, p: &Palette, programs: &Programs, 
     let dialog_open = app.programs.dialog.is_some();
     let mut sections = std::mem::take(&mut app.programs.sections);
     ScrollArea::vertical().id_salt(("programmi", "dettaglio")).auto_shrink([false, false]).show(ui, |ui| {
-        // Misura: la cifra solo con una prova del percorso o dati dalle regole (F-AP-2).
+        // Misura: la cifra solo con una prova del percorso o dati dalle regole.
         let figure = match (x.space, &x.location) {
             (Space::Measured(b), _) => Ok(f.size(b)),
             (Space::NotMeasured, _) => Err(l.t("programmi-titolo-non-misurato")),
@@ -753,7 +753,7 @@ fn program_detail(app: &mut App, ui: &mut Ui, p: &Palette, programs: &Programs, 
         };
         let measured_note = figure.is_ok().then(|| l.t("programmi-misurato-nota"));
         detail_head(ui, p, &x.name, &source_long(l, x), figure, measured_note.as_deref());
-        // Tuoi file nella cartella (04 §6.8): prima di tutto il resto.
+        // Tuoi file nella cartella: prima di tutto il resto.
         for fa in x.record.identity.0.iter().filter(|fa| part_of(&fa.key) == Part::YourFiles) {
             ui.add_space(12.0);
             widgets::banner(ui, p, &kbtext::fact_text(l, f, fa));
@@ -932,7 +932,7 @@ fn rule_data(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, d: &Loaded, t:
     }
 }
 
-/// Scheda del record (03 §6.1), sotto lo stato di "Cosa puoi fare": azione, metodo ufficiale e alternative
+/// Scheda del record, sotto lo stato di "Cosa puoi fare": azione, metodo ufficiale e alternative
 /// con il comando da copiare, controlli, privilegi, ipotesi, rischi, reversibilità, errore, verifica.
 fn record_card(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, r: &Record, requests: &mut Vec<Request>) {
     let _ = f;
@@ -978,7 +978,7 @@ fn record_card(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, r: &Record, 
 }
 
 // ---------------------------------------------------------------------------------------------
-// Possibili residui (F-AP-6)
+// Possibili residui
 
 fn base_name(b: ResidueBase) -> &'static str {
     match b {
@@ -995,7 +995,7 @@ fn residue_table(app: &mut App, ui: &mut Ui, p: &Palette, programs: &Programs, r
     let (l, f) = (&app.lingue, &app.fmt);
     let st = &mut app.programs;
     let Some(cache) = st.cache.as_ref() else { return };
-    // Testata con il criterio (04 §6.8): residuo solo come possibilità, nessuna proposta.
+    // Testata con il criterio: residuo solo come possibilità, nessuna proposta.
     note(ui, l.t("programmi-residui-regola"), p.text_2);
     ui.add_space(10.0);
     let full = ui.available_rect_before_wrap();
@@ -1095,9 +1095,9 @@ fn residue_table(app: &mut App, ui: &mut Ui, p: &Palette, programs: &Programs, r
     }
 }
 
-/// Dettaglio di un possibile residuo: misure, testo onesto, stato Non sappiamo con il motivo e le sole
-/// azioni ammesse (F-AP-6): "Apri in Esplora file" e "Mostra in Esplora". Niente sezioni apribili: nel
-/// dettaglio di un residuo gli unici pulsanti sono quei due.
+/// Dettaglio di un possibile residuo: misure, testo onesto, stato Non sappiamo con il motivo e le sole azioni
+/// ammesse: "Apri in Esplora file" e "Mostra in Esplora". Niente sezioni apribili: nel dettaglio di un residuo
+/// gli unici pulsanti sono quei due.
 fn residue_detail(app: &App, ui: &mut Ui, p: &Palette, programs: &Programs, requests: &mut Vec<Request>) {
     let (l, f) = (&app.lingue, &app.fmt);
     let Some(r) = app.programs.selected_residue.and_then(|i| programs.residues.get(i)) else {
@@ -1147,7 +1147,7 @@ fn residue_detail(app: &App, ui: &mut Ui, p: &Palette, programs: &Programs, requ
     });
 }
 
-/// Fatti di un possibile residuo: il testo onesto (04 §6.8) con la sua provenienza, la base e le misure.
+/// Fatti di un possibile residuo: il testo onesto con la sua provenienza, la base e le misure.
 fn residue_facts(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, t: &Tree, r: &Residue) {
     for fa in &r.record.identity.0 {
         inspector::fact_in(ui, p, kbtext::evidence(fa.provenance), &kbtext::fact_text(l, f, fa), l, p.text);
@@ -1159,7 +1159,7 @@ fn residue_facts(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, t: &Tree, 
 }
 
 // ---------------------------------------------------------------------------------------------
-// Dialogo di disinstallazione (F-AP-5, 04 §6.7)
+// Dialogo di disinstallazione
 
 /// L'interfaccia ufficiale di `via` con valori validati; `None` per Epic e per PFN o appid non validi.
 fn official(via: &UninstallVia) -> Option<Launch> {
@@ -1200,7 +1200,7 @@ fn dialog(app: &mut App, ctx: &egui::Context, p: &Palette, programs: &Programs) 
     let your_files: Vec<&Fact> = x.record.identity.0.iter().filter(|fa| part_of(&fa.key) == Part::YourFiles).collect();
     let mut copied = dlg.copied;
     let (mut primary, mut close, mut performed) = (false, false, false);
-    // Dopo l'apertura: misura di partenza, misura in corso ed esito di "Ho eseguito la procedura" (M5).
+    // Dopo l'apertura: misura di partenza, misura in corso ed esito di "Ho eseguito la procedura".
     let (busy, status) = super::procedure_flow::program_status(app, &name);
     let width = (ctx.content_rect().width() - 64.0).min(560.0);
     let resp = egui::Modal::new(Id::new(("programmi", "dialogo"))).frame(intervention_view::dialog_frame(p)).backdrop_color(p.scrim).show(ctx, |ui| {
@@ -1224,7 +1224,7 @@ fn dialog(app: &mut App, ctx: &egui::Context, p: &Palette, programs: &Programs) 
             ui.set_width(ui.available_width());
             match dlg.outcome {
                 None => {
-                    // Prima i tuoi file e la conferma esplicita (04 §6.8), poi cosa succede.
+                    // Prima i tuoi file e la conferma esplicita, poi cosa succede.
                     for fa in &your_files {
                         widgets::banner(ui, p, &kbtext::fact_text(l, f, fa));
                     }
@@ -1284,13 +1284,13 @@ fn dialog(app: &mut App, ctx: &egui::Context, p: &Palette, programs: &Programs) 
         app.programs.dialog = None;
         return;
     }
-    // "Ho eseguito la procedura": nuova misura, riscansione della cartella del programma, registro (F-VE-2).
+    // "Ho eseguito la procedura": nuova misura, riscansione della cartella del programma, registro.
     if performed {
         super::procedure_flow::done(app, super::intervention_jobs::Origin::Program(dlg.program));
         return;
     }
     if primary && dlg.outcome.is_none() && (your_files.is_empty() || copied) {
-        // Misura di partenza prima di aprire l'interfaccia ufficiale (F-VE-1).
+        // Misura di partenza prima di aprire l'interfaccia ufficiale.
         let start = super::procedure_flow::uninstall_start(app, dlg.program);
         let outcome = launch_official(ctx, app.programs.launcher, &via);
         if outcome == Outcome::Opened

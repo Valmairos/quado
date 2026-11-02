@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! `cargo xtask helper-prova`: prova dell'helper elevato (06 §1.5), con una sola richiesta UAC per
-//! esecuzione. Agente H2 di M6. La esegue chi mantiene il progetto, che approva il prompt.
+//! `cargo xtask helper-prova`: prova dell'helper elevato, con una sola richiesta UAC per
+//! esecuzione. La esegue chi mantiene il progetto, che approva il prompt.
 //!
 //! - `helper-prova`: su `R:` (VHDX NTFS di prova). Prepara il contenuto di
 //!   `quado_testkit::helper` (cartella negata, profilo finto di un altro SID, Cestini di un SID che
@@ -544,10 +544,10 @@ fn test_r(elevated: bool) -> Result<(), String> {
     let failed = checks.iter().filter(|c| c.result.is_err()).count();
 
     let mut doc = String::new();
-    let _ = writeln!(doc, "# M6 · Prova dell'helper elevato su R: (06 §1.5)\n");
+    let _ = writeln!(doc, "# Prova dell'helper elevato su R:\n");
     let _ = writeln!(
         doc,
-        "Generato da `cargo xtask helper-prova` (agente H2): una richiesta UAC, helper `target\\release\\quado.exe --helper <pipe> <pid di xtask>` avviato con `ShellExecuteExW` e il verbo `runas`. Il contenuto di prova (`quado_testkit::helper`) si crea senza elevazione, si misura con l'oracolo come utente prima di chiudere le ACL e si toglie alla fine.\n"
+        "Generato da `cargo xtask helper-prova`: una richiesta UAC, helper `target\\release\\quado.exe --helper <pipe> <pid di xtask>` avviato con `ShellExecuteExW` e il verbo `runas`. Il contenuto di prova (`quado_testkit::helper`) si crea senza elevazione, si misura con l'oracolo come utente prima di chiudere le ACL e si toglie alla fine.\n"
     );
     doc.push_str(&conditions());
     let _ = writeln!(doc, "\n## Valori attesi (oracolo, prima della chiusura)\n\n{}", e.to_markdown());
@@ -676,10 +676,10 @@ fn test_c() -> Result<(), String> {
     let bad = checks.iter().filter(|c| c.result.is_err()).count();
 
     let mut doc = String::new();
-    let _ = writeln!(doc, "# M6 · Prova dell'helper elevato su C: (06 §1.5)\n");
+    let _ = writeln!(doc, "# Prova dell'helper elevato su C:\n");
     let _ = writeln!(
         doc,
-        "Generato da `cargo xtask helper-prova --c` (agente H2), con il consenso di chi usa il PC: una richiesta UAC; le cartelle sono quelle negate alla scansione non elevata di C:, le copie shadow si leggono davvero. Solo totali: nessun nome di cartella sotto i profili, nessun SID. Gruppi = primo componente del percorso dopo `C:\\`.\n"
+        "Generato da `cargo xtask helper-prova --c`, con il consenso di chi usa il PC: una richiesta UAC; le cartelle sono quelle negate alla scansione non elevata di C:, le copie shadow si leggono davvero. Solo totali: nessun nome di cartella sotto i profili, nessun SID. Gruppi = primo componente del percorso dopo `C:\\`.\n"
     );
     doc.push_str(&conditions());
     let _ = writeln!(

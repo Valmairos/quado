@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Misure per la baseline delle prestazioni (06 §9). Solo letture: la scansione del volume di sistema e,
+//! Misure per la baseline delle prestazioni. Solo letture: la scansione del volume di sistema e,
 //! nel giro delle schermate, le letture su richiesta della lente Download che l'utente farebbe (dati degli
 //! installatori, confronto del contenuto di un gruppo piccolo), con le parti di `--escludi` escluse prima
 //! di aprirle (`Readers::excluding`), come nella sessione di prova. Nessun intervento, nessuna simulazione.
@@ -7,7 +7,7 @@
 //! - [`avvio`]: tappe dell'avvio in millisecondi dalla creazione del processo, scritte con
 //!   `--misura-avvio` insieme ai moduli caricati e alla memoria.
 //! - [`Giro`] (`--misura-schermate FILE`): ogni schermata con i dati veri per qualche centinaio di frame,
-//!   sincronizzazione verticale spenta, puntatore e rotella sintetici come nei banchi di M2; per ogni fase
+//!   sincronizzazione verticale spenta, puntatore e rotella sintetici come nei banchi di `--banco`; per ogni fase
 //!   il tempo di preparazione (dal comando alla schermata pronta) e i frame di entrata e a regime.
 //! - [`Riposo`] (`--misura-riposo FILE`): l'app ferma, con la sincronizzazione verticale e senza ridisegni
 //!   forzati: frame disegnati, CPU e memoria del processo, schermata per schermata.
@@ -634,7 +634,7 @@ impl Giro {
         if self.finished {
             return;
         }
-        // Scansione: nessun ridisegno forzato, l'app ridisegna ogni 100 ms (F-SC-4).
+        // Scansione: nessun ridisegno forzato, l'app ridisegna ogni 100 ms.
         if !self.scan_seen {
             if app.job.is_some() {
                 return;

@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! Impostazioni nella variante A: indice delle sezioni a sinistra, righe raggruppate al centro, anteprima
 //! dal vivo a destra. Sezioni: Aspetto (tema, accento, colori dei dati, dimensione del testo, densità,
-//! animazioni), Esplora (vista iniziale, colonne, barra laterale), Lingua (05 D13), Unità di misura
-//! (F-GE-3), Dati e privacy (05 D8, F-AC-6: i file salvati, con la dimensione, e la cancellazione del
-//! registro degli interventi con una conferma; la cartella dei dati di Rilievo, se c'è ancora, con la
-//! dimensione e la cancellazione con una conferma), Informazioni (marchio, versione, grafica, cartella).
+//! animazioni), Esplora (vista iniziale, colonne, barra laterale), Lingua, Unità di misura, Dati e privacy
+//! (i file salvati, con la dimensione, e la cancellazione del registro degli interventi con una conferma; la
+//! cartella dei dati di Rilievo, se c'è ancora, con la dimensione e la cancellazione con una conferma),
+//! Informazioni (marchio, versione, grafica, cartella).
 //!
 //! Ogni scelta vale subito e si salva in `%APPDATA%\Quado\impostazioni.txt` (`App::save_settings`).
 
@@ -74,7 +74,7 @@ fn page_id() -> Id {
     Id::new("quado_impostazioni_pagina")
 }
 
-/// Un file (o una cartella) che Quado salva in `%APPDATA%\Quado` (05 D8).
+/// Un file (o una cartella) che Quado salva in `%APPDATA%\Quado`.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 enum DataFile {
     Settings,
@@ -247,7 +247,7 @@ pub fn show(app: &mut App, ui: &mut Ui, p: &Palette) {
     let mut s = app.settings.clone();
     let mut page: PageState = ui.ctx().data(|d| d.get_temp(page_id())).unwrap_or_default();
     let full = ui.max_rect();
-    // Colonne visibili secondo la larghezza (04 §3, ordine di rinuncia): prima l'indice, poi l'anteprima.
+    // Colonne visibili secondo la larghezza, in quest'ordine di rinuncia: prima l'indice, poi l'anteprima.
     let show_index = full.width() >= 1180.0;
     let show_preview = full.width() >= 860.0;
     let side = |on: bool, w: f32| if on { w + GAP } else { 0.0 };
@@ -665,7 +665,7 @@ fn preview(ui: &mut Ui, app: &App, s: &settings::Settings) {
 /// Applica le scelte del frame: impostazioni salvate, lingua, file delle lingue, registro, cartella di
 /// Rilievo.
 fn apply(app: &mut App, s: settings::Settings, ch: Changes) {
-    // Cancellazione del registro degli interventi, dopo la conferma (F-AC-6): il file non c'è più e la vista
+    // Cancellazione del registro degli interventi, dopo la conferma: il file non c'è più e la vista
     // Interventi resta vuota. Impostazioni e lingue restano.
     if ch.privacy.journal && let Some(dir) = app.env.data_dir.clone() {
         match journal::delete(&dir) {
@@ -744,7 +744,7 @@ mod tests {
         for tag in ["it", "en"] {
             let text = embedded(tag).expect("catalogo");
             assert!(!text.contains(&format!("privacy-file-{}", "log")), "{tag}");
-            // Il riquadro di Windows non si cita alla lettera (revisione dei testi, R15): vale con e senza firma.
+            // Il riquadro di Windows non si cita alla lettera: il testo vale con e senza firma.
             assert!(!text.contains("«Autore sconosciuto»") && !text.contains("\"Unknown publisher\""), "{tag}");
         }
         let _ = std::fs::remove_dir_all(&dir);

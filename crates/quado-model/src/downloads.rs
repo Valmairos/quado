@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Lente Download (03 F-DL, 05 D6): famiglie secondo l'estensione, suffisso "(N)" come solo filtro,
-//! file della stessa dimensione da confrontare, archivi con una cartella omonima accanto, download
-//! incompleti. Tutto dal modello della scansione: costruire la lente non legge il contenuto di nessun
-//! file (F-DL-1). Le letture su richiesta (hash, directory centrale degli zip, Restart Manager) le fa
-//! chi chiama, e arrivano qui come valori di questo modulo.
+//! Lente Download: famiglie secondo l'estensione, suffisso "(N)" come solo filtro, file della stessa
+//! dimensione da confrontare, archivi con una cartella omonima accanto, download incompleti. Tutto dal
+//! modello della scansione: costruire la lente non legge il contenuto di nessun file. Le letture su
+//! richiesta (hash, directory centrale degli zip, Restart Manager) le fa chi chiama, e arrivano qui come
+//! valori di questo modulo.
 //!
-//! I tipi marcati "interfaccia M4" sono condivisi tra i crate: non si cambiano senza accordo.
+//! I tipi che dicono chi li produce sono condivisi tra i crate: cambiarli vuol dire cambiare anche il
+//! crate che li produce.
 
 use std::collections::HashMap;
 
@@ -13,8 +14,8 @@ use crate::kind::Family;
 use crate::names::Name;
 use crate::tree::{Flags, NONE, Tree};
 
-/// Voce della directory centrale di uno zip (F-DL-5): nome e dimensione, mai il contenuto.
-/// Interfaccia M4: la produce `quado_scan_win::zip`, la usa il confronto con la cartella.
+/// Voce della directory centrale di uno zip: nome e dimensione, mai il contenuto.
+/// La produce `quado_scan_win::zip`, la usa il confronto con la cartella.
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub struct ArchiveEntry {
     /// Percorso dentro l'archivio, con `/` come separatore, così come è scritto nell'archivio.
@@ -25,8 +26,7 @@ pub struct ArchiveEntry {
     pub dir: bool,
 }
 
-/// Uso di un file secondo Restart Manager (F-DL-6). Interfaccia M4: la produce l'interfaccia da
-/// `quado_actions::restart`.
+/// Uso di un file secondo Restart Manager. La produce l'interfaccia da `quado_actions::restart`.
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum FileUse {
     /// Nessun processo registrato lo usa.
@@ -37,8 +37,8 @@ pub enum FileUse {
     Unknown(u32),
 }
 
-/// Impronta del contenuto di un file letta su richiesta (F-DL-4). Interfaccia M4: la produce
-/// l'interfaccia da `quado_scan_win::content`.
+/// Impronta del contenuto di un file letta su richiesta. La produce l'interfaccia da
+/// `quado_scan_win::content`.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub struct Hashed {
     pub node: u32,
@@ -53,7 +53,7 @@ pub struct Hashed {
 // ---------------------------------------------------------------------------------------------
 // Famiglie
 
-/// Famiglia della lente (F-DL-1): le sei famiglie mostrate più "altro". Il tipo viene solo dal nome,
+/// Famiglia della lente: le sei famiglie mostrate più "altro". Il tipo viene solo dal nome,
 /// quindi l'interfaccia lo dichiara "secondo l'estensione"; i nomi stanno nei file di lingua
 /// (`lente-famiglia-<codice>`).
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord)]
@@ -65,7 +65,7 @@ pub enum LensFamily {
     Media,
     /// Documenti e immagini.
     DocsImages,
-    /// Download incompleti: solo `.crdownload` e `.part` (F-DL-6).
+    /// Download incompleti: solo `.crdownload` e `.part`.
     Incomplete,
     /// Tutto il resto: non ha un riquadro, ma entra nei totali.
     Other,
@@ -75,7 +75,7 @@ pub enum LensFamily {
 const INCOMPLETE: [&[u8]; 2] = [b"crdownload", b"part"];
 
 impl LensFamily {
-    /// Le sei famiglie dei riquadri, nell'ordine di 04 §6.6.
+    /// Le sei famiglie dei riquadri, nell'ordine in cui compaiono nella vista.
     pub const SHOWN: [Self; 6] = [Self::Installers, Self::Archives, Self::DiskImages, Self::Media, Self::DocsImages, Self::Incomplete];
 
     /// Tutte, nell'ordine di [`Lens::totals`].
@@ -103,7 +103,7 @@ impl LensFamily {
         self as usize
     }
 
-    /// Famiglia di un nome di file. Prima i download incompleti (solo le due estensioni di F-DL-6), poi la
+    /// Famiglia di un nome di file. Prima i download incompleti (solo `.crdownload` e `.part`), poi la
     /// famiglia di [`Family::of_name`]. Senza allocazioni per i nomi ASCII, come `Family::of_name`.
     pub fn of_name(name: Name<'_>) -> Self {
         if is_incomplete(name) {
@@ -167,7 +167,7 @@ fn extension_start(b: &[u8]) -> usize {
 }
 
 /// Suffisso " (N)" che Chromium aggiunge prima dell'estensione quando il nome esiste già
-/// (`setup (1).exe`, `foto (12).jpg`). Solo un filtro (F-DL-3): non raggruppa, non è una prova, non
+/// (`setup (1).exe`, `foto (12).jpg`). Solo un filtro: non raggruppa, non è una prova, non
 /// cambia lo stato.
 ///
 /// Casi decisi:
@@ -217,7 +217,8 @@ pub struct LensItem {
     pub modified: i64,
     /// Suffisso " (N)" del nome ([`copy_suffix`]): solo per il filtro.
     pub copy_suffix: Option<u32>,
-    /// Segnaposto cloud secondo la scansione (`Flags::CLOUD`): il contenuto non si legge mai (05 D6).
+    /// Segnaposto cloud secondo la scansione (`Flags::CLOUD`): il contenuto non si legge mai, perché
+    /// leggerlo scaricherebbe il file.
     pub placeholder: bool,
     /// Nome secondario di un hard link (`Flags::SECONDARY_LINK`): gli stessi dati di un altro nome, non
     /// una copia.
@@ -233,7 +234,7 @@ pub struct FamilyTotal {
     pub alloc: u64,
 }
 
-/// La lente su una cartella (F-DL-1).
+/// La lente su una cartella.
 ///
 /// - `items`: tutti i file del sottoalbero, in ordine di nodo, compresi i nomi secondari degli hard link
 ///   (sono nomi che si vedono nella cartella).
@@ -324,7 +325,7 @@ impl Lens {
 }
 
 // ---------------------------------------------------------------------------------------------
-// File della stessa dimensione e copie identiche (F-DL-4)
+// File della stessa dimensione e copie identiche
 
 /// File della stessa dimensione logica: i soli che "Confronta il contenuto" legge.
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
@@ -385,7 +386,7 @@ pub struct IdenticalGroup {
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum GroupComparison {
     /// Non tutti i file del gruppo sono stati letti (confronto non chiesto, o annullato a metà): `read`
-    /// file letti. Nessun risultato parziale (06 §3.2).
+    /// file letti. Nessun risultato parziale.
     NotRead { read: usize },
     /// Tutti letti, ma `changed` file hanno una dimensione diversa da quella della scansione: le
     /// impronte non dicono niente sul gruppo finché il modello non si aggiorna.
@@ -446,10 +447,10 @@ pub fn compare_groups(candidates: &[SizeGroup], hashed: &[Hashed]) -> Vec<GroupC
     candidates.iter().map(|g| compare_one(g, &read)).collect()
 }
 
-/// Copie identiche dopo "Confronta il contenuto" (F-DL-4). Un gruppo della stessa dimensione conta solo
+/// Copie identiche dopo "Confronta il contenuto". Un gruppo della stessa dimensione conta solo
 /// se tutti i suoi file sono stati letti e hanno ancora quella dimensione; dentro, gruppi per impronta
 /// con almeno due file. Il booleano dice se tutti i candidati sono stati letti: con un annullamento a
-/// metà è falso, e i gruppi restituiti sono solo quelli letti per intero (06 §3.2). Ordine: byte
+/// metà è falso, e i gruppi restituiti sono solo quelli letti per intero. Ordine: byte
 /// potenzialmente recuperabili decrescenti.
 pub fn identical_groups(candidates: &[SizeGroup], hashed: &[Hashed]) -> (Vec<IdenticalGroup>, bool) {
     let mut out = Vec::new();
@@ -471,7 +472,7 @@ pub fn with_keep(group: &IdenticalGroup, node: u32) -> Option<IdenticalGroup> {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Archivi zip con la cartella estratta (F-DL-5)
+// Archivi zip con la cartella estratta
 
 /// Uno zip con una cartella sorella con lo stesso nome senza `.zip`.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
@@ -516,8 +517,8 @@ fn zip_stem(name: Name<'_>) -> Option<String> {
 }
 
 /// Archivi `.zip` della lente con una cartella sorella che ha lo stesso nome senza estensione, senza
-/// distinzione di maiuscole. Solo zip: gli altri archivi restano nella loro famiglia, senza confronto
-/// (F-DL-5). Le cartelle staccate e i reparse non seguiti non contano. In ordine di archivio.
+/// distinzione di maiuscole. Solo zip: gli altri archivi restano nella loro famiglia, senza confronto.
+/// Le cartelle staccate e i reparse non seguiti non contano. In ordine di archivio.
 pub fn archive_pairs(tree: &Tree, lens: &Lens) -> Vec<ArchivePair> {
     let mut by_parent: HashMap<u32, Vec<(u32, String)>> = HashMap::new();
     for it in lens.items.iter().filter(|i| i.family == LensFamily::Archives && (i.node as usize) < tree.len()) {
@@ -639,7 +640,7 @@ impl ChildIndex<'_> {
     }
 }
 
-/// Confronta l'indice di uno zip con la cartella estratta `folder` (F-DL-5): M voci di file, N presenti
+/// Confronta l'indice di uno zip con la cartella estratta `folder`: M voci di file, N presenti
 /// allo stesso percorso relativo con la stessa dimensione logica. Percorsi senza distinzione di
 /// maiuscole, `/` e `\` equivalenti. Ogni voce costa una ricerca per componente in un indice dei figli.
 ///

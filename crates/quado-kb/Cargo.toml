@@ -1,6 +1,6 @@
 [package]
 name = "quado-kb"
-description = "Base delle regole di Quado: regole TOML, motore di classificazione, estrattori in sola lettura (05 D6, D10)"
+description = "Base delle regole di Quado: regole TOML, motore di classificazione, estrattori in sola lettura"
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
@@ -8,7 +8,7 @@ publish.workspace = true
 license.workspace = true
 build = "build.rs"
 
-# `unsafe` solo nel modulo degli estrattori Windows (`win`), con l'invariante scritto (05 D10).
+# `unsafe` solo nel modulo degli estrattori Windows (`win`), con l'invariante scritto.
 [lints.rust]
 unsafe_code = "deny"
 unsafe_op_in_unsafe_fn = "deny"

@@ -1,4 +1,4 @@
-# Cache di npm (decisioni §3): npm cache verify; clean --force come alternativa, con le conseguenze.
+# Cache di npm: npm cache verify; clean --force come alternativa, con le conseguenze.
 id = "npm-cache"
 priorita = 1
 riconoscitore = "npm-cache"

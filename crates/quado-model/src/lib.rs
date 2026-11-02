@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Modello di Quado (05 D5, D10): indipendente dalla piattaforma, senza codice `unsafe`.
+//! Modello di Quado: indipendente dalla piattaforma, senza codice `unsafe`.
 
 pub mod balance;
 pub mod downloads;

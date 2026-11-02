@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Scorrimento per indice di riga (05 D2).
+//! Scorrimento per indice di riga.
 //!
 //! `ScrollArea` di egui tiene l'offset in pixel come `f32`: oltre circa 2 milioni di righe la
 //! precisione non basta più e lo scorrimento salta (issue egui #1391). Qui la posizione è la prima
@@ -205,7 +205,7 @@ mod tests {
 
     #[test]
     fn fractional_scroll_is_exact_far_down() {
-        // Con un offset in pixel f32 questa differenza andrebbe persa (05 D2).
+        // Con un offset in pixel f32 questa differenza andrebbe persa.
         let mut s = IndexScroll { top: 3_400_000.0, grab: None };
         s.scroll_rows(0.25, ROWS, 40.0);
         assert_eq!(s.top, 3_400_000.25);

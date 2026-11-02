@@ -1,4 +1,4 @@
-# File temporanei di Windows (decisioni §3): solo Impostazioni › File temporanei, mai a mano.
+# File temporanei di Windows: solo Impostazioni › File temporanei, mai a mano.
 id = "file-temporanei"
 priorita = 1
 riconoscitore = "percorso"

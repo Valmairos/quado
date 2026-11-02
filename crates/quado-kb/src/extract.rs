@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Estrattori in sola lettura (05 D6): voci di disinstallazione, pacchetti MSIX, Steam, Epic, CapCut,
-//! UserAssist e configurazione (F-SY-3). Leggono da sorgenti astratte (registro, file), così i test
+//! Estrattori in sola lettura: voci di disinstallazione, pacchetti MSIX, Steam, Epic, CapCut,
+//! UserAssist e configurazione di Windows. Leggono da sorgenti astratte (registro, file), così i test
 //! usano fixture nel formato vero. Un formato inatteso produce "estrattore non riuscito" con il
-//! motivo, mai un dato ricostruito (06 §2.3).
+//! motivo, mai un dato ricostruito.
 
 use crate::reg::{RegValue, RegistrySource, Root};
 use crate::vdf::{self, Vdf};
@@ -81,7 +81,7 @@ pub enum ExtractError {
     /// Errore di Windows nella lettura (5 = accesso negato).
     Io(u32),
     Format(FormatIssue),
-    /// Segnaposto cloud: il contenuto non si legge, per non scaricarlo (05 D6).
+    /// Segnaposto cloud: il contenuto non si legge, per non scaricarlo.
     CloudPlaceholder,
 }
 
@@ -143,14 +143,14 @@ pub struct UninstallEntry {
     pub uninstall_string: Option<String>,
     pub display_icon: Option<String>,
     pub install_date: Option<String>,
-    /// `EstimatedSize`, in KB, dichiarato (mai sommato al misurato, F-AP-3).
+    /// `EstimatedSize`, in KB, dichiarato (mai sommato al misurato).
     pub estimated_kb: Option<u32>,
     pub system_component: bool,
 }
 
 impl UninstallEntry {
     /// Cartella indicata da `UninstallString` o `DisplayIcon`: solo un indizio di percorso, mai
-    /// eseguito (F-AP-2). `None` per `MsiExec` e per i percorsi relativi.
+    /// eseguito. `None` per `MsiExec` e per i percorsi relativi.
     pub fn path_hint(&self) -> Option<String> {
         self.hint_exe().and_then(|p| p.rsplit_once('\\').map(|(d, _)| d.to_owned()))
     }
@@ -226,7 +226,7 @@ fn read_entry(hive: Hive, key: &str, values: &[(String, RegValue)]) -> Result<Op
     }))
 }
 
-/// Voci con `DisplayName` delle tre chiavi di disinstallazione (F-AP-1).
+/// Voci con `DisplayName` delle tre chiavi di disinstallazione.
 pub fn uninstall(reg: &dyn RegistrySource) -> Result<Uninstall, ExtractError> {
     let mut out = Uninstall::default();
     let mut read_any = false;
@@ -309,7 +309,7 @@ pub struct SteamApp {
     pub installdir: String,
     /// Cartella della libreria (`...\Steam`, che contiene `steamapps`).
     pub library: String,
-    /// `SizeOnDisk`: dimensione logica dichiarata, può essere vecchia (F-AP-3).
+    /// `SizeOnDisk`: dimensione logica dichiarata, può essere vecchia.
     pub size_on_disk: Option<u64>,
     /// `LastPlayed` del manifest, secondi Unix.
     pub last_played: Option<i64>,
@@ -606,7 +606,7 @@ pub struct UserAssistEntry {
 
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum UserAssist {
-    /// Tracciamento non attivo: nessun valore si usa, anche se la chiave contiene dati vecchi (F-AP-4).
+    /// Tracciamento non attivo: nessun valore si usa, anche se la chiave contiene dati vecchi.
     NotTracked(TrackProgs),
     Entries(Vec<UserAssistEntry>),
 }
@@ -651,7 +651,7 @@ pub fn userassist(reg: &dyn RegistrySource) -> Result<UserAssist, ExtractError> 
 }
 
 // ---------------------------------------------------------------------------------------------
-// Configurazione (F-SY-3)
+// Configurazione
 
 /// Sensore memoria (`StorageSense\Parameters\StoragePolicy`).
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]

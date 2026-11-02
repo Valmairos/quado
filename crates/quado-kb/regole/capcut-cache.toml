@@ -1,4 +1,4 @@
-# Cache di CapCut: la svuota CapCut dalle sue impostazioni (04 §6.6).
+# Cache di CapCut: la svuota CapCut dalle sue impostazioni.
 id = "capcut-cache"
 priorita = 1
 riconoscitore = "percorso"

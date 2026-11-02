@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Simulazione e piano confermato (03 F-AC-2, F-AC-3, F-AC-4; 05 D7, V6).
+//! Simulazione e piano confermato.
 //!
 //! - [`Simulazione`] la produce solo `simulate::simulate`: i campi sono privati, si leggono con i metodi.
 //! - [`PianoConfermato`] lo costruisce solo [`conferma`], dalla simulazione e dalla scelta dell'utente
 //!   nel dialogo. I campi sono privati e non esiste un altro costruttore; `execute::esegui` lo consuma,
 //!   quindi un piano vale una volta.
-//! - Esc, Annulla e la X chiudono il dialogo senza chiamare [`conferma`] (F-AC-3).
+//! - Esc, Annulla e la X chiudono il dialogo senza chiamare [`conferma`].
 //!
-//! I test di compilazione sotto (06 §5.1) riportano il codice d'errore atteso, controllato a mano il
+//! I test di compilazione sotto riportano il codice d'errore atteso, controllato a mano il
 //! 14/10/2026 come in `launch.rs`: rustdoc stabile non lo verifica.
 //!
 //! ```compile_fail,E0451
@@ -89,26 +89,25 @@ use crate::probe::VolumeBin;
 use crate::restart::{ProcessUse, RmError};
 use crate::simulate::{CHECK_CAPACITY, CHECK_REFERENCES, CHECK_RESTART_MANAGER, FixedReason};
 
-/// Perché un elemento non si può spostare: esito negativo di un controllo automatico (05 D7).
+/// Perché un elemento non si può spostare: esito negativo di un controllo automatico.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Block {
-    /// Elemento protetto (F-AC-4), senza l'eccezione via regola o con un suo controllo non soddisfatto.
+    /// Elemento protetto, senza l'eccezione via regola o con un suo controllo non soddisfatto.
     Protected(ProtectedKind),
-    /// Il volume non ha Cestino (rimovibile, rete) (F-AC-1).
+    /// Il volume non ha Cestino (rimovibile, rete).
     NoRecycleBin,
-    /// `NukeOnDelete` = 1 (F-AC-1, F-AC-7).
+    /// `NukeOnDelete` = 1: Windows eliminerebbe senza passare dal Cestino.
     NukeOnDelete,
-    /// `MaxCapacity` non registrata: la capacità non si conosce e non si sposta niente (05 D7, stima
-    /// più prudente).
+    /// `MaxCapacity` non registrata: la capacità non si conosce e non si sposta niente (scelta prudente).
     CapacityUnknown,
     /// Dimensione logica dell'elemento oltre la capacità del Cestino: Windows lo eliminerebbe per sempre
-    /// (F-AC-5, 05 "Aggiornamento dopo M1").
+    /// (Windows conta la dimensione logica, `docs/m1/cestino-verifiche.md`).
     LargerThanBin { logical: u64, capacity: u64 },
-    /// Processi che usano l'elemento (F-AC-8), con il nome dato da Restart Manager.
+    /// Processi che usano l'elemento, con il nome dato da Restart Manager.
     InUse(Vec<ProcessUse>),
     /// Restart Manager non ha risposto: l'uso non si conosce.
     RestartManager(RmError),
-    /// Riferimenti che puntano all'elemento (F-AC-9).
+    /// Riferimenti che puntano all'elemento.
     Referenced(Vec<Reference>),
     /// Percorso dell'elemento di 260 caratteri UTF-16 o più (`MAX_PATH`): la shell non lo sposta nel
     /// Cestino e chiede di eliminarlo per sempre. Blocca anche se esiste un nome breve 8.3 con cui
@@ -125,12 +124,12 @@ pub enum Block {
     OtherVolume,
 }
 
-/// Controllo manuale da spuntare nella conferma (F-AC-2).
+/// Controllo manuale da spuntare nella conferma.
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum ManualCheck {
     /// L'elemento sta in una cartella di sincronizzazione: spostarlo nel Cestino lo elimina anche nel
-    /// cloud e sugli altri dispositivi (R10). I dati sono il nome del programma e come Quado ha riconosciuto
-    /// la cartella (`crate::sync`), che decide il testo.
+    /// cloud e sugli altri dispositivi. I dati sono il nome del programma e come Quado ha riconosciuto la
+    /// cartella (`crate::sync`), che decide il testo.
     Synced { provider: String, kind: crate::sync::SyncKind },
 }
 
@@ -148,7 +147,7 @@ pub struct SimItem {
     /// File e cartelle letti nell'elemento.
     pub files: u64,
     pub dirs: u64,
-    /// Dimensione logica totale (capacità del Cestino: Windows conta la logica, misura di M1).
+    /// Dimensione logica totale (capacità del Cestino: Windows conta la logica, `docs/m1/cestino-verifiche.md`).
     pub logical: u64,
     /// Byte allocati dell'elemento, ogni file contato una volta (senza dedup tra elementi).
     pub alloc: u64,
@@ -156,7 +155,7 @@ pub struct SimItem {
     pub denied_dirs: u64,
 }
 
-/// Stima della selezione (03 §6.3), con i fatti che la spiegano.
+/// Stima della selezione, con i fatti che la spiegano.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct SelectionEstimate {
     /// Esatta, intervallo (nomi non conoscibili per cartelle negate) o non stimabile.
@@ -169,7 +168,7 @@ pub struct SelectionEstimate {
     pub logical: u64,
 }
 
-/// Capacità del Cestino contro contenuto attuale più selezione (F-AC-7).
+/// Capacità del Cestino contro contenuto attuale più selezione.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum CapacityCheck {
     /// Contenuto più selezione entro la capacità.
@@ -185,7 +184,7 @@ pub enum CapacityCheck {
 pub(crate) struct ItemExtra {
     /// Allocate dei file con un solo nome (o senza identità).
     pub(crate) plain: u64,
-    /// Fotografia per il ricontrollo (RS6).
+    /// Fotografia per il ricontrollo subito prima dello spostamento.
     pub(crate) snapshot: Snapshot,
     /// File registrati con Restart Manager in simulazione: il ricontrollo delle cartelle usa gli stessi.
     pub(crate) sample: Vec<String>,
@@ -222,7 +221,7 @@ impl Simulazione {
         &self.volume
     }
 
-    /// Giorni dopo cui Sensore memoria svuota il Cestino, se lo fa (la conferma lo dice, F-AC-7).
+    /// Giorni dopo cui Sensore memoria svuota il Cestino, se lo fa (la conferma lo dice).
     pub fn storage_sense_days(&self) -> Option<u32> {
         self.storage_sense_days
     }
@@ -243,9 +242,8 @@ impl Simulazione {
 
     /// Selezione proposta: gli elementi non fissi e senza blocchi. I controlli manuali non tolgono un
     /// elemento dalla selezione: si spuntano. Per Da verificare, e per Decidi tu con più elementi, le caselle
-    /// partono vuote: la scelta la fa l'utente, elemento per elemento o con «Seleziona tutti»
-    /// (valutazione dei consigli, 01/11/2026). Con un solo elemento il clic che ha aperto l'anteprima era già
-    /// la scelta.
+    /// partono vuote: la scelta la fa l'utente, elemento per elemento o con «Seleziona tutti».
+    /// Con un solo elemento il clic che ha aperto l'anteprima era già la scelta.
     pub fn default_selection(&self) -> Vec<bool> {
         let proposed = self.items.iter().filter(|it| it.fixed.is_none()).count();
         let ask = matches!(self.record.state, State::ToVerify(_)) || (self.record.state == State::YouDecide && proposed > 1);
@@ -272,7 +270,8 @@ impl Simulazione {
     }
 
     /// Capacità del Cestino con questa selezione: contenuto attuale più la dimensione logica della
-    /// selezione (Windows conta la logica e non le cartelle orfane, misura di M1, `docs/m1/cestino-verifiche.md`).
+    /// selezione (Windows conta la logica e non le cartelle orfane, provato su un VHDX di prova,
+    /// `docs/m1/cestino-verifiche.md`).
     pub fn capacity(&self, selected: &[bool]) -> CapacityCheck {
         let (Some(capacity), Some(content)) = (self.volume.capacity, self.volume.content) else {
             return CapacityCheck::Unknown;
@@ -344,7 +343,7 @@ pub enum Rifiuto {
     Capacity(CapacityCheck),
 }
 
-/// Un elemento del piano, con la fotografia per il ricontrollo subito prima dello spostamento (RS6).
+/// Un elemento del piano, con la fotografia per il ricontrollo subito prima dello spostamento.
 #[derive(Debug)]
 pub struct PlanItem {
     pub(crate) path: String,
@@ -414,7 +413,7 @@ impl PianoConfermato {
 }
 
 /// Il record ammette uno spostamento nel Cestino: azione Cestino, stato Gestibile, Da verificare o
-/// Decidi tu, regola non scaduta (03 §6.1 regola 8).
+/// Decidi tu, regola non scaduta.
 fn admits_recycle(r: &Record) -> bool {
     let state = matches!(r.state, State::Manageable(_) | State::ToVerify(_) | State::YouDecide);
     r.action == Action::Recycle && state && r.expiry != Expiry::Expired
@@ -459,7 +458,7 @@ pub fn check(sim: &Simulazione, scelta: &Scelta) -> Vec<Rifiuto> {
 }
 
 /// L'unico costruttore di [`PianoConfermato`]: lo chiama il pulsante principale del dialogo di conferma.
-/// Respinge elementi protetti (salvo l'eccezione di F-AC-4 con tutti i controlli soddisfatti), elementi
+/// Respinge elementi protetti (salvo l'eccezione via regola con tutti i controlli soddisfatti), elementi
 /// con un controllo automatico fallito, controlli manuali non spuntati e capacità superata.
 pub fn conferma(sim: &Simulazione, scelta: &Scelta) -> Result<PianoConfermato, Vec<Rifiuto>> {
     let reasons = check(sim, scelta);

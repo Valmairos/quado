@@ -4,22 +4,22 @@
 //!
 //! ```text
 //! quado [--renderer auto|warp|gl]
-//! quado --misura-avvio FILE        primo frame interattivo (06 §9), scritto in FILE, poi esce
-//! quado --banco TIPO [--out DIR]   banco di misura di M2 (tabella, figli, mappa, scansione); uscita
+//! quado --misura-avvio FILE        primo frame interattivo, scritto in FILE, poi esce
+//! quado --banco TIPO [--out DIR]   banco di misura (tabella, figli, mappa, scansione); uscita
 //!                                   predefinita `target/misure`
 //! quado --banco installatori|hash --cartella DIR [--escludi "a;b"] [--giri N] [--thread N] [--out DIR]
-//!                                   banco della lente Download (M4): frame durante le letture
+//!                                   banco della lente Download: frame durante le letture
 //! quado --immagini DIR             scansiona il volume di sistema e salva le schermate
-//! quado --diagnostica-moduli       moduli caricati (prova delle DLL, 07 §3 riga 5)
+//! quado --diagnostica-moduli       moduli caricati (prova della DLL esca)
 //! quado --misura-schermate FILE    giro delle schermate su C: con i tempi di frame (baseline delle prestazioni)
 //! quado --misura-riposo FILE [--secondi N]
 //!                                   app ferma dopo la scansione di C:: frame, CPU e memoria
 //! quado --misura-wgpu              costo di istanza, elenco degli adattatori e dispositivo di wgpu
 //! quado ... --wgpu-limiti egui|app|N --wgpu-memoria prestazioni|uso
 //!                                   dispositivo wgpu diverso da quello dell'app, per le misure
-//! quado --sessione-prova           sessione guidata automatica per la prova senza rete (06 §10):
+//! quado --sessione-prova           sessione guidata automatica per la prova senza rete:
 //!                                   passi su standard output, nessun file scritto fuori da %APPDATA%\Quado
-//! quado --helper PIPE PID          helper elevato (05 D3): lo avvia Quado stesso con UAC
+//! quado --helper PIPE PID          helper elevato: lo avvia Quado stesso con UAC
 //! ```
 //!
 //! Con `--sessione-prova`, `--misura-schermate` e `--misura-riposo`, `--escludi "a;b"` nomina parti di
@@ -30,7 +30,7 @@
 //! installa`, profilo `dist`, release) non le ha: scrive solo in `%APPDATA%\Quado` e risponde
 //! «argomento sconosciuto» a ogni altra opzione.
 //!
-//! Catena del renderer (05 D2): wgpu su DX12 con la scheda video che guida il monitor principale
+//! Catena del renderer: wgpu su DX12 con la scheda video che guida il monitor principale
 //! (su un portatile con due schede video, disegnare con l'altra costava 7-9 ms di copia per frame);
 //! `warp` forza l'adattatore software; se wgpu non parte, OpenGL (glow).
 
@@ -375,7 +375,7 @@ impl eframe::App for Shell {
             print!("{}", misure::avvio::report());
             ui.ctx().send_viewport_cmd(egui::ViewportCommand::Close);
         }
-        // La finestra di Quado è la proprietaria dei dialoghi di Windows degli interventi (M5).
+        // La finestra di Quado è la proprietaria dei dialoghi di Windows degli interventi.
         if self.app.env.owner.is_none()
             && let Ok(h) = raw_window_handle::HasWindowHandle::window_handle(frame)
             && let raw_window_handle::RawWindowHandle::Win32(w) = h.as_raw()
@@ -534,11 +534,12 @@ fn creator(args: &Args, started: Rc<Cell<bool>>, renderer: Renderer, early: Opti
 }
 
 fn main() -> eframe::Result {
-    // Prima chiamata (06 §11). L'esito lo stampa solo `--diagnostica-moduli` (feature `misure`).
+    // Prima chiamata, perché da qui le DLL caricate a runtime si cercano solo in System32. L'esito lo stampa
+    // solo `--diagnostica-moduli` (feature `misure`).
     let hardened = process::harden_dll_search();
     #[cfg(not(feature = "misure"))]
     let _ = hardened;
-    // Modalità helper (05 D3): niente finestra, niente registro su stderr; il codice di uscita dice l'esito.
+    // Modalità helper: niente finestra, niente registro su stderr; il codice di uscita dice l'esito.
     let all: Vec<String> = std::env::args().collect();
     if all.get(1).is_some_and(|a| a == "--helper") {
         std::process::exit(quado_scan_win::helper::serve::run(&all[2..]));

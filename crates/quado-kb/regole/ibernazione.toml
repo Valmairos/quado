@@ -1,6 +1,6 @@
-# File di ibernazione (decisioni §3): Decidi tu, due comandi affiancati, entrambi da amministratore. Fuori dalla
-# card: è una scelta di configurazione, non una pulizia. I rischi della batteria li aggiunge il motore, solo se
-# il PC ha una batteria.
+# File di ibernazione: Decidi tu, due comandi affiancati, entrambi da amministratore. Fuori dalla card: è una
+# scelta di configurazione, non una pulizia. I rischi della batteria li aggiunge il motore, solo se il PC ha una
+# batteria.
 id = "ibernazione"
 priorita = 1
 riconoscitore = "percorso"

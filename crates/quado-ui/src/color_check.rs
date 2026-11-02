@@ -1,12 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Controlli sui colori (06 §7, 04 §6.2, RS23): contrasto WCAG e distanza tra tinte in visione normale
-//! e con la simulazione delle discromatopsie (Machado, Oliveira, Fernandes 2009, severità piena),
-//! misurata come ΔE in OKLab × 100.
+//! Controlli sui colori: contrasto WCAG e distanza tra tinte in visione normale e con la simulazione delle
+//! discromatopsie (Machado, Oliveira, Fernandes 2009, severità piena), misurata come ΔE in OKLab × 100.
 
 use egui::Color32;
 
-/// Soglia minima di ΔE OKLab × 100 tra due tinte di dati. In 04 §6.2 le coppie accettate stavano
-/// tutte sopra 3,2; quella da correggere (Windows e Non classificato, chiaro, protanopia) era a 1,8.
+/// Soglia minima di ΔE OKLab × 100 tra due tinte di dati. Le coppie giudicate distinguibili stavano tutte
+/// sopra 3,2; la coppia da correggere (Windows e Non classificato, chiaro, protanopia) era a 1,8.
 pub const MIN_DELTA_E: f64 = 3.0;
 
 fn lin(c: u8) -> f64 {
@@ -106,7 +105,7 @@ mod tests {
     fn known_contrasts() {
         assert!((contrast(Color32::BLACK, Color32::WHITE) - 21.0).abs() < 1e-9);
         assert!((contrast(Color32::WHITE, Color32::WHITE) - 1.0).abs() < 1e-9);
-        // Valori di 04 §6.2: Programmi (chiaro) con l'etichetta bianca, 5,81:1.
+        // Programmi (chiaro) con l'etichetta bianca: 5,81:1.
         let app = Color32::from_rgb(0x34, 0x60, 0xc4);
         assert!((contrast(app, Color32::WHITE) - 5.81).abs() < 0.01);
     }
@@ -125,8 +124,8 @@ mod tests {
     }
 
     #[test]
-    fn the_light_grey_problem_of_04_is_reproduced() {
-        // 04 §6.2: Windows #1A8F7C e Non classificato #8F8B84 in chiaro, protanopia, ΔE 1,8.
+    fn the_light_grey_problem_is_reproduced() {
+        // La coppia troppo vicina: Windows #1A8F7C e Non classificato #8F8B84 in chiaro, protanopia, ΔE 1,8.
         let win = Color32::from_rgb(0x1a, 0x8f, 0x7c);
         let grey = Color32::from_rgb(0x8f, 0x8b, 0x84);
         let d = delta_e(win, grey, Vision::Protanopia);

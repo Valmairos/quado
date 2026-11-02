@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! `cargo xtask sessione-prova [--senza-build] [--exe EXE] [--escludi "a;b"]` (06 §10, righe "Sessione senza rete", "Dati
-//! salvati", "Zone.Identifier"): build di release, poi `quado --sessione-prova` come processo figlio e,
-//! per tutta la sessione, un campione ogni 120-200 ms di:
+//! `cargo xtask sessione-prova [--senza-build] [--exe EXE] [--escludi "a;b"]`: build di release, poi
+//! `quado --sessione-prova` come processo figlio e, per tutta la sessione, un campione ogni 120-200 ms di:
 //!
 //! - connessioni TCP e UDP del processo, IPv4 e IPv6 (`GetExtendedTcpTable`, `GetExtendedUdpTable` con il
 //!   pid proprietario): attese zero;
@@ -903,10 +902,10 @@ impl Report {
         let mut out = String::new();
         let mut failures: Vec<String> = Vec::new();
         let present = !online(&self.net_before).is_empty();
-        let _ = writeln!(out, "# M6 · Sessione guidata con la rete {}\n", if present { "presente" } else { "assente" });
+        let _ = writeln!(out, "# Sessione guidata con la rete {}\n", if present { "presente" } else { "assente" });
         let _ = writeln!(
             out,
-            "Generato da `cargo xtask sessione-prova` (06 §10, righe \"Sessione senza rete\", \"Dati salvati\", \"Zone.Identifier\"). Quado guida sé stesso (`quado --sessione-prova`, `crates/quado/src/session.rs`); xtask ne campiona connessioni e handle, in media ogni {:.0} ms.\n",
+            "Generato da `cargo xtask sessione-prova`. Quado guida sé stesso (`quado --sessione-prova`, `crates/quado/src/session.rs`); xtask ne campiona connessioni e handle, in media ogni {:.0} ms.\n",
             self.duration.as_secs_f64() * 1000.0 / self.seen.samples.max(1) as f64
         );
         let _ = writeln!(out, "| Condizione | Valore |\n|---|---|");
@@ -1014,11 +1013,11 @@ impl Report {
             bad == 0,
         );
         let gfx_why: BTreeSet<&str> = write_gfx.iter().filter_map(|(_, s)| s.info.names().find_map(graphics)).collect();
-        // Limite dichiarato (06 §10, deciso in M6): le cache dei driver grafici e l'overlay che il driver
+        // Limite dichiarato: le cache dei driver grafici e l'overlay che il driver
         // carica nel processo scrivono fuori da `%APPDATA%\Quado` come in ogni programma Direct3D. Si
         // riportano tutte, con il motivo; non fanno fallire la prova.
         check(
-            "Handle in scrittura del sottosistema grafico caricato nel processo (cache dei driver, overlay: fuori dal codice di Quado, limite dichiarato in 06 §10)",
+            "Handle in scrittura del sottosistema grafico caricato nel processo (cache dei driver, overlay: fuori dal codice di Quado, limite dichiarato)",
             "solo cache e registri dei driver grafici",
             format!(
                 "{} con il nome ({}); {} senza nome all'avvio, chiusi prima del duplicato",
@@ -1119,7 +1118,7 @@ impl Report {
         let _ = writeln!(out, "- Gli handle chiusi prima del duplicato (le cartelle che la scansione apre per pochi microsecondi) si contano con il loro accesso ma senza nome: per loro i controlli sul nome (`Zone.Identifier`, copie escluse, cartella dei dati) non valgono; quelli in scrittura si riportano a parte.");
         let _ = writeln!(out, "- Il sottosistema grafico gira dentro il processo di Quado e scrive le sue cache fuori da `%APPDATA%\\Quado`: `D3DSCache.dll` (cache degli shader di Direct3D 12, di Windows), i driver delle schede video caricati da wgpu quando elenca gli adattatori (su un PC con due schede video anche quello della scheda che non disegna) e gli overlay che alcuni driver caricano nei processi Direct3D. Il controllo le riporta a parte, perché non dipendono dal codice di Quado; con il renderer OpenGL resterebbero le cache OpenGL dei driver.");
         let _ = writeln!(out, "- Si osservano solo il processo di Quado e i suoi handle: un servizio di Windows chiamato da Quado (per esempio Restart Manager o l'Utilità di pianificazione per i riferimenti) lavora nel suo processo.");
-        let _ = writeln!(out, "- La sessione non usa \"Proprietà\" né altri dialoghi della shell, che caricano estensioni di terzi (06 §10, limite dichiarato).");
+        let _ = writeln!(out, "- La sessione non usa \"Proprietà\" né altri dialoghi della shell, che caricano estensioni di terzi (limite dichiarato).");
         let _ = writeln!(out, "- La scansione di C: elenca nomi e attributi anche delle cartelle di `--escludi` (come ogni scansione del volume); nessuna lettura di contenuto le raggiunge: la sessione rifiuta quei percorsi prima di aprirli.");
         if !failures.is_empty() {
             let _ = writeln!(out, "\n## Esito\n\nNon superato:\n");

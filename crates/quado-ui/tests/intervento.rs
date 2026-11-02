@@ -1,18 +1,15 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Spostamento nel Cestino dall'interfaccia (M5, agente E1), provato con `egui_kittest`: simulazione,
-//! dialogo di conferma (04 §6.6 schermata 4), esecuzione, misure, riscansione, risultato (schermata 5),
-//! registro.
+//! Spostamento nel Cestino dall'interfaccia, provato con `egui_kittest`: simulazione, dialogo di conferma,
+//! esecuzione, misure, riscansione, risultato, registro.
 //!
-//! - 06 §5.1 e F-AC-3: Esc, Annulla, la X e il clic fuori non costruiscono il piano e il mover non riceve
-//!   chiamate.
-//! - F-AC-2: un controllo manuale non spuntato tiene disattivato il pulsante principale.
-//! - F-AC-3, 06 §5.6: il risultato separa riusciti, saltati e falliti con il motivo; esito parziale.
-//! - F-AC-8: un file in uso blocca l'elemento con il nome del processo.
-//! - F-AC-7: capacità superata, testo di 04 §6.8 e pulsante disattivato.
-//! - F-AC-6: il registro esiste solo dopo la conferma e contiene stimato e ottenuto.
-//! - F-VE-2, F-VE-3: "Svuota il Cestino…" con l'azione finta libera lo spazio e compare il confronto.
-//! - F-AC-3: il dialogo contiene i campi del record; 03 §6.1: la versione in uso di CapCut è visibile e
-//!   disattivata.
+//! - Esc, Annulla, la X e il clic fuori non costruiscono il piano e il mover non riceve chiamate.
+//! - Un controllo manuale non spuntato tiene disattivato il pulsante principale.
+//! - Il risultato separa riusciti, saltati e falliti con il motivo; esito parziale.
+//! - Un file in uso blocca l'elemento con il nome del processo.
+//! - Capacità superata: testo del blocco e pulsante disattivato.
+//! - Il registro esiste solo dopo la conferma e contiene stimato e ottenuto.
+//! - "Svuota il Cestino…" con l'azione finta libera lo spazio e compare il confronto.
+//! - Il dialogo contiene i campi del record; la versione in uso di CapCut è visibile e disattivata.
 //!
 //! Sicurezza: `Actions::fake` su un `FakeProbe` che rispecchia l'albero sintetico di `sample_c` (mover,
 //! svuotamento, lanciatore e riscansione simulati). Niente legge o scrive sul disco vero, salvo il
@@ -351,7 +348,7 @@ impl Probe for Gated {
 
 #[test]
 fn cancel_during_the_simulation_stops_it_without_a_confirmation() {
-    // 03 §6.3: la simulazione mostra l'avanzamento e si può annullare; poi niente dialogo e niente piano.
+    // La simulazione mostra l'avanzamento e si può annullare; poi niente dialogo e niente piano.
     let mut s = setup(|_| {});
     let open = Arc::new(AtomicBool::new(false));
     s.h.state_mut().env.actions.probe = Arc::new(Gated { inner: s.probe.clone(), open: Arc::clone(&open) });
@@ -375,7 +372,7 @@ fn cancel_during_the_simulation_stops_it_without_a_confirmation() {
 
 #[test]
 fn capcut_versions_in_use_and_kept_are_visible_and_disabled() {
-    // 03 §6.1, 04 §6.6: la versione in uso e la precedente compaiono, disattivate, con "esclusa" e "tenuta".
+    // La versione in uso e la precedente compaiono, disattivate, con "esclusa" e "tenuta".
     // Sensore memoria svuota il Cestino dopo 30 giorni; le attività pianificate non si leggono per intero.
     let mut s = setup(|p| {
         p.storage_sense(Ok(Some(30)));
@@ -390,8 +387,7 @@ fn capcut_versions_in_use_and_kept_are_visible_and_disabled() {
     assert_eq!(checkbox(&s.h, "8.1.0.3402"), (false, true), "una versione vecchia è scelta con «Seleziona tutti»");
     assert!(has(&s.h, &t(&s.h, "spostamento-fisso-versione-in-uso")));
     assert!(has(&s.h, &t(&s.h, "spostamento-fisso-versione-tenuta")));
-    // Ipotesi e rischi della regola nel corpo e la reversibilità (04 §6.8); i tre numeri, con "liberato
-    // subito" a zero.
+    // Ipotesi e rischi della regola nel corpo e la reversibilità; i tre numeri, con "liberato subito" a zero.
     for k in ["spostamento-ipotesi-rischi", "regola-capcut-versioni-ipotesi-1", "regola-capcut-versioni-rischio-1", "regola-capcut-versioni-rischio-2"] {
         assert!(has(&s.h, &t(&s.h, k)), "{k}");
     }
@@ -416,7 +412,7 @@ fn capcut_versions_in_use_and_kept_are_visible_and_disabled() {
 
 #[test]
 fn the_dialog_contains_the_record_fields() {
-    // F-AC-3: stato, prove con la provenienza, regola con fonte e data, i campi del record.
+    // Stato, prove con la provenienza, regola con fonte e data, i campi del record.
     let mut s = setup(|_| {});
     open_capcut(&mut s);
     // La scheda completa è una riga chiusa (variante A): si apre come farebbe l'utente.
@@ -470,8 +466,8 @@ fn the_dialog_contains_the_record_fields() {
 
 #[test]
 fn a_file_in_use_blocks_its_item_with_the_process_name() {
-    // F-AC-8: un file aperto da un processo blocca l'elemento, con il nome del processo; gli altri restano.
-    // F-AC-9: un collegamento che punta a un'altra versione la blocca e compare nella conferma.
+    // Un file aperto da un processo blocca l'elemento, con il nome del processo; gli altri restano.
+    // Un collegamento che punta a un'altra versione la blocca e compare nella conferma.
     let busy = version("8.1.0.3402");
     let linked = version("8.7.2.3701");
     let lnk = r"C:\Users\demo\Desktop\CapCut vecchio.lnk";
@@ -500,7 +496,7 @@ fn a_file_in_use_blocks_its_item_with_the_process_name() {
 
 #[test]
 fn exceeded_capacity_blocks_with_the_text_and_disables_the_primary() {
-    // F-AC-7, 04 §6.8: Cestino da 6 GiB, selezione di circa 11 GB.
+    // Cestino da 6 GiB, selezione di circa 11 GB.
     let mut s = setup(|p| {
         p.bin("C:\\", |b| b.capacity = Some(6 << 30));
     });
@@ -525,7 +521,7 @@ fn exceeded_capacity_blocks_with_the_text_and_disables_the_primary() {
 
 #[test]
 fn confirmation_runs_and_the_result_separates_moved_skipped_and_failed() {
-    // F-AC-3, 06 §5.6: un elemento cambiato dopo l'anteprima si salta, uno che Windows non sposta fallisce,
+    // Un elemento cambiato dopo l'anteprima si salta, uno che Windows non sposta fallisce,
     // gli altri vanno nel Cestino; il risultato lo dice con il motivo e dice come ripristinare.
     let mut s = setup(|_| {});
     open_capcut(&mut s);
@@ -549,7 +545,7 @@ fn confirmation_runs_and_the_result_separates_moved_skipped_and_failed() {
     }
     assert!(s.probe.exists(&changed) && s.probe.exists(&failed));
     assert!(!s.probe.exists(&version("8.1.0.3402")));
-    // Il risultato (04 §6.6 schermata 5).
+    // Il risultato.
     let a = s.h.state();
     let l = &a.lingue;
     let want = [
@@ -563,7 +559,7 @@ fn confirmation_runs_and_the_result_separates_moved_skipped_and_failed() {
         assert!(has(&s.h, w), "manca nel risultato: «{w}»");
     }
     assert!(want[3].contains("Gli elementi spostati (7) sono nel Cestino"), "{}", want[3]);
-    // Il modello segue: le versioni spostate non ci sono più, quelle rimaste sì (F-VE-4).
+    // Il modello segue: le versioni spostate non ci sono più, quelle rimaste sì.
     let d = a.data.as_ref().expect("dati");
     assert_eq!(intervention_jobs::find_node(d.tree(), &version("8.1.0.3402")), None);
     assert!(intervention_jobs::find_node(d.tree(), &changed).is_some());
@@ -574,7 +570,7 @@ fn confirmation_runs_and_the_result_separates_moved_skipped_and_failed() {
 
 #[test]
 fn the_journal_exists_only_after_confirmation_with_estimate_and_obtained() {
-    // F-AC-6: niente registro prima della conferma; dopo, una riga con stimato e ottenuto; dopo lo
+    // Niente registro prima della conferma; dopo, una riga con stimato e ottenuto; dopo lo
     // svuotamento una nuova riga con lo stesso id, che vale.
     let dir = temp_dir("registro");
     let mut s = setup_in("it", Some(dir.clone()), |_| {});
@@ -610,7 +606,7 @@ fn the_journal_exists_only_after_confirmation_with_estimate_and_obtained() {
 
 #[test]
 fn emptying_the_bin_frees_the_space_and_the_comparison_appears() {
-    // F-AC-1, F-VE-2, F-VE-3: prima il numero e i GB degli altri elementi secondo Windows, poi il dialogo
+    // Prima il numero e i GB degli altri elementi secondo Windows, poi il dialogo
     // di Windows (qui finto), la misura, la riscansione e i due numeri separati.
     let mut s = setup(|_| {});
     open_capcut(&mut s);
@@ -659,8 +655,8 @@ fn emptying_the_bin_frees_the_space_and_the_comparison_appears() {
 
 #[test]
 fn identical_copies_need_the_sync_check_ticked_and_the_kept_copy_stays() {
-    // F-AC-2, R10: in una cartella sincronizzata ogni copia scelta ha il controllo manuale; senza la spunta
-    // il pulsante principale è disattivato. F-DL-4: la copia da tenere è visibile, disattivata, "resta".
+    // In una cartella sincronizzata ogni copia scelta ha il controllo manuale; senza la spunta il pulsante
+    // principale è disattivato. La copia da tenere è visibile, disattivata, "resta".
     let mut s = setup(|p| {
         p.synced(r"C:\Users\demo\Downloads", "OneDrive");
     });
@@ -708,7 +704,7 @@ fn identical_copies_need_the_sync_check_ticked_and_the_kept_copy_stays() {
 
 #[test]
 fn copies_in_a_syncthing_folder_say_they_go_from_the_other_devices_too() {
-    // R10: una cartella sincronizzata che Windows non conosce (marcatore di Syncthing): la spunta dice che
+    // Una cartella sincronizzata che Windows non conosce (marcatore di Syncthing): la spunta dice che
     // l'eliminazione arriva agli altri dispositivi, senza la riga del cestino nel cloud.
     let mut s = setup(|p| {
         p.synced_by(r"C:\Users\demo\Downloads", "Syncthing", quado_actions::sync::SyncKind::Devices);
@@ -748,7 +744,7 @@ fn without_synced_folders_the_dialog_says_what_quado_checked() {
 
 #[test]
 fn dialog_and_result_use_only_language_files_and_no_forbidden_words() {
-    // F-GE-1, 04 §6.8: con la pseudo-lingua ogni testo del dialogo e del risultato viene dai file di lingua;
+    // Con la pseudo-lingua ogni testo del dialogo e del risultato viene dai file di lingua;
     // in italiano e in inglese nessuna parola vietata, niente punti esclamativi né trattini lunghi.
     const FORBIDDEN: [&str; 14] = [
         "inutilizzat",

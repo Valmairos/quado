@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Alberi di prova (06 §1.2), creati in cartelle temporanee su NTFS e cancellati alla fine.
+//! Alberi di prova, creati in cartelle temporanee su NTFS e cancellati alla fine.
 //!
 //! Scrivono solo dentro la cartella di prova. Alcuni casi dipendono dal sistema: i collegamenti
 //! simbolici richiedono la Modalità sviluppatore; se un caso non si può creare, la funzione lo dice
@@ -39,7 +39,7 @@ impl TestDir {
         self.path.join(rel)
     }
 
-    /// Nega l'elenco di `dir` all'utente corrente (ACL di negazione, come in 06 §1.2).
+    /// Nega l'elenco di `dir` all'utente corrente (ACL di negazione).
     pub fn deny_listing(&mut self, dir: &Path) -> bool {
         let user = current_user();
         let ok = Command::new("icacls")
@@ -157,7 +157,7 @@ pub fn dir_symlink(link: &Path, target: &Path) -> bool {
     std::os::windows::fs::symlink_dir(target, link).is_ok()
 }
 
-/// Flusso alternativo: non contato dallo scanner né da `FileStandardInfo` (F-SC-8).
+/// Flusso alternativo: non contato dallo scanner né da `FileStandardInfo`.
 pub fn alternate_stream(file: &Path, stream: &str, bytes: usize) {
     let mut s = file.as_os_str().to_owned();
     s.push(format!(":{stream}"));
@@ -199,7 +199,7 @@ pub fn hold_exclusive(path: &Path) -> fs::File {
     fs::OpenOptions::new().read(true).write(true).share_mode(0).open(path).unwrap()
 }
 
-/// Albero standard per i volumi di prova (06 §1.3): file piccoli, file medi, profondità e,
+/// Albero standard per i volumi di prova: file piccoli, file medi, profondità e,
 /// solo su NTFS, hard link e compressione. Restituisce la cartella creata.
 pub fn volume_fixture(volume_root: &Path, ntfs: bool) -> PathBuf {
     let base = volume_root.join("prova");

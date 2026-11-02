@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Pool dei nomi (05 D5, riduzione 2): i nomi solo ASCII in un pool a 8 bit, gli altri in UTF-16.
+//! Pool dei nomi: i nomi solo ASCII in un pool a 8 bit, gli altri in UTF-16.
 //! Tutti restano esatti, compresi quelli con surrogati spaiati.
 //!
 //! I pool sono a blocchi di dimensione fissa: crescono di un blocco alla volta invece di raddoppiare,

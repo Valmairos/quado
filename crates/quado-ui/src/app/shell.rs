@@ -168,7 +168,7 @@ pub fn sidebar(app: &mut App, ui: &mut Ui, p: &Palette) {
                 let label = app.lingue.t(key);
                 let on = app.screen == screen;
                 let needs_data = screen != Screen::Rules;
-                // Interventi: il numero di interventi registrati (04 §6.6).
+                // Interventi: il numero di interventi registrati.
                 let n = if screen == Screen::Interventions { app.procedures.history.count() as u64 } else { 0 };
                 let badge = (n > 0).then(|| app.fmt.count(n));
                 if nav_item(ui, p, icon, &label, shortcut, badge.as_deref(), on, has || !needs_data, collapsed).clicked() {
@@ -248,7 +248,7 @@ fn drive_item(ui: &mut Ui, p: &Palette, app: &App, d: &Loaded, collapsed: bool) 
     let title = volume_title(l, &d.volume);
     let meta = (cap > 0).then(|| l.ta("volume-uso", &[("usato", f.size(used).into()), ("totale", f.size(cap).into()), ("fs", d.volume.file_system.clone().into())]));
     let w = if collapsed { 40.0 } else { ui.available_width() };
-    // Nome e uso vanno a capo invece di troncarsi (testi tradotti più lunghi, RS30).
+    // Nome e uso vanno a capo invece di troncarsi (testi tradotti più lunghi).
     let tg = (!collapsed).then(|| ui.painter().layout(title.clone(), widgets::font(Type::BodyStrong), p.text, w - 46.0));
     let mg = if collapsed { None } else { meta.as_ref().map(|m| ui.painter().layout(m.clone(), widgets::font(Type::Callout), p.text_2, w - 20.0)) };
     let h = if collapsed { 40.0 } else { 9.0 + tg.as_ref().map_or(16.0, |g| g.size().y.max(16.0)) + 4.0 + mg.as_ref().map_or(0.0, |g| g.size().y + 6.0) + 4.0 + 9.0 };
@@ -538,7 +538,7 @@ pub fn split(ui: &Ui, p: &Palette) -> Split {
     Split { content, detail, detail_full: right }
 }
 
-/// Stato vuoto (04 §6.8): cosa manca e perché, centrato nell'area, con al più un'azione sotto. Restituisce
+/// Stato vuoto: cosa manca e perché, centrato nell'area, con al più un'azione sotto. Restituisce
 /// vero se l'azione è stata scelta.
 pub fn empty_state(ui: &mut Ui, p: &Palette, rect: Rect, message: &str, action: Option<&str>) -> bool {
     let w = (rect.width() - 48.0).clamp(120.0, 480.0);

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! `cargo xtask m3-misure`: classificazione di C: con le regole (M3). Tempo degli estrattori e del
+//! `cargo xtask m3-misure`: classificazione di C: con le regole. Tempo degli estrattori e del
 //! motore, bilancio per gestore, card interventi, elementi riconosciuti per regola. Scrive
 //! `target/misure/m3-misure-C.md`. Solo letture.
 
@@ -44,7 +44,7 @@ pub fn run() -> Result<(), String> {
     ev_ms.sort_by(f64::total_cmp);
     let t = &r.tree;
     let mut out = String::new();
-    let _ = writeln!(out, "# M3 · Misure su C: ({:02}/{:02}/{})\n", lt.day, lt.month, lt.year);
+    let _ = writeln!(out, "# Misure su C: ({:02}/{:02}/{})\n", lt.day, lt.month, lt.year);
     let _ = writeln!(out, "Generato da `cargo xtask m3-misure`. Unità: GiB (1024³ byte).\n");
     let _ = writeln!(out, "| Misura | Valore |\n|---|---|");
     let _ = writeln!(out, "| Scansione (cache calda) | {scan_s:.1} s, {} voci |", t.len());
@@ -79,7 +79,7 @@ pub fn run() -> Result<(), String> {
         let _ = writeln!(out, "| {} | {} | {} | {} | {est} |", kb.rules[i.rule].id, i.state, i.matches.len(), gib(i.bytes));
     }
     // Annullamento fino al risultato pronto per l'interfaccia: scansione parziale, indici delle viste,
-    // prove e classificazione (F-SC-5, obiettivo 500 ms).
+    // prove e classificazione (obiettivo 500 ms).
     let _ = writeln!(out, "\n## Annullamento fino al risultato pronto\n\n| Prova | Dopo | Dalla richiesta al risultato |\n|---|---|---|");
     let kb = std::sync::Arc::new(kb);
     for (k, secs) in [1u64, 2, 4, 6, 8].into_iter().enumerate() {

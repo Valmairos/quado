@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Interfaccia di Quado (05 D10): token visivi, font, lingue, formati dei numeri,
+//! Interfaccia di Quado: token visivi, font, lingue, formati dei numeri,
 //! tabella con scorrimento a indice, mappa ad albero e schermate.
 
 pub mod app;

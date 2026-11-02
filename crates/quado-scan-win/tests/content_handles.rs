@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! 06 §11: durante identità, hash e indice degli zip nessun handle di file ha accesso in scrittura.
+//! Durante identità, hash e indice degli zip nessun handle di file ha accesso in scrittura.
 //! Un thread campiona di continuo gli handle del processo, come `no_write_handles.rs`. Un solo test in
 //! questo eseguibile: gli handle aperti da altri test in parallelo falserebbero il campione.
 

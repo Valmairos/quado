@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Pipe e modalità helper (05 D3, 06 §1.5 e §11), senza elevazione e senza prompt UAC: server e client
+//! Pipe e modalità helper, senza elevazione e senza prompt UAC: server e client
 //! nello stesso processo di test (un thread), oppure il client in un processo figlio, che è questo stesso
 //! eseguibile di test avviato con `child_process_entry` e una variabile d'ambiente.
 //!

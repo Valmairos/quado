@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Stima dello spazio recuperabile in simulazione (03 §6.3): allocate dei file i cui nomi stanno tutti
+//! Stima dello spazio recuperabile in simulazione: allocate dei file i cui nomi stanno tutti
 //! nella selezione, una volta per ID; file con altri nomi fuori esclusi e citati; cartelle negate che
 //! rendono la stima un intervallo.
 //!
@@ -86,7 +86,7 @@ pub(crate) fn shares(items: &[SimItem], plain: impl Fn(usize) -> u64, linked: &[
     out
 }
 
-/// Stima della selezione (03 §6.3). Gli elementi fissi non entrano mai, anche se `selected` li sceglie;
+/// Stima della selezione. Gli elementi fissi non entrano mai, anche se `selected` li sceglie;
 /// un valore mancante in `selected` vale "non scelto".
 pub(crate) fn estimate(items: &[SimItem], plain: impl Fn(usize) -> u64, linked: &[Linked], selected: &[bool]) -> SelectionEstimate {
     let chosen = |i: usize| selected.get(i).copied().unwrap_or(false) && items.get(i).is_some_and(|it| it.fixed.is_none());

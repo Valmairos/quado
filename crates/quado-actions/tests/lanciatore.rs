@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Lanciatore della disinstallazione (F-AP-5, 06 §4): solo valori tipizzati. I test di compilazione
+//! Lanciatore della disinstallazione: solo valori tipizzati. I test di compilazione
 //! (`compile_fail`) sono nella documentazione di `launch.rs`; qui la validazione del PFN e gli URI.
 //! `open` non si esegue nei test automatici: aprirebbe Impostazioni o Steam.
 
@@ -114,7 +114,7 @@ fn uris_have_the_documented_form() {
 }
 
 #[test]
-#[ignore = "apre Impostazioni ▸ App su questo PC: controllo manuale con data (06 §5.7)"]
+#[ignore = "apre Impostazioni ▸ App su questo PC: controllo manuale con data"]
 fn opens_apps_and_features() {
     open(&Launch::AppsFeatures).expect("Impostazioni ▸ App");
 }

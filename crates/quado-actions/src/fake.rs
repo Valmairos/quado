@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Letture e spostamenti simulati, in memoria, per i test della logica e dell'interfaccia (06,
-//! principi: la logica si prova con dati simulati). Non tocca il disco.
+//! Letture e spostamenti simulati, in memoria, per i test della logica e dell'interfaccia: la
+//! logica si prova con dati simulati. Non tocca il disco.
 //!
 //! [`FakeProbe`] implementa `probe::Probe` su un albero in memoria; i suoi cloni condividono lo stato,
 //! così [`FakeMover`] (implementa `execute::Mover`) toglie dalle letture ciò che sposta e lo aggiunge al
@@ -8,10 +8,11 @@
 //! per scriverli in catena: `FakeProbe::new().volume("R:\\").file("R:\\a.bin", 10, 4096)`. Valgono
 //! anche a runtime, tra simulazione ed esecuzione.
 //!
-//! Il Cestino simulato si comporta come quello misurato in M1 su un VHDX di prova: conta la dimensione
-//! logica; uno spostamento su un volume senza Cestino, con `NukeOnDelete` o di un elemento più grande
-//! della capacità elimina per sempre senza arrivare nel Cestino (`NotRecycled(0)`); lo spazio libero
-//! cresce solo quando il Cestino si svuota ([`FakeProbe::empty_bin`]).
+//! Il Cestino simulato si comporta come quello misurato su un VHDX di prova
+//! (`docs/m1/cestino-verifiche.md`): conta la dimensione logica; uno spostamento su un volume senza Cestino,
+//! con `NukeOnDelete` o di un elemento più grande della capacità elimina per sempre senza arrivare nel
+//! Cestino (`NotRecycled(0)`); lo spazio libero cresce solo quando il Cestino si svuota
+//! ([`FakeProbe::empty_bin`]).
 //!
 //! I percorsi si confrontano normalizzati (senza maiuscole, `/` come `\`, senza `\` finale), come nella
 //! simulazione.
@@ -685,7 +686,7 @@ pub fn proof() -> ProvaDiGestibilita {
 }
 
 /// Record di prova che propone lo spostamento nel Cestino, con lo stato dato: regola `prova` verificata il
-/// 14/10/2026, nessun controllo, senza eccezione di F-AC-4.
+/// 14/10/2026, nessun controllo, senza eccezione per gli elementi protetti.
 pub fn record(state: State) -> Record {
     Record {
         state,

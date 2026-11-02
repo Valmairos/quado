@@ -1,10 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Procedure e comandi (03 F-AC-1, F-VE-1, F-VE-2; 04 §6.7 "Procedure esterne", "Disinstallazione di un
-//! programma", "Liberare davvero lo spazio"): misura di partenza prima di aprire la pagina con il
-//! lanciatore tipizzato, prima di copiare un comando, prima di svuotare il Cestino o di aprire l'interfaccia
-//! di disinstallazione; "Ho eseguito la procedura" con la nuova misura, la riscansione dei sottoalberi
-//! toccati (F-VE-4), il confronto con la stima (F-VE-3, 03 §6.3) e il registro (F-AC-6). Quado non esegue
-//! niente: apre URI tipizzati, copia comandi negli appunti, chiede a Windows il suo dialogo di svuotamento.
+//! Procedure e comandi: misura di partenza prima di aprire la pagina con il lanciatore tipizzato, prima di
+//! copiare un comando, prima di svuotare il Cestino o di aprire l'interfaccia di disinstallazione; "Ho
+//! eseguito la procedura" con la nuova misura, la riscansione dei sottoalberi toccati, il confronto con la
+//! stima e il registro. Quado non esegue niente: apre URI tipizzati, copia comandi negli appunti, chiede a
+//! Windows il suo dialogo di svuotamento.
 //!
 //! - Una procedura aperta resta in attesa per il suo soggetto ([`Subject`]: la regola, o il programma della
 //!   vista Programmi) con la misura di partenza. Ogni "Ho eseguito la procedura" aggiunge una misura allo
@@ -15,8 +14,6 @@
 //!   condiviso nei dati temporanei del contesto di egui, e i pulsanti lo leggono da lì.
 //! - La riscansione passa da `Env::actions` (`Actions::rescan`): quella vera nell'app, l'albero simulato
 //!   o una funzione del test nei test, così nessun test legge il disco vero.
-//!
-//! M5, agente E2.
 
 use std::collections::HashMap;
 use std::sync::{Arc, Mutex, MutexGuard, PoisonError};
@@ -303,7 +300,7 @@ fn program_target(d: &Loaded, i: usize) -> Option<Target> {
 // ---------------------------------------------------------------------------------------------
 // Richieste dei pulsanti
 
-/// Misura di partenza in un thread, poi l'apertura della pagina (F-VE-1): la misura precede sempre la
+/// Misura di partenza in un thread, poi l'apertura della pagina: la misura precede sempre la
 /// chiamata al lanciatore.
 fn spawn_start(app: &mut App, target: Target, page: Option<Launch>) {
     if app.procedures.is_busy(&target.subject) {
@@ -341,7 +338,7 @@ pub fn measure_start(app: &mut App, origin: Origin) {
 }
 
 /// Copia negli appunti il comando del metodo o di un'alternativa e prende la misura di partenza. Quado
-/// non lo esegue (F-AC-1).
+/// non lo esegue.
 pub fn copy_command(app: &mut App, origin: Origin, alternative: Option<usize>) {
     let Origin::Rule(m) = origin else { return };
     let Some(d) = app.data.as_ref() else { return };
@@ -538,7 +535,7 @@ fn nearest(t: &Tree, path: &str) -> u32 {
     }
 }
 
-/// Applica le riscansioni al modello (F-VE-4) e riallinea le viste che tengono indici di nodi.
+/// Applica le riscansioni al modello e riallinea le viste che tengono indici di nodi.
 fn apply(app: &mut App, rescans: Vec<Rescanned>) -> data::Applied {
     app.wait_background();
     let sid = app.env.user_sid.clone();
@@ -635,7 +632,7 @@ fn view_of(sh: &Shared, s: &Subject) -> View {
     View { busy: sh.busy.contains(s), opened: sh.opened.get(s).cloned(), report: sh.reports.get(s).cloned(), bin: sh.bin.read }
 }
 
-/// Testo della pagina che si apre (04 §6.7): il nome nel pulsante.
+/// Testo della pagina che si apre: il nome nel pulsante.
 fn page_key(page: &Launch) -> &'static str {
     match page {
         Launch::RecycleBin => "procedura-apri-cestino",
@@ -682,7 +679,7 @@ fn status_lines(l: &Lingue, f: &Formatter, v: &View, command: bool) -> Vec<(Stri
     out
 }
 
-/// Esito di una misura (04 §6.8, "Verifica"): stimato e variazione del volume, differenza e spiegazione,
+/// Esito di una misura: stimato e variazione del volume, differenza e spiegazione,
 /// quanto occupano ancora gli elementi, registro.
 pub fn report_lines(l: &Lingue, f: &Formatter, r: &Report) -> Vec<(String, Tone)> {
     let mut out = Vec::new();
@@ -746,7 +743,7 @@ pub fn record_controls(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, r: &
         None => View::default(),
     };
     ui.add_space(6.0);
-    // Cestino: il numero e i GB secondo Windows prima del pulsante (F-AC-1, 04 §6.7).
+    // Cestino: il numero e i GB secondo Windows prima del pulsante.
     let mut can_empty = false;
     if is_bin {
         let (s, tone) = match v.bin {

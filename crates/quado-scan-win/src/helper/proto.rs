@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Messaggi tra interfaccia e helper (05 D3). Tipi fissati all'inizio di M6, prima di dividere il lavoro tra helper e interfaccia.
+//! Messaggi tra interfaccia e helper.
 //!
 //! Cornice: lunghezza `u32` little endian, poi il corpo; il primo byte del corpo è il tipo. Codifica a
 //! mano, senza dipendenze: la richiesta è l'unico ingresso dell'helper elevato e si decodifica con limiti
 //! espliciti prima di ogni allocazione.
 //!
-//! Il core non produce frasi (05 D13): errori e stati sono codici.
+//! Il core non produce frasi: errori e stati sono codici.
 //!
 //! Formato del corpo (interi little endian; stringa = `u32` di lunghezza in unità UTF-16, poi le unità):
 //!
@@ -148,7 +148,7 @@ pub enum Reply {
     Folder { index: u32, tree: Box<Tree>, problems: Vec<(u32, Problem)> },
     /// Cartella di [`Scope::Profile`].
     Totals { index: u32, totals: Totals },
-    /// Cartella di [`Scope::Bin`]: `orphan` se il SID non corrisponde più a un account (RS16).
+    /// Cartella di [`Scope::Bin`]: `orphan` se il SID non corrisponde più a un account.
     Bin { index: u32, sid: String, totals: Totals, orphan: bool },
     /// La cartella non si è potuta aprire neanche dall'helper: codice di Windows.
     Failed { index: u32, code: u32 },
@@ -393,8 +393,8 @@ fn nesting_key(f: &str) -> Vec<u8> {
 }
 
 impl Request {
-    /// Controlli di 05 D3 e 06 §11: volume `X:\`, percorsi assoluti su quel volume, normalizzati, senza
-    /// `..`, con lunghezza e numero massimi, nessuno dentro un altro.
+    /// Controlli della richiesta, l'unico ingresso dell'helper elevato: volume `X:\`, percorsi assoluti su
+    /// quel volume, normalizzati, senza `..`, con lunghezza e numero massimi, nessuno dentro un altro.
     pub fn validate(&self) -> Result<(), ProtoError> {
         let v = self.volume.as_bytes();
         if !(v.len() == 3 && v[0].is_ascii_alphabetic() && v[1] == b':' && v[2] == b'\\') {

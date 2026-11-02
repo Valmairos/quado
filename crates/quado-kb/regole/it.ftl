@@ -1,8 +1,8 @@
-## Testi delle regole e del motore di classificazione (05 D6, D13). Lingua di riferimento: ogni chiave
-## ha un commento di contesto. Segnaposto: i numeri arrivano due volte, `$x` (per il plurale) e
-## `$x_testo` (già formattato con il formato dell'area geografica); dimensioni e date arrivano già
-## scritte. I valori dei fatti sono `$a`, `$b`, `$c` nell'ordine. Parole vietate (04 §6.8): mai
-## "sicuro da eliminare", "inutilizzato", "non più in uso", "spazzatura", "ottimizza". Guida: docs/testi.md.
+## Testi delle regole e del motore di classificazione. Lingua di riferimento: ogni chiave ha un
+## commento di contesto. Segnaposto: i numeri arrivano due volte, `$x` (per il plurale) e `$x_testo`
+## (già formattato con il formato dell'area geografica); dimensioni e date arrivano già scritte. I
+## valori dei fatti sono `$a`, `$b`, `$c` nell'ordine. Parole vietate (docs/testi.md §3): mai "sicuro da
+## eliminare", "inutilizzato", "non più in uso", "spazzatura", "ottimizza". Guida: docs/testi.md.
 
 ## Regole: `nome` è il titolo breve (card interventi, elenco delle regole); `riga` è la spiegazione di
 ## una riga sotto il nome dell'elemento (top list, ispettore). Punto finale solo nelle frasi complete:
@@ -10,27 +10,27 @@
 
 # Titolo della regola sulle cartelle di versione di CapCut.
 regola-capcut-versioni-nome = Versioni precedenti di CapCut
-# Riga sotto le cartelle di versione. $n cartelle. "(dedotto)" resta sempre (decisioni §3).
+# Riga sotto le cartelle di versione. $n cartelle. "(dedotto)" resta sempre: le versioni precedenti sono una deduzione.
 regola-capcut-versioni-riga = { $n ->
     [one] { $n_testo } cartella di una versione precedente (dedotto)
    *[other] { $n_testo } cartelle di versioni precedenti (dedotto)
 }
-# Metodo: spostamento nel Cestino dopo l'anteprima (M5). Quado è l'attore.
+# Metodo: spostamento nel Cestino dopo l'anteprima. Quado è l'attore.
 regola-capcut-versioni-metodo = Quado sposta nel Cestino le cartelle che scegli, dopo l'anteprima. La versione in uso e quella precedente restano al loro posto.
 # Ipotesi della regola, scritta come tale.
 regola-capcut-versioni-ipotesi-1 = Ipotesi: CapCut avvia solo la versione in uso e le altre cartelle sono rimaste dagli aggiornamenti.
-# Rischio se l'ipotesi è sbagliata, con il modo per tornare indietro (valutazione dei consigli, 01/11/2026).
+# Rischio se l'ipotesi è sbagliata, con il modo per tornare indietro.
 regola-capcut-versioni-rischio-1 = Se l'ipotesi è sbagliata, CapCut non si avvia. Le cartelle si ripristinano dal Cestino finché non lo svuoti.
 # Da fare prima dell'anteprima: con CapCut aperto il controllo dei file in uso blocca lo spostamento.
 regola-capcut-versioni-rischio-2 = Chiudi CapCut prima dell'anteprima: se è aperto, il controllo dei file in uso blocca lo spostamento.
-# Nel risultato dello spostamento, prima di «Svuota il Cestino…»: cosa provare (decisioni §3, 04 §6.8).
+# Nel risultato dello spostamento, prima di «Svuota il Cestino…»: cosa provare.
 regola-capcut-versioni-prova = Prima di svuotare il Cestino apri CapCut e controlla che funzioni.
 # Casella che attiva «Svuota il Cestino…» nel risultato. Parla l'utente.
 regola-capcut-versioni-prova-fatta = Ho aperto CapCut e funziona
 
 # Titolo della regola sui progetti di CapCut.
 regola-capcut-progetti-nome = Progetti di CapCut
-# Riga sotto Projects e Videos di CapCut (04 §6.8).
+# Riga sotto Projects e Videos di CapCut: dati dell'utente, mai proposti.
 regola-capcut-progetti-riga = I tuoi progetti video. Non è cache: Quado non propone di eliminarli.
 
 # Titolo della regola sulla cache di CapCut.
@@ -44,11 +44,11 @@ regola-capcut-cache-metodo = In CapCut: Impostazioni › Bozza › Svuota cache 
 regola-ibernazione-nome = File di ibernazione
 # Riga sotto hiberfil.sys.
 regola-ibernazione-riga = File di ibernazione di Windows: puoi ridurlo o toglierlo con powercfg.
-# Primo dei due comandi affiancati (decisioni §3, 04 §6.8), sopra powercfg /hibernate /type reduced.
+# Primo dei due comandi affiancati, sopra powercfg /hibernate /type reduced.
 regola-ibernazione-metodo = Ridurre il file di ibernazione: mantiene l'avvio rapido e toglie l'ibernazione.
 # Secondo comando, sopra powercfg /h off.
 regola-ibernazione-alternativa-1 = Disattivare l'ibernazione: toglie anche l'avvio rapido e la sospensione ibrida.
-# Conseguenza da dire sempre (decisioni §3), in tono di avviso: anche il file ridotto toglie l'ibernazione.
+# Conseguenza da dire sempre, in tono di avviso: anche il file ridotto toglie l'ibernazione.
 regola-ibernazione-rischio-1 = Entrambi i comandi tolgono l'ibernazione e vanno eseguiti come amministratore.
 # Solo se il PC ha una batteria (lo aggiunge il motore).
 regola-ibernazione-rischio-batteria = Con la batteria critica il portatile non può più ibernarsi: se la batteria si scarica, il lavoro non salvato può andare perso.
@@ -57,16 +57,16 @@ regola-ibernazione-rischio-standby = Questo PC usa lo standby moderno: in sospen
 
 # Titolo della regola sul Cestino.
 regola-cestino-nome = Cestino
-# Riga della top list: solo le due misure (F-OV-2, 04 §6.8).
+# Riga della top list: solo le due misure.
 regola-cestino-riga = { $disco } su disco, { $windows } secondo Windows
-# Procedura preferita (04 §6.7).
+# Procedura preferita, sopra l'indirizzo shell:RecycleBinFolder.
 regola-cestino-metodo = Apri il Cestino ed elimina solo gli elementi che scegli.
 # Alternativa: dialogo di Windows.
 regola-cestino-alternativa-1 = Svuota il Cestino con il dialogo di Windows: elimina tutti gli elementi.
 
 # Titolo della regola sulle cartelle orfane del Cestino.
 regola-cestino-orfane-nome = Cartelle del Cestino senza indice
-# Riga sotto le cartelle orfane (04 §6.8, ispettore).
+# Riga sotto le cartelle orfane, nell'ispettore.
 regola-cestino-orfane-riga = Nella cartella del Cestino ci sono { $disco } che il Cestino di Windows non elenca: cartelle senza il loro file indice. Svuotare il Cestino non le elimina: provato su un disco virtuale.
 # Ipotesi.
 regola-cestino-orfane-ipotesi-1 = Ipotesi: sono rimaste da spostamenti nel Cestino interrotti o da file indice rimossi.
@@ -90,18 +90,18 @@ regola-file-temporanei-riga = File temporanei: li elimini da Impostazioni › Fi
 regola-file-temporanei-metodo = Impostazioni › Sistema › Archiviazione › File temporanei
 # Alternativa: nome dello strumento di Windows, sopra il comando cleanmgr.
 regola-file-temporanei-alternativa-1 = Pulizia disco di Windows
-# Errore possibile fuori da Quado, nella stessa pagina di Impostazioni (valutazione dei consigli, 01/11/2026).
+# Errore possibile fuori da Quado, nella stessa pagina di Impostazioni.
 regola-file-temporanei-rischio-1 = Lascia senza spunta Download e Cestino se vuoi tenerli: Windows elimina i file senza passare dal Cestino.
 
 # Titolo della regola sulla cache di npm.
 regola-npm-cache-nome = Cache di npm
 # Riga sotto la cache di npm.
 regola-npm-cache-riga = Cache di npm: la gestisce npm con i suoi comandi.
-# Comando preferito (04 §6.8), sopra npm cache verify: cosa fa secondo la documentazione di npm.
+# Comando preferito, sopra npm cache verify: cosa fa secondo la documentazione di npm.
 regola-npm-cache-metodo = Controlla la cache ed elimina solo i dati che non servono più: di solito libera poco spazio (dedotto).
 # Alternativa, sopra npm cache clean --force. Le conseguenze sono nel rischio.
 regola-npm-cache-alternativa-1 = Svuota tutta la cache: è il comando che recupera lo spazio.
-# Conseguenze di clean --force (decisioni §3).
+# Conseguenze di clean --force: nuovi download e niente installazioni senza rete.
 regola-npm-cache-rischio-1 = Dopo clean --force, npm riscarica i pacchetti alla prossima installazione; senza rete non li trova.
 
 # Titolo della regola sullo store di pnpm.
@@ -134,7 +134,7 @@ regola-android-avd-nome = Dispositivi virtuali Android
 regola-android-avd-riga = Dischi dei dispositivi virtuali di Android Studio: li elimini da Device Manager.
 # Procedura nell'app: percorso di menu, con i nomi inglesi di Android Studio.
 regola-android-avd-metodo = Android Studio › Device Manager › menu del dispositivo › Delete
-# Conseguenza della procedura (valutazione dei consigli, 01/11/2026).
+# Conseguenza della procedura in Device Manager.
 regola-android-avd-rischio-1 = Si perdono le app e i dati dentro il dispositivo virtuale.
 
 # Titolo della regola sull'archivio dei driver.
@@ -183,7 +183,7 @@ regola-progetti-sviluppo-riga = { $nome } con { $lockfile } accanto: di solito s
 regola-progetti-sviluppo-metodo = Quado sposta la cartella nel Cestino se lo scegli, dopo l'anteprima.
 # Alternativa per Rust, sopra il comando cargo clean.
 regola-progetti-sviluppo-alternativa-1 = Per una cartella target di Rust: esegui cargo clean nella cartella del progetto.
-# Condizione da dire sempre (decisioni §3).
+# Condizione da dire sempre: la cartella si ricrea solo se il progetto funziona ancora.
 regola-progetti-sviluppo-rischio-1 = Si ricostruisce solo se il progetto si installa o si compila ancora.
 # Da fare prima dell'anteprima: un editor o un terminale aperto sulla cartella blocca lo spostamento.
 regola-progetti-sviluppo-rischio-2 = Chiudi l'editor e i terminali del progetto prima dell'anteprima: se usano la cartella, il controllo dei file in uso blocca lo spostamento.
@@ -194,7 +194,7 @@ regola-progetti-sviluppo-prova = Prima di svuotare il Cestino controlla che il p
 regola-programmi-registrati-nome = Programmi installati
 # Riga sotto la cartella di un programma. $nome dalla voce di disinstallazione.
 regola-programmi-registrati-riga = Programma installato: { $nome }
-# Metodo: disinstallazione ufficiale (M4), sopra l'indirizzo ms-settings:appsfeatures.
+# Metodo: disinstallazione ufficiale, sopra l'indirizzo ms-settings:appsfeatures.
 regola-programmi-registrati-metodo = Disinstalla da Impostazioni › App.
 
 # Titolo della regola sui dati delle app MSIX.
@@ -225,28 +225,28 @@ regola-windows-old-rischio-1 = Dopo l'eliminazione non puoi più tornare alla ve
 
 # Titolo della regola sulle ipotesi dal nome.
 regola-ipotesi-dal-nome-nome = Ipotesi dal nome
-# Riga sotto una cartella con il nome di un editore (04 §6.8).
+# Riga sotto una cartella con il nome di un editore: è un'ipotesi e lo dice.
 regola-ipotesi-dal-nome-riga = Ipotesi dal nome: { $nome }. Nessuna voce di installazione lo conferma.
 
-## Controlli preventivi (03 §6.1). Si eseguono nella simulazione di M5 salvo dove detto. Ogni testo è la
-## condizione che il controllo verifica; accanto compare l'esito ("superato", "non superato").
+## Controlli preventivi. Si eseguono nella simulazione salvo dove detto. Ogni testo è la condizione che
+## il controllo verifica; accanto compare l'esito ("superato", "non superato").
 
-# Controllo dei file in uso (F-AC-8) su un campione: tutti gli eseguibili e le DLL, più i file modificati per ultimi.
+# Controllo dei file in uso su un campione: tutti gli eseguibili e le DLL, più i file modificati per ultimi.
 controllo-restart-manager = Eseguibili, librerie e file modificati per ultimi non in uso, secondo Windows
-# Riferimenti nel registro, nei collegamenti e nelle attività pianificate (F-AC-9).
+# Riferimenti nel registro, nei collegamenti e nelle attività pianificate.
 controllo-riferimenti = Nessun riferimento nel registro, nei collegamenti di Start e del desktop o nelle attività pianificate
-# Capacità del Cestino dell'unità (F-AC-7).
+# Capacità del Cestino dell'unità.
 controllo-capacita-cestino = Il Cestino dell'unità può contenere la selezione
-# Avviso se la batteria critica fa ibernare il portatile (decisioni §3).
+# Avviso se la batteria critica fa ibernare il portatile.
 controllo-batteria-critica = Con la batteria critica il portatile non si iberna
-# Lockfile accanto alla cartella (decisioni §3).
+# Lockfile accanto alla cartella (progetti di sviluppo).
 controllo-lockfile = Il lockfile del progetto è accanto alla cartella
 
-## Reversibilità, errore, verifica (03 §6.1): una frase ciascuno. Compaiono dopo le etichette
+## Reversibilità, errore, verifica: una frase ciascuno. Compaiono dopo le etichette
 ## «Reversibilità», «Se si ferma a metà» e «Verifica» (record-reversibilita, record-errore, record-verifica).
 
-# Elementi spostati nel Cestino (decisioni §4, 04 §6.8), con il comando di Windows per ripristinarli. Mai
-# "puoi ripristinare tutto".
+# Elementi spostati nel Cestino, con il comando di Windows per ripristinarli. Mai "puoi ripristinare
+# tutto".
 reversibilita-cestino = Puoi ripristinare gli elementi dal Cestino finché non lo svuoti tu o Sensore memoria. Apri il Cestino, seleziona gli elementi e scegli «Ripristina gli elementi selezionati».
 # Nessuna azione.
 reversibilita-nessuna-azione = Niente da ripristinare.
@@ -264,7 +264,7 @@ reversibilita-procedura-windows = Windows elimina i file senza passare dal Cesti
 reversibilita-disinstallazione = La disinstallazione non si annulla: per riavere il programma va reinstallato.
 # Procedura in un'app (dispositivi virtuali Android).
 reversibilita-procedura-app = L'app elimina i dati senza passare dal Cestino: non si possono ripristinare.
-# Esito parziale di uno spostamento (04 §6.8).
+# Esito parziale di uno spostamento: cosa succede se si ferma a metà.
 errore-per-elemento = Gli elementi si spostano uno alla volta. Il riepilogo dice quali sono nel Cestino e quali sono rimasti al loro posto.
 # Nessuna azione.
 errore-nessuna-azione = Non si applica.
@@ -272,14 +272,14 @@ errore-nessuna-azione = Non si applica.
 errore-procedura-esterna = La procedura la esegue un altro programma e Quado non la vede: la misura successiva mostra cosa è cambiato.
 # Comandi copiati.
 errore-comando = Il comando lo esegui tu: se si ferma, leggi il messaggio nel terminale.
-# Misure dopo uno spostamento (F-VE-2).
+# Misure dopo uno spostamento.
 verifica-riscansione = Dopo l'intervento Quado misura di nuovo lo spazio libero e rilegge gli elementi toccati.
 # Nessuna azione.
 verifica-nessuna-azione = Non si applica.
-# Dopo una procedura esterna (F-VE-2). Cita il pulsante «Ho eseguito la procedura» (azione-ho-eseguito).
+# Dopo una procedura esterna. Cita il pulsante «Ho eseguito la procedura» (azione-ho-eseguito).
 verifica-dopo-procedura = Quando scegli «Ho eseguito la procedura», Quado misura di nuovo lo spazio libero e rilegge la cartella.
 
-## Fatti prodotti dal motore (F-IN-1). Ogni fatto ha accanto il glifo della sua provenienza.
+## Fatti prodotti dal motore. Ogni fatto ha accanto il glifo della sua provenienza.
 
 # Percorso indicato dalla documentazione della regola. $a numero di elementi.
 fatto-percorso-documentato = Percorso indicato dalla fonte della regola
@@ -333,7 +333,7 @@ fatto-cestino-secondo-windows = Secondo Windows: { $a } in { $b ->
 }
 # Cestino secondo Windows quando Windows non dà il conteggio (glifo «non disponibile»): nessun valore.
 fatto-cestino-secondo-windows-non-letto = Secondo Windows: conteggio non letto
-# Sensore memoria svuota il Cestino dopo $a giorni (04 §6.8).
+# Sensore memoria attivo: svuota il Cestino dopo $a giorni. Fatto della regola del Cestino.
 fatto-sensore-memoria-cestino = Sensore memoria elimina in automatico gli elementi che restano nel Cestino per più di { $a_testo } giorni.
 # Capacità del Cestino dell'unità.
 fatto-cestino-capacita = Capacità del Cestino: { $a }
@@ -344,15 +344,15 @@ fatto-cartelle-orfane = { $a ->
 }
 # Gioco di Steam dal manifest: nome e ID dell'app. $b è l'ID come lo scrive Steam, senza separatore delle migliaia.
 fatto-gioco-steam = { $a } (Steam, ID app { $b })
-# Dimensioni dichiarate dal programma (mai sommate al misurato, F-AP-3).
+# Dimensioni dichiarate dal programma (mai sommate al misurato).
 fatto-dimensione-dichiarata = Dimensioni dichiarate: { $a }
-# LastPlayed di Steam (04 §6.8).
+# LastPlayed di Steam: data dell'ultima sessione registrata.
 fatto-ultima-sessione-steam = Ultima sessione registrata da Steam: { $a }
 # Steam senza LastPlayed.
 fatto-uso-non-registrato = Nessuna sessione registrata da Steam
 # Installazione di Epic dal manifest.
 fatto-installazione-epic = { $a } (Epic)
-# Epic non registra l'uso (04 §6.8).
+# Epic non registra l'uso: lo si dice invece di lasciare il dato vuoto.
 fatto-epic-nessun-dato-uso = Epic non registra quando un gioco è stato usato l'ultima volta.
 # Programma installato secondo la voce di disinstallazione: nome e versione.
 fatto-programma-installato = Installato: { $a } { $b }
@@ -391,7 +391,7 @@ fatto-cartella-nota = { $a ->
 # Cartella delle bozze dichiarata da CapCut.
 fatto-cartella-bozze = Cartella delle bozze secondo CapCut: { $a }
 
-## M4: installatori (risorsa di versione, MSI, corrispondenza con i programmi installati, F-DL-2).
+## Installatori (risorsa di versione, MSI, corrispondenza con i programmi installati).
 ## Chiavi `fatto-installatore-*` e `funzione-installatore-*`.
 
 # Titolo delle voci degli installatori nella vista Download (card interventi, elenco della vista).
@@ -414,9 +414,9 @@ fatto-installatore-senza-dati = { $a ->
     [msi] Il pacchetto non indica nome, versione né codice di prodotto
    *[other] Il file non contiene dati di versione
 }
-# Corrispondenza da fonte (04 §6.8): il ProductCode dell'MSI è il nome di una voce di disinstallazione, stessa versione. $a programma, $b versione installata.
+# Corrispondenza da fonte: il ProductCode dell'MSI è il nome di una voce di disinstallazione, stessa versione. $a programma, $b versione installata.
 fatto-installatore-stesso-codice = Stesso codice di prodotto di { $a } { $b }, installato
-# Corrispondenza dedotta, affidabilità media (04 §6.8): nome e versione uguali a quelli di un programma installato. $a programma, $b versione installata.
+# Corrispondenza dedotta, affidabilità media: nome e versione uguali a quelli di un programma installato. $a programma, $b versione installata.
 fatto-installatore-stesso-nome = Nome e versione coincidono con { $a } { $b }, installato
 # Stesso ProductCode di un programma installato, in un'altra versione (da fonte). $a programma, $b versione installata, $c versione dell'installatore.
 fatto-installatore-codice-versione-diversa = Stesso codice di prodotto di { $a }, installato nella versione { $b }; questo installatore ha la versione { $c }
@@ -437,14 +437,14 @@ fatto-installatore-non-confrontabile = { $a ->
    *[other] Confronto con i programmi installati non disponibile
 }
 
-## M4: programmi, uso noto e possibili residui (F-AP). Chiavi `fatto-programma-*`, `fatto-uso-*`,
+## Programmi, uso noto e possibili residui. Chiavi `fatto-programma-*`, `fatto-uso-*`,
 ## `fatto-residuo-*` e `funzione-programma-*`, `funzione-possibile-residuo-*`.
 
 # Titolo della funzione della vista Programmi (campo "Regola" della scheda, al posto del nome di una regola).
 funzione-programma = Programmi installati
-# Cosa fa la funzione, sotto il titolo nella scheda (F-AP-1, F-AP-2). "Prova del percorso" detta in parole semplici.
+# Cosa fa la funzione, sotto il titolo nella scheda. "Prova del percorso" detta in parole semplici.
 funzione-programma-descrizione = Funzione di Quado. L'elenco viene dalle voci di disinstallazione, dai pacchetti di Microsoft Store e dai manifest di Steam ed Epic. Lo spazio di un programma si conta solo quando una fonte ne dichiara la cartella.
-# Metodo per i programmi Win32 (04 §6.7, §6.8): la UI apre Impostazioni e copia il nome negli appunti.
+# Metodo per i programmi Win32: la UI apre Impostazioni e copia il nome negli appunti.
 funzione-programma-metodo-impostazioni = Impostazioni › App. Quado copia il nome del programma negli appunti: incollalo nella casella di ricerca.
 # Metodo per le app di Microsoft Store: la pagina dell'app in Impostazioni.
 funzione-programma-metodo-msix = Impostazioni › App, nella pagina dell'app
@@ -452,19 +452,19 @@ funzione-programma-metodo-msix = Impostazioni › App, nella pagina dell'app
 funzione-programma-metodo-steam = Disinstalla con Steam, che chiede conferma.
 # Metodo per i prodotti di Epic: non c'è un URI, si rimanda alla libreria del launcher. Percorso di menu.
 funzione-programma-metodo-epic = Libreria di Epic Games Launcher › i tre puntini accanto al titolo › Disinstalla
-# Alternativa per i programmi Win32 (F-AP-5): il comando appwiz.cpl si mostra e si copia. Percorso di menu.
+# Alternativa per i programmi Win32: il comando appwiz.cpl si mostra e si copia. Percorso di menu.
 funzione-programma-alternativa-pannello = Pannello di controllo › Programmi e funzionalità
 # Rischio di ogni disinstallazione: Quado non sa cosa toglie il programma di disinstallazione.
 funzione-programma-rischio-1 = Il programma di disinstallazione decide cosa eliminare: può lasciare dati o eliminare anche file nelle cartelle del programma.
-# Casella del controllo manuale prima di aprire l'interfaccia, quando nella cartella ci sono tuoi file (F-AP-5). Parla l'utente.
+# Casella del controllo manuale prima di aprire l'interfaccia, quando nella cartella ci sono tuoi file. Parla l'utente.
 funzione-programma-controllo-tuoi-file = Ho copiato altrove i miei file dalla cartella del programma
 # Ipotesi quando la cartella viene dal comando di disinstallazione (solo un indizio di percorso).
 funzione-programma-ipotesi-indizio = Ipotesi: la cartella del programma di disinstallazione è la cartella del programma.
 # Ipotesi quando i tuoi file sono nella cartella che contiene il programma e i suoi dati (CapCut).
 funzione-programma-ipotesi-ambito = Ipotesi: la cartella che contiene il programma e i suoi dati appartiene al programma, e la disinstallazione può toglierla.
-# Titolo della funzione dei possibili residui. "Residuo" solo come possibilità (04 §6.8).
+# Titolo della funzione dei possibili residui. "Residuo" solo come possibilità.
 funzione-possibile-residuo = Possibili residui
-# Cosa fa la funzione (F-AP-6), con il criterio del confronto per nome.
+# Cosa fa la funzione, con il criterio del confronto per nome.
 funzione-possibile-residuo-descrizione = Funzione di Quado. Elenca le cartelle in Local, Roaming, LocalLow e ProgramData che nessun programma installato e nessuna regola spiegano. Il confronto è per nome. Una cartella è spiegata se ogni parola del suo nome compare nel nome o nell'editore di uno stesso programma.
 
 # Editore dalla voce di disinstallazione.
@@ -473,11 +473,11 @@ fatto-programma-editore = Editore: { $a }
 fatto-programma-versione = Versione: { $a }
 # Cartella del programma con la sua prova (InstallLocation, manifest, pacchetto). $a percorso.
 fatto-programma-cartella = Cartella del programma: { $a }
-# Cartella ricavata dal comando di disinstallazione, mai eseguito (F-AP-2). $a percorso.
+# Cartella ricavata dal comando di disinstallazione, mai eseguito. $a percorso.
 fatto-programma-cartella-indizio = Cartella del programma di disinstallazione, presa come cartella del programma: { $a }
 # Percorso dichiarato che non può essere la cartella di un programma. $a percorso.
 fatto-programma-cartella-non-plausibile = La cartella dichiarata { $a } è la radice dell'unità o una cartella di Windows o dell'utente: nessuno spazio attribuito.
-# Nessuna prova del percorso (F-AP-2): testo della specifica.
+# Nessuna prova del percorso: nessuna fonte dichiara la cartella del programma.
 fatto-programma-posizione-non-dichiarata = Posizione non dichiarata
 # Nessuna prova del percorso e nessun dato dalle regole: 0 byte attribuiti, mai per somiglianza del nome.
 fatto-programma-nessuno-spazio = Nessuno spazio attribuito: nessuna fonte dichiara la cartella del programma.
@@ -497,13 +497,13 @@ fatto-programma-dati-regole = { $b ->
     [one] Dati del programma riconosciuti da una regola: { $a }
    *[other] Dati del programma riconosciuti dalle regole: { $a } in { $b_testo } cartelle
 }
-# Avviso prima della disinstallazione (04 §6.8). $a programma, $b dimensioni, $c sottocartella.
+# Avviso prima della disinstallazione. $a programma, $b dimensioni, $c sottocartella.
 fatto-programma-tuoi-file = Nella cartella di { $a } ci sono tuoi file ({ $b } in { $c }). Copiali altrove prima di disinstallare.
 # InstallDate dal registro. $a data.
 fatto-programma-data-installazione = Data di installazione: { $a }
 # SystemComponent=1: nascosto per default, nessun metodo di disinstallazione.
 fatto-programma-componente-di-sistema = Componente di sistema: Impostazioni › App non lo elenca.
-# UserAssist con il tracciamento attivo (F-AP-4), con la copertura. $a data.
+# UserAssist con il tracciamento attivo, con la copertura. $a data.
 fatto-uso-userassist = Ultimo avvio da Esplora file o Start: { $a } (UserAssist). Gli avvii da riga di comando, da altri launcher e da attività pianificate non sono registrati.
 # UserAssist attivo ma senza voci per gli eseguibili della cartella. Mai "mai usato".
 fatto-uso-userassist-nessun-avvio = Nessun avvio da Esplora file o Start per questa cartella, secondo UserAssist. Gli avvii da riga di comando, da altri launcher e da attività pianificate non sono registrati.
@@ -511,39 +511,39 @@ fatto-uso-userassist-nessun-avvio = Nessun avvio da Esplora file o Start per que
 fatto-uso-senza-cartella = Nessun dato d'uso: senza la cartella del programma gli avvii registrati da UserAssist non si possono abbinare.
 # Tracciamento attivo ma UserAssist non letto.
 fatto-uso-userassist-non-letto = UserAssist non letto: nessun dato d'uso.
-# Start_TrackProgs = 0 (04 §6.8): nessun valore UserAssist, anche se la chiave ha dati vecchi.
+# Start_TrackProgs = 0: nessun valore UserAssist, anche se la chiave ha dati vecchi.
 fatto-uso-tracciamento-disattivato = Tracciamento degli avvii di Windows disattivato: nessun dato d'uso
 # Start_TrackProgs assente, con un valore inatteso o non leggibile.
 fatto-uso-tracciamento-non-letto = Impostazione del tracciamento degli avvii non letta: nessun dato d'uso.
-# App di Microsoft Store: nessun dato d'uso (F-AP-4).
+# App di Microsoft Store: nessun dato d'uso.
 fatto-uso-msix-nessun-dato = Windows non dice quando un'app di Microsoft Store è stata usata l'ultima volta.
-# Possibile residuo (04 §6.8). $a data dell'ultima modifica nella cartella.
+# Possibile residuo: "residuo" solo come possibilità. $a data dell'ultima modifica nella cartella.
 fatto-residuo-possibile = Nessun programma installato corrispondente (confronto per nome). Ultima modifica: { $a }. Potrebbe essere un residuo.
 # Possibile residuo senza data nella scansione.
 fatto-residuo-possibile-senza-data = Nessun programma installato corrispondente (confronto per nome). Ultima modifica non letta. Potrebbe essere un residuo.
 
-## M4: vista Download (F-DL-1, F-DL-3..6). Chiavi `fatto-lente-*` e `funzione-*` delle voci della vista.
+## Vista Download. Chiavi `fatto-lente-*` e `funzione-*` delle voci della vista.
 
 # Titolo delle voci di file con le stesse dimensioni, confrontati o no (card interventi, elenco della vista Download).
 funzione-stessa-dimensione-nome = File con le stesse dimensioni
-# Titolo delle voci di copie con lo stesso contenuto, dopo il confronto (F-DL-4).
+# Titolo delle voci di copie con lo stesso contenuto, dopo il confronto.
 funzione-copie-identiche-nome = Copie identiche
-# Metodo delle copie identiche: spostamento nel Cestino dopo l'anteprima (M5). Quado è l'attore.
+# Metodo delle copie identiche: spostamento nel Cestino dopo l'anteprima. Quado è l'attore.
 funzione-copie-identiche-metodo = Quado sposta nel Cestino le copie che scegli, dopo l'anteprima. La copia da tenere resta al suo posto.
 # Effetto da dire sempre: chi apre una copia dal suo percorso non la trova più.
 funzione-copie-identiche-rischio-1 = Un collegamento o un programma che apre una copia dal suo percorso non la trova più. Lo stesso contenuto resta nella copia tenuta.
-# Titolo delle voci di archivi zip con una cartella dello stesso nome accanto (F-DL-5).
+# Titolo delle voci di archivi zip con una cartella dello stesso nome accanto.
 funzione-archivio-con-cartella-nome = Archivi con una cartella dello stesso nome
 # Titolo della voce delle immagini disco.
 funzione-immagine-disco-nome = Immagini disco
-# Titolo delle voci di download incompleti (F-DL-6).
+# Titolo delle voci di download incompleti.
 funzione-download-incompleto-nome = Download incompleti
-# Metodo dei download incompleti che nessun processo usa: spostamento nel Cestino dopo l'anteprima (M5).
+# Metodo dei download incompleti che nessun processo usa: spostamento nel Cestino dopo l'anteprima.
 funzione-download-incompleto-metodo = Quado sposta nel Cestino i download incompleti, dopo l'anteprima.
 # Effetto da dire sempre.
 funzione-download-incompleto-rischio-1 = Il browser non può più riprendere questi download: per avere il file, scaricalo di nuovo.
 
-# Tipo secondo l'estensione (F-IN-3): primo fatto delle voci; per un installatore letto viene dopo l'esito della lettura. $a codice della famiglia della lente, $b numero di file.
+# Tipo secondo l'estensione: primo fatto delle voci; per un installatore letto viene dopo l'esito della lettura. $a codice della famiglia della lente, $b numero di file.
 fatto-lente-famiglia = { $a ->
     [installatori] { $b ->
         [one] Un installatore
@@ -567,16 +567,16 @@ fatto-lente-stessa-dimensione = { $a ->
     [one] Un file da { $b }
    *[other] { $a_testo } file da { $b } ciascuno
 }
-# Contenuto non ancora confrontato (03 §6.1): non disponibile finché non si chiede il confronto.
+# Contenuto non ancora confrontato: non disponibile finché non si chiede il confronto.
 fatto-lente-contenuto-non-confrontato = Contenuto non confrontato
-# Confronto annullato a metà (06 §3.2): nessun risultato parziale. $a file letti, $b file del gruppo.
+# Confronto annullato a metà: nessun risultato parziale. $a file letti, $b file del gruppo.
 fatto-lente-letti-in-parte = Confronto non completato: { $a_testo } file letti su { $b_testo }
 # File che hanno cambiato dimensioni tra la scansione e il confronto. $a numero di file.
 fatto-lente-dimensione-cambiata = { $a ->
     [one] Le dimensioni di un file sono cambiate dopo la scansione: per confrontarlo serve una nuova scansione della cartella
    *[other] Le dimensioni di { $a_testo } file sono cambiate dopo la scansione: per confrontarli serve una nuova scansione della cartella
 }
-# Prova di gestibilità (F-DL-4): stessa impronta SHA-256. $a numero di file, $b dimensioni di ciascuno.
+# Prova di gestibilità: stessa impronta SHA-256. $a numero di file, $b dimensioni di ciascuno.
 fatto-lente-contenuto-identico = Stesso contenuto (impronta SHA-256) in { $a_testo } file da { $b }
 # Prova di gestibilità: la copia che resta, con la sua data di creazione.
 fatto-lente-copia-tenuta = Resta la copia creata il { $a }
@@ -585,11 +585,11 @@ fatto-lente-contenuto-diverso = { $a ->
     [one] Contenuto confrontato: nessun altro file con le stesse dimensioni ha questo contenuto
    *[other] Contenuto confrontato: i { $a_testo } file hanno contenuti diversi tra loro
 }
-# Installatori non ancora letti (F-DL-2): nome e versione si leggono su richiesta.
+# Installatori non ancora letti: nome e versione si leggono su richiesta.
 fatto-lente-installatori-non-letti = Dati di versione non letti
-# Segnaposto cloud (05 D6): il contenuto non si legge, per non scaricarlo.
+# Segnaposto cloud: il contenuto non si legge, per non scaricarlo.
 fatto-lente-solo-cloud = Solo nel cloud: non letto, per non scaricarlo
-# Dati di versione non letti per un problema (06 §2.3), forma degli errori «Impossibile + infinito». $a codice del motivo; $b codice di errore di Windows o nome del campo.
+# Dati di versione non letti per un problema, forma degli errori «Impossibile + infinito». $a codice del motivo; $b codice di errore di Windows o nome del campo.
 fatto-lente-estrattore-non-riuscito = Impossibile leggere i dati di versione: { $a ->
     [non-presente] il file non c'è più
     [accesso-negato] Windows nega l'accesso
@@ -606,9 +606,9 @@ fatto-lente-estrattore-non-riuscito = Impossibile leggere i dati di versione: { 
     [valore] il campo { $b } ha un valore inatteso
    *[other] { $a }
 }
-# Zip con una cartella dello stesso nome accanto (F-DL-5).
+# Zip con una cartella dello stesso nome accanto.
 fatto-lente-cartella-accanto = Accanto c'è una cartella con lo stesso nome dell'archivio
-# Prova misurata (04 §6.6): file dell'indice presenti nella cartella con le stesse dimensioni. $a presenti, $b file dell'indice.
+# Prova misurata: file dell'indice presenti nella cartella con le stesse dimensioni. $a presenti, $b file dell'indice.
 fatto-lente-voci-presenti = { $a ->
     [one] { $a_testo } file su { $b_testo } dell'archivio è nella cartella, con le stesse dimensioni
    *[other] { $a_testo } file su { $b_testo } dell'archivio sono nella cartella, con le stesse dimensioni
@@ -630,7 +630,7 @@ fatto-lente-voci-non-lette = { $a ->
 }
 # Indice dello zip non ancora letto: si legge su richiesta.
 fatto-lente-indice-non-letto = Indice dell'archivio non letto
-# Indice dello zip non leggibile (06 §3.3). $a codice del motivo; $b codice di errore di Windows o nome del campo.
+# Indice dello zip non leggibile. $a codice del motivo; $b codice di errore di Windows o nome del campo.
 fatto-lente-archivio-non-leggibile = Impossibile leggere l'indice dell'archivio: { $a ->
     [non-presente] il file non c'è più
     [accesso-negato] Windows nega l'accesso
@@ -652,7 +652,7 @@ fatto-lente-segnaposto = { $a ->
     [one] Un file è solo nel cloud: su questa unità occupa solo i byte locali
    *[other] { $a_testo } file sono solo nel cloud: su questa unità occupano solo i byte locali
 }
-# Prova di gestibilità (F-DL-6): il controllo dei file in uso non trova programmi che usano i file. $a numero di file, $b data del controllo, $b_ora la sua ora.
+# Prova di gestibilità: il controllo dei file in uso non trova programmi che usano i file. $a numero di file, $b data del controllo, $b_ora la sua ora.
 fatto-lente-nessun-processo = { $a ->
     [one] Nessun programma lo usa, secondo Windows (controllo del { $b } alle { $b_ora })
    *[other] Nessun programma li usa, secondo Windows (controllo del { $b } alle { $b_ora })

@@ -1,13 +1,14 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Motore di classificazione (05 D6): dalle regole, dall'albero della scansione e dalle prove degli
-//! estrattori produce i record di raccomandazione (03 §6.1) e il gestore di ogni elemento.
+//! Motore di classificazione: dalle regole, dall'albero della scansione e dalle prove degli
+//! estrattori produce i record di raccomandazione e il gestore di ogni elemento.
 //!
 //! - Ogni regola ha un riconoscitore che trova i suoi elementi e raccoglie i fatti.
-//! - L'affidabilità la calcola il motore con i criteri di 03 §6.2, mai la regola.
-//! - Un byte ha un solo proprietario: l'elemento riconosciuto più profondo (prefisso più lungo, F-AP-2).
+//! - L'affidabilità la calcola il motore con i criteri di `Criterion`, mai la regola.
+//! - Un byte ha un solo proprietario: l'elemento riconosciuto più profondo (prefisso più lungo).
 //! - Due regole sullo stesso elemento: se concordano su gestore e stato vale la più specifica, se no
-//!   si mostrano entrambe, con affidabilità bassa e nessuna proposta (03 §6.1 regola 5).
-//! - Scadenza delle regole secondo 07 §5.1.
+//!   si mostrano entrambe, con affidabilità bassa e nessuna proposta.
+//! - Scadenza delle regole dalla data di verifica (`Expiry`): oltre 12 mesi la regola non propone niente
+//!   e lo stato è Non sappiamo.
 
 use std::collections::HashMap;
 
@@ -29,12 +30,12 @@ pub struct Match {
     pub rule: usize,
     pub nodes: Vec<u32>,
     pub manager: Manager,
-    /// Provenienza dell'attribuzione al gestore: decide il colore (03 §6.2).
+    /// Provenienza dell'attribuzione al gestore: decide il colore.
     pub attribution: Provenance,
     /// Valori per i testi della regola (`regola-<id>-riga`): nome, versione, numero di elementi.
     pub args: Vec<(&'static str, Value)>,
     pub record: Record,
-    /// Altre regole che riconoscono gli stessi elementi, mostrate insieme (03 §6.1 regola 5).
+    /// Altre regole che riconoscono gli stessi elementi, mostrate insieme.
     pub others: Vec<usize>,
 }
 
@@ -48,7 +49,7 @@ impl Match {
     }
 }
 
-/// Byte dell'allocato letto per gruppo di colore (bilancio per gestore, F-OV-1).
+/// Byte dell'allocato letto per gruppo di colore (bilancio per gestore).
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 pub struct ByManager {
     pub windows: u64,
@@ -303,7 +304,7 @@ impl Ctx<'_> {
         let mut f = Found { criterion: Some(criterion), attribution: Some(Provenance::Deduced(criterion)), ..Default::default() };
         f.identity.push(fact("fatto-percorso-documentato", Provenance::Deduced(criterion), Source::Rule, vec![Value::Count(nodes.len() as u64)]));
         f.args.push(("n", Value::Count(nodes.len() as u64)));
-        // Ibernazione: avviso se l'azione per batteria critica è l'ibernazione (decisioni §3).
+        // Ibernazione: avviso se l'azione per batteria critica è l'ibernazione.
         if rule.id == "ibernazione" {
             self.hibernation(&mut f);
         }
@@ -405,7 +406,7 @@ impl Ctx<'_> {
             }
         };
         let in_use_v = parse_version(&in_use).unwrap_or_default();
-        // Versione installata dentro l'intervallo della regola (03 §6.1 regola 4).
+        // Versione installata dentro l'intervallo della regola: fuori, o non nota, niente proposta.
         let in_range = rule.versions.as_ref().is_some_and(|r| match (parse_version(&r.min), parse_version(&r.max)) {
             (Some(lo), Some(hi)) => in_use_v >= lo && in_use_v <= hi,
             _ => false,
@@ -598,11 +599,11 @@ impl Ctx<'_> {
             }
             let Some(n) = find(self.tree, &path) else { continue };
             // HKLM con InstallLocation: da fonte. HKCU (scrivibile dall'utente) o solo indizio dal
-            // comando di disinstallazione: dedotto media (05 D6, RS22).
+            // comando di disinstallazione: dedotto media.
             let machine = e.hive != quado_model::record::Hive::User;
             let mut c = if declared && machine { None } else { Some(Criterion::OneSource) };
             // Indizio da una voce di HKLM con l'eseguibile presente nella cartella: fonte di Windows
-            // con la struttura che dichiara (03 §6.2, alta).
+            // con la struttura che dichiara (alta).
             if !declared && machine && e.hint_exe().is_some_and(|x| find(self.tree, &x).is_some()) {
                 c = Some(Criterion::OfficialWithStructure);
             }
@@ -659,7 +660,7 @@ impl Ctx<'_> {
             .collect()
     }
 
-    /// Ipotesi dal nome (03 §6.2): cartelle di primo livello in Local, Roaming e ProgramData con il nome
+    /// Ipotesi dal nome: cartelle di primo livello in Local, Roaming e ProgramData con il nome
     /// dell'editore di un programma installato. Grigio "ipotesi", nessuna proposta.
     fn name_hypotheses(&self, claimed: &dyn Fn(u32) -> bool) -> Vec<(u32, String)> {
         let Ok(u) = &self.ev.uninstall else { return Vec::new() };
@@ -972,10 +973,10 @@ fn build(rule: &Rule, mut f: Found, tree: &Tree, today: Date) -> (Record, Proven
     (record, attribution, f.args, f.nodes)
 }
 
-/// Voce della card "Interventi possibili" (F-OV-4): una per regola, solo da record che propongono
+/// Voce della card "Interventi possibili": una per regola, solo da record che propongono
 /// un'azione. Mai Non sappiamo, mai la variante "Nessuna procedura", mai le cartelle orfane del
 /// Cestino; mai voci da dimensione, età, nome o estensione; mai le regole con `card = false`. Le
-/// disinstallazioni stanno nella vista Programmi (M4), non nella card.
+/// disinstallazioni stanno nella vista Programmi, non nella card.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct Intervention {
     pub rule: usize,
@@ -1031,7 +1032,7 @@ pub fn sum_estimates(a: Estimate, b: Estimate) -> Estimate {
     }
 }
 
-/// Record per un elemento senza regola: Non sappiamo, solo misure e "Apri in Esplora file" (F-IN-4).
+/// Record per un elemento senza regola: Non sappiamo, solo misure e "Apri in Esplora file".
 pub fn unknown_record() -> Record {
     Record {
         state: State::Unknown(UnknownReason::NoRule),

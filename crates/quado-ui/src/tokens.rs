@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Token della variante A "Apple" della proposta visiva (04 §6); i contrasti sono controllati in
+//! Token della variante A "Apple" della proposta visiva; i contrasti sono controllati in
 //! `color_check.rs`. Tutti i colori sono piatti, senza trasparenze, tranne
 //! l'oscuramento sotto i dialoghi.
 //!
@@ -15,7 +15,7 @@
 //!
 //! Il colore delle azioni è l'accento (Grafite predefinito, Viola, Rosa): colora solo pulsanti primari,
 //! interruttori, selezione e focus. Il colore dei dati resta ai quattro gestori, ognuno con la sua forma
-//! (cerchio, rombo, triangolo, anello) perché il colore non sia mai l'unico segno (04 §6.1).
+//! (cerchio, rombo, triangolo, anello) perché il colore non sia mai l'unico segno.
 
 use egui::epaint::Shadow;
 use egui::{Color32, CornerRadius, Id, Stroke};
@@ -62,7 +62,7 @@ impl ThemeChoice {
     }
 }
 
-/// Chi gestisce uno spazio (03 §6.1): decide il colore e la forma dei dati.
+/// Chi gestisce uno spazio: decide il colore e la forma dei dati.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum Gestore {
     /// Programmi e dati delle app.
@@ -180,7 +180,7 @@ pub struct AccentColors {
     pub select: Color32,
 }
 
-/// Colori dei dati scelti in Impostazioni (04 §6.2): la forma e il nome dei gestori non cambiano.
+/// Colori dei dati scelti in Impostazioni: la forma e il nome dei gestori non cambiano.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 pub enum DataPalette {
     /// Tinte tenui, poca croma.
@@ -774,7 +774,7 @@ pub fn apply(ctx: &egui::Context, p: &Palette, animations: bool) {
         s.spacing.item_spacing = egui::vec2(8.0, 6.0);
         s.spacing.menu_margin = egui::Margin::same(6);
         s.interaction.selectable_labels = false;
-        // "Effetti di animazione" di Windows spenti: nessuna animazione, nemmeno nello scorrimento (04 §6.1).
+        // "Effetti di animazione" di Windows spenti: nessuna animazione, nemmeno nello scorrimento.
         s.animation_time = if animations { motion::BASE } else { 0.0 };
         s.scroll_animation = if animations { egui::style::ScrollAnimation::default() } else { egui::style::ScrollAnimation::none() };
     });
@@ -800,8 +800,8 @@ mod tests {
 
     #[test]
     fn every_text_on_every_surface_and_state_is_readable() {
-        // 06 §7, F-GE-2, 04 §6.2: testo ≥ 4,5:1 su ogni superficie e in ogni stato (normale, hover,
-        // selezionato), in ogni combinazione di tema, accento e colori dei dati.
+        // Testo ≥ 4,5:1 su ogni superficie e in ogni stato (normale, hover, selezionato), in ogni
+        // combinazione di tema, accento e colori dei dati.
         let mut bad = Vec::new();
         for (name, p) in all() {
             let surfaces = [
@@ -860,8 +860,8 @@ mod tests {
 
     #[test]
     fn data_colours_are_visible_and_distinct() {
-        // 04 §6.2: tinte dei dati e metadati ≥ 3:1 con ogni fondo su cui compaiono; coppie con ΔE OKLab
-        // ≥ 3,0 in visione normale e con protanopia, deuteranopia e tritanopia (Machado 2009).
+        // Tinte dei dati e metadati ≥ 3:1 con ogni fondo su cui compaiono; coppie con ΔE OKLab ≥ 3,0 in
+        // visione normale e con protanopia, deuteranopia e tritanopia (Machado 2009).
         let mut bad = Vec::new();
         for (name, p) in all() {
             let set: Vec<Color32> = p.data.iter().copied().chain([p.meta]).collect();
@@ -883,7 +883,7 @@ mod tests {
 
     #[test]
     fn treemap_tiles_keep_labels_readable_and_fills_distinct() {
-        // 04 §6.2: etichetta sulla mappa ≥ 4,5:1; aree distinguibili con ΔE ≥ 3,0 anche nelle simulazioni.
+        // Etichetta sulla mappa ≥ 4,5:1; aree distinguibili con ΔE ≥ 3,0 anche nelle simulazioni.
         let mut bad = Vec::new();
         for (name, p) in all() {
             for g in Gestore::ALL {

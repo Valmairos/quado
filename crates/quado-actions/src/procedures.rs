@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Procedure di Windows (03 F-AC-1, 05 D7): "Svuota il Cestino" con il dialogo di conferma di Windows
+//! Procedure di Windows: "Svuota il Cestino" con il dialogo di conferma di Windows
 //! (`SHEmptyRecycleBinW` con i flag a zero: dialogo di conferma, avanzamento e suono di Windows; mai
 //! `SHERB_NOCONFIRMATION`). Le pagine da aprire ("Apri il Cestino", Impostazioni › Archiviazione e File
 //! temporanei) passano dal lanciatore tipizzato di `launch`.
 //!
 //! Lo svuotamento accetta solo la radice di un'unità (`C:\`): mai la radice nulla, che per Windows vuol
 //! dire i Cestini di tutti i volumi, mai una sottocartella o un percorso di rete. Prima del dialogo
-//! l'interfaccia dice quanti altri elementi e quanti GB contiene il Cestino secondo Windows (F-AC-1).
+//! l'interfaccia dice quanti altri elementi e quanti GB contiene il Cestino secondo Windows.
 
 use windows::Win32::Foundation::{E_INVALIDARG, HWND};
 use windows::Win32::System::Com::{COINIT_APARTMENTTHREADED, CoInitializeEx, CoUninitialize};
@@ -55,7 +55,7 @@ impl Drop for Com {
 ///
 /// Una radice che non è quella di un'unità (vedi [`is_drive_root`]) si rifiuta con `E_INVALIDARG`
 /// senza chiamare Windows. Gli altri errori sono l'HRESULT di Windows; l'esito vero si legge dalle misure
-/// dopo lo svuotamento (F-VE-2), non dal codice: quale codice dia l'annullamento del dialogo non è
+/// dopo lo svuotamento, non dal codice: quale codice dia l'annullamento del dialogo non è
 /// verificato.
 pub fn empty_recycle_bin(root: &str, owner: Option<isize>) -> Result<(), ShellError> {
     if !is_drive_root(root) {

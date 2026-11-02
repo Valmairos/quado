@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Cestino dei VHDX di prova (06 §5.3, §6.1): capacità ridotta per la durata di una prova e
+//! Cestino dei VHDX di prova: capacità ridotta per la durata di una prova e
 //! svuotamento senza conferme. Solo sui volumi montati da `cargo xtask vhdx crea`: ogni funzione rifiuta
 //! qualunque altra radice, quindi il Cestino di C: e degli altri dischi non si tocca mai.
 //!
-//! Il prodotto non svuota mai il Cestino senza il dialogo di Windows (F-AC-1): lo svuotamento silenzioso
+//! Il prodotto non svuota mai il Cestino senza il dialogo di Windows: lo svuotamento silenzioso
 //! esiste solo qui, per preparare e ripulire le prove.
 
 use std::path::{Path, PathBuf};

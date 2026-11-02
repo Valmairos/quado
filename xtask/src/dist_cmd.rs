@@ -3,7 +3,7 @@
 //! `dist`), la stessa che usa `cargo xtask installa`.
 //!
 //! Con RUSTFLAGS (o CARGO_ENCODED_RUSTFLAGS) cargo ignora i `rustflags` di `.cargo/config.toml`: la stringa
-//! li ripete (oggi `-C target-feature=+crt-static`, 05 D9) e aggiunge un `--remap-path-prefix` per ogni
+//! li ripete (oggi `-C target-feature=+crt-static`) e aggiunge un `--remap-path-prefix` per ogni
 //! cartella che finirebbe nell'eseguibile con i messaggi di panic delle dipendenze (`file!()`,
 //! `Location::caller`) e con i file generati in `OUT_DIR`:
 //! - la cartella di cargo (`CARGO_HOME`, con il registro dei sorgenti) diventa `cargo`;

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! Palette dei comandi (Ctrl+K, variante A, `.cmdk`): una casella e un elenco per saltare a una schermata,
-//! a una cartella o a un file del modello già scansionato (con la ricerca per nome di Esplora, F-EX-4) e
+//! a una cartella o a un file del modello già scansionato (con la ricerca per nome di Esplora) e
 //! per i comandi più usati.
 //!
 //! Tastiera: la casella ha il focus; frecce su e giù scelgono la voce, Invio la apre, Esc chiude senza fare

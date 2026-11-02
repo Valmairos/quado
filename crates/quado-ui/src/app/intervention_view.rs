@@ -1,28 +1,25 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Spostamento nel Cestino dall'interfaccia (03 F-AC-2, F-AC-3, F-VE; 04 §6.6 schermate 4 e 5, §6.7):
-//! simulazione in background, dialogo di conferma, esecuzione, misure e riscansione, risultato con
-//! "Apri il Cestino" e "Svuota il Cestino…", registro.
+//! Spostamento nel Cestino dall'interfaccia: simulazione in background, dialogo di conferma, esecuzione,
+//! misure e riscansione, risultato con "Apri il Cestino" e "Svuota il Cestino…", registro.
 //!
 //! Flusso:
 //! 1. [`open`] costruisce la `simulate::Request` dai dati correnti (elementi di una regola o voci della
 //!    lente Download, con gli elementi fissi) e avvia la simulazione in un thread. Il dialogo mostra
 //!    l'avanzamento; "Annulla" la ferma.
-//! 2. Finita la simulazione, il dialogo di conferma (schermata 4). Esc, Annulla, la X e il clic fuori lo
-//!    chiudono senza chiamare `plan::conferma`; il pulsante principale è attivo solo se `plan::check` è
-//!    vuoto e chiama `plan::conferma`, l'unico costruttore del piano.
-//! 3. In un thread: misura di partenza prima del mover (F-VE-1), mover creato lì (COM a thread singolo),
+//! 2. Finita la simulazione, il dialogo di conferma. Esc, Annulla, la X e il clic fuori lo chiudono senza
+//!    chiamare `plan::conferma`; il pulsante principale è attivo solo se `plan::check` è vuoto e chiama
+//!    `plan::conferma`, l'unico costruttore del piano.
+//! 3. In un thread: misura di partenza prima del mover, mover creato lì (COM a thread singolo),
 //!    `execute::esegui`, misura dopo l'azione. Se la misura di partenza non riesce non si sposta niente:
 //!    senza partenza non c'è verifica né registro.
 //! 4. Riscansione delle cartelle che contenevano gli elementi e del Cestino dell'utente, modello
-//!    aggiornato (`data::apply_rescans`, F-VE-4), stimato contro ottenuto (`verification::compare`),
+//!    aggiornato (`data::apply_rescans`), stimato contro ottenuto (`verification::compare`),
 //!    registro (`journal::append`, una riga per misura con lo stesso `id`: vale l'ultima).
-//! 5. Risultato (schermata 5) in cima alla vista Interventi, con "Apri il Cestino", "Svuota il
-//!    Cestino…" (dialogo di Windows, mai senza conferma) e la verifica dopo lo svuotamento.
+//! 5. Risultato in cima alla vista Interventi, con "Apri il Cestino", "Svuota il Cestino…"
+//!    (dialogo di Windows, mai senza conferma) e la verifica dopo lo svuotamento.
 //!
 //! Il thread dell'interfaccia non aspetta mai un lavoro, salvo `App::wait_background` prima di
-//! modificare il modello. Ogni testo viene dai file di lingua (05 D13), ogni unità da `app.fmt` (F-GE-3).
-//!
-//! M5, agente E1.
+//! modificare il modello. Ogni testo viene dai file di lingua, ogni unità da `app.fmt`.
 
 use std::collections::VecDeque;
 use std::path::PathBuf;
@@ -106,7 +103,7 @@ struct Emptied {
     measure: Option<Result<Measure, u32>>,
 }
 
-/// Stato del registro degli interventi (F-AC-6) per l'ultimo intervento.
+/// Stato del registro degli interventi per l'ultimo intervento.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum JournalState {
     /// Nessuna cartella dei dati (`Env::data_dir`): niente si scrive.
@@ -282,7 +279,7 @@ impl Outcome {
         })
     }
 
-    /// Fatti misurati per le voci di spiegazione (03 §6.3), all'ultima misura di `point`.
+    /// Fatti misurati per le voci di spiegazione, all'ultima misura di `point`.
     fn facts(&self, point: MeasurePoint) -> ExplainFacts {
         let Some(r) = &self.riepilogo else { return ExplainFacts::default() };
         let (mut sf_items, mut sf_bytes, mut recycled) = (0u64, 0u64, 0u64);
@@ -367,7 +364,7 @@ pub fn open(app: &mut App, origin: Origin) {
 }
 
 /// La richiesta di simulazione dai dati correnti, con il soggetto per i testi. `None` per i programmi
-/// (non sono uno spostamento, F-AP-5) e se i dati non ci sono più.
+/// (non sono uno spostamento) e se i dati non ci sono più.
 fn request(app: &App, origin: &Origin) -> Option<(Request, Subject)> {
     let d = app.data.as_ref()?;
     let t = d.tree();
@@ -406,7 +403,7 @@ fn request(app: &App, origin: &Origin) -> Option<(Request, Subject)> {
     }
 }
 
-/// Versione precedente e versione in uso di CapCut, fisse nella conferma (03 §6.1): si ritrovano per nome
+/// Versione precedente e versione in uso di CapCut, fisse nella conferma: si ritrovano per nome
 /// (argomenti "precedente" e "versione" della corrispondenza) nella stessa cartella `Apps` delle versioni
 /// da spostare.
 fn capcut_kept(t: &Tree, m: &Match) -> Vec<RequestItem> {
@@ -489,7 +486,7 @@ pub fn poll(app: &mut App, ctx: &egui::Context) {
     }
 }
 
-/// Riscansione delle cartelle che contenevano gli elementi del piano e del Cestino dell'utente (F-VE-2).
+/// Riscansione delle cartelle che contenevano gli elementi del piano e del Cestino dell'utente.
 fn start_rescan(app: &mut App, point: MeasurePoint) {
     let sid = app.env.user_sid.clone();
     let rescan = Arc::clone(&app.env.actions.rescan);
@@ -501,7 +498,7 @@ fn start_rescan(app: &mut App, point: MeasurePoint) {
     o.rescan_note = None;
 }
 
-/// Applica la riscansione al modello (F-VE-4), completa la misura con `still_present`, confronta stimato
+/// Applica la riscansione al modello, completa la misura con `still_present`, confronta stimato
 /// e ottenuto e accoda la riga del registro.
 fn finish_rescan(app: &mut App, rescans: Vec<Rescanned>, point: MeasurePoint) {
     let gone = app.intervention.last.as_ref().map_or_else(Vec::new, Outcome::gone_paths);
@@ -617,8 +614,8 @@ fn start(app: &mut App, dlg: Dialog) {
     app.go(Screen::Interventions);
 }
 
-/// L'esecuzione, in un thread: misura di partenza prima del mover (F-VE-1), mover creato qui, piano
-/// eseguito e consumato, misura dopo l'azione (F-VE-2). Senza misura di partenza il piano si scarta.
+/// L'esecuzione, in un thread: misura di partenza prima del mover, mover creato qui, piano eseguito e
+/// consumato, misura dopo l'azione. Senza misura di partenza il piano si scarta.
 fn run(piano: PianoConfermato, actions: &Actions, owner: Option<isize>, volume: &str, progress: &ExecProgress) -> Executed {
     let probe = &*actions.probe;
     let start = measure::measure(probe, volume, MeasurePoint::Start);
@@ -702,7 +699,7 @@ fn reference_kind(l: &Lingue, k: ReferenceKind) -> String {
     })
 }
 
-/// Il motivo di un blocco (05 D7), una variante per riga.
+/// Il motivo di un blocco, una variante per riga.
 fn block_text(l: &Lingue, f: &Formatter, b: &Block) -> String {
     match b {
         Block::Protected(k) => l.t(match k {
@@ -802,7 +799,7 @@ fn explanation_text(l: &Lingue, f: &Formatter, e: &Explanation) -> String {
     }
 }
 
-/// Estremo della stima più vicino all'ottenuto: il riferimento della percentuale (03 §6.3).
+/// Estremo della stima più vicino all'ottenuto: il riferimento della percentuale.
 fn reference(e: &Estimate, obtained: i64) -> Option<u64> {
     match *e {
         Estimate::Exact(v) => Some(v),
@@ -952,11 +949,11 @@ fn progress_dialog(app: &mut App, ctx: &egui::Context, p: &Palette) {
     }
 }
 
-/// La conferma (04 §6.6 schermata 4), variante A: titolo-domanda, stato e prove, le tre cifre, ipotesi e
-/// rischi del record (sempre visibili, prima dell'elenco), l'elenco con le caselle (gli elementi tenuti
-/// visibili e disattivati), i controlli con l'icona, la reversibilità e la scheda completa della
-/// raccomandazione, chiusa finché non la apri. Titolo e cifre seguono le caselle. Il dialogo è modale: il
-/// focus resta dentro ed Esc chiude senza fare niente.
+/// La conferma, variante A: titolo-domanda, stato e prove, le tre cifre, ipotesi e rischi del record (sempre
+/// visibili, prima dell'elenco), l'elenco con le caselle (gli elementi tenuti visibili e disattivati), i
+/// controlli con l'icona, la reversibilità e la scheda completa della raccomandazione, chiusa finché non la
+/// apri. Titolo e cifre seguono le caselle. Il dialogo è modale: il focus resta dentro ed Esc chiude senza
+/// fare niente.
 fn confirm_dialog(app: &App, ctx: &egui::Context, p: &Palette, dlg: &mut Dialog, req: &mut Option<KbRequest>) -> DialogAction {
     let (l, f) = (&app.lingue, &app.fmt);
     let restore = app.data.as_ref().map(|d| d.evidence.restore);
@@ -1031,7 +1028,7 @@ fn confirm_dialog(app: &App, ctx: &egui::Context, p: &Palette, dlg: &mut Dialog,
     }
 }
 
-/// Riga sotto il titolo: stato con icona e parola, prove, regola o funzione (04 §6.6).
+/// Riga sotto il titolo: stato con icona e parola, prove, regola o funzione.
 fn summary_line(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, app: &App, sim: &Simulazione, subject: &Subject) {
     let r = sim.record();
     ui.spacing_mut().item_spacing.y = 3.0;
@@ -1061,7 +1058,7 @@ fn summary_line(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, app: &App, 
 
 /// I tre numeri (`.dlg .nums`): da spostare, liberato subito (0), dopo lo svuotamento con lo stato della
 /// stima, in un riquadro con le colonne separate da un filetto; poi la nota, i file esclusi per altri nomi
-/// e le cartelle negate, se ci sono (03 §6.3).
+/// e le cartelle negate, se ci sono.
 fn numbers(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, sim: &Simulazione, selected: &[bool]) {
     let est = sim.estimate(selected);
     let moving: u64 = sim.items().iter().zip(selected).filter(|(it, s)| **s && it.fixed.is_none()).map(|(it, _)| it.alloc).sum();
@@ -1086,8 +1083,8 @@ fn numbers(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, sim: &Simulazion
     }
 }
 
-/// Ipotesi e rischi del record nel corpo della conferma, non solo nella scheda chiusa (valutazione dei
-/// consigli, 01/11/2026): le ipotesi con il glifo del dedotto, ogni rischio in un riquadro di avviso.
+/// Ipotesi e rischi del record nel corpo della conferma, non solo nella scheda chiusa: le ipotesi con il glifo
+/// del dedotto, ogni rischio in un riquadro di avviso.
 fn assumptions(ui: &mut Ui, p: &Palette, l: &Lingue, r: &quado_model::record::Record) {
     if r.hypotheses.is_empty() && r.risks.is_empty() {
         return;
@@ -1196,14 +1193,14 @@ fn check_row(ui: &mut Ui, p: &Palette, tone: Tone, s: &str) {
     ui.add_space(4.0);
 }
 
-/// Controlli con il loro esito (04 §6.6): file in uso con l'ora, riferimenti (con "parziale"), capacità
+/// Controlli con il loro esito: file in uso con l'ora, riferimenti (con "parziale"), capacità
 /// del Cestino, Sensore memoria, gli altri controlli automatici della regola.
 fn checks(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, sim: &Simulazione, selected: &[bool]) {
     dialog_heading(ui, p, &l.t("spostamento-controlli"), None);
     let proposed: Vec<_> = sim.items().iter().filter(|it| it.fixed.is_none()).collect();
     let with = |pred: fn(&Block) -> bool| proposed.iter().filter(|it| it.blocks.iter().any(pred)).count() as u64;
     let ora = f.time(sim.checked_at());
-    // Restart Manager (F-AC-8).
+    // Restart Manager.
     let (in_use, rm_err) = (with(|b| matches!(b, Block::InUse(_))), with(|b| matches!(b, Block::RestartManager(_))));
     if in_use > 0 {
         check_row(ui, p, Tone::Fail, &l.ta("spostamento-rm-in-uso", &[("n", in_use.into()), ("n_testo", f.count(in_use).into()), ("ora", ora.clone().into())]));
@@ -1214,7 +1211,7 @@ fn checks(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, sim: &Simulazione
     if in_use == 0 && rm_err == 0 {
         check_row(ui, p, Tone::Ok, &l.ta("spostamento-rm-ok", &[("ora", ora.into())]));
     }
-    // Riferimenti (F-AC-9): se la regola li chiede o se c'è l'eccezione di F-AC-4.
+    // Riferimenti: se la regola li chiede o se c'è l'eccezione per un elemento protetto.
     let r = sim.record();
     let refs_checked = r.checks.iter().any(|c| c.key == SIMULATION_CHECKS[1]) || (r.protected_exception && matches!(r.state, State::ToVerify(_)));
     if refs_checked {
@@ -1233,7 +1230,7 @@ fn checks(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, sim: &Simulazione
             check_row(ui, p, Tone::Info, &l.ta("spostamento-rif-parziale", &[("fonti", fonti.join(", ").into())]));
         }
     }
-    // Capacità del Cestino (F-AC-7).
+    // Capacità del Cestino.
     let volume = sim.volume().root.trim_end_matches('\\').to_owned();
     match sim.capacity(selected) {
         CapacityCheck::Fits { capacity, total } => check_row(
@@ -1250,7 +1247,7 @@ fn checks(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, sim: &Simulazione
         ),
         CapacityCheck::Unknown => check_row(ui, p, Tone::Fail, &l.ta("spostamento-capacita-ignota", &[("volume", volume.into())])),
     }
-    // Cartelle sincronizzate (R10): cosa Quado ha guardato quando non ne trova, e dove si recuperano le copie
+    // Cartelle sincronizzate: cosa Quado ha guardato quando non ne trova, e dove si recuperano le copie
     // nel cloud quando ne trova.
     let mut clouds: Vec<&str> = Vec::new();
     for m in proposed.iter().flat_map(|it| &it.manual) {
@@ -1265,7 +1262,7 @@ fn checks(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, sim: &Simulazione
     for c in clouds {
         check_row(ui, p, Tone::Info, &l.ta("spostamento-sincronizzato-ripristino", &[("provider", c.to_owned().into())]));
     }
-    // Sensore memoria (F-AC-7).
+    // Sensore memoria.
     if let Some(days) = sim.storage_sense_days() {
         let d = u64::from(days);
         check_row(ui, p, Tone::Info, &l.ta("spostamento-sensore", &[("giorni", d.into()), ("giorni_testo", f.count(d).into())]));
@@ -1287,8 +1284,7 @@ fn synced_key(kind: SyncKind) -> &'static str {
     }
 }
 
-/// Controlli manuali da spuntare (F-AC-2): quelli della regola e quelli degli elementi scegliibili
-/// (file sincronizzati, testo di 04 §6.8).
+/// Controlli manuali da spuntare: quelli della regola e quelli degli elementi scegliibili (file sincronizzati).
 fn manual_checks(ui: &mut Ui, p: &Palette, l: &Lingue, sim: &Simulazione, scelta: &mut Scelta) {
     let open = |it: &plan::SimItem| it.fixed.is_none() && it.blocks.is_empty() && !it.manual.is_empty();
     if sim.rule_manual().is_empty() && !sim.items().iter().any(open) {
@@ -1313,7 +1309,7 @@ fn manual_checks(ui: &mut Ui, p: &Palette, l: &Lingue, sim: &Simulazione, scelta
     }
 }
 
-/// Scheda completa della raccomandazione (03 F-AC-3), dentro la riga apribile: prove di identità e di
+/// Scheda completa della raccomandazione, dentro la riga apribile: prove di identità e di
 /// gestibilità con la loro provenienza, affidabilità, i campi del record con i controlli come li ha visti la
 /// simulazione, la regola con fonte e data.
 #[allow(clippy::too_many_arguments)]
@@ -1377,8 +1373,8 @@ struct PanelAction {
     tried: Option<bool>,
 }
 
-/// Il risultato dell'ultimo spostamento di questa sessione (04 §6.6 schermata 5), in cima alla vista
-/// Interventi. Restituisce falso se non c'è niente da mostrare.
+/// Il risultato dell'ultimo spostamento di questa sessione, in cima alla vista Interventi. Restituisce falso
+/// se non c'è niente da mostrare.
 pub fn result_panel(app: &mut App, ui: &mut Ui, p: &Palette) -> bool {
     let Some(o) = app.intervention.last.as_ref() else { return false };
     let (l, f) = (&app.lingue, &app.fmt);
@@ -1462,8 +1458,7 @@ fn step(ui: &mut Ui, p: &Palette, n: u8, title: &str, more: bool, body: impl FnO
     }
 }
 
-/// Passo 1: riusciti, saltati e falliti con il motivo; con esito parziale cosa è nel Cestino e come
-/// ripristinarlo (F-AC-3, RS8).
+/// Passo 1: riusciti, saltati e falliti con il motivo; con esito parziale cosa è nel Cestino e come ripristinarlo.
 fn step_move(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, o: &Outcome) {
     if o.exec.is_some() {
         let done = o.progress.done.load(Ordering::Relaxed);
@@ -1524,9 +1519,9 @@ fn step_space(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, o: &Outcome) 
 }
 
 /// Passo 3: "Apri il Cestino" con gli elementi spostati da Quado e come ripristinarli, "Svuota il Cestino…" con
-/// gli altri elementi secondo il conteggio di Windows (F-AC-1). Prima dei pulsanti, cosa provare prima di
-/// svuotare (`regola-<id>-prova`) o i rischi del record; per le versioni di CapCut «Svuota il Cestino…» resta
-/// disattivato finché non spunti la prova (valutazione dei consigli, 01/11/2026).
+/// gli altri elementi secondo il conteggio di Windows. Prima dei pulsanti, cosa provare prima di svuotare
+/// (`regola-<id>-prova`) o i rischi del record; per le versioni di CapCut «Svuota il Cestino…» resta
+/// disattivato finché non spunti la prova.
 fn step_bin(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, o: &Outcome, rule: Option<&quado_kb::rules::Rule>, act: &mut PanelAction) {
     let Some(r) = &o.riepilogo else { return };
     let moved: Vec<usize> = (0..r.items.len()).filter(|&k| r.items[k].outcome == ItemOutcome::Recycled).collect();
@@ -1541,7 +1536,7 @@ fn step_bin(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, o: &Outcome, ru
     let paths: Vec<&str> = moved.iter().map(|&k| r.items[k].path.as_str()).collect();
     widgets::paragraph(ui, names.join(", "), Type::Callout, p.text_2).on_hover_text(paths.join("\n"));
     wrapped(ui, &l.t("spostamento-ripristina"), 12.5, p.text_2);
-    // Altri elementi del Cestino: il conteggio dopo l'azione meno quelli di questo intervento (03 §6.3).
+    // Altri elementi del Cestino: il conteggio dopo l'azione meno quelli di questo intervento.
     let ours_logical: u64 = r.items.iter().filter(|i| i.outcome == ItemOutcome::Recycled).filter_map(|i| o.sim.items().iter().find(|s| s.path == i.path)).map(|s| s.logical).sum();
     let bin = o.measure(MeasurePoint::AfterAction).and_then(|m| m.bin);
     let other = match bin {
@@ -1594,7 +1589,7 @@ fn step_bin(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, o: &Outcome, ru
     }
 }
 
-/// Passo 4: verifica dopo lo svuotamento, con i due numeri separati e le voci di spiegazione (F-VE-3).
+/// Passo 4: verifica dopo lo svuotamento, con i due numeri separati e le voci di spiegazione.
 fn step_verify(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, o: &Outcome, restore: &Option<Result<bool, quado_kb::extract::ExtractError>>) {
     match o.comparisons.iter().find(|(pt, _)| *pt == MeasurePoint::AfterEmpty) {
         Some((_, c)) => {
@@ -1618,7 +1613,7 @@ fn step_verify(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, o: &Outcome,
         }
     }
     wrapped(ui, &l.t("spostamento-regola-5"), 12.0, p.text_3);
-    // Nuova lettura delle cartelle toccate (F-VE-2, F-VE-4).
+    // Nuova lettura delle cartelle toccate.
     if o.rescan.is_some() {
         wrapped(ui, &l.t("spostamento-riscansione-in-corso"), 12.0, p.text_3);
     } else if let Some(n) = o.rescan_note {
@@ -1633,8 +1628,8 @@ fn step_verify(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, o: &Outcome,
     }
 }
 
-/// Stimato e variazione del volume, due numeri separati e mai sommati (03 §6.3, F-VE-3), poi la
-/// differenza e, oltre il 5%, le voci di spiegazione o la differenza non spiegata.
+/// Stimato e variazione del volume, due numeri separati e mai sommati, poi la differenza e, oltre il 5%, le
+/// voci di spiegazione o la differenza non spiegata.
 fn comparison(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, c: &Comparison) {
     figures(
         ui,

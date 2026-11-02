@@ -1,23 +1,23 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Spostamento nel Cestino di un elemento con `IFileOperation` (03 F-AC-5, 05 D7): `FOFX_RECYCLEONDELETE`
+//! Spostamento nel Cestino di un elemento con `IFileOperation`: `FOFX_RECYCLEONDELETE`
 //! e `FOF_ALLOWUNDO`, mai `FOF_NOCONFIRMATION` (né `FOF_NO_UI`, che la comprende). Un'operazione per
 //! elemento; il sink registra `PostDeleteItem` per sapere se l'elemento è arrivato nel Cestino.
 //!
 //! La protezione vera dall'eliminazione definitiva è il controllo preventivo della simulazione (capacità,
-//! `NukeOnDelete`, unità con Cestino; 05 "Aggiornamento dopo M1"). Qui ci sono tre difese in più:
-//! - un elemento per operazione, così un elemento troppo grande non trascina gli altri (M1: in
-//!   un'operazione con più elementi Windows eliminava per sempre anche quelli piccoli);
+//! `NukeOnDelete`, unità con Cestino). Qui ci sono tre difese in più:
+//! - un elemento per operazione, così un elemento troppo grande non trascina gli altri (prove su VHDX in
+//!   `docs/m1/`: in un'operazione con più elementi Windows eliminava per sempre anche quelli piccoli);
 //! - in `PreDeleteItem`, se manca `TSF_DELETE_RECYCLE_IF_POSSIBLE`, l'operazione si annulla con
-//!   `E_ABORT` (M1: con un solo elemento questo lo salva quando Windows riporta il flag; ma Windows non lo
-//!   riporta sempre, quindi non basta);
+//!   `E_ABORT` (nelle stesse prove, con un solo elemento questo lo salva quando Windows riporta il flag; ma
+//!   Windows non lo riporta sempre, quindi non basta);
 //! - senza `FOF_NOCONFIRMATION`, se Windows decide di eliminare per sempre chiede all'utente, con
 //!   `FOF_WANTNUKEWARNING` anche quando l'operazione è silenziosa. Misurato su R: il 14/10/2026: un file
 //!   da 100 MiB in un Cestino da 64 MiB riceve in `PreDeleteItem` il flag "nel Cestino" (0x280), poi
 //!   Windows mostra "This file is too big to recycle. Do you want to permanently delete it?"; con "No"
 //!   l'esito è `COPYENGINE_E_USER_CANCELLED` e il file resta. Questa è la difesa che ha agito, non il sink.
 //!
-//! L'esito viene da `PostDeleteItem`, che in M1 e in M5 ha sempre detto il vero: il nuovo elemento del
-//! Cestino c'è solo se l'elemento è arrivato nel Cestino.
+//! L'esito viene da `PostDeleteItem`, che nelle prove su VHDX ha sempre detto il vero: il nuovo elemento
+//! del Cestino c'è solo se l'elemento è arrivato nel Cestino.
 //!
 //! Percorsi di 260 caratteri o più: la shell li accetta ma non li mette nel Cestino, e chiede subito
 //! "Are you sure you want to permanently delete this file?", prima di qualunque evento del sink
@@ -48,7 +48,7 @@ use crate::recycle::TSF_DELETE_RECYCLE_IF_POSSIBLE;
 /// - `FOFX_RECYCLEONDELETE`: chiede esplicitamente il Cestino per `DeleteItem`.
 /// - `FOF_SILENT`: niente finestra di avanzamento; l'avanzamento lo mostra Quado, un elemento alla volta.
 /// - `FOF_NOERRORUI`: niente dialoghi d'errore (per esempio "file in uso, Riprova/Ignora"): l'errore
-///   torna come HRESULT in `PostDeleteItem` e finisce nel riepilogo (F-AC-3). Un dialogo d'errore
+///   torna come HRESULT in `PostDeleteItem` e finisce nel riepilogo. Un dialogo d'errore
 ///   bloccherebbe l'esecuzione in attesa di una risposta che il riepilogo già dà.
 /// - `FOF_WANTNUKEWARNING`: se Windows deciderebbe di eliminare per sempre (elemento troppo grande per il
 ///   Cestino, nomi interni troppo lunghi), chiede all'utente anche in un'operazione silenziosa (misurato:
@@ -56,7 +56,7 @@ use crate::recycle::TSF_DELETE_RECYCLE_IF_POSSIBLE;
 ///
 /// Perché altri non ci sono:
 /// - `FOF_NOCONFIRMATION` (0x10) e `FOF_NO_UI` (0x614, che la contiene): risponderebbero "Sì a tutto"
-///   anche alla domanda "Eliminare definitivamente?". Senza, Windows chiede all'utente (F-AC-5). Se
+///   anche alla domanda "Eliminare definitivamente?". Senza, Windows chiede all'utente. Se
 ///   l'utente ha acceso "Chiedi conferma prima di eliminare" nelle proprietà del Cestino, Windows chiede
 ///   anche per lo spostamento: è una scelta sua e si rispetta.
 /// - `FOF_NOCONFIRMMKDIR`, `FOF_RENAMEONCOLLISION`: servono a copie e spostamenti, non all'eliminazione.
@@ -187,7 +187,7 @@ impl Mover for ShellMover {
 /// `PostDeleteItem`, che per una cartella arriva dopo quelli dei figli):
 /// - nuovo elemento del Cestino e HRESULT di successo: `Recycled`;
 /// - HRESULT di successo senza nuovo elemento: Windows ha finito senza mettere l'elemento nel Cestino
-///   (M1: eliminato per sempre), `NotRecycled`;
+///   (visto nelle prove su VHDX: eliminato per sempre), `NotRecycled`;
 /// - HRESULT di errore senza nuovo elemento: Windows non lo ha eliminato (per esempio in uso, o annullato
 ///   da `PreDeleteItem`), `Failed`; per una cartella una parte può essere già stata spostata, quindi chi
 ///   esegue rilegge l'elemento;
@@ -287,7 +287,7 @@ impl IFileOperationProgressSink_Impl for Sink_Impl {
         Ok(())
     }
     /// Senza `TSF_DELETE_RECYCLE_IF_POSSIBLE` Windows eliminerebbe per sempre: `E_ABORT` ferma
-    /// l'operazione (M1: con un solo elemento, l'elemento resta al suo posto).
+    /// l'operazione (provato su VHDX: con un solo elemento, l'elemento resta al suo posto).
     fn PreDeleteItem(&self, dwflags: u32, psiitem: Ref<IShellItem>) -> windows::core::Result<()> {
         let item = psiitem.as_ref();
         let permanent = dwflags & TSF_DELETE_RECYCLE_IF_POSSIBLE == 0;
@@ -352,9 +352,9 @@ mod tests {
         const SHARING: i32 = 0x8007_0020_u32 as i32;
         let ok = HRESULT(0);
         assert_eq!(outcome(ok, false, &[post(DONT_PROCESS_CHILDREN, true, true)]), MoveResult::Recycled);
-        // M1: eliminato per sempre con un esito di successo e nessun elemento nel Cestino.
+        // Prove su VHDX: eliminato per sempre con un esito di successo e nessun elemento nel Cestino.
         assert_eq!(outcome(ok, false, &[post(DONT_PROCESS_CHILDREN, false, true)]), MoveResult::NotRecycled(DONT_PROCESS_CHILDREN));
-        // M1: annullato da PreDeleteItem, PostDeleteItem con E_ABORT e PerformOperations fallita.
+        // Prove su VHDX: annullato da PreDeleteItem, PostDeleteItem con E_ABORT e PerformOperations fallita.
         assert_eq!(outcome(E_ABORT, false, &[post(E_ABORT.0, false, true)]), MoveResult::Failed(E_ABORT.0));
         assert_eq!(outcome(ok, true, &[post(SHARING, false, true)]), MoveResult::Failed(SHARING));
         assert_eq!(outcome(ok, false, &[post(SHARING, true, true)]), MoveResult::NotRecycled(SHARING));

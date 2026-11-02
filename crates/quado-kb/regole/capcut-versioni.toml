@@ -1,4 +1,5 @@
-# Versioni precedenti di CapCut (decisioni §3, 03 §6.1): Da verificare, eccezione a F-AC-4.
+# Versioni precedenti di CapCut: Da verificare. Elementi protetti con l'eccezione: si spostano nel Cestino solo
+# con i controlli dedicati.
 id = "capcut-versioni"
 priorita = 1
 riconoscitore = "capcut-versioni"

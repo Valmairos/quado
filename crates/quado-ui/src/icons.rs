@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! Icone a tratto disegnate con il painter, sugli stessi simboli della proposta visiva (variante A:
 //! griglia di 16 unità, tratto 1,5, estremi arrotondati). Un solo stile, nessuna icona colorata: il colore
-//! appartiene ai dati (04 §5).
+//! appartiene ai dati.
 
 use egui::{Color32, Painter, Pos2, Rect, Shape, Stroke, StrokeKind, pos2};
 
@@ -35,7 +35,7 @@ pub enum Icon {
     Verify,
     Close,
     Warning,
-    /// Stati di valutazione (04 §6.1): sempre icona più parola, mai il solo colore.
+    /// Stati di valutazione: sempre icona più parola, mai il solo colore.
     StateManageable,
     StateToVerify,
     StateYouDecide,

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! F-SC-9: segnaposto cloud riconosciuti senza idratarli né scaricare elenchi (06 §1.2, §3.2).
+//! Segnaposto cloud riconosciuti senza idratarli né scaricare elenchi.
 
 use quado_model::Flags;
 use quado_scan_win::{Options, Progress, scan};

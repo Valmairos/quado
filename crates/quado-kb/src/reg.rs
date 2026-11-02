@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Sorgente astratta del registro (06 §2.3): gli estrattori leggono da qui. In uso c'è il registro
+//! Sorgente astratta del registro: gli estrattori leggono da qui. In uso c'è il registro
 //! vero, in sola lettura (`win`); nei test un file nel formato di `reg export` (fixture
 //! sintetiche), così i test non dipendono dal registro del PC su cui girano.
 

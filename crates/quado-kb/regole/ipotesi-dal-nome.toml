@@ -1,4 +1,4 @@
-# Ipotesi dal nome (03 §6.2, 04 §6.8): una cartella con il nome dell'editore di un programma installato.
+# Ipotesi dal nome: una cartella con il nome dell'editore di un programma installato.
 # Affidabilità bassa: grigio "ipotesi", nessuna proposta.
 id = "ipotesi-dal-nome"
 priorita = 3

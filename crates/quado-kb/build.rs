@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Incorpora le regole: ogni file `regole/*.toml` diventa una voce di `RULE_FILES` (05 D6). Aggiungere
-//! una regola è aggiungere un file, con i testi in `regole/it.ftl` ed `regole/en.ftl`.
+//! Incorpora le regole: ogni file `regole/*.toml` diventa una voce di `RULE_FILES`. Aggiungere una
+//! regola è aggiungere un file, con i testi in `regole/it.ftl` ed `regole/en.ftl`.
 
 use std::fmt::Write as _;
 use std::path::Path;

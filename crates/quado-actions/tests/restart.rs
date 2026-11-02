@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! F-DL-6, F-AC-8 (06 §3.4, §5.4): quali processi usano un file (`restart::processes_using`, con
-//! `FileProcessIdsUsingFileInformation` al posto di Restart Manager). File chiuso: nessuno. File tenuto
-//! aperto da un processo figlio di prova (questo stesso eseguibile, rilanciato su un test che apre il file
-//! e aspetta): compare il PID del figlio. File aperto da questo processo: compare questo processo.
+//! Quali processi usano un file (`restart::processes_using`, con `FileProcessIdsUsingFileInformation` al
+//! posto di Restart Manager). File chiuso: nessuno. File tenuto aperto da un processo figlio di prova
+//! (questo stesso eseguibile, rilanciato su un test che apre il file e aspetta): compare il PID del figlio.
+//! File aperto da questo processo: compare questo processo.
 //!
 //! I test creano processi (solo qui: Quado no). Il figlio termina sempre, anche se il test fallisce.
 
@@ -167,8 +167,8 @@ fn file_held_by_a_child_process() {
 }
 
 /// Un eseguibile in esecuzione è in uso anche senza un handle aperto sul file: la sua immagine è mappata.
-/// Si copia `cmd.exe` di Windows nella cartella di prova e lo si avvia in attesa sullo stdin (06 §5.4,
-/// "il campione comprende tutti gli eseguibili e le DLL").
+/// Si copia `cmd.exe` di Windows nella cartella di prova e lo si avvia in attesa sullo stdin (il
+/// campione di Restart Manager comprende tutti gli eseguibili e le DLL).
 #[test]
 fn running_executable_is_in_use() {
     let d = TestDir::new("eseguibile");

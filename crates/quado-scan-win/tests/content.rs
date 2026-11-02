@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! F-DL-4: identità e SHA-256 dei file su richiesta (06 §3.2, §11). Vettori noti e un oracolo scritto
+//! Identità e SHA-256 dei file su richiesta. Vettori noti e un oracolo scritto
 //! nei test, annullamento, file cambiati durante la lettura, cartelle e collegamenti, file compressi e
 //! sparse, segnaposto cloud della sync root di prova, nessun handle in scrittura.
 
@@ -281,7 +281,7 @@ fn measure_costs() {
     );
 }
 
-/// 06 §3.2: sui segnaposto cloud né hash né indice; l'identità sì, senza richiamarli. Il provider di
+/// Sui segnaposto cloud né hash né indice; l'identità sì, senza richiamarli. Il provider di
 /// prova non riceve richieste di dati.
 #[test]
 fn cloud_placeholders_are_never_read() {

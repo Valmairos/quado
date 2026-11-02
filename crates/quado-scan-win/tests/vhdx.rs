@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Prove sui VHDX di prova (06 §1.3, §1.4). Richiedono i volumi montati da `cargo xtask vhdx crea`:
+//! Prove sui VHDX di prova. Richiedono i volumi montati da `cargo xtask vhdx crea`:
 //! `cargo test -p quado-scan-win --test vhdx -- --ignored --test-threads=1`.
 
 use std::collections::HashMap;
@@ -19,7 +19,7 @@ fn scan_root(root: &std::path::Path, opts: Options) -> ScanResult {
     scan(root.to_str().unwrap(), opts, &Progress::default()).expect("scansione")
 }
 
-/// F-SC-10: su NTFS, exFAT e FAT32 i totali coincidono con l'oracolo.
+/// Su NTFS, exFAT e FAT32 i totali coincidono con l'oracolo.
 #[test]
 #[ignore = "richiede i VHDX di prova"]
 fn file_systems_match_the_oracle() {
@@ -62,7 +62,7 @@ fn file_systems_match_the_oracle() {
     }
 }
 
-/// F-OV-1, "Residuo su volume fermo" e "Errore iniettato" (06 §1.4).
+/// Bilancio del volume: "Residuo su volume fermo" e "Errore iniettato".
 #[test]
 #[ignore = "richiede i VHDX di prova"]
 fn idle_volume_residual_and_injected_error() {
@@ -78,13 +78,13 @@ fn idle_volume_residual_and_injected_error() {
     // L'errore iniettato sposta il residuo esattamente dei byte degli hard link.
     assert!(good.links.extra_alloc > 0);
     assert_eq!(g.unattributed - b.unattributed, good.links.extra_alloc as i64 + (b.drift - g.drift));
-    // Residuo su volume fermo: entro i metafile attesi più la tolleranza, fissati da tre misure (06 §1.4).
+    // Residuo su volume fermo: entro i metafile attesi più la tolleranza, fissati da tre misure.
     assert_eq!(g.drift, 0, "volume non fermo");
     assert!(g.unattributed.abs_diff(EXPECTED_METAFILES) <= TOLERANCE, "residuo {} contro {EXPECTED_METAFILES} ± {TOLERANCE}", g.unattributed);
 }
 
 /// Metafile attesi sul VHDX NTFS di prova da 4 GiB (cluster 4 KiB) e tolleranza, fissati da cinque misure
-/// identiche del 13/10/2026 (M1): 21.165.144 byte non visibili all'enumerazione
+/// identiche del 13/10/2026: 21.165.144 byte non visibili all'enumerazione
 /// (dedotto: log transazionali `$TxfLog`, `$LogFile`, `$Bitmap`, `$Secure`, `$UpCase`).
 const EXPECTED_METAFILES: i64 = 21_165_144;
 const TOLERANCE: u64 = 1 << 20;

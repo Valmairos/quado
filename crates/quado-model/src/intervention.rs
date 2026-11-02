@@ -1,17 +1,17 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Interventi e verifica (03 F-AC, F-VE; 05 D7, D8): tipi condivisi tra `quado-actions` (controlli,
-//! piano, esecuzione, registro), `quado-kb` (elementi protetti, riferimenti) e l'interfaccia. Solo
-//! dati e codici: i testi li scrive l'interfaccia dai file di lingua (05 D13). I percorsi sono dati.
+//! Interventi e verifica: tipi condivisi tra `quado-actions` (controlli, piano, esecuzione, registro),
+//! `quado-kb` (elementi protetti, riferimenti) e l'interfaccia. Solo dati e codici: i testi li scrive
+//! l'interfaccia dai file di lingua. I percorsi sono dati.
 //!
 //! Le funzioni pure che lavorano su questi tipi stanno in `verification` (stimato contro ottenuto).
 
 use crate::record::Estimate;
 
 // ---------------------------------------------------------------------------------------------
-// Elementi protetti (F-AC-4)
+// Elementi protetti
 
 /// Perché un percorso è protetto: mai spostabile nel Cestino. Solo `RegisteredProgram` ammette
-/// l'eccezione via regola (03 §6.1, caso CapCut); le altre non hanno eccezioni.
+/// l'eccezione via regola (versioni precedenti di CapCut); le altre non hanno eccezioni.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum ProtectedKind {
     /// Cartella di Windows (`%WINDIR%`).
@@ -29,7 +29,7 @@ pub enum ProtectedKind {
     /// `swapfile.sys`.
     SwapFile,
     /// Cartella di un programma registrato (voce di disinstallazione, gioco di Steam o di Epic, pacchetto
-    /// MSIX): si rimanda alla disinstallazione (F-AP-5).
+    /// MSIX): si rimanda alla disinstallazione ufficiale.
     RegisteredProgram,
 }
 
@@ -57,7 +57,7 @@ pub struct ProtectedRoot {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Riferimenti (F-AC-9)
+// Riferimenti
 
 /// Dove un riferimento all'elemento è stato trovato.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord)]
@@ -116,12 +116,12 @@ pub struct ReferenceReport {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Esecuzione (F-AC-3, F-AC-5, F-AC-8)
+// Esecuzione
 
 /// Perché un elemento confermato non è stato spostato senza che Windows lo toccasse.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum SkipReason {
-    /// ID, dimensione o data di modifica diversi dalla simulazione (RS6).
+    /// ID, dimensione o data di modifica diversi dalla simulazione: non è più l'elemento confermato.
     Changed,
     /// Non esiste più.
     Missing,
@@ -152,7 +152,8 @@ pub enum ItemOutcome {
     Skipped(SkipReason),
     /// Windows non lo ha spostato e l'elemento è ancora al suo posto (per esempio in uso): HRESULT.
     Failed(i32),
-    /// Non più al suo posto ma non nel Cestino: il piano si è fermato qui (05, "Aggiornamento dopo M1").
+    /// Non più al suo posto ma non nel Cestino: il piano si è fermato qui, perché Windows può averlo
+    /// eliminato per sempre invece di spostarlo.
     NotInRecycleBin(i32),
     /// Non raggiunto, perché il piano si è fermato prima o è stato annullato.
     NotReached,
@@ -171,7 +172,7 @@ impl ItemOutcome {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Misure e verifica (F-VE)
+// Misure e verifica
 
 /// Contenuto del Cestino di un volume secondo Windows (`SHQueryRecycleBinW`).
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Hash)]
@@ -180,7 +181,7 @@ pub struct BinCount {
     pub bytes: u64,
 }
 
-/// Quando è stata presa una misura (F-VE-1, F-VE-2).
+/// Quando è stata presa una misura.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum MeasurePoint {
     /// Prima della prima chiamata a Windows o dell'apertura della procedura.
@@ -219,7 +220,7 @@ pub struct Measure {
     pub still_present: Option<u64>,
 }
 
-/// Una voce che spiega la differenza tra stimato e ottenuto (03 §6.3): ognuna corrisponde a un fatto
+/// Una voce che spiega la differenza tra stimato e ottenuto: ognuna corrisponde a un fatto
 /// misurato.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum Explanation {
@@ -252,13 +253,14 @@ impl Explanation {
     }
 }
 
-/// Stimato contro ottenuto a una misura (F-VE-3, 03 §6.3).
+/// Stimato contro ottenuto a una misura.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct Comparison {
     pub estimated: Estimate,
     /// Variazione del volume: spazio libero alla misura meno spazio libero alla partenza.
     pub obtained: i64,
-    /// Differenza secondo la tabella di 03 §6.3; `None` se la stima non ha un valore o vale 0.
+    /// Distanza con segno dell'ottenuto dalla stima (modulo `verification`); `None` se la stima non ha un
+    /// valore o vale 0.
     pub difference: Option<i64>,
     /// La stessa differenza in centesimi di punto percentuale (500 = 5%); `None` come sopra.
     pub basis_points: Option<u64>,
@@ -268,11 +270,11 @@ pub struct Comparison {
     pub unexplained: Option<i64>,
 }
 
-/// Soglia oltre la quale la differenza si spiega voce per voce (F-VE-3): 5%.
+/// Soglia oltre la quale la differenza si spiega voce per voce: 5%.
 pub const EXPLAIN_THRESHOLD_BP: u64 = 500;
 
 // ---------------------------------------------------------------------------------------------
-// Registro degli interventi (F-AC-6, 05 D8)
+// Registro degli interventi
 
 /// Tipo di intervento registrato.
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
@@ -307,7 +309,7 @@ pub struct JournalEntry {
     pub origin: String,
     /// Metodo: codice dell'azione (`Action::code`) o comando e URI della procedura.
     pub method: String,
-    /// Stima con il suo stato (03 §6.3) al momento della conferma.
+    /// Stima con il suo stato al momento della conferma.
     pub estimate: Estimate,
     pub items: Vec<JournalItem>,
     /// Misure nell'ordine in cui sono state prese; la prima è la partenza.

@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Parti comuni delle tabelle virtualizzate (F-EX-2, F-EX-5): colonne, intestazione, tasti,
-//! percorsi troncati all'inizio.
+//! Parti comuni delle tabelle virtualizzate: colonne, intestazione, tasti, percorsi troncati all'inizio.
 
 use std::sync::Arc;
 
@@ -29,7 +28,7 @@ pub struct Column {
 }
 
 /// Larghezze delle colonne fisse: almeno quella scritta, e abbastanza per l'intestazione tradotta
-/// (una traduzione più lunga non si tronca, RS30).
+/// (una traduzione più lunga non si tronca).
 pub fn fit_widths(painter: &Painter, l: &Lingue, cols: &[Column]) -> Vec<Column> {
     cols.iter()
         .map(|c| {

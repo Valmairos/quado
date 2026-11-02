@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! `cargo xtask lingue [nuova <tag>]` (05 D13).
+//! `cargo xtask lingue [nuova <tag>]`: lingue dell'interfaccia.
 //!
 //! - Senza argomenti: copertura di ogni lingua rispetto all'italiano (chiavi mancanti o in più,
 //!   segnaposto diversi, righe con errori, testi ancora uguali all'italiano), per i file incorporati in

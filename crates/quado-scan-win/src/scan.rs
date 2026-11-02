@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Scansione di un volume o di una cartella (05 D4, 03 F-SC-2, F-SC-6..9).
+//! Scansione di un volume o di una cartella.
 //!
 //! I thread di rayon elencano le cartelle e mandano un lotto per cartella a un solo costruttore,
 //! che aggiunge i nodi all'albero. Un lotto parte prima che i lavori delle sottocartelle vengano
 //! avviati, quindi il costruttore riceve sempre il genitore prima dei figli.
 //!
-//! Il core non produce frasi (05 D13): problemi e stati sono codici che la UI traduce.
+//! Il core non produce frasi: problemi e stati sono codici che la UI traduce.
 
 use std::cell::RefCell;
 use std::sync::OnceLock;
@@ -35,7 +35,7 @@ pub struct Options {
     pub list_cloud_dirs: bool,
     /// Corregge l'allocata dei file compressi WOF leggendo `FileStandardInfo`.
     pub fix_wof: bool,
-    /// Solo test (06 §1.4, "errore iniettato"): non deduplica gli hard link.
+    /// Solo test, per iniettare un errore che la prova deve vedere: non deduplica gli hard link.
     pub inject_no_dedup: bool,
 }
 
@@ -45,13 +45,13 @@ impl Default for Options {
     }
 }
 
-/// Totale dal vivo di un elemento di primo livello (F-SC-4).
+/// Totale dal vivo di un elemento di primo livello.
 pub struct TopEntry {
     pub name: Vec<u16>,
     pub alloc: AtomicU64,
 }
 
-/// Avanzamento e annullamento, condivisi con chi mostra la scansione (F-SC-4, F-SC-5).
+/// Avanzamento e annullamento, condivisi con chi mostra la scansione.
 #[derive(Default)]
 pub struct Progress {
     pub files: AtomicU64,
@@ -83,7 +83,7 @@ impl Progress {
     }
 }
 
-/// Perché una cartella non è stata elencata, o non tutta (F-SC-6). Codici, non frasi.
+/// Perché una cartella non è stata elencata, o non tutta. Codici, non frasi.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum Problem {
     AccessDenied,
@@ -142,7 +142,7 @@ pub struct Stats {
     pub id_entries: u64,
     pub enumeration: Duration,
     pub finish: Duration,
-    /// Tempi per fase, solo per le misure (06 §9): preparazione prima dell'enumerazione (radice, dati
+    /// Tempi per fase, solo per le misure: preparazione prima dell'enumerazione (radice, dati
     /// NTFS, memoria riservata, thread), lavoro del costruttore senza le attese sul canale, poi le fasi
     /// della chiusura e le letture del volume dopo la chiusura.
     pub setup: Duration,
@@ -245,7 +245,7 @@ pub fn scan(root: &str, opts: Options, progress: &Progress) -> Result<ScanResult
     let ntfs = win::ntfs_volume_data(&root_handle).ok();
     let space_start = if volume_root { win::disk_space(&root_w).ok() } else { None };
 
-    // Memoria riservata una volta: i record della MFT sono un limite superiore dei nomi (05 D5).
+    // Memoria riservata una volta: i record della MFT sono un limite superiore dei nomi.
     let cap = match (volume_root, ntfs) {
         (true, Some(n)) => {
             let r = n.mft_records() as usize;
@@ -414,8 +414,8 @@ fn run_job<'s>(s: &rayon::Scope<'s>, ctx: &'s Ctx<'s>, job: Job) {
     add_nanos(&ctx.nanos[3], t);
     let t = Instant::now();
 
-    // File compressi WOF: la voce di cartella riporta allocata 0 (02 §3). Lo stesso vale per i file
-    // sparse, la cui voce può restare a 0 anche dopo la scrittura (misurato in M1, 13/10/2026):
+    // File compressi WOF: la voce di cartella riporta allocata 0. Lo stesso vale per i file
+    // sparse, la cui voce può restare a 0 anche dopo la scrittura (misurato il 13/10/2026):
     // si legge `FileStandardInfo` anche per loro. Sono esclusi solo i file offline o cloud.
     if opts.fix_wof {
         for e in batch.entries.iter_mut() {

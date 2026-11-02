@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Pipe con nome tra interfaccia e helper (05 D3, 06 §11).
+//! Pipe con nome tra interfaccia e helper.
 //!
 //! - [`Server`] (interfaccia, non elevata): nome casuale `\\.\pipe\quado-<128 bit esadecimali>`, DACL
 //!   con il solo SID dell'utente, `PIPE_REJECT_REMOTE_CLIENTS`, una sola istanza. Accetta un solo
@@ -465,7 +465,7 @@ impl Server {
 }
 
 impl AsRawHandle for Server {
-    /// Handle del lato server della pipe (per leggerne la DACL nei test, 06 §11). Resta di `Server`.
+    /// Handle del lato server della pipe (per leggerne la DACL nei test). Resta di `Server`.
     fn as_raw_handle(&self) -> RawHandle {
         self.io.pipe.raw()
     }

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Albero della scansione (05 D5): array paralleli con indici `u32`, nomi in un unico pool `u16`.
+//! Albero della scansione: array paralleli con indici `u32`, nomi in un unico pool `u16`.
 //!
 //! - I file portano le proprie dimensioni; le cartelle, dopo [`Tree::aggregate`], i totali del loro
 //!   contenuto (ogni file con più nomi contato una volta, vedi [`crate::links`]).
@@ -40,7 +40,7 @@ impl Flags {
     /// Ha più nomi (primario o secondario).
     pub const MULTI_LINK: Self = Self(1 << 11);
     /// Cartella misurata dall'helper come totale, senza elenco (profilo o Cestino di un altro
-    /// account, 05 D3): dimensioni e numero di file sono quelli dell'helper, i figli non ci sono.
+    /// account): dimensioni e numero di file sono quelli dell'helper, i figli non ci sono.
     pub const MEASURED: Self = Self(1 << 12);
 
     pub fn has(self, f: Self) -> bool {
@@ -308,7 +308,7 @@ impl Tree {
         }
     }
 
-    /// Stacca il sottoalbero di `i` (riscansione, 05 D5): toglie i suoi totali dagli antenati e lo marca.
+    /// Stacca il sottoalbero di `i` (riscansione): toglie i suoi totali dagli antenati e lo marca.
     pub fn detach(&mut self, i: u32) {
         let p = self.parent[i as usize];
         assert_ne!(p, NONE, "la radice non si stacca");
@@ -364,7 +364,7 @@ impl Tree {
         }
     }
 
-    /// Nuove dimensioni di un file già nel modello ("Rileggi dal disco", F-IN-6): gli antenati
+    /// Nuove dimensioni di un file già nel modello ("Rileggi dal disco"): gli antenati
     /// cambiano della sola differenza.
     pub fn update_file(&mut self, i: u32, logical: u64, alloc: u64) {
         let iu = i as usize;
@@ -385,7 +385,7 @@ impl Tree {
         }
     }
 
-    /// Totali di una cartella misurata senza elenco (helper, 05 D3): la cartella non ha figli nel
+    /// Totali di una cartella misurata senza elenco (helper): la cartella non ha figli nel
     /// modello e prende `logical`, `alloc` e `files`; gli antenati cambiano della sola differenza.
     pub fn set_measured(&mut self, i: u32, logical: u64, alloc: u64, files: u32) {
         let iu = i as usize;
@@ -410,9 +410,10 @@ impl Tree {
     }
 
     /// Sostituisce il nodo `at` con la radice di `sub`, una riscansione dello stesso percorso già
-    /// aggregata (F-IN-6, F-VE-4). Il vecchio sottoalbero resta in memoria, staccato; il nuovo si
-    /// aggiunge in coda, quindi i figli continuano ad avere indici maggiori del genitore. Restituisce il
-    /// nuovo indice di `at` e la corrispondenza degli indici di `sub` (`map[k]` = nuovo indice di `k`).
+    /// aggregata ("Rileggi dal disco", riscansione dopo un intervento). Il vecchio sottoalbero resta in
+    /// memoria, staccato; il nuovo si aggiunge in coda, quindi i figli continuano ad avere indici maggiori
+    /// del genitore. Restituisce il nuovo indice di `at` e la corrispondenza degli indici di `sub`
+    /// (`map[k]` = nuovo indice di `k`).
     ///
     /// Gli hard link si deduplicano dentro `sub`, non con il resto del volume: un file con un nome
     /// dentro e uno fuori dal sottoalbero conta due volte fino alla scansione completa successiva.

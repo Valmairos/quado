@@ -38,7 +38,7 @@ pub struct Options {
     pub min_header_rect: f32,
     /// Sotto questo lato una cartella diventa un blocco pieno.
     pub min_side: f32,
-    /// Livelli disegnati sotto la radice: oltre, una cartella è un blocco pieno (F-EX-1: due livelli).
+    /// Livelli disegnati sotto la radice: oltre, una cartella è un blocco pieno (in Esplora due livelli).
     pub max_depth: u16,
     /// Aree più piccole di così (in pixel quadrati) non si dispongono: in ordine decrescente, anche le
     /// successive lo sono, e una cartella con un milione di figli non produce un milione di aree.

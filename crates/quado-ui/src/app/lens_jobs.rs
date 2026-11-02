@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Lavori della lente Download (05 D6, 06 §9): letture su richiesta in thread separati, annullabili, con
-//! l'avanzamento in file e byte e i risultati per canale. Nessun lavoro tiene fermo il thread
-//! dell'interfaccia: il frame raccoglie solo i risultati già pronti.
+//! Lavori della lente Download: letture su richiesta in thread separati, annullabili, con l'avanzamento in
+//! file e byte e i risultati per canale. Nessun lavoro tiene fermo il thread dell'interfaccia: il frame
+//! raccoglie solo i risultati già pronti.
 //!
 //! Le letture vere passano da [`Readers`]: l'app usa [`Readers::live`]; i test una versione finta che non
 //! tocca il disco (`synthetic::FakeReaders`); `Env::fixed` una che non legge niente ([`Readers::inert`]);
@@ -45,13 +45,13 @@ pub trait LensReaders: Send + Sync {
     /// Identità dai soli attributi (dimensione, date, ID), per la chiave della cache degli installatori. Non
     /// legge il contenuto, non cambia la data di ultimo accesso e non scarica i segnaposto cloud.
     fn identity(&self, path: &str) -> Result<FileIdentity, ContentError>;
-    /// SHA-256 del contenuto (F-DL-4): `progress` cresce dei byte letti, `cancel` ferma la lettura.
+    /// SHA-256 del contenuto: `progress` cresce dei byte letti, `cancel` ferma la lettura.
     fn sha256(&self, path: &str, cancel: &AtomicBool, progress: &AtomicU64) -> Result<(FileIdentity, [u8; 32]), ContentError>;
-    /// Dati di versione di un installatore: risorsa di versione (exe) o tabella Property (MSI), F-DL-2.
+    /// Dati di versione di un installatore: risorsa di versione (exe) o tabella Property (MSI).
     fn installer(&self, path: &str, kind: InstallerKind) -> Result<InstallerInfo, ExtractError>;
-    /// Directory centrale di uno zip (F-DL-5).
+    /// Directory centrale di uno zip.
     fn zip_index(&self, path: &str) -> Result<ZipIndex, ZipError>;
-    /// Nomi dei processi che usano almeno uno dei file, secondo Restart Manager (F-DL-6). Errore: il codice
+    /// Nomi dei processi che usano almeno uno dei file, secondo Restart Manager. Errore: il codice
     /// di Windows. Non legge il contenuto.
     fn processes(&self, paths: &[String]) -> Result<Vec<String>, u32>;
     /// Ora attuale (`FILETIME`), per l'ora dei controlli.
@@ -378,8 +378,8 @@ pub fn spawn_hash(readers: &Readers, targets: Vec<Target>, threads: usize) -> Ba
 }
 
 /// Come `spawn_hash`, con i percorsi costruiti dai thread del lavoro a partire dall'albero (bersagli con
-/// `path` vuoto): con centinaia di migliaia di file costruirli nel frame costa secondi (banco di M4 su una
-/// cartella Download con quasi duecentomila file: un frame da 2 s).
+/// `path` vuoto): con centinaia di migliaia di file costruirli nel frame costa secondi (misurato con
+/// il banco su una cartella Download con quasi duecentomila file: un frame da 2 s).
 pub fn spawn_hash_in(readers: &Readers, model: Arc<crate::app::data::Model>, targets: Vec<Target>, threads: usize) -> Batch<Result<(FileIdentity, [u8; 32]), ContentError>> {
     let bytes = targets.iter().map(|t| t.size).sum();
     let r = readers.clone();
@@ -427,7 +427,7 @@ where
     })
 }
 
-/// Restart Manager sui download incompleti (F-DL-6): una sessione per tutti; se qualcuno li usa, o se
+/// Restart Manager sui download incompleti: una sessione per tutti; se qualcuno li usa, o se
 /// l'elenco intero non si registra, un'interrogazione per file, così ogni file ha il suo esito. Un file
 /// senza risposta resta "uso non noto", mai "non in uso".
 pub fn spawn_usage(readers: &Readers, targets: Vec<Target>) -> Batch<Vec<(u32, UseCheck)>> {
@@ -456,7 +456,7 @@ fn usage(r: &Readers, targets: &[Target]) -> Vec<(u32, UseCheck)> {
         .collect()
 }
 
-/// Errore del lettore degli zip come errore di estrattore (06 §2.3): "non leggibile" con il motivo.
+/// Errore del lettore degli zip come errore di estrattore: "non leggibile" con il motivo.
 pub fn zip_error(e: ZipError) -> ExtractError {
     match e {
         ZipError::Io(2 | 3) => ExtractError::NotPresent,

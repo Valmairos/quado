@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Record di raccomandazione (03 §6.1, 05 D6): stato, prove con la provenienza di ogni fatto, metodo,
-//! controlli, stima, regola. Solo codici e valori: i testi li scrive l'interfaccia dai file di lingua
-//! (05 D13). Le chiavi (`key`) sono identificatori dei file di lingua, non frasi.
+//! Record di raccomandazione: stato, prove con la provenienza di ogni fatto, metodo, controlli, stima,
+//! regola. Solo codici e valori: i testi li scrive l'interfaccia dai file di lingua. Le chiavi (`key`)
+//! sono identificatori dei file di lingua, non frasi.
 
-/// Affidabilità di un fatto dedotto (03 §6.2). L'ordine conta: `min` dà la più bassa.
+/// Affidabilità di un fatto dedotto. L'ordine conta: `min` dà la più bassa.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub enum Reliability {
     Low,
@@ -11,7 +11,7 @@ pub enum Reliability {
     High,
 }
 
-/// Criterio di 03 §6.2 che produce il livello. Il livello lo calcola il motore, mai la regola.
+/// Criterio che produce il livello. Il livello lo calcola il motore, mai la regola.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum Criterion {
     /// Alta: due fonti concordi.
@@ -24,11 +24,11 @@ pub enum Criterion {
     StructureOnly,
     /// Bassa: solo nome o somiglianza.
     NameOnly,
-    /// Bassa: versione installata fuori dall'intervallo della regola, o non nota (03 §6.1 regola 4).
+    /// Bassa: versione installata fuori dall'intervallo della regola, o non nota.
     VersionOutOfRange,
-    /// Bassa: regola non riverificata da oltre 12 mesi (07 §5.1).
+    /// Bassa: regola non riverificata da oltre 12 mesi.
     RuleExpired,
-    /// Bassa: due regole in conflitto sullo stesso elemento (03 §6.1 regola 5).
+    /// Bassa: due regole in conflitto sullo stesso elemento.
     Conflict,
 }
 
@@ -42,7 +42,7 @@ impl Criterion {
     }
 }
 
-/// Classe di provenienza di un fatto (03 §6.1, glifi di 04 §6.1).
+/// Classe di provenienza di un fatto.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum Provenance {
     /// Letto dal file system o da un'API di misura in questa sessione.
@@ -63,7 +63,7 @@ impl Provenance {
         }
     }
 
-    /// Il colore del gestore nasce solo da fatti "da fonte" o "dedotto alta" (03 §6.2).
+    /// Il colore del gestore nasce solo da fatti "da fonte" o "dedotto alta".
     pub fn colors(self) -> bool {
         match self {
             Self::FromSource => true,
@@ -116,17 +116,17 @@ pub enum Source {
     KnownFolder,
     /// La regola stessa (fatti dedotti).
     Rule,
-    /// SHA-256 del contenuto, calcolato su richiesta (F-DL-4).
+    /// SHA-256 del contenuto, calcolato su richiesta.
     ContentHash,
-    /// Directory centrale di un archivio zip, letta su richiesta (F-DL-5).
+    /// Directory centrale di un archivio zip, letta su richiesta.
     ZipDirectory,
-    /// Risorsa di versione di un eseguibile (`GetFileVersionInfoW`, F-DL-2).
+    /// Risorsa di versione di un eseguibile (`GetFileVersionInfoW`).
     VersionResource,
-    /// Tabella Property di un pacchetto MSI aperto in sola lettura (F-DL-2).
+    /// Tabella Property di un pacchetto MSI aperto in sola lettura.
     MsiProperties,
-    /// Interrogazione di Restart Manager (F-DL-6).
+    /// Interrogazione di Restart Manager.
     RestartManager,
-    /// UserAssist, letto solo con `Start_TrackProgs` = 1 (F-AP-4).
+    /// UserAssist, letto solo con `Start_TrackProgs` = 1.
     UserAssist,
 }
 
@@ -178,7 +178,7 @@ pub enum Value {
     Days(u32),
 }
 
-/// Un fatto con la sua provenienza (F-IN-1). `key` è la chiave del testo.
+/// Un fatto con la sua provenienza. `key` è la chiave del testo.
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub struct Fact {
     pub key: String,
@@ -198,13 +198,13 @@ impl Fact {
 pub struct ProvaDiIdentita(pub Vec<Fact>);
 
 /// Prova di gestibilità: l'azione proposta ha effetti noti e limitati. Distinta dalla prova di identità
-/// e mai vuota: senza questo valore non si costruiscono Gestibile né Da verificare (03 §6.1, 05 D6).
+/// e mai vuota: senza questo valore non si costruiscono Gestibile né Da verificare.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct ProvaDiGestibilita(Vec<Fact>);
 
 impl ProvaDiGestibilita {
     /// `None` se non ci sono fatti, o se uno dei fatti è solo una misura di dimensione o di data:
-    /// dimensione, età, nome ed estensione non provano la gestibilità (03 §6.1 regola 2).
+    /// dimensione, età, nome ed estensione non provano la gestibilità.
     pub fn new(facts: Vec<Fact>) -> Option<Self> {
         if facts.is_empty() || facts.iter().any(|f| f.provenance == Provenance::Measured && f.source == Source::Scan) {
             return None;
@@ -217,7 +217,7 @@ impl ProvaDiGestibilita {
     }
 }
 
-/// Chi gestisce i dati: decide il colore (04 §6.2).
+/// Chi gestisce i dati: decide il colore.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord)]
 pub enum Manager {
     Windows,
@@ -266,7 +266,7 @@ pub enum UnknownReason {
     NoManageabilityProof,
 }
 
-/// Uno dei cinque stati (03 §6.1). Gestibile e Da verificare portano la prova di gestibilità.
+/// Uno dei cinque stati. Gestibile e Da verificare portano la prova di gestibilità.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum State {
     Manageable(ProvaDiGestibilita),
@@ -297,7 +297,7 @@ impl State {
         }
     }
 
-    /// Stati che propongono qualcosa (card interventi, F-OV-4).
+    /// Stati che propongono qualcosa (card interventi).
     pub fn proposes(&self) -> bool {
         match self {
             Self::Manageable(_) | Self::ToVerify(_) | Self::YouDecide => true,
@@ -307,18 +307,18 @@ impl State {
     }
 }
 
-/// Azione del record. In M3 il record la descrive; le azioni arrivano con M4 e M5.
+/// Azione del record.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Action {
-    /// Spostamento nel Cestino dopo la simulazione (F-AC-2).
+    /// Spostamento nel Cestino dopo la simulazione.
     Recycle,
     /// Procedura di Windows o dell'app (URI aperto).
     Procedure,
     /// Comando ufficiale mostrato e copiato, mai eseguito.
     Command,
-    /// Disinstallazione tramite interfaccia ufficiale (F-AP-5).
+    /// Disinstallazione tramite interfaccia ufficiale.
     Uninstall,
-    /// Nessuna azione oltre a quelle sempre disponibili (F-IN-5).
+    /// Nessuna azione oltre a quelle sempre disponibili ("Apri in Esplora file", "Copia percorso").
     None,
 }
 
@@ -350,7 +350,7 @@ pub enum CheckKind {
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum CheckOutcome {
-    /// Si esegue nella simulazione (M5): Restart Manager, riferimenti, capacità del Cestino.
+    /// Si esegue nella simulazione: Restart Manager, riferimenti, capacità del Cestino.
     AtSimulation,
     Passed,
     Failed,
@@ -392,8 +392,8 @@ impl NotEstimable {
     }
 }
 
-/// Stima dello spazio recuperabile (03 §6.3). In M3 viene dal modello della scansione; la simulazione
-/// di M5 la ricalcola rileggendo gli attributi.
+/// Stima dello spazio recuperabile. Il motore la calcola dal modello della scansione; la simulazione la
+/// ricalcola rileggendo gli attributi.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Estimate {
     Exact(u64),
@@ -469,24 +469,24 @@ pub struct RuleRef {
 }
 
 /// Funzione di Quado che produce un record senza una regola della base: decide solo da prove
-/// misurate o lette in questa sessione (lente Download e Programmi, 07 §7 ultima riga).
+/// misurate o lette in questa sessione (lente Download e Programmi).
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum Function {
-    /// File della stessa dimensione, contenuto non ancora confrontato (F-DL-4).
+    /// File della stessa dimensione, contenuto non ancora confrontato.
     SameSize,
-    /// Copie con lo stesso SHA-256 (F-DL-4).
+    /// Copie con lo stesso SHA-256.
     IdenticalCopies,
-    /// Installatore, con la corrispondenza con i programmi installati (F-DL-2).
+    /// Installatore, con la corrispondenza con i programmi installati.
     Installer,
-    /// Archivio zip con una cartella omonima accanto (F-DL-5).
+    /// Archivio zip con una cartella omonima accanto.
     ArchiveWithFolder,
-    /// Immagine disco (F-DL-1).
+    /// Immagine disco.
     DiskImage,
-    /// Download incompleto (F-DL-6).
+    /// Download incompleto.
     IncompleteDownload,
-    /// Programma installato (F-AP).
+    /// Programma installato.
     Program,
-    /// Cartella che potrebbe essere un residuo (F-AP-6).
+    /// Cartella che potrebbe essere un residuo.
     PossibleResidue,
 }
 
@@ -522,13 +522,13 @@ impl Function {
 pub enum Origin {
     /// Regola della base (`quado-kb`), con la data di verifica.
     Rule(RuleRef),
-    /// Funzione di Quado (M4): nessuna regola, solo prove misurate o lette.
+    /// Funzione di Quado: nessuna regola, solo prove misurate o lette.
     Function(Function),
     /// Nessuna regola riconosce l'elemento (Non sappiamo).
     NoRule,
 }
 
-/// Annuncio della scadenza di una regola (07 §5.1).
+/// Annuncio della scadenza di una regola, secondo il tempo passato dalla data di verifica.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum Expiry {
     /// Fino a 6 mesi.
@@ -555,7 +555,7 @@ impl Expiry {
     }
 }
 
-/// Record di raccomandazione con tutti i campi obbligatori di 03 §6.1. Un campo senza valore dice
+/// Record di raccomandazione con tutti i campi obbligatori. Un campo senza valore dice
 /// perché: le liste vuote si mostrano con il loro testo "nessuno", le chiavi non sono mai vuote.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct Record {
@@ -579,7 +579,7 @@ pub struct Record {
     pub origin: Origin,
     /// Scadenza della regola; `Fresh` per le funzioni e senza regola.
     pub expiry: Expiry,
-    /// L'elemento è protetto (F-AC-4) e la regola usa l'eccezione documentata in 03 §6.1.
+    /// L'elemento è protetto e la regola usa l'eccezione per gli elementi protetti (solo con Da verificare).
     pub protected_exception: bool,
 }
 

@@ -1,4 +1,4 @@
-# Dispositivi virtuali Android (07 §7, proposto): Lo gestisce Android Studio, Device Manager.
+# Dispositivi virtuali Android: Lo gestisce Android Studio, Device Manager.
 id = "android-avd"
 priorita = 2
 riconoscitore = "percorso"

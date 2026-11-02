@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Dati sintetici per test, immagini e banchi di misura (06 §7, §9): un volume piccolo e realistico,
-//! una tabella da milioni di righe, una cartella con un milione di figli, una mappa da 20.000 aree.
-//! Nessun file su disco: solo il modello in memoria.
+//! Dati sintetici per test, immagini e banchi di misura: un volume piccolo e realistico, una tabella da
+//! milioni di righe, una cartella con un milione di figli, una mappa da 20.000 aree. Nessun file su disco:
+//! solo il modello in memoria.
 
 use quado_model::{Balance, DirExtra, Flags, Links, Metadata, NodeData, Space, Tree};
 use quado_scan_win::volumes::{DriveKind, Support};
@@ -116,7 +116,7 @@ pub fn sample_c(cancelled: bool) -> (VolumeInfo, ScanResult) {
     for j in 0..120 {
         t.push(cacache, &w(&format!("pacchetto-{j}.tgz")), file(28 * MIB + rng.below(6) * MIB, T0 - 60 * DAY));
     }
-    // Roaming e LocalLow, con una cartella senza programma corrispondente (possibile residuo, F-AP-6).
+    // Roaming e LocalLow, con una cartella senza programma corrispondente (possibile residuo).
     let roaming = t.push(appdata, &w("Roaming"), dir(T0 - DAY));
     let old = t.push(roaming, &w("VecchioEditor"), dir(T0 - 500 * DAY));
     t.push(old, &w("impostazioni.json"), file(40 * 1024, T0 - 500 * DAY));
@@ -141,7 +141,7 @@ pub fn sample_c(cancelled: bool) -> (VolumeInfo, ScanResult) {
         t.push(dl, &w(&format!("download-{j}.{ext}")), file(400 * MIB + rng.below(900) * MIB, T0 - rng.below(700) as i64 * DAY));
     }
     t.push(dl, &w("写真アルバム.zip"), file(700 * MIB, T0 - 20 * DAY));
-    // Lente Download (M4): un caso per famiglia e per voce di 04 §6.6.
+    // Lente Download: un caso per famiglia e per tipo di voce.
     t.push(dl, &w("setup.exe"), file(120 * MIB, T0 - 40 * DAY));
     t.push(dl, &w("setup (1).exe"), file(121 * MIB, T0 - 39 * DAY));
     t.push(dl, &w("SteamSetup.exe"), file(2 * MIB + 300 * 1024, T0 - 400 * DAY));
@@ -258,7 +258,7 @@ pub fn sample_c_evidence() -> quado_kb::Evidence {
     capcut.install_date = Some("20260929".into());
     let mut steam = entry(Hive::Machine32, "Steam", Some("2.10.91.91"), Some(r"C:\Program Files (x86)\Steam\uninstall.exe"));
     steam.publisher = Some("Valve Corporation".into());
-    // 7-Zip: voce di HKLM con InstallLocation e la dimensione dichiarata (F-AP-3).
+    // 7-Zip: voce di HKLM con InstallLocation e la dimensione dichiarata.
     let mut zip7 = entry(Hive::Machine, "7-Zip 24.09 (x64 edition)", Some("24.09.00.0"), None);
     zip7.key = "{23170F69-40C1-2702-2409-000001000000}".into();
     zip7.publisher = Some("Igor Pavlov".into());
@@ -322,7 +322,7 @@ pub fn sample_c_evidence() -> quado_kb::Evidence {
     ev
 }
 
-/// Albero da `n` nodi con profondità e ventaglio variabili (tabella da 3,5 milioni di righe, 06 §9).
+/// Albero da `n` nodi con profondità e ventaglio variabili (tabella da 3,5 milioni di righe).
 pub fn big_tree(n: usize, seed: u64) -> (VolumeInfo, ScanResult) {
     let mut t = Tree::with_root(&w("C:\\"), n);
     let mut rng = Rng::new(seed);
@@ -346,7 +346,7 @@ pub fn big_tree(n: usize, seed: u64) -> (VolumeInfo, ScanResult) {
     (volume_c(), result(t, Vec::new(), 2000 * GIB, false))
 }
 
-/// Una cartella con `children` figli diretti (06 §9) dentro un volume piccolo.
+/// Una cartella con `children` figli diretti dentro un volume piccolo.
 pub fn wide_folder(children: usize) -> (VolumeInfo, ScanResult, u32) {
     let mut t = Tree::with_root(&w("C:\\"), children + 16);
     let mut rng = Rng::new(7);
@@ -363,7 +363,7 @@ pub fn wide_folder(children: usize) -> (VolumeInfo, ScanResult, u32) {
     (v, r, big)
 }
 
-/// Mappa con `groups` cartelle da `per` file l'una (20.000 aree a 1920×1080, 06 §9).
+/// Mappa con `groups` cartelle da `per` file l'una (20.000 aree a 1920×1080).
 pub fn map_tree(groups: usize, per: usize) -> (VolumeInfo, ScanResult) {
     let mut t = Tree::with_root(&w("C:\\"), groups * (per + 1) + 1);
     let mut rng = Rng::new(11);
@@ -378,9 +378,9 @@ pub fn map_tree(groups: usize, per: usize) -> (VolumeInfo, ScanResult) {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Letture finte della lente Download (M4)
+// Letture finte della lente Download
 
-/// Letture finte della lente Download per test e immagini (06 §7): nessun file si apre. Dimensioni e
+/// Letture finte della lente Download per test e immagini: nessun file si apre. Dimensioni e
 /// date vengono dall'albero dato; il contenuto dal nome del file, sui dati di `sample_c`:
 /// - impronte: le tre fatture hanno lo stesso contenuto, gli altri file uno diverso per nome; data di
 ///   creazione: un giorno prima della data di modifica, così la più vecchia è `Fattura marzo.pdf`;

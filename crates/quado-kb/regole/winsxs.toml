@@ -1,6 +1,6 @@
-# WinSxS (decisioni §3, rivisto il 01/11/2026): solo spiegazione. Windows riduce l'archivio da solo
-# (attività StartComponentCleanup) e con Pulizia disco; il comando DISM con /ResetBase non compare più
-# nell'interfaccia, perché dopo gli aggiornamenti installati non si possono più disinstallare.
+# WinSxS: solo spiegazione. Windows riduce l'archivio da solo (attività StartComponentCleanup) e con Pulizia
+# disco; il comando DISM con /ResetBase non compare nell'interfaccia, perché dopo gli aggiornamenti installati
+# non si possono più disinstallare.
 id = "winsxs"
 priorita = 1
 riconoscitore = "percorso"

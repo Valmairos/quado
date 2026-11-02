@@ -1,4 +1,4 @@
-# Programmi dalle voci di disinstallazione (F-AP-1, F-AP-2): prefisso più lungo, disinstallazione ufficiale (M4).
+# Programmi dalle voci di disinstallazione: prefisso di percorso più lungo, disinstallazione ufficiale.
 id = "programmi-registrati"
 priorita = 2
 riconoscitore = "programmi-registrati"

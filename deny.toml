@@ -1,4 +1,4 @@
-# cargo-deny (06 §10, 05 D12): licenze, crate vietati, avvisi di sicurezza, provenienza.
+# cargo-deny: licenze, crate vietati, avvisi di sicurezza, provenienza.
 # Uso: cargo deny check
 
 [graph]
@@ -37,7 +37,7 @@ multiple-versions = "allow"
 wildcards = "deny"
 # Le dipendenze per percorso tra i crate del workspace non hanno versione.
 allow-wildcard-paths = true
-# Nessuna rete (03, privacy verificabile): vietati i client HTTP e WebSocket.
+# Nessuna rete, così la privacy si può verificare: vietati i client HTTP e WebSocket.
 deny = [
     { name = "reqwest" },
     { name = "ureq" },

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Prove di fine di M5 sul VHDX di prova NTFS (`R:`): la catena intera, dalla simulazione al registro,
-//! con le letture e lo spostamento veri (06 §5.3, §5.4, §6.1, §6.2; 03 F-AC-5, F-AC-6, F-AC-7, F-AC-8,
-//! F-VE-1, F-VE-2, F-VE-3, F-VE-4; 07 §1.6 criterio 3).
+//! Prove sul VHDX di prova NTFS (`R:`) della catena intera, dalla simulazione al registro, con le letture e
+//! lo spostamento veri: stima contro variazione reale, Cestino piccolo, Restart Manager, flusso di verifica
+//! e registro degli interventi.
 //!
 //! Catena di ogni prova: `simulate` con `WinProbe` (Cestino e Sensore memoria letti da HKCU come
 //! `KbConfig` dell'interfaccia, riferimenti vuoti) → `plan::conferma` → misura di partenza →
@@ -17,7 +17,7 @@
 //! prova la riporta. Si eseguono con
 //! `cargo test -p quado-actions --test fine_vhdx -- --ignored --test-threads=1`.
 //!
-//! # Tolleranza di 06 §6.1 (07 §1.6 criterio 3)
+//! # Tolleranza della stima
 //!
 //! Misure del 14/10/2026 su `R:` (VHDX da 4 GiB, NTFS, cluster da 4 KiB), tre ripetizioni per scenario,
 //! uguali al byte nelle tre (a parte il rumore descritto sotto). "Differenza" è la variazione del volume
@@ -45,7 +45,8 @@
 //! tolleranza). Correzione del 14/10/2026: la stima conta l'allocata di ogni cartella (`Attrs::alloc` di
 //! una cartella è quella del suo indice), e la tolleranza resta com'è; dopo la correzione la differenza
 //! di "molte cartelle" è 0. I file WOF e i segnaposto si provano con la lettura dell'uso attuale, che non
-//! li tocca. Su un volume di sistema vero gli indici pesano lo 0,08-0,10% (misura di M5, `cargo xtask m5-misure`).
+//! li tocca. Su un volume di sistema vero gli indici pesano lo 0,08-0,10% (misurato con
+//! `cargo xtask m5-misure`).
 //!
 //! Rumore: NTFS libera una parte dell'indice di una cartella grande circa 4 s dopo l'eliminazione (512 KiB
 //! su 1 MiB, misurato su R:). Le prove aspettano 6 s di spazio libero stabile prima della misura di
@@ -55,8 +56,8 @@
 //! Scenari non provati qui: disco virtuale dentro il VHDX. Montare un VHDX (`AttachVirtualDisk`) richiede
 //! l'amministratore e le prove girano da utente standard; in più la simulazione non ha un caso proprio per
 //! il contenuto di un disco virtuale: un elemento dentro un VHDX montato sta su un altro volume, e stima e
-//! misure sono di quel volume, non di quello che contiene il file del disco virtuale (03 §6.3, "0 fino
-//! alla compattazione", resta da progettare). I segnaposto cloud si provano su `R:` con `TMP` puntato
+//! misure sono di quel volume, non di quello che contiene il file del disco virtuale (il caso "0 fino
+//! alla compattazione" resta da progettare). I segnaposto cloud si provano su `R:` con `TMP` puntato
 //! nell'area (`segnaposto_cloud`).
 //!
 //! # Errori del prodotto trovati e corretti
@@ -100,11 +101,11 @@ use quado_testkit::trees::{self, TestDir};
 
 /// Cartella delle prove su `R:`.
 const AREA: &str = "interventi-prove-f";
-/// Capacità del Cestino di `R:` per gli scenari di 06 §6.1 e §6.2, in MiB.
+/// Capacità del Cestino di `R:` per gli scenari della stima e del flusso di verifica, in MiB.
 const CAPACITY_MIB: u32 = 1024;
-/// Capacità ridotta per le prove di 06 §5.3, in MiB.
+/// Capacità ridotta per le prove con il Cestino piccolo, in MiB.
 const SMALL_MIB: u32 = 32;
-/// Ripetizioni di ogni scenario di 06 §6.1.
+/// Ripetizioni di ogni scenario della stima.
 const REPS: usize = 3;
 /// Tempo massimo di uno spostamento sorvegliato (un segnaposto cloud può aspettare il provider 60 s).
 const MOVE_DEADLINE: Duration = Duration::from_secs(150);
@@ -129,7 +130,7 @@ fn extract_code(e: ExtractError) -> u32 {
 
 /// Le letture di `quado-kb` come le fa `KbConfig` dell'interfaccia (`quado-ui`, `intervention_jobs.rs`),
 /// che questo crate non vede: capacità e `NukeOnDelete` del volume e Sensore memoria da HKCU, in sola
-/// lettura. Riferimenti vuoti: le prove dei riferimenti sono di 06 §5.5.
+/// lettura. Riferimenti vuoti: i riferimenti si provano in altri test.
 struct HkcuConfig;
 
 impl SystemConfig for HkcuConfig {
@@ -150,8 +151,8 @@ impl SystemConfig for HkcuConfig {
     }
 }
 
-/// `WinProbe` che registra i file passati a Restart Manager, chiamata per chiamata (06 §5.4, cartella
-/// grande). Tutto il resto passa invariato.
+/// `WinProbe` che registra i file passati a Restart Manager, chiamata per chiamata (prova della
+/// cartella grande). Tutto il resto passa invariato.
 struct Recording<'a> {
     inner: &'a WinProbe,
     rm: Mutex<Vec<Vec<String>>>,
@@ -530,7 +531,7 @@ fn scan_tree(root: &str) -> Result<Tree, u32> {
 }
 
 /// Byte allocati che gli elementi occupano ancora ai loro percorsi, dalla riscansione delle cartelle
-/// che li contengono (F-VE-2, `Measure::still_present`).
+/// che li contengono (`Measure::still_present`).
 fn still_present(paths: &[String]) -> u64 {
     let mut total = 0;
     for dir in rescan_dirs(paths, &[]) {
@@ -552,7 +553,7 @@ enum Phase {
     Executed,
 }
 
-/// Fatti per `compare` a una misura (03 §6.3): elementi rimasti al loro posto dal riepilogo, nomi esclusi
+/// Fatti per `compare` a una misura: elementi rimasti al loro posto dal riepilogo, nomi esclusi
 /// dalla simulazione, byte della stima ancora nel Cestino. I byte spostati sono quelli della stima, non
 /// la somma di `ItemResult::alloc`, che comprende anche i file esclusi perché hanno altri nomi fuori.
 fn facts(r: &Riepilogo, est: &SelectionEstimate, last: &Measure) -> ExplainFacts {
@@ -649,7 +650,7 @@ impl Chain {
         );
     }
 
-    /// Criteri comuni di 06 §6.1 per una stima esatta: subito dopo lo spostamento la variazione è circa 0
+    /// Criteri comuni per una stima esatta: subito dopo lo spostamento la variazione è circa 0
     /// e il confronto la spiega con il contenuto ancora nel Cestino; dopo lo svuotamento la variazione è
     /// entro la tolleranza dalla stima.
     fn assert_exact_within_tolerance(&self, scenario: &str, k: usize) {
@@ -726,7 +727,7 @@ fn write_hex_noise(path: &Path, bytes: usize, seed: u64) {
 }
 
 // ---------------------------------------------------------------------------------------------
-// 06 §6.1: stima contro variazione reale
+// Stima contro variazione reale
 
 #[test]
 #[ignore = "richiede i VHDX di prova"]
@@ -831,7 +832,7 @@ fn stima_compressi_ntfs() {
     }
 }
 
-/// File compressi WOF (06 §6.1, `compact /exe:lzx`). **Errore trovato e corretto il 14/10/2026**: con
+/// File compressi WOF (`compact /exe:lzx`). **Errore trovato e corretto il 14/10/2026**: con
 /// Restart Manager la simulazione decomprimeva i file WOF (dopo `RmRegisterResources` e `RmGetList`
 /// l'allocata diventava la logica, `compact /q` diceva "0 are compressed" e il volume perdeva i 10.768.384
 /// byte che la compressione aveva liberato), e lo svuotamento liberava la logica (25.165.824) contro una
@@ -894,8 +895,8 @@ fn stima_file_residenti_nella_mft() {
         trees::write_file(&n, 8 << 20, 9);
         let expected = area.attrs(&n).alloc;
         // Allocata dell'indice della cartella ($I30, `FileStandardInfo` sulla cartella): con 4.001 voci non
-        // sta più nella MFT, e l'eliminazione della cartella la libera. La stima la conta (03 §6.3, dal
-        // 14/10/2026); i residenti no.
+        // sta più nella MFT, e l'eliminazione della cartella la libera. La stima la conta; i
+        // residenti no.
         let index = area.attrs(&d).alloc;
         let c = chain(&area, &[d], false, &mut no_hook);
         c.assert_all_recycled();
@@ -903,7 +904,7 @@ fn stima_file_residenti_nella_mft() {
         eprintln!("residenti: allocata riportata da Windows {nominal} byte, non contata; indice della cartella {index} byte");
         c.report("residenti", k);
         assert!(c.obtained_action().unsigned_abs() <= TOLERANCE_FIXED, "subito dopo lo spostamento: {}", c.obtained_action());
-        // Criterio di 06 §6.1: la variazione non cresce per i residenti, e cade nella tolleranza della
+        // Criterio: la variazione non cresce per i residenti, e cade nella tolleranza della
         // stima, che conta l'indice.
         let over = c.obtained_empty() - (expected + index) as i64;
         let msg = format!("variazione oltre la stima {over}, indice {index}, allocate dei residenti {nominal}");
@@ -913,9 +914,8 @@ fn stima_file_residenti_nella_mft() {
 }
 
 /// Un albero come `node_modules`: molte cartelle con decine di file piccoli, una parte residenti nella
-/// MFT. Svuotando il Cestino si liberano anche gli indici delle cartelle ($I30): prima del 14/10/2026 la
-/// stima non li contava e la variazione la superava del 3% (fuori tolleranza); ora li conta (07 §1.6
-/// criterio 3).
+/// MFT. Svuotando il Cestino si liberano anche gli indici delle cartelle ($I30): la stima li conta, perché
+/// senza di loro la variazione la superava del 3% (fuori tolleranza).
 #[test]
 #[ignore = "richiede i VHDX di prova"]
 fn stima_molte_cartelle_piccole() {
@@ -984,7 +984,7 @@ fn stima_file_sparse() {
     }
 }
 
-/// Selezione con una cartella che non si può elencare (06 §6.1, "cartella negata"). La cartella diventa non
+/// Selezione con una cartella che non si può elencare ("cartella negata"). La cartella diventa non
 /// elencabile con un nome UTF-16 non valido (`trees::invalid_utf16_file`), che la simulazione tratta come una
 /// cartella negata (`Probe::children` in errore, 123 invece di 5: stesso ramo, `denied_dirs`, stima a
 /// intervallo) e che Windows sposta comunque nel Cestino. Con un'ACL di negazione vera Windows non sposta la
@@ -1040,7 +1040,7 @@ fn stima_con_una_cartella_negata() {
     }
 }
 
-/// Segnaposto cloud (06 §6.1): `TestSyncRoot` crea la cartella di sincronizzazione in
+/// Segnaposto cloud: `TestSyncRoot` crea la cartella di sincronizzazione in
 /// `std::env::temp_dir()`; per averla su `R:` la prova punta `TMP` dentro l'area per la sola costruzione.
 /// Su `R:` la cartella si registra e i segnaposto si creano.
 ///
@@ -1131,7 +1131,7 @@ fn segnaposto_cloud() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// 06 §5.3: Cestino piccolo
+// Cestino piccolo
 
 #[test]
 #[ignore = "richiede i VHDX di prova"]
@@ -1158,11 +1158,11 @@ fn capacita_superata_blocca_prima_dello_spostamento() {
     assert_eq!(sim.capacity(&[true, true]), CapacityCheck::Exceeded { capacity, total });
     let checks = sim.rule_checks();
     assert!(checks.iter().any(|c| c.key == "controllo-capacita-cestino" && c.outcome == CheckOutcome::Failed), "{checks:?}");
-    // Sensore memoria: la simulazione riporta i giorni letti da HKCU (06 §5.3, F-AC-7).
+    // Sensore memoria: la simulazione riporta i giorni letti da HKCU.
     let ss = extract::storage_sense(&quado_kb::win::LiveRegistry).expect("Sensore memoria");
     assert_eq!(sim.storage_sense_days(), if ss.enabled { ss.recycle_days } else { None });
     eprintln!("Sensore memoria: {:?} giorni", sim.storage_sense_days());
-    // Nessun piano: senza `PianoConfermato` nessuna chiamata a IFileOperation è possibile (05 D7, V6).
+    // Nessun piano: senza `PianoConfermato` nessuna chiamata a IFileOperation è possibile.
     let refused = conferma(&sim, &sim.default_choice()).expect_err("capacità superata");
     assert_eq!(refused, vec![Rifiuto::Capacity(CapacityCheck::Exceeded { capacity, total })]);
     assert!(a.exists() && b.exists());
@@ -1241,7 +1241,7 @@ fn elemento_piu_grande_del_cestino_resta_al_suo_posto() {
     assert!(mover.windows.borrow().is_empty());
     assert_eq!(r.items.len(), 1);
     assert_eq!(r.items[0].outcome, ItemOutcome::Recycled);
-    // F-AC-5: il grande è al suo posto, con lo stesso ID e la stessa dimensione.
+    // Il grande è al suo posto, con lo stesso ID e la stessa dimensione.
     let after = area.attrs(&big);
     assert_eq!((after.file_id, after.logical, after.alloc, after.modified), (before.file_id, before.logical, before.alloc, before.modified));
     assert_eq!(area.bin().items, 1);
@@ -1275,7 +1275,7 @@ fn nuke_on_delete_blocca_senza_chiamare_il_mover() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// 06 §5.4: Restart Manager
+// Restart Manager
 
 /// Processo di prova (PowerShell) che tiene aperto un file senza condivisione finché vive; termina al drop.
 struct Holder {
@@ -1427,7 +1427,7 @@ fn cartella_grande_campione_con_tutti_gli_eseguibili_e_le_dll() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// 06 §6.2: flusso di verifica
+// Flusso di verifica
 
 #[test]
 #[ignore = "richiede i VHDX di prova"]
@@ -1445,11 +1445,11 @@ fn misura_di_partenza_prima_del_primo_spostamento() {
     assert_eq!(start.point, MeasurePoint::Start);
     // Misurato il 14/10/2026: le tre ore sono uguali. `system::now_filetime` usa `GetSystemTimeAsFileTime`,
     // che avanza a passi di circa 15,6 ms: l'ordine lo garantisce il codice (la misura precede
-    // `esegui`), ma il registro da solo non mostra un'ora strettamente precedente (F-VE-1).
+    // `esegui`), ma il registro da solo non mostra un'ora strettamente precedente.
     assert!(start.at <= c.riepilogo.started, "la misura di partenza precede l'inizio dell'esecuzione");
     assert!(start.at <= first_call, "e la prima chiamata a IFileOperation");
     assert!(start.bin.is_some() && start.free > 0);
-    // F-VE-2: dopo l'azione e dopo lo svuotamento, spazio libero, Cestino, riscansione e ora.
+    // Dopo l'azione e dopo lo svuotamento, spazio libero, Cestino, riscansione e ora.
     for (m, point) in c.measures[1..].iter().zip([MeasurePoint::AfterAction, MeasurePoint::AfterEmpty]) {
         assert_eq!(m.point, point);
         assert!(m.at >= c.riepilogo.finished && m.bin.is_some() && m.still_present.is_some());
@@ -1544,7 +1544,7 @@ fn riscansione_innestata_uguale_alla_scansione_completa() {
     let grafted = (model.alloc(Tree::ROOT), model.logical(Tree::ROOT), model.files(Tree::ROOT));
     let full = (fresh.alloc(Tree::ROOT), fresh.logical(Tree::ROOT), fresh.files(Tree::ROOT));
     eprintln!("prima {before:?}, innestato {grafted:?}, scansione completa {full:?}");
-    assert_eq!(grafted, full, "F-VE-4: totali del modello aggiornato e di una scansione completa nuova");
+    assert_eq!(grafted, full, "totali del modello aggiornato e di una scansione completa nuova");
     for dir in &dirs {
         let (m, n) = (find_node(&model, dir).unwrap(), find_node(&fresh, dir).unwrap());
         assert_eq!((model.alloc(m), model.files(m)), (fresh.alloc(n), fresh.files(n)), "{dir}");
@@ -1553,7 +1553,7 @@ fn riscansione_innestata_uguale_alla_scansione_completa() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// F-AC-6: registro degli interventi
+// Registro degli interventi
 
 #[test]
 #[ignore = "richiede i VHDX di prova"]

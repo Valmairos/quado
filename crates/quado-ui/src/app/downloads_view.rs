@@ -1,19 +1,20 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Lente Download (03 F-DL, 04 §6.6 punto 3, §6.7): famiglie secondo l'estensione su `Downloads` o su
-//! un'altra cartella dell'utente, il suffisso "(N)" come solo filtro, "Cosa si capisce di questa
-//! cartella" con uno stato per voce, il dettaglio della voce con fatti, file e cosa si può fare.
+//! Lente Download: famiglie secondo l'estensione su `Downloads` o su un'altra cartella dell'utente, il
+//! suffisso "(N)" come solo filtro, "Cosa si capisce di questa cartella" con uno stato per voce, il dettaglio
+//! della voce con fatti, file e cosa si può fare.
 //!
-//! - Aprire la lente non legge il contenuto di nessun file (F-DL-1): famiglie, gruppi della stessa
+//! - Aprire la lente non legge il contenuto di nessun file: famiglie, gruppi della stessa
 //!   dimensione e archivi con la cartella accanto vengono dal modello della scansione. La lente si
 //!   costruisce in un thread (`build_view`), così una cartella con 100.000 file non ferma il frame.
-//! - Restart Manager sui download incompleti (F-DL-6) parte da solo quando la lente è pronta: non legge il
-//!   contenuto, non cambia la data di ultimo accesso (06 §3.6 elenca solo risorsa di versione, MSI, zip e
-//!   impronte), costa pochi millisecondi in background, e lo stato di quei file dipende solo da lui. È una
-//!   fotografia: la voce dice l'ora del controllo e "Controlla di nuovo l'uso" lo ripete.
+//! - Restart Manager sui download incompleti parte da solo quando la lente è pronta: non legge il contenuto,
+//!   non cambia la data di ultimo accesso (la cambiano solo le letture del contenuto: risorsa di versione,
+//!   MSI, zip e impronte), costa pochi millisecondi in background, e lo stato di quei file dipende solo da
+//!   lui. È una fotografia: la voce dice l'ora del controllo e "Controlla di nuovo l'uso" lo ripete.
 //! - Le letture del contenuto (impronte, dati di versione, indici degli zip) partono solo da un comando
 //!   che prima dice quanti file e quanti byte legge e che "aggiorna la data di ultimo accesso di questi
-//!   file", e chiede conferma (04 §6.8). Girano in `lens_jobs`, annullabili, con l'avanzamento.
-//! - Le azioni sui file arrivano con la M5: qui il record le descrive, nessun pulsante sposta file.
+//!   file", e chiede conferma. Girano in `lens_jobs`, annullabili, con l'avanzamento.
+//! - Le azioni sui file partono dai pulsanti sotto il record, come nell'ispettore: lo spostamento nel Cestino
+//!   passa sempre dalla simulazione e dal dialogo di conferma.
 
 use std::collections::{HashMap, HashSet};
 use std::sync::Arc;
@@ -44,7 +45,7 @@ use crate::widgets::{self, ButtonKind, Evidence};
 const MAX_FILES: usize = 30;
 /// Righe dell'elenco disegnate per volta, le più grandi: dopo un confronto su una cartella con centinaia
 /// di migliaia di file le copie identiche sono migliaia di righe, e disegnarle tutte a ogni frame costa
-/// secondi (misura di M4 sulla cartella Download di questo PC). "Mostra altre voci" ne aggiunge altre.
+/// secondi (misurato sulla cartella Download del PC di sviluppo). "Mostra altre voci" ne aggiunge altre.
 pub const ROWS_PAGE: usize = 200;
 /// Voci mostrate nel dettaglio di una riga che ne raccoglie molte.
 const MAX_VOCI: usize = 40;
@@ -89,10 +90,10 @@ pub struct LensView {
     /// Gruppi della stessa dimensione (i soli file che "Confronta il contenuto" legge) e il loro esito.
     pub candidates: Vec<SizeGroup>,
     pub compared: Vec<GroupComparison>,
-    /// File solo nel cloud con la stessa dimensione di un altro: non si leggono mai (05 D6).
+    /// File solo nel cloud con la stessa dimensione di un altro: non si leggono mai (leggerli li scaricherebbe).
     pub cloud_same_size: usize,
     pub pairs: Vec<ArchivePair>,
-    /// File con il suffisso " (N)" nel nome (F-DL-3), in ordine di nodo.
+    /// File con il suffisso " (N)" nel nome, in ordine di nodo.
     pub suffixed: Vec<u32>,
     /// I file più grandi di ogni famiglia, per il dettaglio della famiglia.
     pub family_top: HashMap<LensFamily, Vec<u32>>,
@@ -190,11 +191,11 @@ fn cloud_same_size(lens: &Lens) -> usize {
 /// Le tre letture del contenuto, ciascuna con il suo comando.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum ReadKind {
-    /// "Confronta il contenuto": SHA-256 dei file della stessa dimensione (F-DL-4).
+    /// "Confronta il contenuto": SHA-256 dei file della stessa dimensione.
     Hash,
-    /// "Leggi i dati degli installatori": risorsa di versione e tabella Property (F-DL-2).
+    /// "Leggi i dati degli installatori": risorsa di versione e tabella Property.
     Installers,
-    /// "Leggi l'indice degli archivi": directory centrale degli zip con la cartella accanto (F-DL-5).
+    /// "Leggi l'indice degli archivi": directory centrale degli zip con la cartella accanto.
     Zip,
 }
 
@@ -215,7 +216,7 @@ pub struct Prompt {
 
 impl Prompt {
     /// Tiene solo i file dei nodi per cui `keep` è vero e ricalcola file e byte. Per la sessione di prova
-    /// (`quado --sessione-prova`, 06 §10), che confronta un solo gruppo invece di tutta la cartella.
+    /// (`quado --sessione-prova`), che confronta un solo gruppo invece di tutta la cartella.
     pub fn retain_nodes(&mut self, keep: impl Fn(u32) -> bool) {
         let (files, bytes) = match &mut self.targets {
             PromptTargets::Files(t) => {
@@ -329,7 +330,7 @@ pub struct DownloadsState {
     version: u64,
     /// File della stessa dimensione non letti, con il motivo.
     pub hash_errors: HashMap<u32, ContentError>,
-    /// Cache dei dati degli installatori (05 D6): per percorso, dimensione, data di modifica e ID file.
+    /// Cache dei dati degli installatori: per percorso, dimensione, data di modifica e ID file.
     pub cache: InstallerCache,
     /// Chiave di contenuto degli installatori dall'ultimo controllo, per nodo.
     keys: HashMap<u32, ContentKey>,
@@ -1048,7 +1049,7 @@ struct Act {
     focus_done: bool,
     scrolled: bool,
     more_rows: bool,
-    /// Pulsante degli interventi (M5) con le voci della riga (indici in `LensView::findings`).
+    /// Pulsante degli interventi con le voci della riga (indici in `LensView::findings`).
     intervention: Option<(super::intervention_jobs::ActRequest, Vec<usize>)>,
 }
 
@@ -1253,9 +1254,9 @@ fn toolbar(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, d: &Loaded, st: 
     }
 }
 
-/// Famiglie (F-DL-1) come fila di cifre in una card (`.nums`): nome, dimensione grande e leggera, numero di
-/// file; quella dei download incompleti solo se ce ne sono (04 §6.6, nota). Ogni colonna è un pulsante che
-/// mostra nel dettaglio i file più grandi della famiglia.
+/// Famiglie come fila di cifre in una card (`.nums`): nome, dimensione grande e leggera, numero di file;
+/// quella dei download incompleti solo se ce ne sono. Ogni colonna è un pulsante che mostra nel dettaglio i
+/// file più grandi della famiglia.
 fn tiles(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, st: &DownloadsState, v: &LensView, act: &mut Act) {
     let fams: Vec<LensFamily> = LensFamily::SHOWN.into_iter().filter(|&x| x != LensFamily::Incomplete || v.lens.total(x).files > 0).collect();
     let w = ui.available_width();
@@ -1768,7 +1769,7 @@ fn voce_facts(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, t: &Tree, st:
 #[derive(Clone, Copy, PartialEq, Eq)]
 enum Control {
     None,
-    /// Prima del confronto: caselle disattivate (04 §6.6).
+    /// Prima del confronto: caselle disattivate.
     Disabled,
     /// Dopo il confronto: la copia da tenere.
     Keep(u32),
@@ -1920,9 +1921,9 @@ fn suffix_detail(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, t: &Tree, 
     }
 }
 
-/// Voci della lente con un'azione, per la card "Interventi possibili" della Panoramica (F-OV-4): le
-/// copie identiche dopo il confronto e i download incompleti non in uso, mai le copie non confrontate
-/// (F-DL-4). Raggruppate per funzione: (funzione, voci, byte, stima, stato della prima).
+/// Voci della lente con un'azione, per la card "Interventi possibili" della Panoramica: le copie identiche
+/// dopo il confronto e i download incompleti non in uso, mai le copie non confrontate. Raggruppate per
+/// funzione: (funzione, voci, byte, stima, stato della prima).
 pub fn interventions(v: &LensView) -> Vec<(quado_model::record::Function, Vec<usize>, u64, Estimate, &Record)> {
     let mut out: Vec<(quado_model::record::Function, Vec<usize>, u64, Estimate, &Record)> = Vec::new();
     for (k, x) in v.findings.iter().enumerate() {
@@ -1990,7 +1991,7 @@ mod tests {
         assert!(interventions(&v).is_empty());
     }
 
-    /// 06 §9: la lente su una cartella con 100.000 file si costruisce fuori dal frame; il tempo si legge con
+    /// La lente su una cartella con 100.000 file si costruisce fuori dal frame; il tempo si legge con
     /// `--nocapture` (in release, circa quello dell'app).
     #[test]
     fn a_big_folder_builds_in_the_background() {

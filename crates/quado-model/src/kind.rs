@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Tipo di file secondo l'estensione (03 F-IN-3): senza leggere il contenuto, quindi sempre
+//! Tipo di file secondo l'estensione: senza leggere il contenuto, quindi sempre
 //! dichiarato "secondo l'estensione" nell'interfaccia. Il modello restituisce codici; i nomi delle
-//! famiglie stanno nei file di lingua (05 D13).
+//! famiglie stanno nei file di lingua.
 
 use crate::names::Name;
 

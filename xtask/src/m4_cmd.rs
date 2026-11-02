@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! `cargo xtask m4-misure`: misure di M4 sulla lente Download (07 §1.5 criteri 3 e 4, 06 §9).
+//! `cargo xtask m4-misure`: misure sulla lente Download.
 //!
 //! - Costo della lettura delle risorse di versione (e delle proprietà MSI) degli installatori di una
 //!   cartella, con le stesse funzioni dell'app (`installers_win::version_info`, `msi_info`): 5 esecuzioni,
@@ -68,8 +68,8 @@ pub fn run(args: &[String]) -> Result<(), String> {
     }
     let mut out = String::new();
     let name = folder_name(&folder);
-    let _ = writeln!(out, "# M4 · Misure della lente Download su `{name}`\n");
-    let _ = writeln!(out, "Generato da `cargo xtask m4-misure`, protocollo di 06 §9 (07 §1.5 criteri 3 e 4).\n");
+    let _ = writeln!(out, "# Misure della lente Download su `{name}`\n");
+    let _ = writeln!(out, "Generato da `cargo xtask m4-misure`.\n");
     let _ = writeln!(out, "| Condizione | Valore |\n|---|---|");
     for (k, v) in crate::measure_cmd::environment() {
         let _ = writeln!(out, "| {k} | {v} |");
@@ -81,7 +81,7 @@ pub fn run(args: &[String]) -> Result<(), String> {
     versions(&mut out, &folder, o.subfolders, &o.exclude);
 
     if o.benches {
-        let _ = writeln!(out, "\n## Frame durante le letture (criterio 3)\n");
+        let _ = writeln!(out, "\n## Frame durante le letture\n");
         let _ = writeln!(out, "Banchi di `quado` con le letture vere, finestra 1920×1080 senza sincronizzazione verticale. Frame della fase «lettura»: dalla richiesta alla fine dell'ultimo giro, comprese la conferma e la ricostruzione della lente.\n");
         let _ = writeln!(out, "| Banco | Frame | p50 | p95 | p99 | Massimo | Criterio p95 ≤ 16 ms | Giri, file e byte letti, durata dei giri |\n|---|---|---|---|---|---|---|---|");
         let exe = build_app()?;
@@ -164,11 +164,11 @@ fn quantile(v: &[f64], q: f64) -> f64 {
     if s.is_empty() { 0.0 } else { s[((s.len() - 1) as f64 * q).round() as usize] }
 }
 
-/// Costo della lettura delle risorse di versione (criterio 4): 5 esecuzioni sugli stessi file.
+/// Costo della lettura delle risorse di versione: 5 esecuzioni sugli stessi file.
 fn versions(out: &mut String, folder: &str, subfolders: bool, exclude: &[String]) {
     let (files, skipped) = installer_files(folder, subfolders, exclude);
     let msi = files.iter().filter(|p| installers::installer_kind(p) == Some(InstallerKind::Msi)).count();
-    let _ = writeln!(out, "## Costo della lettura delle risorse di versione (criterio 4)\n");
+    let _ = writeln!(out, "## Costo della lettura delle risorse di versione\n");
     let _ = writeln!(
         out,
         "Installatori letti: {} ({msi} MSI con la tabella Property, gli altri con la risorsa di versione); esclusi: {skipped}. Stesse funzioni dell'app, un file alla volta, nessuna cache.\n",

@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Riferimenti a un elemento prima di spostarlo (03 F-AC-9, 05 D7 controllo 6): registro
+//! Riferimenti a un elemento prima di spostarlo: registro
 //! (`UninstallString`, `DisplayIcon`, `InstallLocation`, App Paths, chiavi Run di HKCU e HKLM),
 //! collegamenti `.lnk` di Start e Desktop (dell'utente e pubblici) letti con `IShellLinkW::GetPath`
 //! senza `Resolve`, attività pianificate visibili all'utente (`ITaskService`). Sola lettura.
 //!
-//! La logica (`find`) lavora su sorgenti iniettabili: il registro simulato del §2.3 e collegamenti e
+//! La logica (`find`) lavora su sorgenti iniettabili: il registro simulato di `reg` e collegamenti e
 //! attività di prova. `find_live` usa quelle vere di `win`.
 //!
 //! Regole:
@@ -24,7 +24,7 @@
 //!   attività negate o non visibili all'utente (`win::LiveTasks` le trova anche quando la libreria le
 //!   omette senza errore).
 //! - Il registro si legge nel thread del chiamante; collegamenti e attività in due thread in parallelo.
-//! - Non coperti (08 RS5): argomenti delle righe di comando, associazioni di file, PATH, collegamenti in
+//! - Non coperti: argomenti delle righe di comando, associazioni di file, PATH, collegamenti in
 //!   altre cartelle, nomi brevi 8.3 nei percorsi delle fonti.
 
 use std::collections::HashSet;
@@ -34,7 +34,7 @@ use quado_model::intervention::{Reference, ReferenceKind, ReferenceReport};
 use crate::reg::{RegistrySource, Root};
 
 /// Codice per un collegamento o una cartella di collegamenti che è un segnaposto cloud: non si legge,
-/// per non scaricarlo (05 D6), e il controllo è parziale. È `ERROR_FILE_OFFLINE` di Windows.
+/// per non scaricarlo, e il controllo è parziale. È `ERROR_FILE_OFFLINE` di Windows.
 pub const CLOUD_PLACEHOLDER: u32 = 4350;
 
 /// Un collegamento `.lnk`.

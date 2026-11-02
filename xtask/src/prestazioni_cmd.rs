@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Misure per la baseline delle prestazioni (06 §9), in sola lettura.
+//! Misure per la baseline delle prestazioni, in sola lettura.
 //!
 //! - `fasi [--runs N]`: N processi `fasi-riga`, ciascuno con la scansione del volume di sistema come
 //!   l'app (prove degli estrattori in parallelo), le fasi interne della scansione, il caricamento del
@@ -390,7 +390,7 @@ pub fn d3d12_line(args: &[String]) -> Result<(), String> {
 // ---------------------------------------------------------------------------------------------
 // rm-fasi
 
-/// Campione della simulazione (05 D7, `simulate::rm_sample`): tutti gli eseguibili e le DLL, più i 1.000
+/// Campione della simulazione (`simulate::rm_sample`): tutti gli eseguibili e le DLL, più i 1.000
 /// altri file modificati più di recente, dal modello della scansione.
 fn rm_sample(tree: &Tree, root: u32) -> Vec<String> {
     rm_sample_with(tree, root, 1000)
@@ -776,7 +776,7 @@ fn sim_signature(sim: &quado_actions::plan::Simulazione, mut samples: Vec<Vec<St
 /// Costo di un'apertura per leggere gli attributi, strada per strada, su un thread: tutte le voci (file e
 /// cartelle) sotto `roots`, prese dal modello. Ogni strada fa le stesse domande (`FileBasicInfo` e
 /// `FileStandardInfo`) tranne la domanda per nome, che dà tutto in una chiamata senza handle. Solo misura:
-/// la domanda per nome non permette `FILE_OPEN_NO_RECALL`, quindi non entra nel prodotto (05 D7).
+/// la domanda per nome non permette `FILE_OPEN_NO_RECALL`, quindi non entra nel prodotto.
 fn open_costs(tree: &Tree, roots: &[u32]) {
     use windows_sys::Wdk::Foundation::OBJECT_ATTRIBUTES;
     use windows_sys::Wdk::Storage::FileSystem::{

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Directory centrale degli archivi zip, compreso zip64 (F-DL-5): solo il record di fine directory e la
+//! Directory centrale degli archivi zip, compreso zip64: solo il record di fine directory e la
 //! directory centrale, letti dalla coda del file; nessuna decompressione.
 //!
 //! Il lettore è puro sopra [`ReadAt`]: lo stesso codice legge un file ([`ZipFile`]) o dei byte in memoria
@@ -13,8 +13,8 @@
 //! - la directory centrale, in una lettura.
 //!
 //! Mai gli header locali né i dati compressi. Ogni offset e ogni lunghezza si controllano con aritmetica
-//! verificata prima di leggere; un formato inatteso dà un codice d'errore, mai un dato ricostruito
-//! (05 D6): niente correzioni degli offset per i dati anteposti all'archivio, niente archivi su più dischi.
+//! verificata prima di leggere; un formato inatteso dà un codice d'errore, mai un dato ricostruito:
+//! niente correzioni degli offset per i dati anteposti all'archivio, niente archivi su più dischi.
 
 use quado_model::downloads::ArchiveEntry;
 
@@ -42,12 +42,12 @@ const CENTRAL_LEN: usize = 46;
 const FLAG_UTF8: u16 = 1 << 11;
 const ZIP64_EXTRA: u16 = 0x0001;
 
-/// Perché l'indice non è stato letto. Codici, non frasi (05 D13).
+/// Perché l'indice non è stato letto. Codici, non frasi.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum ZipError {
     /// Errore di Windows nell'apertura o nella lettura.
     Io(u32),
-    /// Segnaposto cloud: il contenuto non si legge (05 D6).
+    /// Segnaposto cloud: il contenuto non si legge, perché leggerlo lo scaricherebbe.
     CloudPlaceholder,
     /// Nessun record di fine directory negli ultimi 65.557 byte (oppure una cartella o un collegamento).
     NotZip,
@@ -150,7 +150,7 @@ impl ReadAt for ZipFile {
 }
 
 /// Indice dell'archivio `path`: apre il file (rifiutando i segnaposto cloud) e legge la directory
-/// centrale. La lettura aggiorna la data di ultimo accesso del file (06 §3.6).
+/// centrale. La lettura aggiorna la data di ultimo accesso del file.
 pub fn zip_index(path: &str) -> Result<ZipIndex, ZipError> {
     read_index(&ZipFile::open(path)?)
 }

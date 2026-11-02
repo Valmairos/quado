@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Record della lente Download (06 §3.1-3.4, 03 §6.1): voci di "Cosa riconosce Quado in questa cartella" su
-//! alberi costruiti in memoria, con le letture su richiesta simulate. Proprietà: nessuna voce Gestibile
-//! senza una prova misurata che non sia dimensione, data o nome; nessuna cifra recuperabile prima del
-//! confronto; il suffisso " (N)" non cambia niente; ogni chiave di testo esiste in italiano e in inglese.
+//! Record della lente Download: voci di "Cosa riconosce Quado in questa cartella" su alberi costruiti
+//! in memoria, con le letture su richiesta simulate. Proprietà: nessuna voce Gestibile senza una prova
+//! misurata che non sia dimensione, data o nome; nessuna cifra recuperabile prima del confronto; il
+//! suffisso " (N)" non cambia niente; ogni chiave di testo esiste in italiano e in inglese.
 
 use std::collections::{BTreeMap, BTreeSet, HashMap};
 
@@ -127,7 +127,7 @@ fn card(out: &[LensFinding]) -> Vec<&LensFinding> {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Invarianti (03 §6.1, 06 §2.2)
+// Invarianti
 
 fn check_invariants(out: &[LensFinding]) {
     for v in out {
@@ -184,7 +184,7 @@ fn check_invariants(out: &[LensFinding]) {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Copie (F-DL-3, F-DL-4)
+// Copie
 
 #[test]
 fn before_any_reading_nothing_is_manageable_and_nothing_has_a_figure() {
@@ -270,7 +270,7 @@ fn identical_copies_are_manageable_only_after_the_comparison() {
 
 #[test]
 fn copies_with_other_names_get_a_range() {
-    // Un file con più nomi torna libero solo se tutti i nomi lasciano il volume (03 §6.3).
+    // Un file con più nomi torna libero solo se tutti i nomi lasciano il volume.
     let f = folder(
         "Downloads",
         &[("a.bin", 10_000, NO), ("b.bin", 10_000, Flags::MULTI_LINK), ("c.bin", 10_000, NO), ("d.bin", 10_000, Flags::MULTI_LINK | Flags::SECONDARY_LINK)],
@@ -321,7 +321,7 @@ fn the_copy_suffix_does_not_change_states() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Installatori (F-DL-2)
+// Installatori
 
 fn info(kind: InstallerKind, name: &str, version: &str) -> InstallerInfo {
     InstallerInfo { kind: Some(kind), product_name: Some(name.into()), product_version: Some(version.into()), company: Some("Editore".into()), ..Default::default() }
@@ -456,7 +456,7 @@ fn installer_readings_that_fail_say_why() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Archivi (F-DL-5) e immagini disco
+// Archivi e immagini disco
 
 #[test]
 fn archive_with_folder_carries_the_measured_proof() {
@@ -493,7 +493,7 @@ fn archive_with_folder_carries_the_measured_proof() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Download incompleti (F-DL-6, 06 §3.4)
+// Download incompleti
 
 #[test]
 fn incomplete_downloads_follow_restart_manager() {
@@ -547,7 +547,7 @@ fn findings_are_ordered_by_bytes_then_deterministically() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Testi (05 D13, 04 §6.8)
+// Testi
 
 /// Una chiave con i segnaposto e se ha sopra un commento `# ...`.
 #[derive(Debug, Default)]
@@ -606,8 +606,8 @@ fn messages(ftl: &str, from: Option<&str>) -> BTreeMap<String, Msg> {
     out
 }
 
-const IT_HEADER: &str = "## M4: vista Download";
-const EN_HEADER: &str = "## M4: Downloads view";
+const IT_HEADER: &str = "## Vista Download";
+const EN_HEADER: &str = "## Downloads view";
 
 /// Chiavi prodotte da una voce: testi del record e fatti, con i valori di ogni fatto.
 fn produced(out: &[LensFinding], into: &mut BTreeMap<String, Vec<usize>>) {
@@ -753,7 +753,7 @@ fn lens_texts_are_aligned_commented_and_plain() {
         assert_eq!(m.vars, en[k].vars, "{k}: segnaposto diversi");
         assert!(k.starts_with("fatto-lente-") || (k.starts_with("funzione-") && !k.starts_with("funzione-installatore-")), "{k}: fuori dalla sezione");
     }
-    // Parole vietate (04 §6.8), punti esclamativi e trattini lunghi, nei soli valori della sezione.
+    // Parole vietate (docs/testi.md §3), punti esclamativi e trattini lunghi, nei soli valori della sezione.
     let forbidden = [
         "sicuro da eliminare",
         "sicuro da disinstallare",
@@ -785,7 +785,7 @@ fn lens_texts_are_aligned_commented_and_plain() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Proprietà su cartelle e letture casuali (06 §2.2, §3.1, §3.2)
+// Proprietà su cartelle e letture casuali
 
 const STEMS: [&str; 5] = ["setup", "foto", "archivio", "Relazione è", "dati"];
 const EXTS: [&str; 12] = ["exe", "msi", "zip", "iso", "vhdx", "mp4", "pdf", "crdownload", "part", "xyz", "", "tar.gz"];
@@ -923,7 +923,7 @@ fn random_input(t: &Tree, root: u32, r: &Reads) -> LensInput {
 proptest! {
     #![proptest_config(ProptestConfig { cases: 256, ..ProptestConfig::default() })]
 
-    /// 03 §6.1 regola 2: nessuna voce Gestibile o Da verificare senza una prova che non sia dimensione,
+    /// Nessuna voce Gestibile o Da verificare senza una prova che non sia dimensione,
     /// data o nome (lo verifica `check_invariants`, chiamata da `run`), e ogni chiave esiste.
     #[test]
     fn records_from_random_folders_keep_the_rules(specs in proptest::collection::vec(spec(), 0..30), r in reads()) {
@@ -965,7 +965,7 @@ proptest! {
         }
     }
 
-    /// F-DL-3: il suffisso " (N)" non cambia nessuno stato, nessuna voce, nessun record.
+    /// Il suffisso " (N)" non cambia nessuno stato, nessuna voce, nessun record.
     #[test]
     fn the_copy_suffix_changes_nothing(specs in proptest::collection::vec(spec(), 0..30), r in reads()) {
         let (plain, root) = build_folder(&specs, false);

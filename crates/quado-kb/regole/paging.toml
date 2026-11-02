@@ -1,4 +1,4 @@
-# File di paging e swap (07 §7, proposto): elemento protetto, solo spiegazione.
+# File di paging e swap: elemento protetto, solo spiegazione.
 id = "paging"
 priorita = 2
 riconoscitore = "percorso"

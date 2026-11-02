@@ -1,12 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Test che chiudono righe scoperte della tabella di copertura dei requisiti (06 §13), scritti in
-//! M6 dall'agente P. Ognuno prova nell'interfaccia un requisito che prima era provato solo in parte:
-//! - F-SC-4: l'avanzamento della scansione si aggiorna dal vivo, totali di primo livello compresi;
-//! - F-SC-10: exFAT e FAT32 con la nota, ReFS e unità di rete "senza garanzie", nei volumi e nel banner;
-//! - F-IN-2: "Perché è così grande" nell'ispettore: parti, schemi con la regola, tipi ed età dei file;
-//! - F-IN-5: "Copia percorso" mette negli appunti il percorso completo e lo dice nella barra di stato;
-//! - F-SY-1, F-SY-2: Windows e sistema con il Cestino in due modi e l'anomalia, e le voci che senza
-//!   amministratore non si misurano dette "non disponibile", mai 0.
+//! Test che provano nell'interfaccia comportamenti che altrove sono provati solo in parte:
+//! - l'avanzamento della scansione si aggiorna dal vivo, totali di primo livello compresi;
+//! - exFAT e FAT32 con la nota, ReFS e unità di rete "senza garanzie", nei volumi e nel banner;
+//! - "Perché è così grande" nell'ispettore: parti, schemi con la regola, tipi ed età dei file;
+//! - "Copia percorso" mette negli appunti il percorso completo e lo dice nella barra di stato;
+//! - Windows e sistema con il Cestino in due modi e l'anomalia, e le voci che senza amministratore non si
+//!   misurano dette "non disponibile", mai 0.
 //!
 //! Tutto sul C: sintetico di `synthetic::sample_c`: niente legge o scrive sul disco vero.
 
@@ -66,7 +65,7 @@ fn node_named(h: &Harness<'_, App>, n: &str) -> u32 {
 
 #[test]
 fn l_avanzamento_della_scansione_si_aggiorna_dal_vivo() {
-    // F-SC-4: file letti, cartelle, spazio misurato e totali di primo livello crescono mentre la scansione
+    // File letti, cartelle, spazio misurato e totali di primo livello crescono mentre la scansione
     // procede; la barra di stato dice quanti file sono stati letti.
     let mut a = app();
     let top = [("Users", 300u64 << 30), ("Windows", 30 << 30)].iter().map(|(n, b)| (n.encode_utf16().collect(), *b)).collect();
@@ -102,7 +101,7 @@ fn l_avanzamento_della_scansione_si_aggiorna_dal_vivo() {
 
 #[test]
 fn perche_e_cosi_grande_nell_ispettore() {
-    // F-IN-2: la cartella di CapCut nell'ispettore: le parti principali, gli schemi riconosciuti dalle
+    // La cartella di CapCut nell'ispettore: le parti principali, gli schemi riconosciuti dalle
     // regole con la regola citata, i tipi secondo l'estensione e l'età dei file.
     let mut h = loaded();
     {
@@ -145,7 +144,7 @@ fn perche_e_cosi_grande_nell_ispettore() {
 
 #[test]
 fn copia_percorso_mette_il_percorso_negli_appunti() {
-    // F-IN-5: "Copia percorso" copia il percorso completo e lo dice nella barra di stato.
+    // "Copia percorso" copia il percorso completo e lo dice nella barra di stato.
     let mut h = loaded();
     let node = node_named(&h, "Cargo.lock");
     {
@@ -180,7 +179,7 @@ fn copia_percorso_mette_il_percorso_negli_appunti() {
 
 #[test]
 fn file_system_fat_e_senza_garanzie_lo_dicono() {
-    // F-SC-10: exFAT e FAT32 con la nota sui cluster; ReFS e le unità di rete "senza garanzie", nell'elenco
+    // exFAT e FAT32 con la nota sui cluster; ReFS e le unità di rete "senza garanzie", nell'elenco
     // dei volumi e nel banner delle viste con i dati.
     use quado_model::Space;
     use quado_scan_win::volumes::{DriveKind, Support, Volume};
@@ -222,8 +221,8 @@ fn file_system_fat_e_senza_garanzie_lo_dicono() {
 
 #[test]
 fn windows_e_sistema_cestino_in_due_modi_e_mai_zero_senza_amministratore() {
-    // F-SY-2: il Cestino con le due misure (secondo Windows, su disco) e le cartelle orfane come anomalia.
-    // F-SY-1: copie shadow e archiviazione riservata "non disponibile" con il motivo, mai 0.
+    // Il Cestino con le due misure (secondo Windows, su disco) e le cartelle orfane come anomalia.
+    // Copie shadow e archiviazione riservata "non disponibile" con il motivo, mai 0.
     let mut h = loaded();
     h.state_mut().go(Screen::System);
     h.run_steps(4);

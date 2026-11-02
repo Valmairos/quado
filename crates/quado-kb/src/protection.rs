@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Elementi protetti (03 F-AC-4, 05 D7 controllo 1): cartella di Windows, WinSxS, `Windows\Installer`,
+//! Elementi protetti: cartella di Windows, WinSxS, `Windows\Installer`,
 //! System Volume Information, file di paging, ibernazione e swap, cartelle dei programmi registrati.
 //! Dalle prove già raccolte (cartelle note, voci di disinstallazione, Steam, Epic, MSIX) e dalla vista
 //! Programmi: nessuna lettura nuova.
@@ -21,7 +21,7 @@
 //!   l'utente non può modificare).
 //! - Niente doppioni, senza distinzione di maiuscole: vale la prima radice, e le radici di sistema
 //!   vengono prima, così un percorso che è insieme di sistema e di un programma non ha l'eccezione
-//!   di regola (03 §6.1), che vale solo per `RegisteredProgram`.
+//!   di regola, che vale solo per `RegisteredProgram`.
 
 use std::collections::HashSet;
 

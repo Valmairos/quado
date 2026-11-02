@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Simulazione obbligatoria prima di ogni spostamento nel Cestino (03 F-AC-2, 05 D7): rilegge gli
-//! attributi, calcola la stima (03 §6.3) ed esegue i controlli preventivi, senza toccare niente. Produce
-//! una [`Simulazione`], da cui solo `plan::conferma` costruisce un piano.
+//! Simulazione obbligatoria prima di ogni spostamento nel Cestino: rilegge gli attributi, calcola la stima
+//! ed esegue i controlli preventivi, senza toccare niente. Produce una [`Simulazione`], da cui solo
+//! `plan::conferma` costruisce un piano.
 //!
 //! Ordine dei controlli, per ogni elemento non fisso: attributi e visita delle cartelle (stima, campione
-//! di Restart Manager, percorsi di 260 caratteri o più), volume e Cestino (F-AC-1, F-AC-5, F-AC-7), Restart Manager (F-AC-8), riferimenti
-//! (F-AC-9), cartelle di sincronizzazione (R10) e per ultimi gli elementi protetti (F-AC-4), perché
-//! l'eccezione di 03 §6.1 vale solo se tutti gli altri controlli dell'elemento sono passati.
+//! di Restart Manager, percorsi di 260 caratteri o più), volume e Cestino, Restart Manager, riferimenti,
+//! cartelle di sincronizzazione e per ultimi gli elementi protetti, perché l'eccezione via regola vale solo
+//! se tutti gli altri controlli dell'elemento sono passati.
 //!
 //! Gli elementi fissi (versione in uso, versione tenuta, copia che resta) non si leggono: compaiono con i
 //! contatori a zero e `directory` falso, senza blocchi, e non entrano in stima, capacità e piano.
@@ -27,14 +27,14 @@ use crate::estimate::{self, LinkTable};
 use crate::plan::{Block, ItemExtra, ManualCheck, SimItem, Simulazione, Snapshot};
 use crate::probe::{Attrs, Entry, ListError, Probe, VolumeBin};
 
-/// Perché un elemento compare nella conferma ma non si può scegliere (04 §6.6, schermata Intervento).
+/// Perché un elemento compare nella conferma ma non si può scegliere (schermata Intervento).
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum FixedReason {
     /// Versione in uso (CapCut): "esclusa".
     InUseVersion,
     /// Versione precedente tenuta per default (CapCut): "tenuta".
     KeptVersion,
-    /// Copia che resta tra le copie identiche (F-DL-4).
+    /// Copia che resta tra le copie identiche.
     KeptCopy,
 }
 
@@ -51,9 +51,9 @@ pub struct RequestItem {
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct Request {
     pub items: Vec<RequestItem>,
-    /// Scheda della raccomandazione: stato, azione, controlli (automatici e manuali), eccezione di F-AC-4.
+    /// Scheda della raccomandazione: stato, azione, controlli (automatici e manuali), eccezione via regola.
     pub record: Record,
-    /// Radici protette (F-AC-4), da `quado_kb::protection`.
+    /// Radici protette, da `quado_kb::protection`.
     pub protected: Vec<ProtectedRoot>,
 }
 
@@ -69,13 +69,13 @@ pub struct SimProgress {
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct Cancelled;
 
-/// Chiavi dei controlli automatici che la simulazione esegue (05 D6: `controllo-<nome>`).
+/// Chiavi dei controlli automatici che la simulazione esegue, nella forma `controllo-<nome>`.
 pub(crate) const CHECK_RESTART_MANAGER: &str = "controllo-restart-manager";
 pub(crate) const CHECK_REFERENCES: &str = "controllo-riferimenti";
 pub(crate) const CHECK_CAPACITY: &str = "controllo-capacita-cestino";
 
 /// File registrati con Restart Manager per una cartella oltre agli eseguibili e alle DLL: i modificati
-/// più di recente (05 D7).
+/// più di recente.
 pub(crate) const RM_SAMPLE: usize = 1000;
 
 /// `ERROR_FILE_NOT_FOUND` e `ERROR_PATH_NOT_FOUND`: l'elemento non c'è.
@@ -109,8 +109,8 @@ pub(crate) fn norm(path: &str) -> String {
 }
 
 /// Lunghezza da cui la shell non sposta più nel Cestino: con un percorso di 260 caratteri UTF-16 o più
-/// (`MAX_PATH` con il terminatore) chiede subito di eliminare per sempre (prove su VHDX dell'agente B,
-/// 14/10/2026).
+/// (`MAX_PATH` con il terminatore) chiede subito di eliminare per sempre (prove su VHDX
+/// del 14/10/2026).
 pub(crate) const MAX_PATH: usize = 260;
 
 /// Il percorso, nella forma di Win32, ha almeno [`MAX_PATH`] caratteri UTF-16.
@@ -181,7 +181,7 @@ pub(crate) struct Visit {
 
 impl Visit {
     /// Conta una voce che non si attraversa: file o collegamento. Un file residente nella MFT vale 0
-    /// nella stima, qualunque allocata riporti Windows (03 §6.3).
+    /// nella stima, qualunque allocata riporti Windows.
     fn add(&mut self, path: String, a: &Attrs) {
         if a.directory {
             self.dirs += 1;
@@ -259,7 +259,7 @@ fn visit_dir(root: &str, listings: &mut Listings, v: &mut Visit) {
             match attrs {
                 Ok(a) if a.directory && !a.link => {
                     v.dirs += 1;
-                    // L'indice della sottocartella (03 §6.3, misurato su R:).
+                    // L'indice della sottocartella, che lo svuotamento libera (misurato su R:).
                     v.plain += a.alloc;
                     stack.push(p);
                 }
@@ -489,7 +489,7 @@ fn each<T: Sync, R: Send>(threads: usize, items: &[T], stop: &(dyn Fn() -> bool 
     results.into_inner().unwrap_or_else(PoisonError::into_inner).into_iter().collect()
 }
 
-/// Campione di Restart Manager (05 D7): tutti gli eseguibili e le DLL, più i [`RM_SAMPLE`] altri file
+/// Campione di Restart Manager: tutti gli eseguibili e le DLL, più i [`RM_SAMPLE`] altri file
 /// modificati più di recente (tutti, se non sono di più).
 pub(crate) fn rm_sample(pool: Vec<(String, i64)>) -> Vec<String> {
     let (mut keep, mut others): (Vec<_>, Vec<_>) = pool.into_iter().partition(|(p, _)| is_exe_or_dll(p));
@@ -589,7 +589,7 @@ pub fn simulate(req: Request, probe: &dyn Probe, progress: &SimProgress) -> Resu
     }
     let proposed: Vec<usize> = (0..items.len()).filter(|&i| items[i].fixed.is_none()).collect();
 
-    // 2. Volume e Cestino (F-AC-1, F-AC-5, F-AC-7): tutti gli elementi nel volume del primo.
+    // 2. Volume e Cestino: tutti gli elementi nel volume del primo.
     let volume = match proposed.first() {
         None => VolumeBin::default(),
         Some(&first) => match probe.volume_bin(&items[first].path) {
@@ -648,7 +648,7 @@ pub fn simulate(req: Request, probe: &dyn Probe, progress: &SimProgress) -> Resu
         },
     };
 
-    // 3. Restart Manager (F-AC-8): una chiamata per elemento letto, con il suo campione, su
+    // 3. Restart Manager: una chiamata per elemento letto, con il suo campione, su
     // `Probe::threads` thread (una chiamata costa secondi, quasi tutti in `RmGetList`).
     // Gli elementi che possono avere file in comune stanno in un gruppo e si chiedono uno dopo l'altro.
     let asked: Vec<usize> = proposed.iter().copied().filter(|&i| read[i]).collect();
@@ -674,7 +674,7 @@ pub fn simulate(req: Request, probe: &dyn Probe, progress: &SimProgress) -> Resu
         }
     }
 
-    // 4. Elementi protetti (F-AC-4): relazioni con le radici. L'eccezione si valuta alla fine.
+    // 4. Elementi protetti: relazioni con le radici. L'eccezione si valuta alla fine.
     let roots: Vec<(String, ProtectedKind)> = protected.iter().map(|r| (norm(&r.path), r.kind)).collect();
     let exception_allowed = record.protected_exception && matches!(record.state, State::ToVerify(_));
     let mut hard: Vec<Vec<ProtectedKind>> = vec![Vec::new(); items.len()];
@@ -690,7 +690,7 @@ pub fn simulate(req: Request, probe: &dyn Probe, progress: &SimProgress) -> Resu
         }
     }
 
-    // 5. Riferimenti (F-AC-9): se la regola li chiede, e sempre per gli elementi con l'eccezione.
+    // 5. Riferimenti: se la regola li chiede, e sempre per gli elementi con l'eccezione.
     let wanted = record.checks.iter().any(|c| c.key == CHECK_REFERENCES);
     let interested: Vec<usize> = proposed.iter().copied().filter(|&i| wanted || (candidate[i] && exception_allowed)).collect();
     let mut refs_checked = vec![false; items.len()];
@@ -713,7 +713,7 @@ pub fn simulate(req: Request, probe: &dyn Probe, progress: &SimProgress) -> Resu
         report
     };
 
-    // 6. Cartelle di sincronizzazione (F-AC-2, R10): controllo manuale. Prima le cartelle registrate in
+    // 6. Cartelle di sincronizzazione: controllo manuale. Prima le cartelle registrate in
     // Windows, poi quelle che Quado riconosce dalla configurazione dei programmi o dai marcatori.
     for &i in &proposed {
         let found = match probe.sync_root(&items[i].path) {
@@ -725,11 +725,11 @@ pub fn simulate(req: Request, probe: &dyn Probe, progress: &SimProgress) -> Resu
         }
     }
 
-    // 7. Blocchi di protezione, con l'eccezione di 03 §6.1 solo se ogni altro controllo è passato:
+    // 7. Blocchi di protezione, con l'eccezione via regola solo se ogni altro controllo è passato:
     // Restart Manager senza processi né errori, riferimenti controllati senza riferimenti all'elemento,
     // nessun altro blocco. Un controllo dei riferimenti "parziale" non la fa cadere: su questo PC le
-    // attività pianificate di sistema non sono mai leggibili da un utente standard (misura dell'agente C,
-    // 14/10/2026); la conferma lo dichiara da `Simulazione::references().partial` (F-AC-9).
+    // attività pianificate di sistema non sono mai leggibili da un utente standard (misurato il
+    // 14/10/2026); la conferma lo dichiara da `Simulazione::references().partial`.
     for &i in &proposed {
         let others = !items[i].blocks.is_empty() || !hard[i].is_empty();
         for kind in &hard[i] {

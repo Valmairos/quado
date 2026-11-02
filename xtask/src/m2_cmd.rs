@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! `cargo xtask m2-misure`: misure di M2 sulla C: reale, senza interfaccia (06 §9, 07 §1.3 criterio 2).
+//! `cargo xtask m2-misure`: misure sulla C: reale, senza interfaccia.
 //!
 //! - figli ordinati e top list ("Dove finisce lo spazio") sui dati veri;
 //! - ricerca su tutti i nomi (obiettivo ≤ 300 ms su 3 milioni di nomi), 5 esecuzioni per testo;
@@ -26,7 +26,7 @@ fn median(v: &mut [f64]) -> f64 {
 pub fn measures(args: &[String]) -> Result<(), String> {
     let root = args.first().cloned().unwrap_or_else(|| "C:\\".to_owned());
     let mut out = String::new();
-    let _ = writeln!(out, "# M2 · Misure senza interfaccia su {root}\n");
+    let _ = writeln!(out, "# Misure senza interfaccia su {root}\n");
     let _ = writeln!(out, "Generato da `cargo xtask m2-misure`. Cache calda.\n");
     let _ = writeln!(out, "| Condizione | Valore |\n|---|---|");
     for (k, v) in crate::measure_cmd::environment() {
@@ -52,7 +52,7 @@ pub fn measures(args: &[String]) -> Result<(), String> {
     let _ = writeln!(out, "| Figli ordinati (`Ordered::build`) | {ord_ms:.0} ms, {:.1} MB |", ord.heap_bytes() as f64 / 1e6);
     let _ = writeln!(out, "| Top list | {top_ms:.1} ms |\n");
 
-    let _ = writeln!(out, "## Dove finisce lo spazio (algoritmo di M2, senza regole)\n");
+    let _ = writeln!(out, "## Dove finisce lo spazio (senza regole)\n");
     let _ = writeln!(out, "| # | Elemento | Dimensioni su disco |\n|---|---|---|");
     for (k, &n) in top.iter().enumerate() {
         let _ = writeln!(out, "| {} | `{}` | {} |", k + 1, tree.path_lossy(n), gib(tree.alloc(n)));

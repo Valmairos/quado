@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! File con più nomi (hard link): contati una volta per volume, per identità (F-SC-7, 05 D5).
+//! File con più nomi (hard link): contati una volta per volume, per identità.
 //!
 //! Durante la scansione ogni file registra (ID a 128 bit, nodo) in un array laterale. A fine scansione
 //! si ordina, si trovano gli ID con più nomi e si sceglie quale nome porta le dimensioni: quello con
@@ -56,10 +56,10 @@ fn path_key(tree: &Tree, node: u32) -> Vec<u16> {
 }
 
 /// Marca i nomi secondari nell'albero. Con `inject_no_dedup` (solo per il test "errore iniettato"
-/// di 06 §1.4) i gruppi si trovano ma nessun nome diventa secondario.
+/// del bilancio) i gruppi si trovano ma nessun nome diventa secondario.
 ///
 /// Ordinamento e confronto dei percorsi girano in parallelo: con 3 milioni di voci sono la parte più
-/// lunga della fine della scansione, e contano anche per l'annullamento (≤ 500 ms, 03 F-SC-5).
+/// lunga della fine della scansione, e contano anche per l'annullamento (≤ 500 ms).
 pub fn resolve(mut ids: Vec<IdEntry>, tree: &mut Tree, inject_no_dedup: bool) -> Links {
     use rayon::prelude::*;
     ids.par_sort_unstable_by_key(|a| a.id);

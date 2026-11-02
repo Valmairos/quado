@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Panoramica (F-OV-1, F-OV-2, F-OV-3, F-OV-4), variante A: si apre con la risposta, le cifre grandi e
-//! leggere dell'usato e del libero, la barra del bilancio con l'allocato diviso per gestore, metadati, non
-//! attribuito a tratteggio e deriva come incertezza, la legenda con le forme. Sotto, affiancate, "Dove
-//! finisce lo spazio" (gli elementi più grandi senza sovrapposizioni, spiegati dalle regole) e gli
-//! interventi possibili, solo da record di raccomandazione, ognuno con il suo pulsante successivo. In fondo
-//! "Perché i conti non tornano del tutto" come riga apribile con il non attribuito in vista: dentro, le
-//! righe dei conti, le liste "Osservato" e "Possibile" e "Ripeti come amministratore" (F-SC-3, M6).
-//! Nessuna frase causale sullo spazio mancante (F-OV-3). Un clic su una voce apre Esplora sulla voce.
+//! Panoramica, variante A: si apre con la risposta, le cifre grandi e leggere dell'usato e del libero, la
+//! barra del bilancio con l'allocato diviso per gestore, metadati, non attribuito a tratteggio e deriva come
+//! incertezza, la legenda con le forme. Sotto, affiancate, "Dove finisce lo spazio" (gli elementi più grandi
+//! senza sovrapposizioni, spiegati dalle regole) e gli interventi possibili, solo da record di
+//! raccomandazione, ognuno con il suo pulsante successivo. In fondo "Perché i conti non tornano del tutto"
+//! come riga apribile con il non attribuito in vista: dentro, le righe dei conti, le liste "Osservato" e
+//! "Possibile" e "Ripeti come amministratore". Nessuna frase causale sullo spazio mancante. Un clic su una
+//! voce apre Esplora sulla voce.
 
 use egui::{Align, Align2, CornerRadius, Layout, Rect, ScrollArea, Sense, Stroke, Ui, pos2, vec2};
 use quado_model::{Flags, NONE, Tree};
@@ -27,7 +27,7 @@ use crate::icons::{self, Icon};
 use crate::tokens::{self, Gestore, Glyph, Palette, Type};
 use crate::widgets::{self, ButtonKind, Evidence};
 
-/// Banner "Scansione interrotta" su ogni schermata con dati parziali (F-SC-5) e avviso sul file system (F-SC-10).
+/// Banner "Scansione interrotta" su ogni schermata con dati parziali e avviso sul file system.
 pub fn interrupted_banner(app: &App, ui: &mut Ui, p: &Palette) {
     let Some(d) = &app.data else { return };
     let l = &app.lingue;
@@ -52,7 +52,7 @@ pub fn interrupted_banner(app: &App, ui: &mut Ui, p: &Palette) {
     }
 }
 
-/// Banner "N regole da riverificare" (07 §5.1), con un solo pulsante che apre l'elenco delle regole.
+/// Banner "N regole da riverificare", con un solo pulsante che apre l'elenco delle regole.
 fn recheck_banner(app: &App, ui: &mut Ui, p: &Palette) -> bool {
     let Some(d) = &app.data else { return false };
     let n = d.cls.recheck.len();
@@ -189,7 +189,7 @@ enum Seg {
 }
 
 /// Card dell'uso (`.usage`): le due cifre grandi e leggere, la nota sulle unità, la barra del bilancio con
-/// l'allocato diviso per gestore (F-OV-1), la legenda con le forme e i valori, le note su deriva e quota.
+/// l'allocato diviso per gestore, la legenda con le forme e i valori, le note su deriva e quota.
 fn usage(app: &App, ui: &mut Ui, p: &Palette) {
     let Some(d) = &app.data else { return };
     let (l, f) = (&app.lingue, &app.fmt);
@@ -234,14 +234,14 @@ fn usage(app: &App, ui: &mut Ui, p: &Palette) {
         });
         ui.add_space(22.0);
         let n = b.unattributed.max(0) as u64;
-        // L'allocato letto diviso per gestore (F-OV-1, M3): le ipotesi restano nel grigio.
+        // L'allocato letto diviso per gestore: le ipotesi restano nel grigio.
         let g = d.cls.by_manager;
         let segs = [
             (Seg::Data(Gestore::App), Gestore::App.key(), g.programs),
             (Seg::Data(Gestore::Mine), Gestore::Mine.key(), g.you),
             (Seg::Data(Gestore::Windows), Gestore::Windows.key(), g.windows),
             (Seg::Data(Gestore::Unknown), "bilancio-non-classificato-ipotesi", g.unclassified),
-            // Metadati e spazio riservato: stesso colore, voci separate come nella card dei conti (M6).
+            // Metadati e spazio riservato: stesso colore, voci separate come nella card dei conti.
             (Seg::Meta, "bilancio-metadati", b.metadata.total() - b.metadata.reserved.unwrap_or(0)),
             (Seg::Meta, "bilancio-riservato", b.metadata.reserved.unwrap_or(0)),
             (Seg::Hatch, "bilancio-non-attribuito", n),
@@ -335,7 +335,7 @@ fn usage(app: &App, ui: &mut Ui, p: &Palette) {
     });
 }
 
-/// "Dove finisce lo spazio" (F-OV-2). Restituisce l'elemento da aprire in Esplora.
+/// "Dove finisce lo spazio". Restituisce l'elemento da aprire in Esplora.
 fn top_list(app: &App, ui: &mut Ui, p: &Palette) -> Option<u32> {
     let d = app.data.as_ref()?;
     let (l, f) = (&app.lingue, &app.fmt);
@@ -359,7 +359,7 @@ fn top_list(app: &App, ui: &mut Ui, p: &Palette) -> Option<u32> {
                 let own = d.cls.own(n).map(|k| &d.cls.matches[k]);
                 let gest = kbtext::node_gestore(&d.cls, n);
                 // Riga di spiegazione: la regola che riconosce l'elemento, o dove sta e cosa contiene. Va a
-                // capo invece di troncarsi (testi tradotti più lunghi, RS30).
+                // capo invece di troncarsi (testi tradotti più lunghi).
                 let parent = t.parent(n);
                 let where_ = if parent == NONE { String::new() } else { t.path_lossy(parent) };
                 let why = if let Some(m) = own {
@@ -455,9 +455,9 @@ enum HelperAction {
     Cancel,
 }
 
-/// "Perché i conti non tornano del tutto" (F-OV-3), come riga apribile su tutta la larghezza (`.why`): chiusa
+/// "Perché i conti non tornano del tutto", come riga apribile su tutta la larghezza (`.why`): chiusa
 /// mostra il non attribuito; aperta, a sinistra le righe dei conti, a destra i file con più nomi, le liste
-/// "Osservato" e "Possibile" e "Ripeti come amministratore" (F-SC-3). Dopo l'helper "Osservato" mostra i
+/// "Osservato" e "Possibile" e "Ripeti come amministratore". Dopo l'helper "Osservato" mostra i
 /// valori misurati e "Possibile" perde le voci misurate. Restituisce il pulsante premuto.
 fn why_card(app: &App, ui: &mut Ui, p: &Palette, open: &mut bool) -> Option<HelperAction> {
     let d = app.data.as_ref()?;
@@ -551,7 +551,7 @@ fn why_card(app: &App, ui: &mut Ui, p: &Palette, open: &mut bool) -> Option<Help
 }
 
 /// Righe dei conti (`.ledger`): usato secondo Windows, file letti, metadati e spazio riservato rientrati, il
-/// non attribuito in fondo con il tratteggio. L'etichetta va a capo invece di troncarsi (RS30).
+/// non attribuito in fondo con il tratteggio. L'etichetta va a capo invece di troncarsi.
 fn ledger_rows(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, b: &quado_model::balance::Balance) {
     ui.spacing_mut().item_spacing.y = 0.0;
     let line = |ui: &mut Ui, label: String, value: String, total: bool, indent: bool| {
@@ -587,7 +587,7 @@ fn ledger_rows(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, b: &quado_mo
             ("journal", f.size(m.usn_journal.unwrap_or(0)).into()),
         ],
     );
-    // Lo spazio riservato da Windows ha una riga propria tra i metadati misurati (M6).
+    // Lo spazio riservato da Windows ha una riga propria tra i metadati misurati.
     line(ui, detail, f.size(m.total() - m.reserved.unwrap_or(0)), false, true);
     if let Some(r) = m.reserved {
         line(ui, l.t("conti-riservato"), f.size(r), false, true);
@@ -598,7 +598,7 @@ fn ledger_rows(ui: &mut Ui, p: &Palette, l: &Lingue, f: &Formatter, b: &quado_mo
 
 /// Voci di "Osservato": cartelle ancora non leggibili, Cestini e profili altrui non letti, poi le misure
 /// dell'helper (cartelle lette come amministratore, Cestini per SID, profili come totale senza nomi, copie
-/// shadow). Solo valori misurati, nessuna causa (F-OV-3).
+/// shadow). Solo valori misurati, nessuna causa.
 fn observed_items(d: &Loaded, l: &Lingue, f: &Formatter) -> Vec<String> {
     let o = &d.observed;
     let t = d.tree();
@@ -680,7 +680,7 @@ fn possible_items(d: &Loaded, reserved_measured: bool, l: &Lingue) -> Vec<String
     items
 }
 
-/// "Ripeti come amministratore" (F-SC-3): con cartelle negate da chiedere, cosa succede e il pulsante;
+/// "Ripeti come amministratore": con cartelle negate da chiedere, cosa succede e il pulsante;
 /// durante il lavoro la fase e "Annulla"; dopo, l'esito. Restituisce il pulsante premuto.
 fn helper_block(app: &App, d: &Loaded, ui: &mut Ui, p: &Palette) -> Option<HelperAction> {
     let (l, f) = (&app.lingue, &app.fmt);
@@ -800,8 +800,8 @@ struct CardItem<'a> {
 }
 
 /// Quanto si libera, detto nella card sotto lo stato: per uno spostamento nel Cestino la stima vale dopo lo
-/// svuotamento; per una procedura o un comando lo misura Quado dopo (valutazione dei consigli, 01/11/2026).
-/// La cifra grande della voce resta quanto occupa l'elemento, con l'etichetta «Occupa».
+/// svuotamento; per una procedura o un comando lo misura Quado dopo. La cifra grande della voce resta quanto
+/// occupa l'elemento, con l'etichetta «Occupa».
 pub(crate) fn card_estimate(l: &Lingue, f: &Formatter, recycle: bool, e: &Estimate) -> String {
     if !recycle {
         return l.t("interventi-libera-procedura");
@@ -814,14 +814,14 @@ pub(crate) fn card_estimate(l: &Lingue, f: &Formatter, recycle: bool, e: &Estima
     }
 }
 
-/// "Interventi possibili" (F-OV-4): una voce per regola, solo da record di raccomandazione con
-/// un'azione; mai Non sappiamo, mai "Nessuna procedura", mai le cartelle orfane del Cestino, mai le regole
-/// fuori dalla card (ibernazione, WinSxS, cache dei browser). Le disinstallazioni stanno nella vista
-/// Programmi (M4). Con le voci della vista Download che hanno un'azione, una per funzione: copie identiche
-/// dopo il confronto e download incompleti non in uso (mai le copie non confrontate, F-DL-4). Ogni voce ha il
-/// suo pulsante successivo: «Sposta nel Cestino…» per uno spostamento di un solo elemento riconosciuto che
-/// non è Da verificare, la vista Download per le sue voci, altrimenti l'elemento in Esplora, dove l'ispettore
-/// mostra ipotesi e rischi sopra il pulsante. Restituisce dove portare il clic.
+/// "Interventi possibili": una voce per regola, solo da record di raccomandazione con un'azione; mai Non
+/// sappiamo, mai "Nessuna procedura", mai le cartelle orfane del Cestino, mai le regole fuori dalla card
+/// (ibernazione, WinSxS, cache dei browser). Le disinstallazioni stanno nella vista Programmi. Con le voci
+/// della vista Download che hanno un'azione, una per funzione: copie identiche dopo il confronto e download
+/// incompleti non in uso (mai le copie non confrontate). Ogni voce ha il suo pulsante successivo: «Sposta
+/// nel Cestino…» per uno spostamento di un solo elemento riconosciuto che non è Da verificare, la vista
+/// Download per le sue voci, altrimenti l'elemento in Esplora, dove l'ispettore mostra ipotesi e rischi sopra
+/// il pulsante. Restituisce dove portare il clic.
 fn interventions_card(app: &App, ui: &mut Ui, p: &Palette) -> Option<Open> {
     let d = app.data.as_ref()?;
     let (l, f) = (&app.lingue, &app.fmt);
@@ -877,7 +877,7 @@ fn interventions_card(app: &App, ui: &mut Ui, p: &Palette) -> Option<Open> {
             let mut prev_hovered = false;
             for (k, i) in items.iter_mut().enumerate() {
                 let state = i.state;
-                // Da verificare è l'unico stato con un tono proprio (04 §6.1).
+                // Da verificare è l'unico stato con un tono proprio.
                 let tone = if matches!(state, State::ToVerify(_)) { p.warn } else { p.text_2 };
                 let w = ui.available_width();
                 let painter = ui.painter().clone();

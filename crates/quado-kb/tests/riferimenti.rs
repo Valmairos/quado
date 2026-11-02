@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Riferimenti (03 F-AC-9, 05 D7 controllo 6, 06 §5.5): registro simulato nel formato `.reg` (06 §2.3)
-//! con collegamenti e attività di prova; un collegamento vero, creato in una cartella temporanea, letto
-//! senza `Resolve`; le attività vere di questo PC in sola lettura. Il controllo manuale con HKCU e
-//! un'attività dell'utente vere è ignorato: scrive, e si esegue a mano dopo ogni modifica dei riferimenti.
+//! Riferimenti: registro simulato nel formato `.reg` con collegamenti e attività di prova; un
+//! collegamento vero, creato in una cartella temporanea, letto senza `Resolve`; le attività vere di
+//! questo PC in sola lettura. Il controllo manuale con HKCU e un'attività dell'utente vere è ignorato:
+//! scrive, e si esegue a mano dopo ogni modifica dei riferimenti.
 //!
 //! `unsafe` qui serve solo a creare il `.lnk` di prova con `IShellLinkW::SetPath` e
 //! `IPersistFile::Save`: il prodotto (`quado-kb`) non scrive collegamenti.
@@ -458,7 +458,7 @@ fn measure_find_live_on_this_pc() {
     println!("find_live su CapCut\\Apps in {:?}: {:#?}", t.elapsed(), report);
 }
 
-/// Controllo manuale di 06 §5.5 con HKCU e un'attività dell'utente veri: un valore Run e un'attività
+/// Controllo manuale con HKCU e un'attività dell'utente veri: un valore Run e un'attività
 /// che puntano a un file inesistente in una cartella di versione sotto la cartella temporanea, poi
 /// `find_live`; valori e attività si rimuovono alla fine anche se il test fallisce.
 /// `cargo test -p quado-kb --test riferimenti -- --ignored manual --nocapture`

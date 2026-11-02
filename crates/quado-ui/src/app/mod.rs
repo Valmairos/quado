@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! L'applicazione (07 §1.3-1.4): Volumi, Scansione, Panoramica, Esplora, File grandi, Windows e
-//! sistema, Regole, Impostazioni.
+//! L'applicazione: Volumi, Scansione, Panoramica, Esplora, File grandi, Windows e sistema, Regole, Impostazioni.
 //!
 //! `App::show` disegna un frame ed è la stessa funzione per eframe e per i test con `egui_kittest`.
-//! Ogni testo visibile viene dai file di lingua (05 D13); numeri e date da `format` (F-GE-3).
+//! Ogni testo visibile viene dai file di lingua; numeri e date da `format`.
 
 pub mod bench;
 pub mod big_files;
@@ -68,11 +67,11 @@ pub struct Env {
     pub system_fonts: bool,
     /// Letture su richiesta della lente Download: vere nell'app, nessuna in `fixed` (i test le iniettano).
     pub readers: lens_jobs::Readers,
-    /// Azioni degli interventi (M5): vere nell'app, simulate in `fixed` (i test le iniettano).
+    /// Azioni degli interventi: vere nell'app, simulate in `fixed` (i test le iniettano).
     pub actions: intervention_jobs::Actions,
     /// Finestra di Quado (HWND), proprietaria dei dialoghi di Windows; `None` nei test.
     pub owner: Option<isize>,
-    /// Helper elevato (M6, "Ripeti come amministratore"): vero nell'app, assente in `fixed` (i test lo
+    /// Helper elevato ("Ripeti come amministratore"): vero nell'app, assente in `fixed` (i test lo
     /// iniettano finto).
     pub elevator: helper_jobs::Elevator,
     /// Quado è avviato come amministratore (processo elevato): letto da Windows nell'app, falso in `fixed`.
@@ -138,21 +137,21 @@ pub enum Screen {
     Overview,
     Explore,
     BigFiles,
-    /// Windows e sistema (F-SY-1, F-SY-3).
+    /// Windows e sistema.
     System,
-    /// Elenco delle regole (05 D6, 07 §5.1).
+    /// Elenco delle regole.
     Rules,
-    /// Lente Download (F-DL).
+    /// Lente Download.
     Downloads,
-    /// Programmi (F-AP).
+    /// Programmi.
     Programs,
-    /// Interventi: risultato dell'ultimo spostamento e storico dal registro (F-VE-5).
+    /// Interventi: risultato dell'ultimo spostamento e storico dal registro.
     Interventions,
     Settings,
 }
 
-/// Stato dei font: Inter e Plex Mono subito, i font di Windows solo se un nome li richiede e solo quelli che
-/// servono (05 D13, M0).
+/// Stato dei font: Inter e Plex Mono subito, i font di Windows solo se un nome li richiede e solo quelli
+/// che servono.
 #[derive(Default)]
 struct FontState {
     installed: bool,
@@ -192,11 +191,11 @@ pub struct App {
     pub rules_view: rules_view::RulesState,
     pub downloads: downloads_view::DownloadsState,
     pub programs: programs_view::ProgramsState,
-    /// Spostamento nel Cestino in corso o concluso in questa sessione (M5).
+    /// Spostamento nel Cestino in corso o concluso in questa sessione.
     pub intervention: intervention_view::InterventionState,
-    /// Procedure e comandi in attesa di "Ho eseguito la procedura" (M5).
+    /// Procedure e comandi in attesa di "Ho eseguito la procedura".
     pub procedures: procedure_flow::ProcedureState,
-    /// "Ripeti come amministratore" in corso o concluso (M6).
+    /// "Ripeti come amministratore" in corso o concluso.
     pub helper: helper_jobs::HelperState,
     pub notice: Notice,
     fonts: FontState,
@@ -209,14 +208,14 @@ pub struct App {
     pub frame_count: u64,
     /// Mostra i tempi di frame nella barra di stato (F2).
     pub show_perf: bool,
-    /// Valori di avanzamento diversi mostrati durante la scansione (≥ 4 al secondo, F-SC-4).
+    /// Valori di avanzamento diversi mostrati durante la scansione (≥ 4 al secondo).
     pub progress_updates: Vec<(Instant, u64)>,
     /// Primo frame interattivo (font caricati e schermata disegnata).
     pub first_interactive: Option<Instant>,
     /// Frame in cui la lingua o le unità sono cambiate: le etichette si ricalcolano.
     lang_generation: u64,
     pub last_verify: Option<VerifyReport>,
-    /// Base delle regole incorporata (M3).
+    /// Base delle regole incorporata.
     pub kb: std::sync::Arc<quado_kb::Kb>,
 }
 
@@ -294,7 +293,7 @@ impl App {
         }
     }
 
-    /// Cambia lingua senza riavvio (05 D13).
+    /// Cambia lingua senza riavvio.
     pub fn set_language(&mut self, tag: &str) {
         self.lingue = Lingue::load(tag, self.lang_dir().as_deref());
         self.fmt.labels = UnitLabels::from(&self.lingue);
@@ -378,7 +377,7 @@ impl App {
 
     fn poll_job(&mut self, ctx: &egui::Context) {
         let Some(job) = self.job.as_mut() else { return };
-        // Avanzamento dal vivo: almeno 4 aggiornamenti al secondo (F-SC-4).
+        // Avanzamento dal vivo: almeno 4 aggiornamenti al secondo.
         ctx.request_repaint_after(Duration::from_millis(100));
         let files = job.progress.files.load(std::sync::atomic::Ordering::Relaxed);
         if self.progress_updates.last().is_none_or(|&(_, f)| f != files) {
@@ -404,7 +403,7 @@ impl App {
         if self.waiting.as_ref().is_some_and(|w| self.fonts_ready(w)) {
             self.job = None;
             let loaded = self.waiting.take().expect("risultato in attesa");
-            // Fine scansione (04 §6.8): durata e cartelle negate, nella barra di stato.
+            // Avviso di fine scansione: durata e cartelle negate, nella barra di stato.
             if let Some(n) = volumes_view::completion_notice(&self.lingue, &self.fmt, &loaded) {
                 self.notice.set(n);
             }
@@ -538,10 +537,10 @@ impl App {
         }
         // Lente Download: anche fuori dalla sua schermata, perché la card interventi ne usa le voci.
         self.downloads.poll(Some(&ctx), self.data.as_ref(), &self.env.readers);
-        // Interventi: simulazione, esecuzione, misure e riscansioni in background (M5).
+        // Interventi: simulazione, esecuzione, misure e riscansioni in background.
         intervention_view::poll(self, &ctx);
         procedure_flow::poll(self, &ctx);
-        // Helper elevato: con `Done` le risposte entrano nel modello (M6).
+        // Helper elevato: con `Done` le risposte entrano nel modello.
         helper_jobs::poll(self, &ctx);
         self.check_fonts(&ctx);
         self.global_keys(ui);

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! F-DL-5: indice degli zip dalla directory centrale (06 §3.3). Archivi generati qui e uno prodotto da
+//! Indice degli zip dalla directory centrale. Archivi generati qui e uno prodotto da
 //! .NET; file troncati, corrotti, non zip; limiti; test di proprietà. Le letture partono dalla directory
 //! centrale: mai header locali né dati compressi.
 
@@ -90,7 +90,7 @@ fn generated_archives_are_read() {
     assert!(empty64.entries.is_empty() && empty64.zip64);
 }
 
-/// 06 §3.3: letture solo nella coda, dalla directory centrale in poi. Unica eccezione dichiarata: con dei
+/// Letture solo nella coda, dalla directory centrale in poi. Unica eccezione dichiarata: con dei
 /// byte dopo l'archivio la ricerca del record legge tutti gli ultimi 65.557 byte.
 #[test]
 fn reads_start_at_the_central_directory() {

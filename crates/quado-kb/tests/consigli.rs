@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Comportamenti nuovi della valutazione dei consigli (01/11/2026): regola dei progetti con il nome abbinato
-//! al suo lockfile e senza le cartelle dei programmi, regole fuori dalla card, rischi dell'ibernazione solo
-//! con la batteria, WinSxS e Windows.old come spiegazione, campi nuovi delle regole.
+//! Regola dei progetti con il nome abbinato al suo lockfile e senza le cartelle dei programmi, regole
+//! fuori dalla card, rischi dell'ibernazione solo con la batteria, WinSxS e Windows.old come spiegazione,
+//! cosa provare prima di svuotare il Cestino, campi delle regole non validi.
 
 mod common;
 

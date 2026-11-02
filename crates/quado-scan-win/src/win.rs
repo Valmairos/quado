@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! Chiamate Win32 di sola lettura, avvolte in funzioni sicure.
 //!
-//! Regola del crate (03 F-SC-2, 06 §11): nessun handle con accesso in scrittura, nessuna lettura del
+//! Regola del crate: nessun handle con accesso in scrittura, nessuna lettura del
 //! contenuto dei file. Le cartelle si aprono con `FILE_LIST_DIRECTORY`, i file solo con
 //! `FILE_READ_ATTRIBUTES`, sempre con `FILE_FLAG_OPEN_REPARSE_POINT` (non si seguono i collegamenti)
 //! e `FILE_FLAG_OPEN_NO_RECALL` (non si scaricano i file dal cloud).
@@ -188,9 +188,9 @@ impl Default for EnumBuffer {
 /// Elenca una cartella aperta con [`open_dir`]. Restituisce `Ok(())` alla fine dell'elenco, oppure
 /// l'errore se l'elenco si interrompe (le voci già passate a `f` restano valide).
 ///
-/// exFAT e FAT32 non supportano `FileIdExtdDirectoryInfo` (errore 87, misurato in M1): lì si usa
+/// exFAT e FAT32 non supportano `FileIdExtdDirectoryInfo` (errore 87, misurato sui VHDX di prova): lì si usa
 /// `FileFullDirectoryInfo`, che non ha l'identità dei file. Quei file system non hanno hard link,
-/// quindi l'identità resta 0 e la deduplica li ignora (F-SC-10).
+/// quindi l'identità resta 0 e la deduplica li ignora.
 pub fn enumerate(h: &Handle, buf: &mut EnumBuffer, mut f: impl FnMut(DirEntry<'_>)) -> Result<(), u32> {
     let mut emitted = false;
     match enumerate_extd(h, buf, |e| {
@@ -355,8 +355,8 @@ pub fn disk_space(path: &[u16]) -> Result<Space, u32> {
 }
 
 /// Spazio riservato e non usato del volume (`TotalReservedAllocationUnits`), archiviazione riservata
-/// compresa. Non richiede privilegi, a differenza di `fsutil storagereserve` (M1, 07 §3 riga 6): su C:
-/// la parte dell'archiviazione riservata coincide con la garanzia letta da `fsutil` (5.605 MB, M6).
+/// compresa. Non richiede privilegi, a differenza di `fsutil storagereserve`: su C: la
+/// parte dell'archiviazione riservata coincide con la garanzia letta da `fsutil` (5.605 MB sul PC di sviluppo).
 /// `path` è la radice del volume (`X:\`).
 pub fn reserved_space(path: &[u16]) -> Result<u64, u32> {
     let z = wide_z(path);
@@ -373,7 +373,7 @@ pub fn reserved_space(path: &[u16]) -> Result<u64, u32> {
     Ok(i.TotalReservedAllocationUnits.saturating_mul(cluster))
 }
 
-/// Mostra i segnaposto cloud come tali (03 F-SC-9): senza, Windows li presenta come file normali
+/// Mostra i segnaposto cloud come tali: senza, Windows li presenta come file normali
 /// ad alcuni processi. Vale per tutto il processo; si chiama prima di scansionare.
 pub fn expose_placeholders() {
     const PHCM_EXPOSE_PLACEHOLDERS: i8 = 2;
@@ -418,7 +418,7 @@ mod tests {
     }
 }
 
-/// Metriche del processo corrente, per il protocollo di 06 §9.
+/// Metriche del processo corrente, per le misure delle prestazioni.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 pub struct ProcessMetrics {
     pub peak_working_set: u64,

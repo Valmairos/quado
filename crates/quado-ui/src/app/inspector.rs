@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Ispettore (F-IN-1..6), variante A: testata con nome, tipo, la cifra grande e leggera e i fatti misurati;
-//! poi "Cosa puoi fare" per primo, dal record di raccomandazione e con l'azione successiva; poi le sezioni
-//! apribili "Cos'è" con gestore e fatti ciascuno con la sua provenienza, "Perché è così grande" con parti,
-//! schemi riconosciuti dalle regole, tipi secondo l'estensione ed età, la regola con data e "Apri la
-//! regola"; in fondo le azioni sempre disponibili. Niente card dentro card: l'ispettore sta sul fondo della
-//! sua colonna e l'unico riquadro è quello di "Cosa puoi fare".
+//! Ispettore, variante A: testata con nome, tipo, la cifra grande e leggera e i fatti misurati; poi "Cosa
+//! puoi fare" per primo, dal record di raccomandazione e con l'azione successiva; poi le sezioni apribili
+//! "Cos'è" con gestore e fatti ciascuno con la sua provenienza, "Perché è così grande" con parti, schemi
+//! riconosciuti dalle regole, tipi secondo l'estensione ed età, la regola con data e "Apri la regola"; in
+//! fondo le azioni sempre disponibili. Niente card dentro card: l'ispettore sta sul fondo della sua colonna e
+//! l'unico riquadro è quello di "Cosa puoi fare".
 
 use std::sync::Arc;
 use std::time::Duration;
@@ -170,8 +170,7 @@ pub(crate) fn section(ui: &mut Ui, p: &Palette, sections: &mut Sections, key: &'
 }
 
 /// Pulsante largo quanto la colonna (`.todo .btn`, `.insp .acts .btn`): fondo `field`, icona e testo a
-/// sinistra o al centro. Un testo che non entra va a capo e il pulsante si allunga (testi tradotti più
-/// lunghi, RS30).
+/// sinistra o al centro. Un testo che non entra va a capo e il pulsante si allunga (testi tradotti più lunghi).
 pub(crate) fn wide_button(ui: &mut Ui, p: &Palette, label: &str, icon: Option<Icon>, width: f32, centered: bool, enabled: bool) -> egui::Response {
     let color = if enabled { p.text } else { p.disabled };
     let iw = if icon.is_some() { 23.0 } else { 0.0 };
@@ -321,15 +320,15 @@ pub fn show(app: &mut App, ui: &mut Ui, p: &Palette, node: Option<u32>) {
             fact(ui, Evidence::Measured, &l.ta("fatto-attributi", &[("elenco", tags.join(", ").into())]));
         }
 
-        // Cosa puoi fare, per primo: dal record, con l'azione successiva (F-IN-4).
+        // Cosa puoi fare, per primo: dal record, con l'azione successiva.
         let mut details = sections.is_open("scheda");
         section(ui, p, &mut sections, "cosa", &l.t("ispettore-cosa-puoi-fare"), |ui| what_you_can_do(ui, p, l, f, d, node, &mut req, &mut details));
         sections.set("scheda", details);
 
-        // Cos'è: gestore e fatti dalla regola (F-IN-1).
+        // Cos'è: gestore e fatti dalla regola.
         section(ui, p, &mut sections, "cose", &l.t("ispettore-cos-e"), |ui| what_it_is(ui, p, l, f, d, node, &mut req));
 
-        // Perché è così grande: parti, schemi delle regole, tipi ed età (F-IN-2).
+        // Perché è così grande: parti, schemi delle regole, tipi ed età.
         if t.is_dir(node) && d.ord().has_children(node) {
             section(ui, p, &mut sections, "parti", &l.t("ispettore-parti-principali"), |ui| {
                 let kids: Vec<u32> = d.ord().children(node).iter().copied().take(5).collect();
@@ -365,13 +364,13 @@ pub fn show(app: &mut App, ui: &mut Ui, p: &Palette, node: Option<u32>) {
             }
         }
 
-        // La regola, con versione e data di verifica (F-IN-1).
+        // La regola, con versione e data di verifica.
         if let Some(m) = d.cls.own(node).map(|k| &d.cls.matches[k]) {
             section(ui, p, &mut sections, "regola", &l.t("ispettore-regola"), |ui| rule_block(ui, p, l, f, d, m, &mut req));
         }
 
-        // Azioni sempre disponibili (F-IN-5, F-IN-6), in due colonne (`.insp .acts`). Id stabili: le misure
-        // in background che arrivano sopra non devono cambiare l'identità dei pulsanti tra un frame e l'altro.
+        // Azioni sempre disponibili, in due colonne (`.insp .acts`). Id stabili: le misure in background che
+        // arrivano sopra non devono cambiare l'identità dei pulsanti tra un frame e l'altro.
         ui.add_space(18.0);
         widgets::typed(ui, l.t("ispettore-azioni"), Type::BodyStrong, p.text);
         ui.add_space(8.0);
@@ -384,7 +383,7 @@ pub fn show(app: &mut App, ui: &mut Ui, p: &Palette, node: Option<u32>) {
                 ("properties", Icon::Properties, l.t("azione-proprieta"), Some(l.t("azione-proprieta-suggerimento")), true),
                 ("verify", Icon::Refresh, l.t("azione-verifica"), Some(l.t("azione-verifica-suggerimento")), !busy && !fl.has(Flags::NOT_FOLLOWED)),
             ];
-            // Vista Download su qualunque cartella dell'utente (F-DL-1).
+            // Vista Download su qualunque cartella dell'utente.
             if in_profile(d, node) {
                 buttons.push(("lens", Icon::Download, l.t("download-apri-lente"), Some(l.t("download-apri-lente-suggerimento")), true));
             }
@@ -488,7 +487,7 @@ pub fn show(app: &mut App, ui: &mut Ui, p: &Palette, node: Option<u32>) {
 }
 
 /// Cartella dentro il profilo dell'utente (non il profilo stesso): la lente Download vale su qualunque
-/// cartella dell'utente (F-DL-1).
+/// cartella dell'utente.
 pub fn in_profile(d: &data::Loaded, node: u32) -> bool {
     let t = d.tree();
     let Some(profile) = d.evidence.folders.profile.as_deref().and_then(|p| quado_kb::engine::find(t, p)) else { return false };
@@ -541,11 +540,11 @@ pub enum KbRequest {
     Rule(usize),
     /// Copia un comando o un URI negli appunti.
     Copy(String),
-    /// Un pulsante degli interventi (M5): spostamento nel Cestino o procedura.
+    /// Un pulsante degli interventi: spostamento nel Cestino o procedura.
     Act(super::intervention_jobs::ActRequest),
 }
 
-/// "Cos'è" (F-IN-1): gestore, programma e versione quando noti, fatti con la loro provenienza.
+/// "Cos'è": gestore, programma e versione quando noti, fatti con la loro provenienza.
 fn what_it_is(ui: &mut Ui, p: &Palette, l: &Lingue, f: &crate::format::Formatter, d: &data::Loaded, node: u32, req: &mut Option<KbRequest>) {
     let cls = &d.cls;
     let Some(mk) = cls.match_of(node) else {
@@ -594,8 +593,8 @@ fn gestore_line(ui: &mut Ui, p: &Palette, l: &Lingue, g: Gestore, hypothesis: bo
     glyph_line(ui, p, shown.shape(), p.data_color(shown), &s);
 }
 
-/// Schemi riconosciuti dalle regole dentro la cartella (F-IN-2), per regola: (regola, corrispondenze, byte),
-/// i più grandi per primi.
+/// Schemi riconosciuti dalle regole dentro la cartella, per regola: (regola, corrispondenze, byte), i più
+/// grandi per primi.
 fn patterns(d: &data::Loaded, node: u32) -> Vec<(usize, Vec<usize>, u64)> {
     let t = d.tree();
     let cls = &d.cls;
@@ -631,7 +630,7 @@ fn patterns_rows(ui: &mut Ui, p: &Palette, l: &Lingue, f: &crate::format::Format
     }
 }
 
-/// "Cosa puoi fare" (F-IN-4), dal record di raccomandazione, in un riquadro (`.todo`): stato, regola,
+/// "Cosa puoi fare", dal record di raccomandazione, in un riquadro (`.todo`): stato, regola,
 /// spiegazione, stima, ipotesi e rischi, l'azione successiva e i passi; il resto del record nella scheda
 /// apribile. Senza regola: Non sappiamo, solo misure e "Mostra in Esplora file".
 #[allow(clippy::too_many_arguments)]
@@ -707,7 +706,7 @@ fn what_you_can_do(ui: &mut Ui, p: &Palette, l: &Lingue, f: &crate::format::Form
     });
 }
 
-/// Metodo e alternative del record (F-IN-4): il testo del passo, il comando o l'indirizzo con «Copia».
+/// Metodo e alternative del record: il testo del passo, il comando o l'indirizzo con «Copia».
 fn steps(ui: &mut Ui, p: &Palette, l: &Lingue, r: &Record, req: &mut Option<KbRequest>) {
     // `which`: `None` per il metodo, `Some(i)` per l'alternativa `i`.
     let step = |ui: &mut Ui, s: &quado_model::record::Step, which: Option<usize>, req: &mut Option<KbRequest>| {
@@ -716,7 +715,7 @@ fn steps(ui: &mut Ui, p: &Palette, l: &Lingue, r: &Record, req: &mut Option<KbRe
             ui.horizontal_wrapped(|ui| {
                 ui.add(egui::Label::new(egui::RichText::new(c).font(mono(12.0)).color(p.text)).wrap());
                 if widgets::button(ui, p, &l.t("record-copia"), Some(Icon::Copy), ButtonKind::Quiet, true).clicked() {
-                    // Il comando di un'azione comando si copia con la misura di partenza (F-VE-1, M5):
+                    // Il comando di un'azione comando si copia con la misura di partenza:
                     // Quado lo copia e non lo esegue.
                     *req = Some(if r.action == quado_model::record::Action::Command && s.command.is_some() {
                         KbRequest::Act(super::intervention_jobs::ActRequest::CopyCommand { alternative: which })
@@ -739,7 +738,7 @@ fn steps(ui: &mut Ui, p: &Palette, l: &Lingue, r: &Record, req: &mut Option<KbRe
     }
 }
 
-/// Campi del record dallo stato in giù (F-IN-4): stato, azione, metodo e alternative, controlli, stima,
+/// Campi del record dallo stato in giù: stato, azione, metodo e alternative, controlli, stima,
 /// privilegi, ipotesi, rischi, reversibilità, errore, verifica, poi i pulsanti degli interventi.
 /// `estimate` è la stima da mostrare (la somma, per una riga della lente Download con più voci).
 pub fn record_block(ui: &mut Ui, p: &Palette, l: &Lingue, f: &crate::format::Formatter, r: &Record, estimate: &Estimate, req: &mut Option<KbRequest>) {
@@ -765,7 +764,7 @@ pub fn record_fields(ui: &mut Ui, p: &Palette, l: &Lingue, f: &crate::format::Fo
             ui.horizontal_wrapped(|ui| {
                 ui.add(egui::Label::new(egui::RichText::new(c).font(mono(12.0)).color(p.text)).wrap());
                 if widgets::button(ui, p, &l.t("record-copia"), Some(Icon::Copy), ButtonKind::Quiet, true).clicked() {
-                    // Il comando di un'azione comando si copia con la misura di partenza (F-VE-1, M5):
+                    // Il comando di un'azione comando si copia con la misura di partenza:
                     // Quado lo copia e non lo esegue.
                     *req = Some(if r.action == quado_model::record::Action::Command && s.command.is_some() {
                         KbRequest::Act(super::intervention_jobs::ActRequest::CopyCommand { alternative: which })
@@ -808,12 +807,12 @@ pub fn record_fields(ui: &mut Ui, p: &Palette, l: &Lingue, f: &crate::format::Fo
     line(ui, &l.t("record-verifica"), &l.t(&r.after));
 }
 
-/// Pulsanti degli interventi sotto il record (M5), solo quelli che hanno senso per il record e solo per gli
-/// stati che propongono qualcosa: spostamento nel Cestino dopo la simulazione (F-AC-2); per una procedura
-/// la pagina che si apre (o la sola misura di partenza, se la procedura sta dentro un'app), "Svuota il
-/// Cestino…" per il Cestino e "Ho eseguito la procedura"; per un comando "Ho eseguito la procedura" (il
-/// comando si copia dai passi sopra, con la misura di partenza). Sotto, la misura di partenza e l'esito
-/// (F-AC-1, F-VE-1, F-VE-2): li disegna `procedure_flow`.
+/// Pulsanti degli interventi sotto il record, solo quelli che hanno senso per il record e solo per gli stati
+/// che propongono qualcosa: spostamento nel Cestino dopo la simulazione; per una procedura la pagina che si
+/// apre (o la sola misura di partenza, se la procedura sta dentro un'app), "Svuota il Cestino…" per il
+/// Cestino e "Ho eseguito la procedura"; per un comando "Ho eseguito la procedura" (il comando si copia dai
+/// passi sopra, con la misura di partenza). Sotto, la misura di partenza e l'esito: li disegna
+/// `procedure_flow`.
 fn action_buttons(ui: &mut Ui, p: &Palette, l: &Lingue, f: &crate::format::Formatter, r: &Record, req: &mut Option<KbRequest>) {
     use super::intervention_jobs::ActRequest;
     use quado_model::record::Action;
@@ -876,7 +875,7 @@ pub(crate) fn link_button(ui: &mut Ui, p: &Palette, label: &str) -> egui::Respon
     resp
 }
 
-/// Stato con icona e parola; Da verificare con il tono di avviso (04 §6.1).
+/// Stato con icona e parola; Da verificare con il tono di avviso.
 pub fn state_line(ui: &mut Ui, p: &Palette, l: &Lingue, s: &State) {
     let tone = if matches!(s, State::ToVerify(_)) { p.warn } else { p.text };
     ui.horizontal(|ui| {
@@ -887,7 +886,7 @@ pub fn state_line(ui: &mut Ui, p: &Palette, l: &Lingue, s: &State) {
     });
 }
 
-/// Età dei file secondo la data di ultima modifica (F-IN-2).
+/// Età dei file secondo la data di ultima modifica.
 fn ages(ui: &mut Ui, p: &Palette, l: &Lingue, f: &crate::format::Formatter, info: &Info, total: u64) {
     for (k, key) in ["eta-30-giorni", "eta-1-anno", "eta-3-anni", "eta-oltre"].iter().enumerate() {
         let (a, c) = info.ages[k];

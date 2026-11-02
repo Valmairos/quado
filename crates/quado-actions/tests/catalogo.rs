@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Controllo del catalogo (06 §5.7, F-AC-1, 05 D7): `--volumes` (Docker, elimina dati) non compare in
-//! nessun file di lingua, in nessuna regola né nei sorgenti del prodotto. `/ResetBase` non compare in nessun
-//! testo che l'utente vede (valutazione dei consigli, 01/11/2026): dopo quel comando gli aggiornamenti
-//! installati non si possono più disinstallare, e WinSxS è solo spiegazione. Resta come nota nei commenti
-//! della regola `winsxs`.
+//! Controllo del catalogo: `--volumes` (Docker, elimina dati) non compare in nessun file di lingua, in
+//! nessuna regola né nei sorgenti del prodotto. `/ResetBase` non compare in nessun testo che l'utente vede:
+//! dopo quel comando gli aggiornamenti installati non si possono più disinstallare, e WinSxS è solo
+//! spiegazione. Resta come nota nei commenti della regola `winsxs`.
 //!
 //! Il controllo segue la forma attuale dei file: nelle regole TOML i commenti cominciano con `#`; nei file
 //! Fluent un messaggio comincia a inizio riga con `chiave =` e continua sulle righe rientrate. I commenti

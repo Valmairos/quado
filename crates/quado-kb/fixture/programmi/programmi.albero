@@ -1,4 +1,4 @@
-# Fixture sintetica della vista Programmi (F-AP), con le voci di programmi/registro.reg.
+# Fixture sintetica della vista Programmi, con le voci di programmi/registro.reg.
 # Formato di fixture/*.albero più due righe con la data di ultima modifica (FILETIME):
 # "D <mtime> <percorso>" per le cartelle, "F <allocata> <logica> <mtime> <percorso>" per i file.
 d C:\

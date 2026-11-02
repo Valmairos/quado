@@ -1,20 +1,20 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Strumenti di sviluppo (05 D10). Uso: `cargo xtask <comando>` (alias in `.cargo/config.toml`).
+//! Strumenti di sviluppo. Uso: `cargo xtask <comando>` (alias in `.cargo/config.toml`).
 //!
 //! - `scan <radice> [--threads N]`: una scansione con tempi, memoria, bilancio e problemi.
-//! - `verifica-dll`: flag del linker e prova dell'esca (07 §3 riga 5).
-//! - `lingue [nuova <tag>]`: copertura delle lingue, scheletro di una lingua nuova (05 D13).
-//! - `m2-misure`: ricerca, File grandi e annullamento sulla C: reale (06 §9).
+//! - `verifica-dll`: flag del linker e prova della DLL esca.
+//! - `lingue [nuova <tag>]`: copertura delle lingue, scheletro di una lingua nuova.
+//! - `m2-misure`: ricerca, File grandi e annullamento sulla C: reale.
 //! - `m4-misure --cartella DIR [--escludi "a;b"]`: lente Download, costo delle risorse di versione e frame
-//!   durante le letture (07 §1.5 criteri 3 e 4); `m4-misure --genera DIR` crea una cartella di prova.
-//! - `m5-misure`: costo della simulazione su C:, in sola lettura (07 §1.6 criterio 4).
-//! - `importazioni [EXE]`, `installa`: controllo dell'eseguibile e installazione locale (07 §6).
+//!   durante le letture; `m4-misure --genera DIR` crea una cartella di prova.
+//! - `m5-misure`: costo della simulazione su C:, in sola lettura.
+//! - `importazioni [EXE]`, `installa`: controllo dell'eseguibile e installazione locale.
 //! - `rustflags-dist`: la stringa RUSTFLAGS dell'eseguibile pubblicato, con il remap dei percorsi.
 //! - `icona [--anteprima DIR]`: le icone di Quado dal segno del marchio, in `crates/quado/icona`.
-//! - `sessione-prova`: sessione guidata con campionamento di connessioni e handle (06 §10).
-//! - `helper-prova`: helper elevato su R: con la richiesta UAC (06 §1.5).
-//! - `confronto-testo`: testo affiancato a ClearType (06 §7).
-//! - `fasi`, `d3d12-costo`, `rm-fasi`: misure della baseline delle prestazioni (06 §9).
+//! - `sessione-prova`: sessione guidata con campionamento di connessioni e handle.
+//! - `helper-prova`: helper elevato su R: con la richiesta UAC.
+//! - `confronto-testo`: testo affiancato a ClearType.
+//! - `fasi`, `d3d12-costo`, `rm-fasi`: misure della baseline delle prestazioni.
 //! - `attributi-fasi`, `lente-installatori`: misure delle letture in parallelo (simulazione e vista Download).
 
 use std::process::ExitCode;

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! `cargo xtask m5-misure`: costo della stima in simulazione su dati veri (07 §1.6 criterio 4, 05 D7),
+//! `cargo xtask m5-misure`: costo della stima in simulazione su dati veri,
 //! in sola lettura. Scrive `target/misure/m5-misure-C.md`.
 //!
 //! 1. Verifica preliminare in una cartella temporanea: la simulazione intera (attributi, elenchi, uso dei
@@ -422,7 +422,7 @@ fn measure_target(out: &mut String, tree: &Tree, t: &Target, protected: &[Protec
     let _ = writeln!(out, "## `{}`\n", t.rule);
     let _ = writeln!(
         out,
-        "Elementi proposti: {} ({} file e {} cartelle nel modello, {} GiB allocati); elementi fissi mostrati e non letti: {fixed}. Stato del record: {}, eccezione di F-AC-4: {}. Il primo: `{}`.\n",
+        "Elementi proposti: {} ({} file e {} cartelle nel modello, {} GiB allocati); elementi fissi mostrati e non letti: {fixed}. Stato del record: {}, eccezione per gli elementi protetti: {}. Il primo: `{}`.\n",
         proposed.len(),
         facts.files,
         facts.dirs,
@@ -562,10 +562,10 @@ pub fn run(args: &[String]) -> Result<(), String> {
     let _ = EXCLUDED.set(exclude);
     let mut out = String::new();
     let lt = system::local_time(system::now_filetime()).ok_or("data")?;
-    let _ = writeln!(out, "# M5 · Costo della simulazione su C: ({:02}/{:02}/{})\n", lt.day, lt.month, lt.year);
+    let _ = writeln!(out, "# Costo della simulazione su C: ({:02}/{:02}/{})\n", lt.day, lt.month, lt.year);
     let _ = writeln!(
         out,
-        "Generato da `cargo xtask m5-misure` (07 §1.6 criterio 4, 05 D7), in sola lettura: scansione, prove, classificazione, Programmi e radici protette come l'app, poi `simulate` con `WinProbe` e la configurazione vera dell'app (`KbConfig`). Mai `conferma`, `esegui` né il mover. Unità: GiB (1024³ byte).\n"
+        "Generato da `cargo xtask m5-misure`, in sola lettura: scansione, prove, classificazione, Programmi e radici protette come l'app, poi `simulate` con `WinProbe` e la configurazione vera dell'app (`KbConfig`). Mai `conferma`, `esegui` né il mover. Unità: GiB (1024³ byte).\n"
     );
     let _ = writeln!(out, "| Condizione | Valore |\n|---|---|");
     for (k, v) in crate::measure_cmd::environment() {
@@ -627,7 +627,7 @@ pub fn run(args: &[String]) -> Result<(), String> {
     }
     let _ = writeln!(
         out,
-        "Le simulazioni girano una dopo l'altra sullo stesso modello; la prima di ciascun elemento è subito dopo la scansione (metadati in cache). La lettura dell'uso riceve tutti gli eseguibili e le DLL di ogni elemento e fino a 1.000 altri file, i più recenti (05 D7)."
+        "Le simulazioni girano una dopo l'altra sullo stesso modello; la prima di ciascun elemento è subito dopo la scansione (metadati in cache). La lettura dell'uso riceve tutti gli eseguibili e le DLL di ogni elemento e fino a 1.000 altri file, i più recenti."
     );
     write_doc(&out, out_path.as_deref())?;
     println!("{out}");

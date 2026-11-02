@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Impostazioni e fatti di Windows letti in sola lettura per l'interfaccia (05 D13, 04 §6.1, 05 D2):
+//! Impostazioni e fatti di Windows letti in sola lettura per l'interfaccia:
 //! lingue preferite dell'utente, formato dell'area geografica, ora locale, "Effetti di animazione",
 //! SID dell'utente corrente, scheda video che guida un monitor; i font di Windows usati come ripiego,
 //! proiettati in memoria in sola lettura.
 //!
 //! Come il resto del crate: nessuna scrittura, nessun processo creato. Le funzioni restituiscono valori,
-//! mai frasi (05 D13).
+//! mai frasi.
 
 use std::mem::{MaybeUninit, size_of};
 use std::ptr::{null, null_mut};
@@ -106,7 +106,7 @@ pub fn local_time(filetime: i64) -> Option<LocalTime> {
 }
 
 /// Ora attuale come `FILETIME`, al decimo di microsecondo (`GetSystemTimePreciseAsFileTime`): le misure degli
-/// interventi devono avere un'ora strettamente precedente alla prima chiamata a Windows (F-VE-1), e
+/// interventi devono avere un'ora strettamente precedente alla prima chiamata a Windows, e
 /// `GetSystemTimeAsFileTime` avanza a passi di circa 15,6 ms.
 pub fn now_filetime() -> i64 {
     let mut ft = MaybeUninit::<FILETIME>::zeroed();
@@ -171,7 +171,7 @@ pub struct DisplayAdapter {
 
 /// La scheda video collegata al monitor che contiene `(x, y)`, o al monitor principale se il punto è
 /// fuori da ogni monitor. Disegnare con un'altra scheda costa una copia tra GPU a ogni frame
-/// (7-9 ms su un portatile con due schede video, M0).
+/// (7-9 ms misurati su un portatile con due schede video).
 pub fn adapter_for_point(x: i32, y: i32) -> Option<DisplayAdapter> {
     use windows::Win32::Foundation::POINT;
     use windows::Win32::Graphics::Dxgi::{CreateDXGIFactory1, IDXGIFactory1};
@@ -203,7 +203,7 @@ pub fn adapter_for_point(x: i32, y: i32) -> Option<DisplayAdapter> {
 }
 
 /// Un font di Windows (`%WINDIR%\Fonts`) proiettato in memoria in sola lettura per tutta la vita del processo,
-/// per i font di ripiego dell'interfaccia (05 D2): egui lo usa senza copiarlo, e Windows carica solo le
+/// per i font di ripiego dell'interfaccia: egui lo usa senza copiarlo, e Windows carica solo le
 /// pagine lette (tabelle e glifi usati), condivise con gli altri processi che usano lo stesso font. Non è
 /// memoria privata del processo, a differenza di un file letto.
 ///

@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Prove di M1 sul Cestino (07 §3 righe 1-3), fuori dal prodotto: spostamento con `IFileOperation`
-//! senza finestre di Windows (`FOF_NO_UI`) e svuotamento senza conferme (`SHERB_NOCONFIRMATION`), solo
-//! sul VHDX di prova. Il prodotto non contiene questi flag (F-AC-1, F-AC-5, test d'architettura di
-//! `quado-actions`): fino a M4 stavano in `quado_actions::recycle`, da M5 stanno qui.
+//! Prove sul Cestino, fuori dal prodotto: spostamento con `IFileOperation` senza finestre di Windows
+//! (`FOF_NO_UI`) e svuotamento senza conferme (`SHERB_NOCONFIRMATION`), solo sul VHDX di prova. Il
+//! prodotto non contiene questi flag: lo controlla il test d'architettura di `quado-actions`.
 //!
 //! Servono a vedere quali flag riceve `PreDeleteItem` quando un elemento finirebbe eliminato per sempre
 //! (troppo grande per il Cestino), e quale valore di ritorno salva quel solo elemento senza fermare gli
@@ -194,7 +193,7 @@ pub fn empty(root: &Path) -> windows::core::Result<()> {
     unsafe { SHEmptyRecycleBinW(Some(HWND::default()), &HSTRING::from(root.as_os_str()), SHERB_NOCONFIRMATION | SHERB_NOPROGRESSUI | SHERB_NOSOUND) }
 }
 
-/// Codici candidati per rifiutare un singolo elemento (07 §3 riga 2).
+/// Codici candidati per rifiutare un singolo elemento.
 pub fn candidate_codes() -> Vec<(&'static str, HRESULT)> {
     use windows::Win32::UI::Shell::{COPYENGINE_E_USER_CANCELLED, COPYENGINE_S_DONT_PROCESS_CHILDREN, COPYENGINE_S_USER_IGNORED};
     vec![

@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Banco di misura di M2 (07 §1.3 criterio 2, 06 §9), sullo schema di quello di M0.
+//! Banco di misura dei tempi dei frame (`quado --banco <tipo>`).
 //!
 //! Gli input sono eventi sintetici iniettati prima di ogni frame (`raw_input_hook`) e passano per la
 //! stessa gestione degli input di un utente. Il tempo di un frame è l'intervallo tra l'inizio di due
 //! frame consecutivi con la sincronizzazione verticale spenta: interfaccia, tassellazione, disegno e
 //! presentazione. Gli "effetti" provano che gli input hanno agito davvero (righe raggiunte, selezioni).
 //!
-//! M4 (07 §1.5 criterio 3, 06 §9): `installatori` e `hash` misurano il frame mentre la lente Download legge
-//! i dati di versione o calcola le impronte su una cartella data (`--cartella`), con le letture vere e i
-//! percorsi esclusi (`--escludi`) rifiutati prima di aprirli (`Readers::excluding`). La lettura si ripete
-//! per `--giri` giri, dimenticando ogni volta i risultati e la cache.
+//! `installatori` e `hash` misurano il frame mentre la lente Download legge i dati di versione o calcola le
+//! impronte su una cartella data (`--cartella`), con le letture vere e i percorsi esclusi (`--escludi`)
+//! rifiutati prima di aprirli (`Readers::excluding`). La lettura si ripete per `--giri` giri, dimenticando
+//! ogni volta i risultati e la cache.
 
 use std::fmt::Write as _;
 use std::path::PathBuf;
@@ -33,9 +33,9 @@ pub enum Kind {
     Map,
     /// Scansione vera di C: con la schermata di avanzamento.
     Scan,
-    /// Lente Download: lettura dei dati di versione degli installatori di una cartella (F-DL-2).
+    /// Lente Download: lettura dei dati di versione degli installatori di una cartella.
     Installers,
-    /// Lente Download: impronte dei file della stessa dimensione di una cartella (F-DL-4).
+    /// Lente Download: impronte dei file della stessa dimensione di una cartella.
     Hash,
 }
 
@@ -63,7 +63,7 @@ impl Kind {
         }
     }
 
-    /// Banco della lente Download (M4).
+    /// Banco della lente Download.
     pub fn is_lens(self) -> bool {
         matches!(self, Self::Installers | Self::Hash)
     }
@@ -93,8 +93,8 @@ struct LensRun {
     round_bytes: Vec<u64>,
     failed: usize,
     finished: bool,
-    /// Frame da passare con il risultato a schermo prima di dimenticarlo: anche quei frame si misurano
-    /// (in M4 l'elenco con migliaia di copie identiche costava secondi a frame e il banco non lo vedeva).
+    /// Frame da passare con il risultato a schermo prima di dimenticarlo: anche quei frame si misurano, così
+    /// entra nella misura il costo di disegnare il risultato (per esempio migliaia di copie identiche).
     hold: u32,
 }
 
@@ -533,7 +533,7 @@ impl Bench {
     }
 }
 
-/// Aggiornamenti dell'avanzamento al secondo: valori diversi mostrati diviso la durata (F-SC-4).
+/// Aggiornamenti dell'avanzamento al secondo: valori diversi mostrati diviso la durata.
 pub fn updates_per_second(app: &App, since: Option<Instant>) -> f64 {
     let u = &app.progress_updates;
     let (Some(first), Some(last)) = (u.first(), u.last()) else { return 0.0 };

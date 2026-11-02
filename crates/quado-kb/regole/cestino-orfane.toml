@@ -1,4 +1,4 @@
-# Cartelle $R senza $I (F-SY-2, 09 scelta 4): anomalia spiegata, nessun intervento, nessuna cifra recuperabile.
+# Cartelle $R senza $I: anomalia spiegata, nessun intervento, nessuna cifra recuperabile.
 id = "cestino-orfane"
 priorita = 1
 riconoscitore = "cestino-orfane"
@@ -16,6 +16,6 @@ fixture = "radice.albero"
 
 [[fonti]]
 url = "docs/m1/cestino-verifiche.md"
-titolo = "cestino-verifiche.md (Quado, M1)"
+titolo = "cestino-verifiche.md (Quado)"
 estratto = '''Tolto `$I80IA6M`: ora la cartella è orfana. Windows vede 0 elementi, 0 byte'''
 ufficiale = false

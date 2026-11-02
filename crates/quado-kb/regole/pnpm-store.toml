@@ -1,4 +1,4 @@
-# Store di pnpm (decisioni §3): pnpm store prune; stima non stimabile senza contare i link.
+# Store di pnpm: pnpm store prune; stima non stimabile senza contare i link.
 id = "pnpm-store"
 priorita = 1
 riconoscitore = "pnpm-store"

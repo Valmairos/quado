@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Alberi di prova contro l'oracolo indipendente (06 §1.1, §1.2): F-SC-2, F-SC-6, F-SC-7, F-SC-8.
+//! Alberi di prova contro l'oracolo indipendente: nomi e percorsi difficili, cartelle negate, collegamenti,
+//! file compressi e sparse.
 //! Ogni test crea la sua cartella in `%TEMP%` e la cancella alla fine.
 
 use std::collections::HashMap;
@@ -88,7 +89,7 @@ fn full_tree_matches_the_oracle() {
     compare(&r, &o);
     let t = &r.tree;
 
-    // F-SC-7: hard link contati una volta, junction e symlink non seguiti.
+    // Hard link contati una volta, junction e symlink non seguiti.
     assert_eq!(r.links.groups.len(), 1);
     assert_eq!(r.links.extra_names, 2);
     let secondaries = [root.join("b\\c\\link1.bin"), root.join("z\\link2.bin"), big.clone()]
@@ -102,7 +103,7 @@ fn full_tree_matches_the_oracle() {
     } else {
         eprintln!("nota: symlink non creato (Modalità sviluppatore spenta); caso non provato");
     }
-    // F-SC-8: sparse e compressi con allocata minore della logica; WOF corretto.
+    // Sparse e compressi con allocata minore della logica; WOF corretto.
     for k in 0..3 {
         let n = node_of(t, &root.join("sparse").join(format!("s{k}.bin")));
         assert!(t.alloc(n) < t.logical(n) / 100);
@@ -118,7 +119,7 @@ fn full_tree_matches_the_oracle() {
     }
     // Flusso alternativo: non contato.
     assert_eq!(t.logical(node_of(t, &with_ads)), 1000);
-    // F-SC-2: nome non valido esatto, percorso lungo, profondità, file in uso misurato.
+    // Nome non valido esatto, percorso lungo, profondità, file in uso misurato.
     assert_eq!(t.name(node_of(t, &bad_name)).to_utf16(), wide(Path::new(bad_name.file_name().unwrap())));
     node_of(t, &long.join("in-fondo.txt"));
     assert_eq!(t.depth(node_of(t, &deepest.join("fondo.txt"))), 2002);

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Test d'architettura (06 §5.1, §11, F-AC-1, F-AP-5, 05 D7 "Confini nel codice"): Quado non crea
+//! Test d'architettura: Quado non crea
 //! processi e non apre pacchetti MSI con `MsiOpenPackage`. Le chiamate che avviano programmi o procedure
 //! e quelle che modificano file o svuotano il Cestino stanno solo in `quado-actions`; nei sorgenti
 //! `src/` di model, scan-win, kb, ui e dell'eseguibile non compaiono. Fuori dal controllo:
@@ -18,7 +18,7 @@ use std::path::{Path, PathBuf};
 const CRATES: [&str; 5] = ["quado-model", "quado-scan-win", "quado-kb", "quado-ui", "quado"];
 
 /// Nomi vietati fuori da `quado-actions`: creazione di processi, apertura con la shell, MSI con lo
-/// stato della macchina; chiamate che modificano file o svuotano il Cestino (06 §5.1). I nomi sono
+/// stato della macchina; chiamate che modificano file o svuotano il Cestino. I nomi sono
 /// prefissi: `DeleteFile` trova anche `DeleteFileW`, `GENERIC_WRITE` anche `FILE_GENERIC_WRITE`.
 const FORBIDDEN: [&str; 14] = [
     "CreateProcess",
@@ -42,7 +42,7 @@ const FORBIDDEN: [&str; 14] = [
 /// `quado-scan-win/src/win.rs` è in un commento (maschera dei diritti di scrittura da escludere).
 const EXCEPTIONS: [(&str, &str, &str); 0] = [];
 
-/// Flag che tolgono le conferme di Windows: vietati in tutto il prodotto (F-AC-1, F-AC-5, 05 D7).
+/// Flag che tolgono le conferme di Windows: vietati in tutto il prodotto.
 const SILENT: [&str; 3] = ["SHERB_NOCONFIRMATION", "FOF_NOCONFIRMATION", "FOF_NO_UI"];
 
 /// Eccezioni motivate ai flag silenziosi, una per riga: (file, nome, motivo). Vuota: un'asserzione che
@@ -252,7 +252,7 @@ fn product_code_has_no_silent_flags() {
 
 #[test]
 fn the_check_sees_the_silent_flags_in_the_test_tools() {
-    // Controllo del controllo: le prove di M1 in `xtask` e lo svuotamento dei VHDX di prova in
+    // Controllo del controllo: le prove del Cestino in `xtask` e lo svuotamento dei VHDX di prova in
     // `quado-testkit` li usano, e li si trova.
     let xtask = findings_in(&[crates_dir().join("../xtask/src")], &SILENT);
     for flag in ["SHERB_NOCONFIRMATION", "FOF_NO_UI"] {

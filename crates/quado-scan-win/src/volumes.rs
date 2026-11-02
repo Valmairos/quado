@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Elenco dei volumi (03 F-SC-1, F-SC-10): lettera o cartella di montaggio, etichetta, file system,
+//! Elenco dei volumi: lettera o cartella di montaggio, etichetta, file system,
 //! tipo di unità, capacità e spazio libero. Il volume di sistema è il primo.
 
 use quado_model::Space;
@@ -34,7 +34,7 @@ impl DriveKind {
     }
 }
 
-/// Quanto Quado garantisce su un file system (F-SC-10). La UI lo traduce in parole.
+/// Quanto Quado garantisce su un file system. La UI lo traduce in parole.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Support {
     /// NTFS: tutto.

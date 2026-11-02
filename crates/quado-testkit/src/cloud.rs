@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Provider cloud di prova (06 §1.2, 03 F-SC-9): una cartella di sincronizzazione registrata con la
+//! Provider cloud di prova: una cartella di sincronizzazione registrata con la
 //! Cloud Filter API, con segnaposto creati dal test. Il provider non scarica nulla: conta soltanto le
 //! richieste di dati (`FETCH_DATA`) e di elenco (`FETCH_PLACEHOLDERS`) che riceve. La scansione non
 //! deve provocarne nessuna.

@@ -1,6 +1,6 @@
-# 06 §2.1: Decidi tu, spostamento nel Cestino su scelta esplicita, cargo clean per target; lockfile presente.
+# Decidi tu, spostamento nel Cestino su scelta esplicita, cargo clean per target; lockfile presente.
 # Le node_modules senza lockfile (foto-vacanze) o sotto le estensioni di VS Code non sono riconosciute: si
-# controlla in tests/proprieta.rs. Il controllo dei riferimenti c'è dal 01/11/2026.
+# controlla in tests/proprieta.rs.
 [[voci]]
 percorso = 'C:\Users\demo\Documents\progetto-video\node_modules'
 stato = "decidi-tu"

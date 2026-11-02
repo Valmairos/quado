@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Interventi nell'interfaccia (M5, 03 F-AC e F-VE): le azioni di `quado-actions` dietro un insieme
-//! iniettabile ([`Actions`]), le letture di configurazione e dei riferimenti da `quado-kb` per
-//! `WinProbe` ([`KbConfig`]), l'origine di un intervento ([`Origin`]) e la riscansione dei sottoalberi
-//! toccati (F-VE-4) da applicare al modello con `data::apply_rescans`.
+//! Interventi nell'interfaccia: le azioni di `quado-actions` dietro un insieme iniettabile ([`Actions`]), le
+//! letture di configurazione e dei riferimenti da `quado-kb` per `WinProbe` ([`KbConfig`]), l'origine di un
+//! intervento ([`Origin`]) e la riscansione dei sottoalberi toccati da applicare al modello con
+//! `data::apply_rescans`.
 //!
 //! Nei test `Actions::fake` usa `FakeProbe` e `FakeMover`, e riscansiona l'albero simulato: niente tocca
 //! il disco.
@@ -29,7 +29,7 @@ use super::data::{Loaded, Task};
 pub type MoverFactory = Arc<dyn Fn(Option<isize>) -> Box<dyn Mover> + Send + Sync>;
 /// "Svuota il Cestino" del volume (`C:\`), con la finestra proprietaria del dialogo di Windows.
 pub type EmptyBin = Arc<dyn Fn(&str, Option<isize>) -> Result<(), ShellError> + Send + Sync>;
-/// Riscansione in sola lettura di una cartella (F-VE-4): `quado_scan_win::scan` nell'app, l'albero di
+/// Riscansione in sola lettura di una cartella: `quado_scan_win::scan` nell'app, l'albero di
 /// `FakeProbe` nei test. Errore: codice di Windows (2 o 3 se la cartella non c'è più).
 pub type RescanFn = Arc<dyn Fn(&str) -> Result<Box<ScanResult>, u32> + Send + Sync>;
 
@@ -93,7 +93,7 @@ impl Actions {
 }
 
 /// Letture di `quado-kb` per `WinProbe`, fatte al momento della simulazione: impostazioni del Cestino
-/// (`BitBucket`) e di Sensore memoria dal registro in sola lettura, riferimenti (F-AC-9).
+/// (`BitBucket`) e di Sensore memoria dal registro in sola lettura, riferimenti.
 pub struct KbConfig;
 
 fn extract_code(e: ExtractError) -> u32 {
@@ -146,24 +146,24 @@ pub enum Origin {
     Rule(usize),
     /// Voci della lente Download: indici in `LensView::findings` della vista corrente.
     Lens(Vec<usize>),
-    /// Programma della vista Programmi: indice in `Programs::items` (disinstallazione, F-AP-5).
+    /// Programma della vista Programmi: indice in `Programs::items` (disinstallazione).
     Program(usize),
 }
 
 /// Cosa chiede un pulsante del blocco "Cosa puoi fare" (ispettore, lente Download).
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum ActRequest {
-    /// "Sposta nel Cestino…": simulazione e dialogo di conferma (F-AC-2).
+    /// "Sposta nel Cestino…": simulazione e dialogo di conferma.
     PrepareRecycle,
-    /// Apre la pagina della procedura (URI tipizzato), dopo la misura di partenza (F-VE-1).
+    /// Apre la pagina della procedura (URI tipizzato), dopo la misura di partenza.
     OpenProcedure,
-    /// "Ho eseguito la procedura": nuove misure e riscansione (F-VE-2).
+    /// "Ho eseguito la procedura": nuove misure e riscansione.
     ProcedureDone,
     /// Misura di partenza senza aprire niente, per le procedure dentro un'app che Quado non apre (cache
-    /// dei browser, di CapCut, dispositivi virtuali di Android Studio): F-VE-1.
+    /// dei browser, di CapCut, dispositivi virtuali di Android Studio).
     MeasureStart,
     /// "Copia" di un comando ufficiale (azione comando): copia negli appunti e misura di partenza. Quado
-    /// non lo esegue (F-AC-1). `alternative`: `None` per il metodo, `Some(i)` per l'alternativa `i`.
+    /// non lo esegue. `alternative`: `None` per il metodo, `Some(i)` per l'alternativa `i`.
     CopyCommand { alternative: Option<usize> },
     /// "Svuota il Cestino…" dal record del Cestino: misura di partenza, dialogo di Windows, nuove misure.
     EmptyBin,
@@ -181,13 +181,13 @@ pub fn dispatch(app: &mut App, req: ActRequest, origin: Origin) {
     }
 }
 
-/// Radici protette del volume caricato (F-AC-4), dalle prove e dalla vista Programmi.
+/// Radici protette del volume caricato, dalle prove e dalla vista Programmi.
 pub fn protected_roots(d: &Loaded) -> Vec<ProtectedRoot> {
     quado_kb::protection::protected_roots(&d.evidence, &d.programs)
 }
 
 // ---------------------------------------------------------------------------------------------
-// Percorsi e riscansione (F-VE-2, F-VE-4)
+// Percorsi e riscansione
 
 /// Chiave di confronto: `/` come `\`, senza `\` finale, minuscole.
 fn key(p: &str) -> String {

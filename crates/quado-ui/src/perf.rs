@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Tempi dei frame e percentili (criteri di M0, 07 §1.1).
+//! Tempi dei frame e percentili, per le misure delle prestazioni.
 
 use std::collections::VecDeque;
 

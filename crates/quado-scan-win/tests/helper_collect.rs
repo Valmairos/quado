@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Raccolta dell'helper (`helper::collect::Live`) senza elevazione (06 §1.5, §11): cartelle e totali
+//! Raccolta dell'helper (`helper::collect::Live`) senza elevazione: cartelle e totali
 //! contro l'oracolo, privilegio di backup non assegnato, SID orfani, profilo dal registro, copie shadow
 //! con WMI. Le cartelle di prova stanno in `%TEMP%` e si cancellano alla fine (ACL ripristinata prima).
 //!
@@ -229,7 +229,7 @@ fn root_entries(vol: &Path) -> Vec<String> {
     v
 }
 
-/// Contenuto di prova di 06 §1.5 su `R:`: la scansione normale trova le quattro cartelle negate, l'helper
+/// Contenuto di prova su `R:`: la scansione normale trova le quattro cartelle negate, l'helper
 /// senza privilegio non le apre (errore 5, come la scansione), i valori attesi sono coerenti; alla fine
 /// `R:` torna com'era.
 #[test]

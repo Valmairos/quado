@@ -1,12 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! `confronto-testo`: testo di Quado affiancato a ClearType (06 §7, 07 §1.7 criterio 4). Agente P di M6.
+//! `confronto-testo`: testo di Quado affiancato a ClearType.
 //!
-//! Come la prova del testo di M0 (05 D2, criterio 3), ma con i font e i colori di oggi
-//! (`quado_ui::fonts`, `quado_ui::tokens`) e con frasi prese dal catalogo italiano di oggi: titoli,
-//! corpo, stati, numeri, etichette piccole. Per ogni riga, sopra la resa di egui, disegnata fuori schermo
-//! con `egui_kittest` e wgpu come negli snapshot dell'interfaccia; sotto la resa di GDI con ClearType, lo
-//! stesso motore dei controlli di Windows. Stessa dimensione em, stessi colori, nessun ridimensionamento:
-//! i pezzi si copiano pixel per pixel.
+//! Usa i font e i colori dell'interfaccia (`quado_ui::fonts`, `quado_ui::tokens`) e frasi prese dal
+//! catalogo italiano: titoli, corpo, stati, numeri, etichette piccole. Per ogni riga, sopra la resa di egui,
+//! disegnata fuori schermo con `egui_kittest` e wgpu come negli snapshot dell'interfaccia; sotto la resa di
+//! GDI con ClearType, lo stesso motore dei controlli di Windows. Stessa dimensione em, stessi colori,
+//! nessun ridimensionamento: i pezzi si copiano pixel per pixel.
 //!
 //! GDI accetta solo altezze intere. Dove egui usa una dimensione frazionaria (12,5 px, o 13 px al 150%,
 //! cioè 19,5 px) Windows usa il pixel intero più vicino, e l'etichetta della riga lo dice.
@@ -14,8 +13,7 @@
 //! Uscita, in `target/testi-immagini` (o `--uscita DIR`):
 //! - `confronto-testo-<100|150>-<chiaro|scuro>.png`;
 //! - `confronto-testo.tsv`: per ogni riga la quota di pixel colorati tra quelli del testo (le frange di
-//!   ClearType), come `confronto.tsv` di M0, e l'inchiostro delle due rese (il peso del testo) con il loro
-//!   rapporto.
+//!   ClearType) e l'inchiostro delle due rese (il peso del testo) con il loro rapporto.
 //!
 //! Uso: `cargo xtask confronto-testo [--uscita DIR]`.
 
@@ -107,7 +105,7 @@ struct Sample {
     text: String,
 }
 
-/// Le frasi: dal catalogo italiano di oggi, con numeri scritti da `format` come nell'app. Le dimensioni e
+/// Le frasi: dal catalogo italiano, con numeri scritti da `format` come nell'app. Le dimensioni e
 /// i colori sono quelli che l'interfaccia usa per quel ruolo.
 fn samples(l: &Lingue, f: &Formatter) -> Vec<Sample> {
     let gib = 1u64 << 30;
@@ -176,7 +174,7 @@ fn draw(ui: &mut egui::Ui, sc: &mut Scene<'_>) {
         let pos = pos2(MARGIN as f32 / ppp, y as f32 / ppp);
         let r = Rect::from_min_size(pos, galley.size());
         painter.galley(pos, galley, color);
-        // Arrotondato verso l'esterno, con un margine per non tagliare discendenti e accenti (come in M0).
+        // Arrotondato verso l'esterno, con un margine per non tagliare discendenti e accenti.
         let px = |v: f32| f64::from(v * ppp);
         sc.rects.push([px(r.min.x).floor() as i64 - 1, px(r.min.y).floor() as i64 - 2, px(r.max.x).ceil() as i64 + 1, px(r.max.y).ceil() as i64 + 2]);
         y = px(r.max.y).ceil() as i64 + GAP;
@@ -215,9 +213,9 @@ fn crop(img: &RgbImage, r: PxRect) -> RgbImage {
     image::imageops::crop_imm(img, x0, y0, x1.saturating_sub(x0), y1.saturating_sub(y0)).to_image()
 }
 
-/// Tra i pixel diversi dallo sfondo, la quota con i canali R, G, B diversi tra loro: le frange di ClearType
-/// (stesso criterio della prova di M0). La soglia parte dal più colorato tra fondo e testo: i grigi
-/// caldi dei token (`text-3` ha 12 livelli tra il canale più alto e il più basso) non sono frange.
+/// Tra i pixel diversi dallo sfondo, la quota con i canali R, G, B diversi tra loro: le frange di ClearType.
+/// La soglia parte dal più colorato tra fondo e testo: i grigi caldi dei token (`text-3` ha 12 livelli tra
+/// il canale più alto e il più basso) non sono frange.
 fn chroma_fraction(img: &RgbImage, bg: [u8; 3], fg: [u8; 3]) -> f64 {
     let spread = |c: [u8; 3]| i32::from(*c.iter().max().unwrap_or(&0)) - i32::from(*c.iter().min().unwrap_or(&0));
     let bg_spread = spread(bg).max(spread(fg));
@@ -292,7 +290,7 @@ fn compose(samples: &[Sample], theme: Theme, ppp: f32, tsv: &mut String, label: 
     let margin = (16.0 * ppp).round() as u32;
     let label_w = pieces.iter().map(|(t, _, b, _)| t.width().max(b.width())).max().unwrap_or(0) + margin;
     let content_w = pieces.iter().map(|(_, o, _, n)| o.width().max(n.width())).max().unwrap_or(0);
-    let header = caption(&format!("Quado M6 · tema {} · {}% · per ogni riga: sopra egui, sotto Windows (GDI, ClearType), stessi pixel", if theme == Theme::Light { "chiaro" } else { "scuro" }, (ppp * 100.0).round()), ppp, bg, rgb(p.text_2))?;
+    let header = caption(&format!("Quado · tema {} · {}% · per ogni riga: sopra egui, sotto Windows (GDI, ClearType), stessi pixel", if theme == Theme::Light { "chiaro" } else { "scuro" }, (ppp * 100.0).round()), ppp, bg, rgb(p.text_2))?;
     let mut height = margin + header.height() + 2 * gap;
     for (t, o, b, n) in &pieces {
         height += t.height().max(o.height()) + gap + b.height().max(n.height()) + 3 * gap;

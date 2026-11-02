@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Conferma del piano (03 F-AC-2, F-AC-4, F-AC-7; 05 D7; 06 §5.2) con letture simulate (`fake`):
-//! `proptest` su alberi casuali con radici protette e selezioni casuali; l'eccezione di F-AC-4 (03 §6.1,
-//! caso CapCut) con un caso positivo e un caso negativo per ciascun controllo mancante; gli altri motivi
-//! di rifiuto. I test di compilazione del piano sono nella documentazione di `plan.rs`. Nessun file vero.
+//! Conferma del piano con letture simulate (`fake`): `proptest` su alberi casuali con radici protette e
+//! selezioni casuali; l'eccezione via regola per gli elementi protetti (caso CapCut) con un caso positivo
+//! e un caso negativo per ciascun controllo mancante; gli altri motivi di rifiuto. I test di compilazione
+//! del piano sono nella documentazione di `plan.rs`. Nessun file vero.
 
 use proptest::prelude::*;
 use quado_actions::fake::{self, FakeProbe};
@@ -40,7 +40,7 @@ fn everything(sim: &Simulazione) -> Scelta {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Selezioni casuali con elementi protetti (06 §5.2)
+// Selezioni casuali con elementi protetti
 
 const ROOTS: [(&str, ProtectedKind); 9] = [
     ("C:\\Windows", WindowsDir),
@@ -122,7 +122,7 @@ fn variant(path: &str, v: u8) -> String {
 }
 
 /// Oracolo indipendente dalla simulazione: l'elemento è protetto (uguale, dentro o contenitore di una
-/// radice) e, se lo è, se l'eccezione di 03 §6.1 può valere (solo radici di programmi registrati, solo
+/// radice) e, se lo è, se l'eccezione via regola può valere (solo radici di programmi registrati, solo
 /// strettamente dentro, regola Da verificare con l'eccezione).
 fn oracle(path: &str, exception: bool, to_verify: bool) -> (bool, bool) {
     let p = path.to_lowercase();
@@ -235,7 +235,7 @@ fn every_kind_of_protected_root_blocks_equal_inside_and_containing_items() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Eccezione di F-AC-4 (03 §6.1): versioni precedenti di CapCut
+// Eccezione via regola per gli elementi protetti: versioni precedenti di CapCut
 
 const CAPCUT: &str = "C:\\Users\\u\\AppData\\Local\\CapCut";
 const OLD: &str = "C:\\Users\\u\\AppData\\Local\\CapCut\\Apps\\9.1.0.3500";
@@ -384,7 +384,7 @@ fn exception_fails_with_a_reference_to_the_version() {
 #[test]
 fn partial_references_do_not_lift_the_exception_and_are_reported() {
     // Per un utente standard le attività pianificate di sistema non sono mai leggibili: il controllo è
-    // sempre parziale. F-AC-9 vuole che la conferma lo dica, non che blocchi.
+    // sempre parziale. La conferma lo dice, ma non blocca.
     let p = capcut_probe().partial(ReferenceKind::ScheduledTask, 5);
     let (sim, reasons) = capcut(&p, capcut_record(), RegisteredProgram, capcut_items());
     assert_eq!(reasons, vec![]);
@@ -557,7 +557,7 @@ fn unticked_manual_checks_are_rejected() {
 
 #[test]
 fn capacity_exceeded_or_unknown_is_rejected() {
-    // 03 F-AC-7: contenuto più selezione (logica) oltre la capacità.
+    // Contenuto più selezione (logica) oltre la capacità.
     let p = small_world().bin("R:\\", |b| {
         b.capacity = Some(10_000);
         b.content = Some(BinCount { items: 4, bytes: 8_000 });
@@ -637,7 +637,7 @@ fn long_paths_block_the_item_and_the_folders_that_contain_them() {
 
 #[test]
 fn items_larger_than_the_bin_are_blocked() {
-    // 05 "Aggiornamento dopo M1": Windows conta la logica; un elemento più grande della capacità
+    // Windows conta la logica (`docs/m1/cestino-verifiche.md`); un elemento più grande della capacità
     // sarebbe eliminato per sempre.
     let p = small_world().file("R:\\grande.vhdx", 50_000, 4_096).bin("R:\\", |b| b.capacity = Some(10_000));
     let sim = simple(&p, &["R:\\grande.vhdx", "R:\\a.bin"], manageable());
@@ -681,8 +681,8 @@ fn unreadable_volume_and_missing_items_are_blocked() {
 
 #[test]
 fn boxes_start_empty_for_to_verify_and_for_more_than_one_item_to_decide() {
-    // Valutazione dei consigli (01/11/2026): per Da verificare, e per Decidi tu con più elementi, la scelta la
-    // fa l'utente; con un solo elemento il clic che ha aperto l'anteprima era già la scelta.
+    // Per Da verificare, e per Decidi tu con più elementi, la scelta la fa l'utente; con un solo elemento il
+    // clic che ha aperto l'anteprima era già la scelta.
     let p = small_world();
     let two = [r"R:\a.bin", r"R:\b"];
     let selection = |paths: &[&str], state: State| simple(&p, paths, fake::record(state)).default_selection();

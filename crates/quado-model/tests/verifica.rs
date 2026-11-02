@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Stimato contro ottenuto (03 §6.3, F-VE-3; 06 §6.1, §6.2): un caso per riga delle tabelle di 03 §6.3
-//! (stati della stima e voci di spiegazione) e gli scenari del flusso di verifica.
+//! Stimato contro ottenuto: un caso per ogni stato della stima e per ogni voce di spiegazione, e gli
+//! scenari del flusso di verifica.
 
 use quado_model::intervention::{BinCount, Comparison, EXPLAIN_THRESHOLD_BP, Explanation, Measure, MeasurePoint};
 use quado_model::record::{Estimate, NotEstimable};
@@ -206,7 +206,7 @@ fn excluded_names_are_listed_but_do_not_move_the_difference() {
 
 #[test]
 fn right_after_the_move_the_bin_explains_the_whole_estimate() {
-    // 06 §6.1, ultima riga: subito dopo lo spostamento l'ottenuto è circa 0.
+    // Subito dopo lo spostamento, prima dello svuotamento, l'ottenuto è circa 0.
     let ms = [start(), m(MeasurePoint::AfterAction, FREE, bin(3, 2 * GIB), Some(0))];
     let facts = ExplainFacts { recycled_bytes: 2 * GIB, still_in_bin: Some(2 * GIB), ..Default::default() };
     let c = run(Estimate::Exact(2 * GIB), &ms, facts);
@@ -278,7 +278,7 @@ fn open_files_are_listed_and_keep_a_smaller_obtained_unexplained() {
 
 #[test]
 fn concurrent_activity_with_rescan_is_declared_not_attributed() {
-    // 06 §6.2: un processo scrive 300 MiB durante la verifica; la riscansione dice che la selezione è
+    // Un processo scrive 300 MiB durante la verifica; la riscansione dice che la selezione è
     // sparita. La differenza è dichiarata come attività di altri processi, non come non spiegata.
     let facts = ExplainFacts { recycled_bytes: GIB, still_in_bin: Some(0), ..Default::default() };
     let c = run(Estimate::Exact(GIB), &rescanned((GIB - 300 * MIB) as i64), facts);
@@ -353,7 +353,7 @@ fn range_outside_without_rescan_is_unexplained_from_the_nearest_end() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Tolleranza iniziale di 06 §6.1
+// Tolleranza: 1% della stima più 1 MiB
 
 #[test]
 fn tolerance_is_one_percent_plus_one_mib() {
@@ -365,7 +365,7 @@ fn tolerance_is_one_percent_plus_one_mib() {
     assert!(!within_tolerance(e, e as i64 + tol + 1));
     assert!(!within_tolerance(e, e as i64 - tol - 1));
     // Con stima 0 resta solo la parte fissa (residenti nella MFT, disco virtuale, subito dopo lo
-    // spostamento: 06 §6.1).
+    // spostamento).
     assert!(within_tolerance(0, MIB as i64));
     assert!(within_tolerance(0, -(MIB as i64)));
     assert!(!within_tolerance(0, MIB as i64 + 1));

@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Impostazioni (03 §7, "Privacy: dati salvati"): un file di testo in `%APPDATA%\Quado`, scritto solo
-//! quando l'utente cambia qualcosa. Righe `chiave = valore`; le chiavi sconosciute e i valori non validi
-//! si ignorano (vale il predefinito).
+//! Impostazioni: un file di testo in `%APPDATA%\Quado`, scritto solo quando l'utente cambia qualcosa.
+//! Righe `chiave = valore`; le chiavi sconosciute e i valori non validi si ignorano (vale il predefinito).
 
 use std::path::{Path, PathBuf};
 

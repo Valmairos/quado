@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! F-SC-1: l'elenco dei volumi coincide con `Get-Volume` nella stessa sessione (06 §1.3).
+//! L'elenco dei volumi coincide con `Get-Volume` nella stessa sessione.
 
 use quado_scan_win::volumes::{self, DriveKind};
 

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Incorpora ogni file `lingue/<tag>.ftl` (05 D13): aggiungere una lingua è aggiungere un file. A ogni
-//! lingua si aggiungono i testi delle regole, `../quado-kb/regole/<tag>.ftl`, se ci sono (M3).
+//! Incorpora ogni file `lingue/<tag>.ftl`: aggiungere una lingua è aggiungere un file. A ogni lingua si
+//! aggiungono i testi delle regole, `../quado-kb/regole/<tag>.ftl`, se ci sono.
 
 use std::fmt::Write as _;
 use std::path::Path;

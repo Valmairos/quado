@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Modalità helper dell'eseguibile: `quado --helper <pipe> <pid del genitore>` (05 D3).
+//! Modalità helper dell'eseguibile: `quado --helper <pipe> <pid del genitore>`.
 //!
 //! Ordine: rifiuto se l'eseguibile sta in `Downloads` o in una cartella temporanea; controllo che il pid
 //! passato sia davvero il genitore; connessione alla pipe ([`super::pipe::Client`]); lettura e
@@ -42,7 +42,7 @@ pub mod exit {
     pub const OK: i32 = 0;
     /// Argomenti mancanti o non validi.
     pub const ARGS: i32 = 2;
-    /// Eseguibile in `Downloads` o in una cartella temporanea (05 D3, RS11).
+    /// Eseguibile in `Downloads` o in una cartella temporanea.
     pub const LOCATION: i32 = 3;
     /// Il pid passato non è il genitore, o il server della pipe non è quel processo.
     pub const PEER: i32 = 4;
@@ -62,7 +62,7 @@ pub struct FolderScan {
 pub trait Collector {
     /// Abilita `SeBackupPrivilege` nel token del processo.
     fn enable_backup_privilege(&self) -> Result<(), u32>;
-    /// Elenca `path` con lo scanner (05 D4), radice compresa.
+    /// Elenca `path` con lo scanner, radice compresa.
     fn folder(&self, path: &str) -> Result<FolderScan, RootError>;
     /// Elenca `path` e restituisce solo i totali: i nomi non escono da questa funzione.
     fn totals(&self, path: &str) -> Result<Totals, RootError>;
@@ -286,9 +286,10 @@ fn module_path() -> Option<String> {
     }
 }
 
-/// Cartelle da cui l'helper non parte (05 D3, RS11): `Downloads` dell'utente, la cartella temporanea
-/// (`GetTempPathW`), `%LOCALAPPDATA%\Temp`, `%SystemRoot%\Temp` e `%SystemRoot%\SystemTemp`, ciascuna
-/// anche come percorso finale (junction e reindirizzamenti risolti, nomi brevi espansi).
+/// Cartelle da cui l'helper non parte, perché lì una DLL esca può finire accanto all'eseguibile:
+/// `Downloads` dell'utente, la cartella temporanea (`GetTempPathW`), `%LOCALAPPDATA%\Temp`,
+/// `%SystemRoot%\Temp` e `%SystemRoot%\SystemTemp`, ciascuna anche come percorso finale (junction e
+/// reindirizzamenti risolti, nomi brevi espansi).
 ///
 /// `GetTempPath2W` non si usa: per un processo che non è SYSTEM dà lo stesso risultato e su Windows 10
 /// senza aggiornamenti recenti manca, e la sua importazione impedirebbe l'avvio dell'eseguibile.

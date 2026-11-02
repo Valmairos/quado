@@ -1,4 +1,4 @@
-# Archivio dei driver (07 §7, proposto): solo spiegazione, nessuna procedura.
+# Archivio dei driver: solo spiegazione, nessuna procedura.
 id = "driverstore"
 priorita = 2
 riconoscitore = "percorso"

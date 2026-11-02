@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Vista Programmi (03 F-AP, 06 §4): elenco, spazio con un solo proprietario per byte, dichiarato contro
-//! misurato, uso noto, disinstallazione ufficiale, avviso "tuoi file", possibili residui. Fixture con la forma
-//! di un PC vero (`fixture/*.albero`, `registro.reg`, `msix.txt`, Steam, Epic, CapCut) e una costruita a mano
+//! Vista Programmi: elenco, spazio con un solo proprietario per byte, dichiarato contro misurato, uso
+//! noto, disinstallazione ufficiale, avviso "tuoi file", possibili residui. Fixture con la forma di un PC
+//! vero (`fixture/*.albero`, `registro.reg`, `msix.txt`, Steam, Epic, CapCut) e una costruita a mano
 //! (`fixture/programmi/`), più alberi e prove casuali.
 //!
 //! Gli helper delle fixture sono copiati da `tests/common/mod.rs` (che non si modifica) con un'aggiunta:
@@ -281,7 +281,7 @@ fn check_one_owner_per_byte(t: &Tree, cls: &Classification, p: &Programs) {
     assert!(p.measured_total() <= t.alloc(Tree::ROOT));
 }
 
-/// Proprietà dei record della vista (03 §6.1, F-AP-4, F-AP-6).
+/// Proprietà dei record della vista, compresi uso noto e possibili residui.
 fn check_records(t: &Tree, cls: &Classification, p: &Programs) {
     for x in &p.items {
         let r = &x.record;
@@ -299,7 +299,7 @@ fn check_records(t: &Tree, cls: &Classification, p: &Programs) {
         if matches!(x.location, Location::NotDeclared | Location::Implausible { .. }) && x.data.iter().all(|d| d.inside) {
             assert_eq!(x.space, Space::NotAttributed, "{}", x.name);
         }
-        // Il dichiarato non entra nel misurato (F-AP-3): è un fatto da fonte a parte.
+        // Il dichiarato non entra nel misurato: è un fatto da fonte a parte.
         if let Some(d) = &x.declared {
             assert!(r.identity.0.iter().any(|f| f.key == "fatto-dimensione-dichiarata" && f.provenance == Provenance::FromSource && f.source == d.source));
         }
@@ -387,7 +387,7 @@ fn check_matches_classification(t: &Tree, cls: &Classification, p: &Programs) ->
 }
 
 // ---------------------------------------------------------------------------------------------
-// F-AP-1: elenco
+// Elenco
 
 #[test]
 fn list_comes_from_every_source() {
@@ -459,7 +459,7 @@ fn extractor_failures_arrive_as_codes_without_data() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// F-AP-2: posizione e spazio
+// Posizione e spazio
 
 #[test]
 fn without_a_path_proof_location_is_not_declared_and_zero_bytes() {
@@ -494,7 +494,7 @@ fn location_provenance_follows_the_engine() {
     let e = item(&v.p, "Esempio");
     assert!(matches!(&e.location, Location::Folder { evidence: PathEvidence::InstallLocation, provenance: Provenance::FromSource, node: Some(_), .. }));
     assert_eq!(e.record.reliability, Criterion::OfficialWithStructure);
-    // HKCU: dedotto media (RS22).
+    // HKCU, scrivibile da qualunque programma dell'utente: dedotto media.
     let u = item(&v.p, "Utente App");
     assert!(matches!(&u.location, Location::Folder { provenance: Provenance::Deduced(Criterion::OneSource), node: Some(_), .. }));
     assert_eq!(u.record.reliability, Criterion::OneSource);
@@ -518,7 +518,7 @@ fn location_provenance_follows_the_engine() {
 
 #[test]
 fn shared_folders_are_counted_once() {
-    // 06 §4: Unreal Engine, Quixel Bridge e il plugin Fab dichiarano la stessa InstallLocation.
+    // Unreal Engine, Quixel Bridge e il plugin Fab dichiarano la stessa InstallLocation.
     let kb = kb();
     let v = view(&kb, &["giochi.albero"], &pc_evidence());
     let ue = node(&v.tree, r"C:\Program Files\Epic Games\UE_5.5");
@@ -559,8 +559,8 @@ fn nested_programs_and_your_files_are_not_counted() {
     let nm = node(t, r"C:\Program Files\Esempio\resources\node_modules");
     let e = item(&v.p, "Esempio");
     // Prefisso più lungo: il componente nascosto ha la sua cartella. La node_modules con il lockfile accanto
-    // sta nella cartella di un programma (un'app Electron): fa parte del programma, non è un tuo progetto
-    // (valutazione dei consigli, 01/11/2026). I tuoi file dentro un programma si provano con CapCut.
+    // sta nella cartella di un programma (un'app Electron): fa parte del programma, non è un tuo progetto.
+    // I tuoi file dentro un programma si provano con CapCut.
     assert_eq!(e.space, Space::Measured(t.alloc(esempio) - t.alloc(comp)));
     assert_eq!(item(&v.p, "Esempio Componente").space, Space::Measured(t.alloc(comp)));
     assert!(e.your_files.is_empty());
@@ -611,8 +611,8 @@ fn rule_data_outside_the_folder_needs_the_exact_name() {
 
 #[test]
 fn capcut_warns_about_your_files() {
-    // F-AP-5 e 06 §4: con la fixture di CapCut compare l'avviso sui tuoi file. La cartella del programma è
-    // `Apps` (indizio del programma di disinstallazione); la cache di CapCut, gestita da CapCut, sta in
+    // Con la fixture di CapCut compare l'avviso sui tuoi file. La cartella del programma è `Apps`
+    // (indizio del programma di disinstallazione); la cache di CapCut, gestita da CapCut, sta in
     // `User Data`: la cartella comune `Local\CapCut` è l'ambito in cui stanno anche Projects e Videos.
     let kb = kb();
     let v = view(&kb, &["capcut.albero"], &pc_evidence());
@@ -658,7 +658,7 @@ fn measured_is_coherent_with_the_classification_on_every_fixture() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// F-AP-3: dichiarato contro misurato
+// Dichiarato contro misurato
 
 #[test]
 fn declared_sizes_keep_their_source_and_stay_out_of_the_measure() {
@@ -678,7 +678,7 @@ fn declared_sizes_keep_their_source_and_stay_out_of_the_measure() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// F-AP-4: uso noto
+// Uso noto
 
 #[test]
 fn steam_last_played_from_manifest_and_localconfig_agree() {
@@ -771,7 +771,7 @@ fn install_date_is_validated() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// F-AP-5: disinstallazione
+// Disinstallazione
 
 #[test]
 fn uninstall_methods_are_the_official_ones() {
@@ -812,7 +812,7 @@ fn uninstall_methods_are_the_official_ones() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// F-AP-6: possibili residui
+// Possibili residui
 
 #[test]
 fn residues_are_unclaimed_folders_with_their_date() {
@@ -940,7 +940,7 @@ fn residues_compare_the_words_of_one_installed_name() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Alberi e prove casuali (06 §4, come tests/proprieta.rs)
+// Alberi e prove casuali (come tests/proprieta.rs)
 
 const NAMES: [&str; 12] = ["Alfa", "Beta Tools", "Gamma", "Delta Studio", "Epsilon", "Zeta", "Eta Labs", "Theta", "Iota", "Kappa", "Lambda", "Mu"];
 
@@ -1158,7 +1158,7 @@ fn every_key_of_the_view_exists_in_both_languages() {
     }
 }
 
-/// Parole vietate (F-AP-4, 04 §6.8), senza distinzione di maiuscole.
+/// Parole vietate sull'uso dei programmi (docs/testi.md §3), senza distinzione di maiuscole.
 const FORBIDDEN: [&str; 8] = ["inutilizzato", "mai usato", "non usato da", "sicuro da disinstallare", "unused", "never used", "not used", "safe to uninstall"];
 
 
@@ -1338,7 +1338,7 @@ fn conteggi_su_questo_pc() {
 }
 
 /// Le voci "Steam App N" del registro e i manifest di Steam sono lo stesso gioco: una riga sola, quella
-/// di Steam, con il fatto della voce di disinstallazione (immagini di M4: giochi elencati due volte).
+/// di Steam, con il fatto della voce di disinstallazione: lo stesso gioco non compare in due righe.
 #[test]
 fn steam_uninstall_entries_join_their_game() {
     for v in all_views() {

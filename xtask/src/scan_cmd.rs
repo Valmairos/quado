@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! `cargo xtask scan <radice>`: una scansione con le misure di 06 §9.
+//! `cargo xtask scan <radice>`: una scansione con le misure delle prestazioni.
 
 use quado_model::{Flags, Tree};
 use quado_scan_win::{Options, Progress, scan, win};
@@ -42,7 +42,7 @@ pub fn run(args: &[String]) -> Result<(), String> {
     println!("non seguiti       {}", s.not_followed);
     println!("problemi          {} negate, {} altri, annullata: {}", s.denied, s.other_problems, r.cancelled);
     if let Some(b) = r.balance {
-        println!("--- bilancio (03 §6.4)");
+        println!("--- bilancio");
         println!("capacità          {}", gib(b.capacity));
         println!("usato inizio/fine {} / {} (deriva {})", gib(b.used_start), gib(b.used), gib_i(b.drift));
         println!("allocato unico A  {}", gib(b.allocated));

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Procedure di Windows e lanciatore (F-AC-1, 05 D7, 06 §5.7): URI di ogni `Launch`, riconoscimento
+//! Procedure di Windows e lanciatore: URI di ogni `Launch`, riconoscimento
 //! degli URI delle regole solo per costanti note, rifiuti di "Svuota il Cestino".
 //!
 //! `empty_recycle_bin` non si chiama mai con una radice valida: aprirebbe il dialogo di Windows. Qui si
@@ -43,7 +43,7 @@ fn every_launch_has_its_documented_uri() {
         // Nessun carattere che la shell possa leggere come parametro o comando.
         assert!(!uri.contains([' ', '"', '\'', '&', '|', '<', '>', '^', '%', '\n']), "{uri}");
     }
-    // File temporanei: un URI di Impostazioni (05 D7), verificato su questo PC a mano (07 §1.6).
+    // File temporanei: un URI di Impostazioni, verificato su questo PC a mano.
     assert!(TEMP_FILES_URI.starts_with("ms-settings:"));
 }
 
@@ -167,19 +167,19 @@ fn empty_recycle_bin_rejects_anything_but_a_drive_root_without_calling_windows()
 }
 
 #[test]
-#[ignore = "apre Esplora file sul Cestino di questo PC: controllo manuale con data (06 §5.7)"]
+#[ignore = "apre Esplora file sul Cestino di questo PC: controllo manuale con data"]
 fn opens_the_recycle_bin() {
     open(&Launch::RecycleBin).expect("Apri il Cestino");
 }
 
 #[test]
-#[ignore = "apre Impostazioni › Archiviazione su questo PC: controllo manuale con data (06 §5.7)"]
+#[ignore = "apre Impostazioni › Archiviazione su questo PC: controllo manuale con data"]
 fn opens_storage_settings() {
     open(&Launch::StorageSense).expect("Archiviazione");
 }
 
 #[test]
-#[ignore = "apre la pagina dei file temporanei su questo PC: controllo manuale con data (07 §1.6, criterio 5)"]
+#[ignore = "apre la pagina dei file temporanei su questo PC: controllo manuale con data"]
 fn opens_temporary_files() {
     open(&Launch::TempFiles).expect("File temporanei");
 }

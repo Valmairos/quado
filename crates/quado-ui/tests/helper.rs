@@ -1,17 +1,16 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! "Ripeti come amministratore" (M6, agente U), provato con `egui_kittest` e l'helper finto
-//! (`Elevator::fake`): niente prompt UAC, niente processi, niente letture del disco.
+//! "Ripeti come amministratore", provato con `egui_kittest` e l'helper finto (`Elevator::fake`): niente
+//! prompt UAC, niente processi, niente letture del disco.
 //!
-//! - F-SC-3, 05 D3: il pulsante compare solo dopo la scansione di un volume con cartelle negate; la
-//!   richiesta contiene solo le cartelle negate più alte, con percorsi convertibili senza perdita.
-//! - F-SC-3, F-OV-3, 03 §6.4: un giro completo (`Folder`, `Totals`, `Bin` orfano e non, `Shadow`, `Done`)
-//!   aggiorna albero, card e bilancio: il non attribuito scende esattamente dei byte letti.
+//! - Il pulsante compare solo dopo la scansione di un volume con cartelle negate; la richiesta contiene solo
+//!   le cartelle negate più alte, con percorsi convertibili senza perdita.
+//! - Un giro completo (`Folder`, `Totals`, `Bin` orfano e non, `Shadow`, `Done`) aggiorna albero, card e
+//!   bilancio: il non attribuito scende esattamente dei byte letti.
 //! - No alla richiesta di Windows, annullamento, errore della pipe: niente cambia. Una cartella con
 //!   `Failed` resta negata.
 //! - Risposte arrivate dopo una modifica del modello: i nodi si ritrovano dal percorso.
-//! - F-SC-3: dopo `Totals` nessun nome di file o di sottocartella del profilo altrui nell'albero AccessKit.
-//! - F-OV-3, 04 §6.8, 06 §7: nessuna parola vietata e nessuna frase causale; con la pseudo-lingua ogni
-//!   testo è tradotto.
+//! - Dopo `Totals` nessun nome di file o di sottocartella del profilo altrui nell'albero AccessKit.
+//! - Nessuna parola vietata e nessuna frase causale; con la pseudo-lingua ogni testo è tradotto.
 
 use std::collections::HashSet;
 use std::path::PathBuf;
@@ -407,7 +406,7 @@ fn full_round_updates_tree_card_and_balance() {
     assert!(!has(&ta(h, "conti-cestini-altri", &[("n", 2u64.into()), ("testo", count(h, 2).into())])) && !has(&ta(h, "conti-profili-altri", &[("n", 1u64.into()), ("testo", count(h, 1).into())])));
     assert!(has(&ta(h, "helper-fine", &[("n", 5u64.into()), ("lette", count(h, 5).into()), ("testo", count(h, 5).into())])), "riepilogo");
     assert_eq!(buttons(h, &t(h, "helper-ripeti")), 0, "nessuna cartella negata da chiedere");
-    // Hard link: nota, non riga da sottrarre (06 §1.4).
+    // Hard link: nota, non riga da sottrarre.
     let links = &d.links;
     assert!(has(&ta(h, "conti-hard-link", &[("n", links.extra_names.into()), ("testo", count(h, links.extra_names).into()), ("byte", size(h, links.extra_alloc).into())])));
 }
@@ -518,7 +517,7 @@ fn pipe_errors_change_nothing() {
 
 #[test]
 fn an_executable_in_downloads_says_where_to_move_it() {
-    // 05 D3: da Download o da una cartella temporanea l'helper non parte. Il controllo prima della richiesta
+    // Da Download o da una cartella temporanea l'helper non parte. Il controllo prima della richiesta
     // di Windows (`Location`) e l'uscita dell'helper con il codice 3 danno lo stesso testo: perché e cosa
     // fare, senza il codice e senza «puoi riprovare».
     for lang in ["it", "en"] {
@@ -776,7 +775,7 @@ fn card_texts_have_no_forbidden_words_and_are_translated() {
     }
 }
 
-/// F-OV-3: nessuna frase causale nei testi della card dei conti e di "Ripeti come amministratore"
+/// Nessuna frase causale nei testi della card dei conti e di "Ripeti come amministratore"
 /// (tutte le varianti, nelle due lingue), salvo il titolo della card.
 #[test]
 fn card_catalog_has_no_causal_sentence() {

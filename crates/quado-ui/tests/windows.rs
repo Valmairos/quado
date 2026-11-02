@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Prove dell'interfaccia contro Windows vero (06 §7):
-//! - F-IN-6: "Rileggi dal disco" su un file aperto in scrittura che cresce, senza cambiare la data
-//!   di ultimo accesso;
-//! - F-GE-3: dimensioni scritte come Esplora file (`StrFormatByteSizeEx`) nel formato di questo PC;
-//! - F-IN-5: percorsi oltre 260 caratteri, con il nome breve come ripiego per la shell.
+//! Prove dell'interfaccia contro Windows vero:
+//! - "Rileggi dal disco" su un file aperto in scrittura che cresce, senza cambiare la data di ultimo accesso;
+//! - dimensioni scritte come Esplora file (`StrFormatByteSizeEx`) nel formato di questo PC;
+//! - percorsi oltre 260 caratteri, con il nome breve come ripiego per la shell.
 
 use std::io::Write as _;
 use std::os::windows::fs::OpenOptionsExt;
@@ -118,7 +117,7 @@ fn long_paths_have_a_shell_candidate() {
     }
 }
 
-/// Controllo manuale con data (F-IN-5): apre davvero Esplora file e Proprietà su un percorso oltre i
+/// Controllo manuale con data: apre davvero Esplora file e Proprietà su un percorso oltre i
 /// 260 caratteri, poi chiude la finestra di Esplora. `cargo test -p quado-ui --test windows -- --ignored`.
 #[test]
 #[ignore = "apre finestre di Windows: controllo manuale"]

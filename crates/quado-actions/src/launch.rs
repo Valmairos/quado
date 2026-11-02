@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Disinstallazione tramite interfaccia ufficiale (F-AP-5, 05 D7) e procedure di Windows (F-AC-1): il
-//! lanciatore accetta solo valori tipizzati (URI di Impostazioni, `steam://uninstall/` con un numero, PFN
-//! validato, apertura del Cestino), mai stringhe lette dal registro. `UninstallString` e
-//! `QuietUninstallString` non si eseguono mai. Gli URI scritti nelle regole si riconoscono con
-//! [`Launch::for_rule_uri`], per confronto esatto con le sole costanti note.
+//! Disinstallazione tramite interfaccia ufficiale e procedure di Windows: il lanciatore accetta solo valori
+//! tipizzati (URI di Impostazioni, `steam://uninstall/` con un numero, PFN validato, apertura del Cestino),
+//! mai stringhe lette dal registro. `UninstallString` e `QuietUninstallString` non si eseguono mai.
+//! Gli URI scritti nelle regole si riconoscono con [`Launch::for_rule_uri`], per confronto esatto con le
+//! sole costanti note.
 //!
 //! Quado non crea processi: [`open`] chiede alla shell di aprire un URI con il verbo "open", senza
-//! parametri e senza le finestre di errore della shell (06 §11). Il nome del programma negli appunti lo
+//! parametri e senza le finestre di errore della shell. Il nome del programma negli appunti lo
 //! copia l'interfaccia, come "Copia percorso".
 //!
 //! Nessuna API pubblica accetta una stringa arbitraria da aprire: `Launch` non si costruisce da una
@@ -113,7 +113,7 @@ impl SteamAppId {
     }
 }
 
-/// Cosa apre il lanciatore: interfacce di disinstallazione (F-AP-5) e procedure di Windows (F-AC-1).
+/// Cosa apre il lanciatore: interfacce di disinstallazione e procedure di Windows.
 /// Epic non ha un URI: la UI rimanda alla libreria del launcher.
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum Launch {
@@ -124,7 +124,7 @@ pub enum Launch {
     /// Disinstallazione di un gioco da Steam (`steam://uninstall/<appid>`), che chiede conferma.
     SteamUninstall(SteamAppId),
     /// "Apri il Cestino" (`shell:RecycleBinFolder`): la cartella del Cestino in Esplora file, dove
-    /// l'utente elimina solo gli elementi che sceglie (05 D7).
+    /// l'utente elimina solo gli elementi che sceglie.
     RecycleBin,
     /// Impostazioni › Sistema › Archiviazione (`ms-settings:storagesense`, pagina "Storage" della tabella
     /// di Microsoft citata in [`TEMP_FILES_URI`]).
@@ -133,7 +133,7 @@ pub enum Launch {
     TempFiles,
 }
 
-/// URI della procedura File temporanei (05 D7: "URI diretto da verificare in M5").
+/// URI della procedura File temporanei.
 ///
 /// Fonte: Microsoft Learn, "Launch Windows Settings" (sezione "ms-settings: URI scheme reference",
 /// System), `https://learn.microsoft.com/en-us/windows/apps/develop/launch/launch-settings`, pagina con
@@ -147,9 +147,9 @@ pub enum Launch {
 /// Si apre quindi la pagina Archiviazione, dove File temporanei è una categoria a un clic, con l'elenco
 /// delle voci e le caselle da scegliere. `ms-settings:storagepolicies` (Sensore memoria) non si usa: la sua
 /// azione "Pulisci ora" elimina secondo le impostazioni di Sensore memoria (file temporanei, e Cestino e
-/// Download oltre un'età) senza elencare cosa, cioè uno "svuota tutto" implicito (F-AC-1); dedotto dalla
-/// pagina di Windows 10, da confermare con la verifica. La verifica su questo PC è di 07 §1.6, criterio
-/// 5: se trova un URI diretto, cambia solo questa costante.
+/// Download oltre un'età) senza elencare cosa, cioè uno "svuota tutto" implicito; dedotto dalla
+/// pagina di Windows 10, da confermare con la verifica. La verifica è un controllo manuale su questo PC
+/// (`tests/procedure.rs`): se trova un URI diretto, cambia solo questa costante.
 pub const TEMP_FILES_URI: &str = "ms-settings:storagesense";
 
 /// URI costanti che una regola può scrivere nel suo metodo, con il `Launch` che li apre. Se due

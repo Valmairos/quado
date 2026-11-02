@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Elenco delle regole (05 D6, 07 §5.1), variante A: un gruppo di righe come Impostazioni, una per regola con
-//! nome, identificativo, data di verifica, intervallo di versioni e scadenza. Una riga si apre (la freccia, un
+//! Elenco delle regole, variante A: un gruppo di righe come Impostazioni, una per regola con nome,
+//! identificativo, data di verifica, intervallo di versioni e scadenza. Una riga si apre (la freccia, un
 //! clic o Invio) e mostra le fonti con URL ed estratto, «Copia indirizzo» e il caso di prova. Si apre dal
 //! banner "regole da riverificare" e da "Apri la regola" nell'ispettore, che la seleziona e la porta in vista.
 
@@ -22,7 +22,7 @@ pub struct RulesState {
     pub scroll_to: bool,
 }
 
-/// Testo della scadenza di una regola (07 §5.1), vuoto se è fresca.
+/// Testo della scadenza di una regola, vuoto se è fresca.
 pub fn expiry_text(app: &App, rule: &Rule) -> Option<String> {
     let (l, f) = (&app.lingue, &app.fmt);
     let verified = f.day(rule.verified);

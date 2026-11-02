@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! 06 §11: durante la scansione nessun handle di file ha accesso in scrittura (F-SC-2).
+//! Durante la scansione nessun handle di file ha accesso in scrittura.
 //! Un thread campiona di continuo gli handle del processo e il loro accesso concesso.
 
 use std::os::windows::io::AsRawHandle;

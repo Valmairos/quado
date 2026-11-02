@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Avvio dell'helper elevato (05 D3, 03 F-SC-3): questo stesso eseguibile con `--helper <pipe> <pid>` e
-//! il verbo `runas` di `ShellExecuteExW`, solo su richiesta dell'utente ("Ripeti come amministratore").
-//! Windows mostra il prompt UAC (per un eseguibile senza firma digitale l'autore risulta sconosciuto,
-//! 05 D9): se l'utente risponde No, l'esito è `Err(1223)` (`ERROR_CANCELLED`).
+//! Avvio dell'helper elevato: questo stesso eseguibile con `--helper <pipe> <pid>` e il verbo `runas` di
+//! `ShellExecuteExW`, solo su richiesta dell'utente ("Ripeti come amministratore"). Windows mostra il
+//! prompt UAC (per un eseguibile senza firma digitale l'autore risulta sconosciuto): se l'utente risponde
+//! No, l'esito è `Err(1223)` (`ERROR_CANCELLED`).
 //!
-//! È l'unico processo che Quado crea (F-AP-5). Il prompt è sincrono: chiamare da un thread di lavoro.
+//! È l'unico processo che Quado crea. Il prompt è sincrono: chiamare da un thread di lavoro.
 
 use std::ptr::{null, null_mut};
 use std::time::Duration;

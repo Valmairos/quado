@@ -1,6 +1,6 @@
 [package]
 name = "quado"
-description = "Quado: eseguibile (interfaccia da M2, helper da M6)"
+description = "Quado: eseguibile, con l'interfaccia e la modalità helper"
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true

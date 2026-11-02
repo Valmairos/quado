@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Simulazione (03 F-AC-2, §6.3; 05 D7; 06 §5.2, §5.4) con letture simulate (`fake`): stima secondo la
-//! tabella di 03 §6.3, campione di Restart Manager, cartelle di sincronizzazione, Sensore memoria,
+//! Simulazione con letture simulate (`fake`): stima (allocate, residenti nella MFT, file con più nomi,
+//! cartelle negate), campione di Restart Manager, cartelle di sincronizzazione, Sensore memoria,
 //! annullamento, elementi fissi. Nessun file vero.
 
 use std::sync::atomic::{AtomicBool, AtomicU64, Ordering};
@@ -34,7 +34,7 @@ fn exact(sim: &Simulazione, selected: &[bool]) -> u64 {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Stima (03 §6.3)
+// Stima
 
 #[test]
 fn ordinary_files_give_an_exact_estimate_of_allocated_bytes() {
@@ -166,7 +166,7 @@ fn placeholders_count_local_bytes_and_resident_files_count_zero() {
 
 #[test]
 fn resident_files_count_zero_whatever_windows_reports() {
-    // 03 §6.3: la MFT non si restringe. Windows riporta 16 byte allocati per un file da 10.
+    // La MFT non si restringe. Windows riporta 16 byte allocati per un file da 10.
     let p = FakeProbe::new().volume("R:\\").resident("R:\\a\\piccolo.txt", 10).file("R:\\a\\grande.bin", 10_000, 12_288).resident("R:\\b.ini", 200);
     assert_eq!(p.attributes("R:\\a\\piccolo.txt").expect("piccolo").alloc, 16);
     let sim = run(&p, &["R:\\a", "R:\\b.ini"]);
@@ -207,7 +207,7 @@ fn links_count_by_themselves_and_are_not_crossed() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Restart Manager (F-AC-8, 05 D7)
+// Restart Manager
 
 #[test]
 fn large_folders_register_every_executable_and_the_1000_most_recent_files() {

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! `cargo xtask installa [--dest DIR] [--menu DIR] [--senza-build] [--rimuovi-rilievo [--vecchia DIR]]`
-//! (07 §6, 05 D9): build con il profilo `dist` (release con LTO "fat" e una sola unità di codegen,
+//! `cargo xtask installa [--dest DIR] [--menu DIR] [--senza-build] [--rimuovi-rilievo [--vecchia DIR]]`:
+//! build con il profilo `dist` (release con LTO "fat" e una sola unità di codegen,
 //! `target\dist\quado.exe`, con i flag di `cargo xtask rustflags-dist`), controllo delle importazioni e
 //! dei percorsi incorporati (se uno fallisce, niente si installa), copia di
 //! `quado.exe` in `%LOCALAPPDATA%\Programs\Quado` e collegamento `Quado.lnk` nel menu Start dell'utente
@@ -81,7 +81,7 @@ fn env_dir(var: &str) -> Result<PathBuf, String> {
     std::env::var_os(var).map(PathBuf::from).ok_or_else(|| format!("%{var}% non definita"))
 }
 
-/// Cartella dell'eseguibile installato (07 §6).
+/// Cartella dell'eseguibile installato.
 pub fn default_dest() -> Result<PathBuf, String> {
     Ok(env_dir("LOCALAPPDATA")?.join(r"Programs\Quado"))
 }
@@ -96,7 +96,7 @@ pub fn default_menu() -> Result<PathBuf, String> {
     Ok(env_dir("APPDATA")?.join(r"Microsoft\Windows\Start Menu\Programs"))
 }
 
-/// Cartelle da cui l'helper rifiuta di partire (05 D3): Download e cartelle temporanee.
+/// Cartelle da cui l'helper rifiuta di partire: Download e cartelle temporanee.
 fn helper_refuses(dir: &Path) -> bool {
     let d = dir.to_string_lossy().to_lowercase();
     let temp = std::env::temp_dir().to_string_lossy().to_lowercase();
@@ -167,13 +167,13 @@ pub fn run(args: &[String]) -> Result<(), String> {
     }
     println!("collegamento: {} (riletto: destinazione {}, cartella di lavoro {})", lnk.display(), got.target.display(), got.workdir.display());
     if helper_refuses(&dest_dir) {
-        println!("attenzione: da questa cartella l'helper elevato non parte (05 D3, Download o cartella temporanea)");
+        println!("attenzione: da questa cartella l'helper elevato non parte (Download o cartella temporanea)");
     }
-    println!("\nQuado installato. Per toglierlo (07 §6):");
+    println!("\nQuado installato. Per toglierlo:");
     println!("1. in Quado, Impostazioni › Dati e privacy: cancella i dati (%APPDATA%\\Quado);");
     println!("2. cancella la cartella {};", dest_dir.display());
     println!("3. cancella il collegamento {}.", lnk.display());
-    println!("Aggiornare: ricompila dal sorgente e ripeti `cargo xtask installa` (07 §6).");
+    println!("Aggiornare: ricompila dal sorgente e ripeti `cargo xtask installa`.");
 
     // La versione precedente, solo dopo che la nuova è installata: chi la toglie ha sempre un'app che parte.
     let old_dir = match o.old {

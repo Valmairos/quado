@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Letture su richiesta degli installatori (F-DL-2): risorsa di versione PE (`GetFileVersionInfoExW`) e
+//! Letture su richiesta degli installatori: risorsa di versione PE (`GetFileVersionInfoExW`) e
 //! tabella Property degli MSI (`MsiOpenDatabaseW` in sola lettura, mai `MsiOpenPackage`).
 //!
-//! Regole comuni (05 D6, 06 §11):
+//! Regole comuni:
 //! - prima del contenuto si leggono solo gli attributi: i segnaposto cloud non si aprono, perché la
 //!   lettura li scaricherebbe (`ExtractError::CloudPlaceholder`);
 //! - nessun handle in scrittura, nessun processo creato, nessun codice caricato: `GetFileVersionInfoExW`
@@ -10,7 +10,7 @@
 //!   installazione (quindi senza interfaccia dell'installer);
 //! - percorsi assoluti con `\\?\`, validi anche oltre 260 caratteri; il percorso deve essere già
 //!   normalizzato (niente `.` o `..`), come quelli della scansione;
-//! - ogni lettura aggiorna la data di ultimo accesso del file (06 §3.6): la UI lo dice prima di chiedere.
+//! - ogni lettura aggiorna la data di ultimo accesso del file: la UI lo dice prima di chiedere.
 //!
 //! Le funzioni sono sincrone e leggono un file: lettura in background, annullamento tra un file e
 //! l'altro e cache (`installers::InstallerCache`) sono di chi chiama.
@@ -566,7 +566,7 @@ mod tests {
         assert_eq!(info.product_code.as_deref(), Some(CODE));
         assert_eq!(info.upgrade_code.as_deref(), Some(UPGRADE));
         assert_eq!(info.file_version, None);
-        // Contenuto e data di modifica invariati (06 §3.5), nessun handle rimasto aperto.
+        // Contenuto e data di modifica invariati, nessun handle rimasto aperto.
         assert_eq!(std::fs::read(&path).expect("contenuto"), before);
         assert_eq!(modified(&path), mtime);
         no_open_handles();

@@ -1,20 +1,18 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! `cargo xtask importazioni [EXE]` (06 §10 riga "Binario", 06 §11, 07 §6): tabella delle importazioni
-//! dell'eseguibile (predefinito `target\release\quado.exe`), normali e ritardate, letta con un parser
-//! scritto qui e controllato sui confini di ogni struttura (un file troncato o malformato dà un errore,
-//! mai un accesso fuori dal file).
+//! `cargo xtask importazioni [EXE]`: tabella delle importazioni dell'eseguibile (predefinito
+//! `target\release\quado.exe`), normali e ritardate, letta con un parser scritto qui e controllato sui
+//! confini di ogni struttura (un file troncato o malformato dà un errore, mai un accesso fuori dal file).
 //!
 //! Vietati:
-//! - qualunque funzione di `winhttp.dll`, `wininet.dll`, `urlmon.dll` (e, oltre a 06 §10, `dnsapi.dll` e
+//! - qualunque funzione di `winhttp.dll`, `wininet.dll`, `urlmon.dll` (e anche `dnsapi.dll` e
 //!   `websocket.dll`, che risolvono nomi o aprono connessioni);
 //! - da `ws2_32.dll`: `connect`, `WSAConnect`, `WSAConnectByName*`, `getaddrinfo`, `GetAddrInfo*`,
 //!   `gethostbyname`; un ordinale di `ws2_32` che non si risolve con la tabella delle esportazioni di
 //!   System32 conta come vietato;
-//! - `MsiOpenPackage*` (MSI in sola lettura, 06 §11);
-//! - `CreateProcess*` e `WinExec`: Quado non crea processi, l'helper parte con `ShellExecuteExW`
-//!   (F-AP-5, 05 D3).
+//! - `MsiOpenPackage*`, che apre l'MSI con lo stato della macchina: Quado legge gli MSI in sola lettura;
+//! - `CreateProcess*` e `WinExec`: Quado non crea processi, l'helper parte con `ShellExecuteExW`.
 //!
-//! Il comando controlla anche `DependentLoadFlags` = 0x800 nel load config (RS11, `dll_cmd`). Stampa una
+//! Il comando controlla anche `DependentLoadFlags` = 0x800 nel load config (come `dll_cmd`). Stampa una
 //! tabella per DLL, le funzioni di `ws2_32` importate e l'esito; esce con un errore se c'è una violazione.
 //!
 //! Limite: la tabella non vede le funzioni caricate a mano con `LoadLibrary` e `GetProcAddress` (la
@@ -333,8 +331,8 @@ pub fn verdict(i: &Import) -> Option<&'static str> {
         };
     }
     match name {
-        Some(n) if n.starts_with("MsiOpenPackage") => Some("MSI aperto con lo stato della macchina (06 §11)"),
-        Some(n) if n.starts_with("CreateProcess") || n == "WinExec" => Some("creazione di processi (F-AP-5)"),
+        Some(n) if n.starts_with("MsiOpenPackage") => Some("MSI aperto con lo stato della macchina"),
+        Some(n) if n.starts_with("CreateProcess") || n == "WinExec" => Some("creazione di processi"),
         _ => None,
     }
 }
@@ -568,7 +566,7 @@ mod tests {
         assert_eq!(
             bad,
             [
-                ("CreateProcessW".to_owned(), "creazione di processi (F-AP-5)"),
+                ("CreateProcessW".to_owned(), "creazione di processi"),
                 ("#116".to_owned(), "ordinale di ws2_32 non risolto"),
                 ("connect".to_owned(), "connessione o risoluzione dei nomi"),
                 ("URLDownloadToFileW".to_owned(), "libreria di rete"),
@@ -619,7 +617,7 @@ mod tests {
         let cmd = system32("cmd.exe");
         let imports = read_imports(&cmd).unwrap();
         assert!(imports.iter().any(|i| i.name() == Some("CreateProcessW")), "{:?}", names(&imports));
-        assert!(imports.iter().any(|i| verdict(i) == Some("creazione di processi (F-AP-5)")));
+        assert!(imports.iter().any(|i| verdict(i) == Some("creazione di processi")));
         // Le esportazioni di ws2_32: gli ordinali storici di connect (4) e WSACleanup (116).
         let ws2 = std::fs::read(system32("ws2_32.dll")).unwrap();
         let exports = Pe::parse(&ws2).unwrap().named_exports().unwrap();

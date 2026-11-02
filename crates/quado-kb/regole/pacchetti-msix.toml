@@ -1,4 +1,4 @@
-# Dati dei pacchetti MSIX (05 D6): rimossi con la disinstallazione dell'app.
+# Dati dei pacchetti MSIX: rimossi con la disinstallazione dell'app.
 id = "pacchetti-msix"
 priorita = 2
 riconoscitore = "msix"

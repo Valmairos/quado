@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Attributi completi di un file o di una cartella senza aprirne il contenuto (03 §6.3, 05 D7 controllo
-//! 7): `FileBasicInfo`, `FileStandardInfo`, `FileIdInfo` e il tag di reparse, con un handle che chiede
-//! solo `FILE_READ_ATTRIBUTES`, `FILE_FLAG_OPEN_REPARSE_POINT` e `FILE_FLAG_OPEN_NO_RECALL`. Servono alla
-//! simulazione e al ricontrollo prima dello spostamento (`quado-actions`).
+//! Attributi completi di un file o di una cartella senza aprirne il contenuto: `FileBasicInfo`,
+//! `FileStandardInfo`, `FileIdInfo` e il tag di reparse, con un handle che chiede solo
+//! `FILE_READ_ATTRIBUTES`, `FILE_FLAG_OPEN_REPARSE_POINT` e `FILE_FLAG_OPEN_NO_RECALL`. Servono alla stima
+//! della simulazione e al ricontrollo prima dello spostamento (`quado-actions`).
 //!
 //! L'handle è lo stesso di [`win::open_attributes`]: nessun bit di scrittura, i collegamenti non si
 //! seguono, i segnaposto cloud non si scaricano e la data di ultimo accesso non cambia. Funziona anche
 //! sulle cartelle (`FILE_FLAG_BACKUP_SEMANTICS`) e oltre i 260 caratteri (`\\?\`, [`win::long_path`]).
-//! Codici di Windows, mai frasi (05 D13).
+//! Codici di Windows, mai frasi.
 //!
 //! Il numero di nomi (`NumberOfLinks`) non c'è nell'elenco delle cartelle (`FileIdExtdDirectoryInfo`), e
 //! data e attributi dell'elenco possono essere vecchi per un file con più nomi o aperto in scrittura: per
@@ -32,7 +32,7 @@ use windows_sys::Win32::Storage::FileSystem::{
 use crate::{content, win};
 
 /// Accesso richiesto da [`read`]: lo stesso di [`win::open_attributes`] (uno dei valori di
-/// [`win::READ_ONLY_ACCESS`]), per il controllo dell'assenza di scrittura (06 §11).
+/// [`win::READ_ONLY_ACCESS`]), per il controllo dell'assenza di scrittura.
 pub const ACCESS: u32 = FILE_READ_ATTRIBUTES | SYNCHRONIZE;
 
 const _: () = assert!(ACCESS & win::WRITE_BITS == 0);

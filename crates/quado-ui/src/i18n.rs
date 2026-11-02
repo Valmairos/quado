@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Lingue dell'interfaccia (05 D13, 03 F-GE-1): file Fluent, uno per lingua.
+//! Lingue dell'interfaccia: file Fluent, uno per lingua.
 //!
 //! - Incorporati: `lingue/it.ftl` (riferimento, con un commento di contesto per chiave) e `lingue/en.ftl`.
 //! - Modificabili senza ricompilare: i file in `%APPDATA%\Quado\lingue\<tag>.ftl` sostituiscono le
@@ -26,7 +26,7 @@ pub fn embedded(tag: &str) -> Option<&'static str> {
 /// La lingua di riferimento, con un commento di contesto per ogni chiave.
 pub const REFERENCE: &str = "it";
 
-/// Lingua usata dai test per trovare testi scritti nel codice e testi tagliati (06 §7).
+/// Lingua usata dai test per trovare testi scritti nel codice e testi tagliati.
 pub const PSEUDO: &str = "x-pseudo";
 
 /// Valore di un segnaposto.
@@ -96,7 +96,7 @@ fn langid(tag: &str) -> LanguageIdentifier {
     tag.parse().unwrap_or_default()
 }
 
-/// Testi della pseudo-lingua: accenti, segni di inizio e fine, il 40% più lunghi (06 §7).
+/// Testi della pseudo-lingua: accenti, segni di inizio e fine, il 40% più lunghi.
 pub fn pseudo(s: &str) -> Cow<'_, str> {
     if s.trim().is_empty() {
         return Cow::Borrowed(s);
@@ -305,7 +305,7 @@ fn message(b: &Bundle, key: &str, args: Option<&FluentArgs<'_>>) -> Option<Strin
     Some(s.into_owned())
 }
 
-/// Chiavi e segnaposto di un file, per i controlli di completezza (06 §7, `cargo xtask lingue`).
+/// Chiavi e segnaposto di un file, per i controlli di completezza (`cargo xtask lingue`).
 pub mod check {
     use std::collections::{BTreeMap, BTreeSet};
 
@@ -457,7 +457,7 @@ mod tests {
         assert!(missing.is_empty(), "chiavi mancanti in it.ftl: {missing:?}");
     }
 
-    /// F-OV-3: nessuna stringa della card dei conti attribuisce una causa allo spazio mancante.
+    /// Nessuna stringa della card dei conti attribuisce una causa allo spazio mancante.
     #[test]
     fn reconciliation_card_has_no_causal_sentence() {
         let causal = ["perché", "a causa", "dovut", "causat", "per via", "because", "due to", "caused", "since "];
@@ -477,7 +477,7 @@ mod tests {
 
     #[test]
     fn forbidden_words_are_absent() {
-        // 04 §6.8 e 06 §7: parole che non devono comparire nei testi.
+        // Parole vietate (docs/testi.md §3): non devono comparire nei testi.
         let forbidden_it = [
             "sicuro da eliminare",
             "sicuro da disinstallare",

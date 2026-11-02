@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Record della lente Download (03 F-DL, 04 §6.6): ciò che si capisce di una cartella, con uno stato
-//! per voce. Nessuna proposta nasce da nome, data o dimensione da soli (03 §6.1 regola 2).
+//! Record della lente Download: ciò che si capisce di una cartella, con uno stato per voce. Nessuna
+//! proposta nasce da nome, data o dimensione da soli.
 //!
 //! - Le voci nascono da funzioni di Quado (`Origin::Function`), non da regole: decidono solo da ciò
 //!   che la scansione ha misurato e da ciò che è stato letto su richiesta in questa sessione
 //!   ([`LensInput`]).
-//! - Gestibile solo con una prova di gestibilità misurata: impronte uguali (copie identiche, F-DL-4) e
-//!   Restart Manager che non trova processi (download incompleti, F-DL-6). Tutto il resto è Decidi tu,
+//! - Gestibile solo con una prova di gestibilità misurata: impronte uguali (copie identiche) e
+//!   Restart Manager che non trova processi (download incompleti). Tutto il resto è Decidi tu,
 //!   senza azione e senza cifra recuperabile: installatori, immagini disco, archivi con la cartella
 //!   accanto, file della stessa dimensione non ancora confrontati o con contenuto diverso.
 //! - Il suffisso " (N)" non entra mai nei record: nessun fatto porta il nome di un file.
@@ -109,10 +109,10 @@ pub struct LensFinding {
     pub record: Record,
 }
 
-/// Corrispondenza di un installatore con i programmi installati (F-DL-2): l'esito di
+/// Corrispondenza di un installatore con i programmi installati: l'esito di
 /// `installers::match_installer` e il fatto di `installers::match_fact`, con la provenienza già decisa
-/// (ProductCode uguale: da fonte; nome e versione: dedotto, con il criterio di 03 §6.2). La calcola chi
-/// chiama, con le voci di disinstallazione delle prove (`Evidence::uninstall`).
+/// (ProductCode uguale: da fonte; nome e versione: dedotto, con il suo criterio). La calcola chi chiama,
+/// con le voci di disinstallazione delle prove (`Evidence::uninstall`).
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct InstallerMatch {
     pub outcome: MatchOutcome,
@@ -128,7 +128,7 @@ impl InstallerMatch {
     }
 }
 
-/// Lettura di un installatore su richiesta (F-DL-2).
+/// Lettura di un installatore su richiesta.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct InstallerRead {
     pub info: Result<InstallerInfo, ExtractError>,
@@ -136,7 +136,7 @@ pub struct InstallerRead {
     pub matched: Option<InstallerMatch>,
 }
 
-/// Controllo di Restart Manager su un download incompleto (F-DL-6).
+/// Controllo di Restart Manager su un download incompleto.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct UseCheck {
     pub usage: FileUse,
@@ -145,10 +145,10 @@ pub struct UseCheck {
 }
 
 /// Ciò che è stato letto su richiesta in questa sessione. Vuoto: la lente appena aperta, senza
-/// nessuna lettura di contenuto (F-DL-1).
+/// nessuna lettura di contenuto.
 #[derive(Clone, Debug, Default, PartialEq, Eq)]
 pub struct LensInput {
-    /// Impronte di "Confronta il contenuto" (F-DL-4), anche di un confronto annullato a metà: valgono
+    /// Impronte di "Confronta il contenuto", anche di un confronto annullato a metà: valgono
     /// solo i gruppi della stessa dimensione letti per intero (`downloads::compare_groups`).
     pub hashed: Vec<Hashed>,
     /// File da tenere scelti dall'utente (`downloads::with_keep`): in un gruppo di copie resta il primo,
@@ -189,7 +189,7 @@ fn code(c: u32) -> Value {
     Value::Text(c.to_string())
 }
 
-/// Lettura non riuscita: `$a` codice del motivo, `$b` codice di errore di Windows o nome del campo (06 §2.3).
+/// Lettura non riuscita: `$a` codice del motivo, `$b` codice di errore di Windows o nome del campo.
 fn error_fact(key: &str, source: Source, e: &ExtractError) -> Fact {
     let values = match e {
         ExtractError::NotPresent => vec![text("non-presente")],
@@ -279,7 +279,7 @@ fn manageable(function: Function, identity: Vec<Fact>, proof: Vec<Fact>, estimat
     }
 }
 
-/// Stima dello spostamento nel Cestino di `nodes` (03 §6.3): allocata esatta; con file che hanno più
+/// Stima dello spostamento nel Cestino di `nodes`: allocata esatta; con file che hanno più
 /// nomi (`Flags::MULTI_LINK`) un intervallo, perché lo spazio torna solo se tutti i nomi lasciano il
 /// volume: minimo senza quei file, massimo con loro. La simulazione la ricalcola rileggendo gli attributi.
 fn estimate_of(tree: &Tree, nodes: &[u32]) -> Estimate {
@@ -323,7 +323,7 @@ pub fn findings(tree: &Tree, lens: &Lens, input: &LensInput) -> Vec<LensFinding>
     out
 }
 
-/// File della stessa dimensione e copie identiche (F-DL-3, F-DL-4).
+/// File della stessa dimensione e copie identiche.
 fn copies(tree: &Tree, lens: &Lens, input: &LensInput, out: &mut Vec<LensFinding>) {
     let groups = downloads::same_size_groups(lens);
     let comparisons = downloads::compare_groups(&groups, &input.hashed);
@@ -390,7 +390,7 @@ fn source_by_name(tree: &Tree, node: u32) -> Source {
     }
 }
 
-/// Fatti di un installatore letto (F-DL-2) e stato della voce. Prima la corrispondenza, che è il riassunto
+/// Fatti di un installatore letto e stato della voce. Prima la corrispondenza, che è il riassunto
 /// della voce, poi i dati letti (`installers::info_facts`). Senza corrispondenza, o con una corrispondenza
 /// non confrontabile, lo stato è `NotMatched`.
 pub fn installer_facts(info: &InstallerInfo, matched: Option<&InstallerMatch>) -> (Vec<Fact>, InstallerStatus) {
@@ -411,7 +411,7 @@ pub fn installer_facts(info: &InstallerInfo, matched: Option<&InstallerMatch>) -
     (facts, status)
 }
 
-/// Installatori (F-DL-2): Decidi tu, con i fatti della lettura e della corrispondenza.
+/// Installatori: Decidi tu, con i fatti della lettura e della corrispondenza.
 fn installers(tree: &Tree, lens: &Lens, input: &LensInput, out: &mut Vec<LensFinding>) {
     let mut not_read = Vec::new();
     let mut cloud = Vec::new();
@@ -449,7 +449,7 @@ fn installers(tree: &Tree, lens: &Lens, input: &LensInput, out: &mut Vec<LensFin
     }
 }
 
-/// Zip con la cartella estratta accanto (F-DL-5): Decidi tu, con la prova misurata "N voci su M presenti".
+/// Zip con la cartella estratta accanto: Decidi tu, con la prova misurata "N voci su M presenti".
 fn archives(tree: &Tree, lens: &Lens, input: &LensInput, out: &mut Vec<LensFinding>) {
     for pair in downloads::archive_pairs(tree, lens) {
         let mut identity = vec![fact("fatto-lente-cartella-accanto", Provenance::Measured, Source::Scan, Vec::new())];
@@ -484,7 +484,7 @@ fn placeholders_fact(items: &[&LensItem]) -> Option<Fact> {
     (k > 0).then(|| fact("fatto-lente-segnaposto", Provenance::Measured, Source::Scan, vec![count(k)]))
 }
 
-/// Immagini disco (F-DL-1): una voce, Decidi tu.
+/// Immagini disco: una voce, Decidi tu.
 fn disk_images(tree: &Tree, lens: &Lens, out: &mut Vec<LensFinding>) {
     let items: Vec<&LensItem> = lens.of_family(LensFamily::DiskImages).collect();
     if items.is_empty() {
@@ -496,7 +496,7 @@ fn disk_images(tree: &Tree, lens: &Lens, out: &mut Vec<LensFinding>) {
     out.push(voice(tree, Finding::DiskImages, nodes, decide(Function::DiskImage, identity, Vec::new())));
 }
 
-/// Download incompleti (F-DL-6): Gestibile se Restart Manager non trova processi, bloccati se un processo
+/// Download incompleti: Gestibile se Restart Manager non trova processi, bloccati se un processo
 /// li usa, Decidi tu senza proposta se l'uso non è noto.
 fn incomplete(tree: &Tree, lens: &Lens, input: &LensInput, out: &mut Vec<LensFinding>) {
     let mut free: Vec<&LensItem> = Vec::new();

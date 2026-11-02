@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Bilancio del volume (03 §6.4): usato = allocato unico letto + metadati misurati + non attribuito.
+//! Bilancio del volume: usato = allocato unico letto + metadati misurati + non attribuito.
 //!
 //! A + M + N = U vale per costruzione, quindi controllarlo non prova nulla: i test veri sono il residuo
-//! su un volume fermo e l'errore iniettato che deve spostarlo (06 §1.4).
+//! su un volume fermo e l'errore iniettato che deve spostarlo.
 
 /// Spazio del volume in un istante (`GetDiskFreeSpaceExW`).
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
@@ -30,7 +30,7 @@ pub struct Metadata {
     pub usn_journal: Option<u64>,
     /// Spazio riservato e non ancora usato (`TotalReservedAllocationUnits` di `GetDiskSpaceInformationW`,
     /// archiviazione riservata compresa): Windows lo conta nell'usato ma non è in nessun file. Si legge
-    /// senza privilegi (M6). `None` se la lettura non è riuscita.
+    /// senza privilegi. `None` se la lettura non è riuscita.
     pub reserved: Option<u64>,
 }
 
@@ -53,7 +53,7 @@ pub struct Balance {
     pub allocated: u64,
     pub metadata: Metadata,
     /// Non attribuito (N) = U - A - M. Può essere negativo per la deriva o per i file residenti
-    /// nella MFT, contati sia nella `$MFT` sia come allocata minima (doppio conteggio dichiarato, 02 §3).
+    /// nella MFT, contati sia nella `$MFT` sia come allocata minima (doppio conteggio dichiarato).
     pub unattributed: i64,
     /// Nota: byte che si conterebbero in più senza la deduplica degli hard link.
     pub hardlinks_counted_once: u64,

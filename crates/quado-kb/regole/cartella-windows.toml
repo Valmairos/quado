@@ -1,5 +1,5 @@
-# Cartella di Windows (F-AC-4): elemento protetto, nessuna procedura. Le regole dentro (WinSxS,
-# Installer, DriverStore, file temporanei) sono più specifiche e valgono per le loro cartelle.
+# Cartella di Windows: elemento protetto, nessuna procedura. Le regole dentro (WinSxS, Installer, DriverStore,
+# file temporanei) sono più specifiche e valgono per le loro cartelle.
 id = "cartella-windows"
 priorita = 2
 riconoscitore = "percorso"

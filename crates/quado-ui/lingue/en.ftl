@@ -1,5 +1,5 @@
 ### Quado: interface text in English. The reference language is Italian (it.ftl), where every key
-### has a comment explaining where it appears. Keep the meaning of states and warnings (RS29).
+### has a comment explaining where it appears. Keep the meaning of states and warnings.
 
 ## General
 
@@ -432,7 +432,7 @@ barra-laterale-espansa = Expanded
 barra-laterale-compressa = Collapsed
 impostazioni-anteprima = Preview
 
-## M3: classification, states, recommendation records, Windows and system, rules.
+## Classification, states, recommendation records, Windows and system, rules.
 
 nav-sistema = Windows and system
 nav-regole = Rules
@@ -711,7 +711,7 @@ gestore-tuoi-breve = Your files
 gestore-windows-breve = Windows
 gestore-non-classificato-breve = Not classified
 
-## M4: Downloads view.
+## Downloads view.
 
 download-titolo = Downloads
 download-metodo = Quado identifies the type from the extension and reads installer versions without running them.
@@ -908,7 +908,7 @@ download-apri-lente = Open in the Downloads view
 download-apri-lente-suggerimento = Shows file types and entries of this folder from the scan data, without opening the files.
 interventi-sottotitolo-lente = Each entry comes from a rule, with its source and verification date, or from evidence measured in the Downloads view. Select an entry to see in the inspector what you can do. Quado changes nothing on the disk from this card.
 
-## M4: Programs.
+## Programs.
 
 programmi-titolo = Programs
 programmi-sottotitolo = Programs registered in Windows, Microsoft Store apps, Steam games and Epic products. Quado counts a program's space only when a source declares its folder.
@@ -1018,14 +1018,14 @@ programmi-dialogo-aperto-steam = Steam opens: confirm the uninstall of { $progra
 programmi-dialogo-errore = Can't open the page. Try again, or open it yourself. (Code { $codice })
 programmi-dialogo-non-valido = Can't open the page: the package name or the game number isn't valid. Open it yourself from Settings › Apps or from Steam.
 
-## M5: actions, common parts (03 F-AC, F-VE).
+## Actions, common parts.
 
 nav-interventi = Actions
 azione-prepara-cestino = Move to the Recycle Bin…
 azione-apri-procedura = Open the steps
 azione-ho-eseguito = I've completed the steps
 
-## M5: move to the Recycle Bin, confirmation and result (agent E1).
+## Move to the Recycle Bin, confirmation and result.
 
 spostamento-titolo = { $n ->
     [one] Move one item of "{ $nome }" to the Recycle Bin?
@@ -1237,7 +1237,7 @@ spostamento-riscansione-fallite = { $n ->
    *[other] Can't rescan { $n_testo } touched folders: their totals stay as before. To update them choose "Rescan".
 }
 
-## M5: Actions view, steps and commands, Data and privacy (agent E2).
+## Actions view, steps and commands, Data and privacy.
 
 procedura-apri-cestino = Open the Recycle Bin
 procedura-apri-archiviazione = Open Settings › Storage

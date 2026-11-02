@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Comportamenti dell'interfaccia di M2 provati con `egui_kittest`, senza mouse (06 §7).
+//! Comportamenti dell'interfaccia provati con `egui_kittest`, senza mouse.
 //!
-//! - F-EX-3: ogni azione dell'Esplora da tastiera (frecce, Invio, Backspace, Alt+frecce, Ctrl+F, `*`).
-//! - F-SC-5: banner "Scansione interrotta" su ogni schermata con dati parziali.
-//! - F-GE-1: cambio di lingua senza riavvio; file dell'utente con una riga sbagliata.
-//! - 04 §6.1: con "Effetti di animazione" spenti nessuna animazione.
-//! - Restyling (variante A): barra laterale, dimensione del testo, densità, accento, colori dei dati, vista
-//!   iniziale e colonne di Esplora valgono subito.
+//! - Ogni azione dell'Esplora da tastiera (frecce, Invio, Backspace, Alt+frecce, Ctrl+F, `*`).
+//! - Banner "Scansione interrotta" su ogni schermata con dati parziali.
+//! - Cambio di lingua senza riavvio; file dell'utente con una riga sbagliata.
+//! - Con "Effetti di animazione" spenti nessuna animazione.
+//! - Barra laterale, dimensione del testo, densità, accento, colori dei dati, vista iniziale e colonne di
+//!   Esplora valgono subito.
 
 use std::path::PathBuf;
 use std::time::Duration;
@@ -295,7 +295,7 @@ fn si_units_change_every_size_shown() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// M3: classificazione nell'interfaccia.
+// Classificazione nell'interfaccia.
 
 fn node_named(h: &Harness<'_, App>, n: &str) -> u32 {
     let t = h.state().data.as_ref().expect("dati").tree();
@@ -304,7 +304,7 @@ fn node_named(h: &Harness<'_, App>, n: &str) -> u32 {
 
 #[test]
 fn system_view_and_rules_from_the_keyboard() {
-    // Ctrl+4 apre Windows e sistema (F-SY-1); Tab e Invio su una voce la mostrano in Esplora.
+    // Ctrl+4 apre Windows e sistema; Tab e Invio su una voce la mostrano in Esplora.
     let mut h = loaded(false, "it");
     press(&mut h, Key::Num4, Modifiers::COMMAND);
     assert_eq!(h.state().screen, Screen::System);
@@ -324,7 +324,7 @@ fn system_view_and_rules_from_the_keyboard() {
 
 #[test]
 fn inspector_record_leads_to_its_rule() {
-    // Una versione precedente di CapCut: record Da verificare con la regola e "Apri la regola" (F-IN-1, F-IN-4).
+    // Una versione precedente di CapCut: record Da verificare con la regola e "Apri la regola".
     // Finestra alta: l'ispettore intero è visibile senza scorrere.
     let mut a = app("it");
     let (v, r) = synthetic::sample_c(false);
@@ -356,7 +356,7 @@ fn inspector_record_leads_to_its_rule() {
 
 #[test]
 fn interventions_card_opens_the_item() {
-    // F-OV-4: la voce di CapCut nella card porta all'elemento in Esplora.
+    // La voce di CapCut nella card porta all'elemento in Esplora.
     let mut h = loaded(false, "it");
     h.run_steps(2);
     let line = {
@@ -381,7 +381,7 @@ fn interventions_card_opens_the_item() {
 
 #[test]
 fn manager_filter_matches_the_classification() {
-    // F-EX-4: il filtro per gestore restituisce lo stesso insieme di una query di riferimento.
+    // Il filtro per gestore restituisce lo stesso insieme di una query di riferimento.
     let mut h = loaded(false, "it");
     {
         let a = h.state_mut();
@@ -405,8 +405,8 @@ fn manager_filter_matches_the_classification() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// M4: schermata Programmi (F-AP). Il lanciatore e "Apri in Esplora file" sono finti: registrano le
-// chiamate nel thread del test, senza aprire Impostazioni, Steam o Esplora file.
+// Schermata Programmi. Il lanciatore e "Apri in Esplora file" sono finti: registrano le chiamate nel thread
+// del test, senza aprire Impostazioni, Steam o Esplora file.
 
 mod programmi {
     use std::cell::RefCell;
@@ -566,7 +566,7 @@ mod programmi {
             assert!(a.programs.rows.windows(2).all(|w| key(w[0]) <= key(w[1])), "ordine per spazio misurato");
             assert_eq!(p.items[a.programs.rows[0]].name, "Hollow Peaks");
         }
-        // Componente di sistema: nascosto per default, visibile con l'interruttore (F-AP-1).
+        // Componente di sistema: nascosto per default, visibile con l'interruttore.
         let redist = "Microsoft Visual C++ 2022 X64 Additional Runtime";
         assert!(!names(&h).iter().any(|n| n == redist));
         let chip = h.state().lingue.ta("programmi-mostra-componenti", &[("testo", "1".into())]);
@@ -576,7 +576,7 @@ mod programmi {
         click(&mut h, &chip);
         assert!(!names(&h).iter().any(|n| n == redist), "di nuovo nascosto");
 
-        // NVIDIA senza percorso: "posizione non dichiarata" e nessuna cifra (F-AP-2).
+        // NVIDIA senza percorso: "posizione non dichiarata" e nessuna cifra.
         h.state_mut().programs.query = "nvidia".into();
         h.run_steps(2);
         assert_eq!(names(&h), vec!["NVIDIA Graphics Driver 617.42".to_owned()]);
@@ -591,7 +591,7 @@ mod programmi {
         assert!(h.query_by_label(&fact_text(&h, "NVIDIA Graphics Driver 617.42", "fatto-programma-nessuno-spazio")).is_some());
         assert!(h.query_by_label_contains("Dimensioni su disco:").is_none(), "nessuno spazio misurato");
 
-        // 7-Zip: misurato e dichiarato separati, il dichiarato con la sua fonte (F-AP-3).
+        // 7-Zip: misurato e dichiarato separati, il dichiarato con la sua fonte.
         h.state_mut().programs.query = "7-zip".into();
         h.run_steps(2);
         let (measured, declared) = {
@@ -611,7 +611,7 @@ mod programmi {
         assert!(h.query_by_label(&declared_fact).is_some());
         assert!(h.query_by_label(&fact_text(&h, "7-Zip 24.09 (x64 edition)", "fatto-programma-su-disco")).is_some());
 
-        // Giochi di Steam: l'ultima sessione registrata da Steam (F-AP-4).
+        // Giochi di Steam: l'ultima sessione registrata da Steam.
         h.state_mut().programs.query = String::new();
         h.run_steps(2);
         let texts = drawn(&h);
@@ -633,12 +633,12 @@ mod programmi {
 
     #[test]
     fn tracking_off_shows_no_userassist_value() {
-        // F-AP-4 e 06 §4: con Start_TrackProgs = 0 il testo onesto e nessun valore UserAssist. Finestra alta:
+        // Con Start_TrackProgs = 0 il testo onesto e nessun valore UserAssist. Finestra alta:
         // la sezione dell'uso del dettaglio è visibile senza scorrere.
         let mut h = programs("it", 2400.0);
         assert_eq!(h.state().data.as_ref().expect("dati").programs.tracking, TrackProgs::Off);
         let texts = drawn(&h);
-        assert!(texts.iter().any(|s| s == "Tracciamento degli avvii di Windows disattivato: nessun dato d'uso"), "testo di 04 §6.8");
+        assert!(texts.iter().any(|s| s == "Tracciamento degli avvii di Windows disattivato: nessun dato d'uso"), "testo del tracciamento disattivato");
         assert!(texts.iter().all(|s| !s.contains("(UserAssist)") && !s.contains("Ultimo avvio da Esplora file")));
         select(&mut h, "CapCut");
         assert!(in_detail(&h, &fact_text(&h, "CapCut", "fatto-uso-tracciamento-disattivato")));
@@ -649,7 +649,7 @@ mod programmi {
 
     #[test]
     fn capcut_uninstall_shows_your_files_first_then_opens_settings() {
-        // F-AP-5, 04 §6.7: prima i tuoi file con la conferma esplicita, poi il nome negli appunti e Impostazioni ▸ App.
+        // Prima i tuoi file con la conferma esplicita, poi il nome negli appunti e Impostazioni ▸ App.
         let mut h = programs("it", 1000.0);
         select(&mut h, "CapCut");
         click_t(&mut h, "programmi-disinstalla");
@@ -671,7 +671,7 @@ mod programmi {
         click(&mut h, &open);
         assert!(launched().is_empty());
         assert_eq!(h.state().programs.dialog.as_ref().map(|d| d.outcome), Some(None));
-        // Conferma, poi apertura: nome negli appunti, `Launch::AppsFeatures`, avviso di 04 §6.8.
+        // Conferma, poi apertura: nome negli appunti, `Launch::AppsFeatures`, avviso «Si apre Impostazioni › App».
         click_t(&mut h, "funzione-programma-controllo-tuoi-file");
         assert!(h.state().programs.dialog.as_ref().is_some_and(|d| d.copied));
         h.get_by_label(&open).click();
@@ -757,7 +757,7 @@ mod programmi {
 
     #[test]
     fn possible_residues_have_only_the_allowed_actions() {
-        // F-AP-6: VecchioEditor (Roaming) e Unity (LocalLow) con data e testo, Non sappiamo, solo
+        // VecchioEditor (Roaming) e Unity (LocalLow) con data e testo, Non sappiamo, solo
         // "Apri in Esplora file" e "Mostra in Esplora".
         let mut h = programs("it", 1000.0);
         let n = h.state().data.as_ref().expect("dati").programs.residues.len();
@@ -805,7 +805,7 @@ mod programmi {
 
     #[test]
     fn no_forbidden_words_on_the_screen() {
-        // 04 §6.8, F-AP-4: nessun testo disegnato usa le parole vietate, in italiano e in inglese.
+        // Nessun testo disegnato usa le parole vietate (docs/testi.md §3), in italiano e in inglese.
         const FORBIDDEN: [&str; 16] = [
             "inutilizzat",
             "mai usato",
@@ -915,7 +915,7 @@ mod programmi {
 }
 
 // ---------------------------------------------------------------------------------------------
-// M4: lente Download con letture finte (nessun file letto, `synthetic::FakeReaders`).
+// Lente Download con letture finte (nessun file letto, `synthetic::FakeReaders`).
 
 use std::sync::Arc;
 use std::sync::atomic::Ordering::Relaxed;
@@ -987,7 +987,7 @@ fn row_with(h: &Harness<'_, App>, pred: impl Fn(&Finding) -> bool) -> Option<usi
 
 #[test]
 fn download_lens_opens_without_reading_content() {
-    // F-DL-1, 06 §3.2: apertura, selezione con le frecce e ispettore senza nessuna lettura di contenuto.
+    // Apertura, selezione con le frecce e ispettore senza nessuna lettura di contenuto.
     let (mut h, fake) = lens_app(|_| {});
     press(&mut h, Key::Num5, Modifiers::COMMAND);
     assert_eq!(h.state().screen, Screen::Downloads);
@@ -1049,7 +1049,7 @@ fn download_families_and_the_copy_suffix_filter() {
         let name = t(&h, &format!("lente-famiglia-{}", f.code()));
         assert!(h.query_by_label_contains(&format!("{name}: ")).is_some(), "riquadro {name}");
     }
-    // Filtro "(N)" (F-DL-3): trova `setup (1).exe`, non cambia voci né stati.
+    // Filtro "(N)": trova `setup (1).exe`, non cambia voci né stati.
     let before = findings(&h);
     let chip = h.state().lingue.ta("download-filtro-suffisso", &[("n", 2u64.into()), ("testo", "2".into())]);
     click(&mut h, &chip);
@@ -1081,7 +1081,7 @@ fn download_families_and_the_copy_suffix_filter() {
 
 #[test]
 fn compare_the_content_after_saying_what_it_reads() {
-    // F-DL-4: prima il testo con file, byte e ultimo accesso; dopo la conferma le copie sono Gestibile e
+    // Prima il testo con file, byte e ultimo accesso; dopo la conferma le copie sono Gestibile e
     // resta la più vecchia; la scelta di un'altra cambia la copia tenuta; i file di dimensione unica non si
     // leggono.
     let (mut h, fake) = lens_app(|_| {});
@@ -1132,7 +1132,7 @@ fn compare_the_content_after_saying_what_it_reads() {
 
 #[test]
 fn an_interrupted_comparison_shows_no_group_as_complete() {
-    // 06 §3.2: annullamento a metà; un gruppo letto in parte resta "contenuto non confrontato".
+    // Annullamento a metà; un gruppo letto in parte resta "contenuto non confrontato".
     let (mut h, fake) = lens_app(|f| f.hash_limit.store(5, Relaxed));
     open_lens(&mut h);
     click_t(&mut h, "download-comando-confronta");
@@ -1175,7 +1175,7 @@ fn an_interrupted_comparison_shows_no_group_as_complete() {
 
 #[test]
 fn installers_three_outcomes_then_the_cache() {
-    // F-DL-2: tre esiti con letture finte; una seconda richiesta non rilegge; un file cambiato si rilegge,
+    // Tre esiti con letture finte; una seconda richiesta non rilegge; un file cambiato si rilegge,
     // solo lui.
     let (mut h, fake) = lens_app(|_| {});
     open_lens(&mut h);
@@ -1221,7 +1221,7 @@ fn installers_three_outcomes_then_the_cache() {
 
 #[test]
 fn archive_index_against_the_folder_and_a_broken_zip() {
-    // F-DL-5: "N voci su M presenti"; uno zip non leggibile non ferma la lente.
+    // "N voci su M presenti"; uno zip non leggibile non ferma la lente.
     let (mut h, fake) = lens_app(|_| {});
     open_lens(&mut h);
     click_t(&mut h, "download-comando-archivi");
@@ -1245,7 +1245,7 @@ fn archive_index_against_the_folder_and_a_broken_zip() {
 
 #[test]
 fn incomplete_downloads_follow_restart_manager_in_the_lens() {
-    // F-DL-6: libero → Gestibile; in uso → bloccato, con il nome del processo.
+    // Libero → Gestibile; in uso → bloccato, con il nome del processo.
     let (mut h, _) = lens_app(|_| {});
     open_lens(&mut h);
     let row = row_with(&h, |f| *f == Finding::Incomplete(UseStatus::Free)).expect("download libero");
@@ -1280,7 +1280,7 @@ fn incomplete_downloads_follow_restart_manager_in_the_lens() {
 
 #[test]
 fn interventions_card_gets_copies_only_after_the_comparison() {
-    // F-OV-4, F-DL-4: le copie entrano nella card solo dopo il confronto; un clic apre la voce.
+    // Le copie entrano nella card solo dopo il confronto; un clic apre la voce.
     let (mut h, _) = lens_app(|_| {});
     h.state_mut().go(Screen::Overview);
     h.run_steps(3);
@@ -1307,8 +1307,8 @@ fn interventions_card_gets_copies_only_after_the_comparison() {
 
 #[test]
 fn appearance_and_explore_settings_apply_at_once() {
-    // Restyling (variante A): barra laterale comprimibile, dimensione del testo come zoom, densità, accento,
-    // colori dei dati e vista iniziale di Esplora valgono subito, dalla barra superiore e da Impostazioni.
+    // Barra laterale comprimibile, dimensione del testo come zoom, densità, accento, colori dei dati e vista
+    // iniziale di Esplora valgono subito, dalla barra superiore e da Impostazioni.
     use quado_ui::app::settings::ExploreView;
     use quado_ui::tokens::{self, Accent, DataPalette, Density, Palette};
     let mut h = loaded(false, "it");
@@ -1359,7 +1359,7 @@ fn appearance_and_explore_settings_apply_at_once() {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Restyling R2 (variante A): palette dei comandi, filtri in linea di Esplora, Panoramica.
+// Palette dei comandi, filtri in linea di Esplora, Panoramica.
 
 /// Frame finché la ricerca dei nomi della palette non ha finito.
 fn wait_palette(h: &mut Harness<'_, App>) {
@@ -1428,7 +1428,7 @@ fn command_palette_reaches_views_folders_and_commands_from_the_keyboard() {
 
 #[test]
 fn inline_filters_list_the_items_of_the_open_folder() {
-    // F-EX-4: i filtri in linea senza un nome cercato valgono nella cartella aperta, a ogni profondità.
+    // I filtri in linea senza un nome cercato valgono nella cartella aperta, a ogni profondità.
     use quado_ui::tokens::Gestore;
     let mut h = loaded(false, "it");
     let capcut = node_named(&h, "CapCut");

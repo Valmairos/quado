@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Cestino (05 D7, 03 F-AC-5, F-AC-7): il flag che dice se un elemento andrà nel Cestino e la lettura
+//! Cestino: il flag che dice se un elemento andrà nel Cestino e la lettura
 //! del contenuto secondo Windows, in sola lettura. Lo spostamento sta in `mover` (`IFileOperation`), lo
 //! svuotamento con il dialogo di Windows in `procedures`.
 //!
-//! Le prove di M1 (07 §3 righe 1-3) che spostavano senza finestre e svuotavano senza conferme sono in
-//! `xtask` (`cargo xtask cestino`), fuori dal prodotto: il prodotto non contiene `SHERB_NOCONFIRMATION`,
-//! `FOF_NOCONFIRMATION` né `FOF_NO_UI` (test d'architettura). Il codice restituisce fatti e codici, non
-//! frasi (05 D13).
+//! Le prove che spostavano senza finestre e svuotavano senza conferme sono in `xtask` (`cargo xtask
+//! cestino`), fuori dal prodotto: il prodotto non contiene `SHERB_NOCONFIRMATION`, `FOF_NOCONFIRMATION` né
+//! `FOF_NO_UI` (test d'architettura). Il codice restituisce fatti e codici, non frasi: i testi li sceglie
+//! l'interfaccia nella lingua corrente.
 
 use std::path::Path;
 

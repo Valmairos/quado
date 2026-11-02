@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Installatori nella lente Download (F-DL-2, 06 §3.5): risorsa di versione di eseguibili generati qui
+//! Installatori nella lente Download: risorsa di versione di eseguibili generati qui
 //! (con risorsa, senza, con risorsa malformata), segnaposto cloud, corrispondenza con le voci di
 //! disinstallazione della fixture e con voci costruite, fatti per il record, cache, testi.
 //!
@@ -445,9 +445,9 @@ fn cloud_placeholders_are_not_read() {
     }
 }
 
-/// 06 §11 e F-AP-5: le letture degli installatori non aprono sessioni dell'installer, non eseguono e non
-/// caricano codice. Controllo sul codice (commenti esclusi) dei due moduli; le importazioni del binario
-/// le controlla `cargo xtask importazioni`.
+/// Le letture degli installatori non aprono sessioni dell'installer, non eseguono e non caricano codice.
+/// Controllo sul codice (commenti esclusi) dei due moduli; le importazioni del binario le controlla
+/// `cargo xtask importazioni`.
 #[test]
 fn installer_readers_never_open_sessions_or_run_code() {
     let src = Path::new(env!("CARGO_MANIFEST_DIR")).join("src");
@@ -921,11 +921,11 @@ proptest! {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Misura (criterio 4 di M4, protocollo di 06 §9): solo a mano, sui file scelti da chi misura
+// Misura dei tempi di lettura: solo a mano, sui file scelti da chi misura
 
 /// Tempo di `version_info` e `msi_info` sugli installatori di una cartella, 5 giri.
 /// - `QUADO_MISURA_CARTELLA`: la cartella (primo livello; con `QUADO_MISURA_SOTTOCARTELLE` anche un
-///   livello di sottocartelle, come l'inventario di `revisione/prove-windows.md` §B);
+///   livello di sottocartelle);
 /// - `QUADO_MISURA_ESCLUDI`: parti di percorso da saltare, separate da `;`, senza distinzione di maiuscole;
 /// - `QUADO_MISURA_DETTAGLIO`: il primo giro scrive i valori letti, da confrontare con
 ///   `(Get-Item f).VersionInfo` di PowerShell.

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Sessione guidata automatica per la prova senza rete e con la rete (06 §10): scansione di C:,
+//! Sessione guidata automatica per la prova senza rete e con la rete: scansione di C:,
 //! Panoramica, Esplora (tre cartelle), ricerca, File grandi, lente Download con il confronto del contenuto
 //! (un solo gruppo della stessa dimensione, al più 1 GiB), Programmi, intervento simulato (mai confermato:
 //! il dialogo si chiude con Esc), Impostazioni (lingua e tema cambiati e poi rimessi com'erano). Guida
@@ -17,7 +17,7 @@
 //!
 //! `cargo xtask sessione-prova` la avvia, ne campiona connessioni e handle e scrive il resoconto. La
 //! sessione non scrive file fuori da `%APPDATA%\Quado` (solo le impostazioni, poi rimesse com'erano) e
-//! non usa "Proprietà" né altri dialoghi della shell (06 §10, limite dichiarato).
+//! non usa "Proprietà" né altri dialoghi della shell (limite dichiarato).
 //!
 //! Esclusione: con `--escludi "a;b"` nessuna lettura della lente (attributi, impronte, versioni, indici
 //! degli zip, Restart Manager) raggiunge un percorso che contiene una di quelle parti: le letture passano

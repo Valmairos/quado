@@ -9,7 +9,7 @@
 //!
 //! Inter copre l'alfabeto latino esteso, il greco e il cirillico, non il cinese, il giapponese, il coreano,
 //! l'arabo o l'ebraico; Plex Mono copre meno. egui 0.36 non ripiega da solo sui font di sistema (annunciato
-//! per la 0.37, 05 D2): i nomi di file in quelle scritture comparirebbero come quadratini. Per questo, se un
+//! per la 0.37): i nomi di file in quelle scritture comparirebbero come quadratini. Per questo, se un
 //! nome lo richiede, si aggiungono come ripiego alcuni font di Windows da `%WINDIR%\Fonts`, senza copiarli
 //! né distribuirli ([`needs_fallbacks`]). Solo quelli che coprono i caratteri mancanti ([`choose_fallbacks`]):
 //! tutti e sette sono 52 MB, e su C: li chiedevano 71 nomi su 3,6 milioni. I file si proiettano in memoria
@@ -48,7 +48,7 @@ pub fn mono_medium() -> FontFamily {
     FontFamily::Name("plex-mono-medium".into())
 }
 
-/// Segoe UI resa da egui: serve solo al confronto del testo di M0 (stesso font, rasterizzatore diverso).
+/// Segoe UI resa da egui: serve solo al confronto del testo con ClearType (stesso font, rasterizzatore diverso).
 pub fn segoe_egui() -> FontFamily {
     FontFamily::Name("segoe-ui-egui".into())
 }
@@ -76,7 +76,7 @@ pub struct FontOptions {
     /// Aggiunge come ripiego tutti i font di Windows di [`SYSTEM_FALLBACKS`] (misure e confronti del testo;
     /// l'app aggiunge solo quelli che servono, [`install_fallbacks`]).
     pub system_fallbacks: bool,
-    /// Registra Segoe UI come famiglia a sé, per il confronto del testo di M0.
+    /// Registra Segoe UI come famiglia a sé, per il confronto del testo con ClearType.
     pub segoe_family: bool,
 }
 
@@ -86,7 +86,7 @@ impl Default for FontOptions {
     }
 }
 
-/// Cosa è stato caricato, per le misure di M0.
+/// Cosa è stato caricato, per le misure delle prestazioni.
 #[derive(Clone, Debug, Default)]
 pub struct FontReport {
     /// Font di sistema caricati: nome del file e byte del file.
@@ -257,7 +257,7 @@ pub fn definitions(opts: FontOptions) -> (FontDefinitions, FontReport) {
     (defs, report)
 }
 
-/// Definizioni con i font incorporati, i ripieghi di Windows dati e, se c'è, la famiglia Segoe UI di M0.
+/// Definizioni con i font incorporati, i ripieghi di Windows dati e, se c'è, la famiglia Segoe UI del confronto.
 fn build(fallbacks: &[SystemFont], segoe: Option<SystemFont>) -> FontDefinitions {
     let mut defs = FontDefinitions::default();
     let builtin: Vec<String> = defs.families.get(&FontFamily::Proportional).cloned().unwrap_or_default();

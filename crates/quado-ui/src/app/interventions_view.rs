@@ -1,15 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Vista Interventi (03 F-VE-5, F-AC-6, 04 §6.6): in cima il risultato dell'ultimo spostamento di questa
-//! sessione (`intervention_view::result_panel`), sotto lo storico dal registro degli interventi, una voce
-//! per intervento: data e ora, tipo, origine, elementi con gli esiti, metodo, stima con il suo stato,
-//! variazione del volume, differenza e spiegazione o "non spiegata" (03 §6.3). Le righe illeggibili del
-//! registro si dichiarano.
+//! Vista Interventi: in cima il risultato dell'ultimo spostamento di questa sessione
+//! (`intervention_view::result_panel`), sotto lo storico dal registro degli interventi, una voce per
+//! intervento: data e ora, tipo, origine, elementi con gli esiti, metodo, stima con il suo stato, variazione
+//! del volume, differenza e spiegazione o "non spiegata". Le righe illeggibili del registro si dichiarano.
 //!
 //! Il registro si rilegge quando il file cambia (dimensione o data di modifica, controllate al più una volta
 //! al secondo), non a ogni frame: [`History`] sta in `ProcedureState` e dà anche il numero di interventi
 //! della barra laterale.
-//!
-//! M5, agente E2.
 
 use std::path::Path;
 use std::time::{Duration, Instant, SystemTime};
@@ -100,7 +97,7 @@ fn percent(f: &Formatter, bp: u64) -> String {
     format!("{}%", f.decimal(bp as f64 / 100.0, 2))
 }
 
-/// Il valore della stima per la riga "Stimato" (03 §6.3); `None` se non c'è o vale 0: si mostra solo la
+/// Il valore della stima per la riga "Stimato"; `None` se non c'è o vale 0: si mostra solo la
 /// variazione.
 fn estimate_value(l: &Lingue, f: &Formatter, e: &Estimate) -> Option<String> {
     match *e {
@@ -146,9 +143,8 @@ fn explanation(l: &Lingue, f: &Formatter, e: &Explanation) -> String {
     }
 }
 
-/// Stimato e variazione del volume (04 §6.8, "Verifica"), poi la differenza: entro il 5%, oppure spiegata
-/// voce per voce, oppure "non spiegata" (03 §6.3, F-VE-3). Con una stima non stimabile o pari a 0 c'è
-/// solo la variazione.
+/// Stimato e variazione del volume, poi la differenza: entro il 5%, oppure spiegata voce per voce, oppure
+/// "non spiegata". Con una stima non stimabile o pari a 0 c'è solo la variazione.
 pub fn comparison_lines(l: &Lingue, f: &Formatter, c: &Comparison) -> Vec<(String, Tone)> {
     let y = signed(l, f, c.obtained);
     let mut out = vec![match estimate_value(l, f, &c.estimated) {

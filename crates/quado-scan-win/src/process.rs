@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Processo: ricerca delle DLL, moduli caricati, metriche (06 §9, §11), elevazione.
+//! Processo: ricerca delle DLL, moduli caricati, metriche, elevazione.
 
 use windows_sys::Win32::Foundation::{CloseHandle, GetLastError, HANDLE, HMODULE};
 use windows_sys::Win32::Security::{GetTokenInformation, TOKEN_ELEVATION, TOKEN_QUERY, TokenElevation};
@@ -7,7 +7,8 @@ use windows_sys::Win32::System::LibraryLoader::{LOAD_LIBRARY_SEARCH_SYSTEM32, Se
 use windows_sys::Win32::System::ProcessStatus::{EnumProcessModules, GetModuleFileNameExW};
 use windows_sys::Win32::System::Threading::{GetCurrentProcess, OpenProcessToken};
 
-/// Prima chiamata di `main` (06 §11, RS11): le DLL caricate a runtime si cercano solo in System32.
+/// Prima chiamata di `main`: le DLL caricate a runtime si cercano solo in System32, così una DLL esca
+/// accanto all'eseguibile non si carica.
 /// Le dipendenze statiche sono coperte dal flag del linker `/DEPENDENTLOADFLAG:0x800`.
 pub fn harden_dll_search() -> bool {
     // SAFETY: nessun prerequisito; cambia solo l'ordine di ricerca delle DLL del processo corrente.
@@ -58,7 +59,8 @@ pub fn elevated() -> Result<bool, u32> {
     if ok { Ok(info.TokenIsElevated != 0) } else { Err(code) }
 }
 
-/// Usa `version.dll` (letture delle versioni, M4): serve anche alla prova dell'esca di 07 §3, riga 5.
+/// Usa `version.dll` (letture delle versioni): serve anche alla prova della DLL esca di
+/// `cargo xtask verifica-dll`, che mette una copia di `version.dll` accanto all'eseguibile.
 pub fn file_version_info_size(path: &str) -> u32 {
     let z: Vec<u16> = path.encode_utf16().chain(std::iter::once(0)).collect();
     let mut handle = 0u32;
@@ -67,7 +69,7 @@ pub fn file_version_info_size(path: &str) -> u32 {
     unsafe { windows_sys::Win32::Storage::FileSystem::GetFileVersionInfoSizeW(z.as_ptr(), &mut handle) }
 }
 
-/// Un handle del processo corrente con l'accesso concesso (06 §11).
+/// Un handle del processo corrente con l'accesso concesso.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct OwnHandle {
     pub value: usize,
@@ -117,7 +119,7 @@ pub fn own_handles() -> Vec<OwnHandle> {
 }
 
 /// Millisecondi dalla creazione del processo: comprende il caricamento dell'eseguibile dal disco,
-/// quindi misura l'avvio come lo vede l'utente (06 §9, "Primo frame interattivo").
+/// quindi misura l'avvio come lo vede l'utente, fino al primo frame interattivo.
 pub fn ms_since_start() -> f64 {
     use windows_sys::Win32::Foundation::FILETIME;
     use windows_sys::Win32::System::Threading::GetProcessTimes;

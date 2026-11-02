@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Componenti comuni con l'aspetto della variante A della proposta visiva (04 §6): pulsanti (primario, secondario,
+//! Componenti comuni con l'aspetto della variante A della proposta visiva: pulsanti (primario, secondario,
 //! discreto), controllo segmentato, interruttore, casella, campioni di colore, cursore, gruppi e card
 //! separati dal tono, righe di elenco e di impostazione, intestazioni di sezione, icona "i" con la
 //! spiegazione a richiesta, glifi dei gestori e della provenienza, tratteggio, suggerimenti con la
@@ -188,7 +188,7 @@ pub fn focus_visible(ctx: &egui::Context) -> bool {
     ctx.data(|d| d.get_temp(focus_visible_id())).unwrap_or(false)
 }
 
-/// Anello del focus da tastiera fuori dal controllo (F-EX-3, 04 §6.3).
+/// Anello del focus da tastiera fuori dal controllo.
 pub fn focus_ring(ui: &Ui, resp: &Response, p: &Palette, radius: u8) {
     if resp.has_focus() && focus_visible(ui.ctx()) {
         let r = radius.saturating_add(focus::OFFSET as u8);
@@ -752,7 +752,7 @@ pub fn legend_item(ui: &mut Ui, p: &Palette, shape: Glyph, color: Color32, label
 
 // ------------------------------------------------------------------ provenienza e tratteggio
 
-/// Classe di provenienza di un fatto (04 §6.1, principio 3).
+/// Classe di provenienza di un fatto.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Evidence {
     Measured,
@@ -794,7 +794,7 @@ pub fn evidence_glyph(painter: &Painter, center: Pos2, e: Evidence, p: &Palette)
     }
 }
 
-/// Tratteggio a 45° (04 §6.1, principio 2): fondo `b`, linee `a` ogni `period` punti, spesse 1,25.
+/// Tratteggio a 45°: fondo `b`, linee `a` ogni `period` punti, spesse 1,25.
 pub fn hatch(painter: &Painter, rect: Rect, a: Color32, b: Color32, period: f32) {
     if rect.width() <= 0.0 || rect.height() <= 0.0 {
         return;
@@ -826,8 +826,7 @@ pub fn share_bar(painter: &Painter, rect: Rect, ratio: f64, fill: Color32, track
     }
 }
 
-/// Riquadro di avviso (`.callout`): fondo `warn_bg`, icona nel colore di avviso, un fatto, al massimo
-/// un'azione (04 §3).
+/// Riquadro di avviso (`.callout`): fondo `warn_bg`, icona nel colore di avviso, un fatto, al massimo un'azione.
 pub fn banner(ui: &mut Ui, p: &Palette, message: &str) {
     Frame::new().fill(p.warn_bg).corner_radius(CornerRadius::same(radius::CARD)).inner_margin(Margin::symmetric(14, 11)).show(ui, |ui| {
         ui.set_width(ui.available_width());

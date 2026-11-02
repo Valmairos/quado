@@ -1,6 +1,6 @@
 [package]
 name = "quado-testkit"
-description = "Solo test: oracolo indipendente e generatore degli alberi di prova (06 §1.1, §1.2)"
+description = "Solo test: oracolo indipendente e generatore degli alberi di prova"
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true

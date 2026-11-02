@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Quali processi usano dei file (F-DL-6, F-AC-8). Sola lettura, mai `RmShutdown` né `RmRestart`.
+//! Quali processi usano dei file. Sola lettura, mai `RmShutdown` né `RmRestart`.
 //!
 //! Due strade, misurate il 14/10/2026 (su `R:` e sulle versioni di CapCut su C:):
 //! - **Restart Manager** (`RmRegisterResources`, `RmGetList`) per i file comuni: una sessione per
@@ -53,7 +53,7 @@ pub struct ProcessUse {
     pub service: Option<String>,
 }
 
-/// Fase non riuscita, con il codice di Windows. Codici, non frasi (05 D13).
+/// Fase non riuscita, con il codice di Windows. Codici, non frasi.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum RmError {
     /// Sessione di Restart Manager non aperta.

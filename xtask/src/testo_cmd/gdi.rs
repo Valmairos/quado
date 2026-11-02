@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! Testo reso da Windows con GDI e ClearType, lo stesso motore dei controlli nativi (un'etichetta di
-//! Windows disegna così), per il confronto con egui (06 §7). Fuori dal prodotto: serve solo a
+//! Windows disegna così), per il confronto con egui. Fuori dal prodotto: serve solo a
 //! `cargo xtask confronto-testo`.
 //!
 //! I font di Quado si caricano solo per questo processo (`FR_PRIVATE`): niente si installa. Se GDI
@@ -20,7 +20,7 @@ use windows::Win32::Graphics::Gdi::{
 };
 use windows::core::HSTRING;
 
-/// Margine attorno al testo, come in M0: due pixel per lato.
+/// Margine attorno al testo: due pixel per lato.
 const PAD: i32 = 2;
 
 /// Carica un file di font per questo solo processo.
@@ -52,7 +52,7 @@ impl FontDc {
             return Err("CreateCompatibleDC non riuscita".into());
         }
         // SAFETY: argomenti per valore e un nome terminato da zero che vive per tutta la chiamata. Altezza
-        // negativa: dimensione em in pixel, come `CreateFontW(-px, ...)` in M0. ClearType chiesto in modo
+        // negativa: dimensione em in pixel, come in `CreateFontW(-px, ...)`. ClearType chiesto in modo
         // esplicito, indipendente dall'impostazione di sistema.
         let font = unsafe {
             CreateFontW(-px, 0, 0, 0, weight, 0, 0, 0, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, CLEARTYPE_QUALITY, 0, &name)

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Test di proprietà sul modello delle raccomandazioni (06 §2.2) e controlli del caso CapCut
-//! (decisioni §3), su alberi e prove generati a caso e sulle fixture reali.
+//! Test di proprietà sul modello delle raccomandazioni e controlli del caso CapCut, su alberi e prove
+//! generati a caso e sulle fixture reali.
 
 mod common;
 
@@ -122,7 +122,7 @@ fn version(a: u8, b: u8, c: u8, d: u16) -> String {
     format!("{a}.{b}.{c}.{d}")
 }
 
-/// Proprietà valide per ogni classificazione (06 §2.2).
+/// Proprietà valide per ogni classificazione.
 fn check_invariants(kb: &Kb, tree: &Tree, cls: &Classification) {
     for m in &cls.matches {
         let r = &m.record;
@@ -152,7 +152,7 @@ fn check_invariants(kb: &Kb, tree: &Tree, cls: &Classification) {
             assert_eq!(r.action, Action::None);
             assert!(r.preferred.is_none() && r.alternatives.is_empty() && r.checks.is_empty());
         }
-        // Eccezione a F-AC-4 solo con Da verificare.
+        // Eccezione degli elementi protetti solo con Da verificare.
         if r.protected_exception {
             assert!(matches!(r.state, State::ToVerify(_)));
         }
@@ -229,13 +229,13 @@ proptest! {
 
 #[test]
 fn capcut_case_of_this_pc() {
-    // Controllo del caso guida (decisioni §3, 07 §1.4 criterio 6) sulla fixture reale.
+    // Controllo del caso guida (versioni precedenti di CapCut) sulla fixture reale.
     let kb = kb();
     let tree = common::tree(&["capcut.albero"]);
     let cls = classify(&kb, &tree, &common::evidence(), TODAY);
     let m = cls.matches.iter().find(|m| kb.rules[m.rule].id == "capcut-versioni").expect("regola CapCut");
     assert!(matches!(m.record.state, State::ToVerify(_)));
-    assert!(m.record.protected_exception, "eccezione a F-AC-4");
+    assert!(m.record.protected_exception, "eccezione degli elementi protetti");
     assert_eq!(m.nodes.len(), 9, "9 cartelle di versioni precedenti");
     let apps = engine::find(&tree, r"C:\Users\demo\AppData\Local\CapCut\Apps").expect("Apps");
     for kept in ["9.3.0.3970", "9.4.0.4015"] {
@@ -326,7 +326,7 @@ fn conflicting_rules_are_both_shown_without_proposals() {
 
 #[test]
 fn rules_to_recheck_after_6_11_12_months() {
-    // 07 §5.1, con date simulate: banner oltre 6 mesi, annuncio oltre 11, stato dichiarato oltre 12.
+    // Scadenza delle regole con date simulate: banner oltre 6 mesi, annuncio oltre 11, stato dichiarato oltre 12.
     let kb = kb();
     let tree = common::tree(&["sviluppo.albero"]);
     let ev = common::evidence();

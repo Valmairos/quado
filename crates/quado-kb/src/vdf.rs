@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! Lettore del formato KeyValues di Steam (`libraryfolders.vdf`, `appmanifest_*.acf`,
-//! `localconfig.vdf`). Formato non documentato (05 D6 [F]): ingresso non fidato, con limiti di
-//! profondità e di dimensione, mai un panic (06 §2.3).
+//! `localconfig.vdf`). Formato non documentato: ingresso non fidato, con limiti di profondità e di
+//! dimensione, mai un panic.
 
 use crate::extract::FormatIssue;
 

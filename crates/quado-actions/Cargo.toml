@@ -1,6 +1,6 @@
 [package]
 name = "quado-actions"
-description = "Interventi di Quado: unico crate con API di scrittura e di avvio di procedure (05 D7, D10)"
+description = "Interventi di Quado: unico crate con API di scrittura e di avvio di procedure"
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true

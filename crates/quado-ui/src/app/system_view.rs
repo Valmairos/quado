@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Windows e sistema (F-SY-1, F-SY-2, F-SY-3), variante A: una pagina di gruppi come Impostazioni. Le voci di
-//! sistema con la misura o "non disponibile" e il motivo, la riga della regola e lo stato; un clic apre la
-//! voce in Esplora. Il Cestino misurato in due modi, rientrato sotto la sua voce; la configurazione letta in
-//! sola lettura; le fonti lette durante la scansione con il loro esito. Ogni riga ha il glifo della provenienza.
+//! Windows e sistema, variante A: una pagina di gruppi come Impostazioni. Le voci di sistema con la misura o
+//! "non disponibile" e il motivo, la riga della regola e lo stato; un clic apre la voce in Esplora. Il
+//! Cestino misurato in due modi, rientrato sotto la sua voce; la configurazione letta in sola lettura; le
+//! fonti lette durante la scansione con il loro esito. Ogni riga ha il glifo della provenienza.
 
 use egui::{CornerRadius, Rect, Sense, Ui, pos2, vec2};
 use quado_kb::extract::{ConfigOrigin, ExtractError, FormatIssue, TrackProgs, UserAssist};
@@ -164,7 +164,7 @@ pub fn show(app: &mut App, ui: &mut Ui, p: &Palette) {
             let root = d.volume.root.clone();
             let windows = ev.folders.windows.clone().unwrap_or_else(|| format!(r"{root}Windows"));
             let sid = ev.user_sid.clone().unwrap_or_default();
-            // Voci di F-SY-1. Il percorso decide la misura; la regola stato, spiegazione e procedura.
+            // Voci di sistema. Il percorso decide la misura; la regola stato, spiegazione e procedura.
             let items: [(&str, String); 9] = [
                 ("sistema-voce-paging", format!(r"{root}pagefile.sys")),
                 ("sistema-voce-swap", format!(r"{root}swapfile.sys")),
@@ -195,7 +195,7 @@ pub fn show(app: &mut App, ui: &mut Ui, p: &Palette) {
                     if *key == "sistema-voce-cestino"
                         && let Some((n, _)) = &found
                     {
-                        // F-SY-2: le due misure del Cestino e le cartelle orfane come anomalia, rientrate sotto la voce.
+                        // Le due misure del Cestino e le cartelle orfane come anomalia, rientrate sotto la voce.
                         let windows_count = match &ev.recycle {
                             Ok(q) => l.ta("sistema-cestino-windows", &[("valore", f.size(q.bytes).into()), ("n", q.items.into()), ("testo", f.count(q.items).into())]),
                             Err(e) => extract_error(l, e),
@@ -208,7 +208,7 @@ pub fn show(app: &mut App, ui: &mut Ui, p: &Palette) {
                         }
                     }
                 }
-                // Voci non misurabili senza amministratore: mai 0 (F-SY-1).
+                // Voci non misurabili senza amministratore: mai 0.
                 for key in ["sistema-voce-copie-shadow", "sistema-voce-archiviazione-riservata"] {
                     row(ui, p, l, Evidence::Unavailable, &l.t(key), &l.t("sistema-non-disponibile-admin"));
                 }
@@ -248,7 +248,7 @@ fn sub_row(ui: &mut Ui, p: &Palette, l: &Lingue, e: Evidence, label: &str, value
     });
 }
 
-/// Configurazione letta in sola lettura (F-SY-3).
+/// Configurazione letta in sola lettura.
 fn config_card(app: &App, ui: &mut Ui, p: &Palette, f: &Formatter) {
     let Some(d) = &app.data else { return };
     let l = &app.lingue;
@@ -314,7 +314,7 @@ fn config_card(app: &App, ui: &mut Ui, p: &Palette, f: &Formatter) {
     });
 }
 
-/// Fonti lette durante la scansione, con il loro esito (06 §2.3).
+/// Fonti lette durante la scansione, con il loro esito.
 fn sources_card(app: &App, ui: &mut Ui, p: &Palette) {
     let Some(d) = &app.data else { return };
     let (l, f) = (&app.lingue, &app.fmt);

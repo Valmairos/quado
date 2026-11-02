@@ -1,4 +1,4 @@
-# 06 §2.1: Lo gestisce pnpm; pnpm store prune; "non stimabile senza contare i link".
+# Lo gestisce pnpm; pnpm store prune; "non stimabile senza contare i link".
 [[voci]]
 percorso = 'C:\Users\demo\AppData\Local\pnpm\store'
 stato = "lo-gestisce"

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Registro degli interventi (F-AC-6, 05 D8, 06 §5.6): file creato al primo intervento, andata e
+//! Registro degli interventi: file creato al primo intervento, andata e
 //! ritorno esatti di ogni campo, ultima riga per `id`, righe illeggibili contate, cancellazione, solo
 //! codici e valori. Tutto in una cartella temporanea propria, cancellata alla fine.
 
@@ -172,7 +172,7 @@ fn every_field_round_trips() {
     assert_eq!(j.unreadable_lines, 0);
     written.sort_by_key(|e| e.id);
     assert_eq!(j.entries, written, "ordine per id e valori identici");
-    // Stimato e ottenuto ci sono (F-AC-6).
+    // Stimato e ottenuto ci sono.
     let full = j.entries.iter().find(|e| e.id == 30).expect("spostamento");
     assert_eq!(full.estimate, Estimate::Exact(4_294_967_311));
     assert_eq!(full.comparison.as_ref().map(|c| c.obtained), Some(-9_876_543_210));

@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Estrattori su Windows vero, in sola lettura (05 D6): registro con `KEY_READ`, file entro un limite
-//! di dimensione, cartelle note, API di alimentazione, `PackageManager`, `SHQueryRecycleBinW`.
-//! Nessun processo creato, nessuna chiave aperta in scrittura (06 §2.4). Unico modulo del crate con
-//! codice `unsafe`; ogni blocco ha il suo invariante.
+//! Estrattori su Windows vero, in sola lettura: registro con `KEY_READ`, file entro un limite di
+//! dimensione, cartelle note, API di alimentazione, `PackageManager`, `SHQueryRecycleBinW`. Nessun
+//! processo creato, nessuna chiave aperta in scrittura. Unico modulo del crate con codice `unsafe`;
+//! ogni blocco ha il suo invariante.
 
 use std::ffi::c_void;
 
@@ -49,7 +49,7 @@ fn open(root: Root, path: &str) -> Result<Key, u32> {
     let p = wide(path);
     let mut h: HKEY = std::ptr::null_mut();
     // SAFETY: `p` è terminata da zero e vive per la chiamata; `h` riceve la chiave. Solo `KEY_READ`:
-    // nessuna apertura in scrittura (06 §2.4).
+    // nessuna apertura in scrittura.
     let r = unsafe { RegOpenKeyExW(base, p.as_ptr(), 0, KEY_READ | KEY_WOW64_64KEY, &mut h) };
     if r == ERROR_SUCCESS { Ok(Key(h)) } else { Err(r) }
 }
@@ -353,9 +353,9 @@ pub fn gather(volume_root: &str, user_sid: Option<String>) -> Evidence {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Riferimenti (03 F-AC-9, 05 D7 controllo 6): collegamenti `.lnk` e attività pianificate, in sola
-// lettura. COM si inizializza e si bilancia in ogni funzione che lo usa: il chiamante può essere un
-// thread qualunque, e gli oggetti COM si rilasciano prima di `CoUninitialize`.
+// Riferimenti: collegamenti `.lnk` e attività pianificate, in sola lettura. COM si inizializza e si
+// bilancia in ogni funzione che lo usa: il chiamante può essere un thread qualunque, e gli oggetti COM
+// si rilasciano prima di `CoUninitialize`.
 
 use std::os::windows::fs::MetadataExt;
 

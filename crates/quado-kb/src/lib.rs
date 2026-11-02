@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Base delle regole di Quado (05 D6, D10): regole TOML incorporate, motore di classificazione,
-//! estrattori in sola lettura. Niente AI durante l'esecuzione: ogni spiegazione viene da una regola
-//! con una fonte, un estratto e una data di verifica. Il crate restituisce codici e valori; i testi
-//! stanno in `regole/<lingua>.ftl` (05 D13).
+//! Base delle regole di Quado: regole TOML incorporate, motore di classificazione, estrattori in sola
+//! lettura. Niente AI durante l'esecuzione: ogni spiegazione viene da una regola con una fonte, un
+//! estratto e una data di verifica. Il crate restituisce codici e valori; i testi stanno in
+//! `regole/<lingua>.ftl`.
 
 pub mod engine;
 pub mod evidence;

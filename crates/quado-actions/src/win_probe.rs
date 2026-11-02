@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Letture vere di Windows per simulazione, esecuzione e misure (05 D7), in sola lettura: attributi con
+//! Letture vere di Windows per simulazione, esecuzione e misure, in sola lettura: attributi con
 //! i soli permessi di lettura degli attributi (`quado_scan_win`), elenco delle cartelle, Restart
 //! Manager (`restart`), Cestino del volume (`GetVolumePathNameW`, `GetDriveTypeW`, `SHQueryRecycleBinW`
 //! e la chiave `BitBucket` da [`SystemConfig`]), cartelle di sincronizzazione (`CfGetSyncRootInfoByPath`),
@@ -64,7 +64,7 @@ fn cluster_size(root: &str) -> Option<u64> {
     (ok != 0 && c > 0).then_some(c)
 }
 
-/// Dati residenti nella MFT (03 §6.3): su NTFS l'allocata di un file non residente è un multiplo del
+/// Dati residenti nella MFT: su NTFS l'allocata di un file non residente è un multiplo del
 /// cluster (anche se compresso o sparse), quella di un file residente no (16 byte per un file da 10,
 /// misurato su R: il 14/10/2026). Le cartelle e i file senza allocata non sono residenti per la stima.
 fn is_resident(alloc: u64, directory: bool, cluster: Option<u64>) -> bool {
@@ -157,14 +157,14 @@ impl Probe for WinProbe {
         THREADS
     }
 
-    /// Un collegamento (junction, symlink, punto di montaggio) non si attraversa (05 D4): non ha figli
+    /// Un collegamento (junction, symlink, punto di montaggio) non si attraversa: non ha figli
     /// suoi, e spostarlo nel Cestino sposta solo il collegamento. Un file: `Err(267)`.
     ///
     /// Una cartella cloud non ancora popolata (`RECALL_ON_DATA_ACCESS`, anche la radice di una sync root)
     /// si elenca con l'handle della scansione (`FILE_FLAG_OPEN_NO_RECALL`): Windows restituisce i soli
     /// figli presenti sul disco e il provider non riceve richieste di elenco né di dati (misurato il
     /// 14/10/2026 con il provider di prova, `tests/probe_win.rs`). Sono proprio i figli che contano per i
-    /// byte locali (03 §6.3).
+    /// byte locali della stima.
     fn children(&self, dir: &str) -> Result<Vec<String>, u32> {
         if attrs::read(dir)?.link() {
             return Ok(Vec::new());
@@ -244,7 +244,7 @@ impl Probe for WinProbe {
     }
 
     /// Byte liberi del volume (`TotalNumberOfFreeBytes`), non la quota del chiamante: la variazione del
-    /// volume (F-VE-3) si misura sul volume intero.
+    /// volume si misura sul volume intero.
     fn free_space(&self, path: &str) -> Result<u64, u32> {
         let root = volume_root(path)?;
         let w: Vec<u16> = root.encode_utf16().collect();

@@ -1,4 +1,4 @@
-## Rule and classification engine texts (05 D6, D13). Context comments are in it.ftl.
+## Rule and classification engine texts. Context comments are in it.ftl.
 
 regola-capcut-versioni-nome = Previous versions of CapCut
 regola-capcut-versioni-riga = { $n ->
@@ -225,7 +225,7 @@ fatto-cartella-nota = { $a ->
 }
 fatto-cartella-bozze = Drafts folder according to CapCut: { $a }
 
-## M4: installers.
+## Installers.
 
 funzione-installatore-nome = Installers
 
@@ -254,7 +254,7 @@ fatto-installatore-non-confrontabile = { $a ->
    *[other] Comparison with installed programs not available
 }
 
-## M4: programs, known usage and possible leftovers.
+## Programs, known usage and possible leftovers.
 
 funzione-programma = Installed programs
 funzione-programma-descrizione = Quado function. The list comes from uninstall entries, Microsoft Store packages and the Steam and Epic manifests. A program's space counts only when a source declares its folder.
@@ -301,7 +301,7 @@ fatto-uso-msix-nessun-dato = Windows doesn't say when a Microsoft Store app was 
 fatto-residuo-possibile = No matching installed program (compared by name). Last modified: { $a }. It might be a leftover.
 fatto-residuo-possibile-senza-data = No matching installed program (compared by name). Last modified date not read. It might be a leftover.
 
-## M4: Downloads view.
+## Downloads view.
 
 funzione-stessa-dimensione-nome = Files of the same size
 funzione-copie-identiche-nome = Identical copies
