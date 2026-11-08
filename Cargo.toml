@@ -54,7 +54,7 @@ windows-sys = { version = "0.61", features = [
     "Win32_System_SystemServices",
     "Win32_System_Threading",
 ] }
-egui = "0.36"
+egui = "0.37"
 eframe = { version = "0.36", default-features = false }
 egui_kittest = "0.36"
 image = { version = "0.25", default-features = false, features = ["png"] }
