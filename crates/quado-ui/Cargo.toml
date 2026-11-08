@@ -23,7 +23,7 @@ quado-actions = { workspace = true }
 quado-kb = { workspace = true }
 # Mappa dei caratteri dei font di Windows, per scegliere i ripieghi che servono (`fonts::choose_fallbacks`).
 # La stessa versione e le stesse funzioni che usa egui (epaint): nessun codice nuovo nella build.
-skrifa = { version = "0.44", default-features = false, features = ["std", "autohint_shaping"] }
+skrifa = { version = "0.48", default-features = false, features = ["std", "autohint_shaping"] }
 
 [dev-dependencies]
 quado-testkit = { workspace = true }
